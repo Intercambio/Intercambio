@@ -1,0 +1,44 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "65CC7ED8CE88C06EAD1A19FB81AE49503772A828",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "1D5DBE2847BCB69A6F8AECC91F9A148D4F1000E7" : 0,
+    "B7A0BA1A051CB3BE43C8E93DD3FCF13E4E826F7B" : 0,
+    "84DCEECDB2EAAC6F1B95A4006BDA9D46B90354F4" : 0,
+    "65CC7ED8CE88C06EAD1A19FB81AE49503772A828" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "DC938B57-A92B-4A00-B00D-60B6E116DF71",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "1D5DBE2847BCB69A6F8AECC91F9A148D4F1000E7" : "Intercambio-iOS\/Carthage\/Checkouts\/corexmpp\/",
+    "B7A0BA1A051CB3BE43C8E93DD3FCF13E4E826F7B" : "intercambio-ios-app\/",
+    "84DCEECDB2EAAC6F1B95A4006BDA9D46B90354F4" : "Intercambio-iOS\/Carthage\/Checkouts\/purexml\/",
+    "65CC7ED8CE88C06EAD1A19FB81AE49503772A828" : "Intercambio\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Intercambio",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Intercambio.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/garage.tobias-kraentzer.de\/diffusion\/XMPP\/corexmpp.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "1D5DBE2847BCB69A6F8AECC91F9A148D4F1000E7"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:Internetslum\/Intercambio.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "65CC7ED8CE88C06EAD1A19FB81AE49503772A828"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/garage.tobias-kraentzer.de\/diffusion\/PX\/purexml.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "84DCEECDB2EAAC6F1B95A4006BDA9D46B90354F4"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/garage.tobias-kraentzer.de\/diffusion\/6\/intercambio-ios-app.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "B7A0BA1A051CB3BE43C8E93DD3FCF13E4E826F7B"
+    }
+  ]
+}

@@ -1,0 +1,3 @@
+secretfile filter=git-crypt diff=git-crypt
+Secrets.h filter=git-crypt diff=git-crypt
+
