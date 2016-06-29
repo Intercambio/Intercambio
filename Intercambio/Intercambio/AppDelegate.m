@@ -31,24 +31,13 @@ static DDLogLevel ddLogLevel = DDLogLevelInfo;
     ICUserInterfaceFactory *_userInterfaceFactory;
     ICAppWireframe *_appWireframe;
     ICURLHandler *_URLHandler;
-    UIBackgroundTaskIdentifier _accountManagerBackgroundTaskIdentifier;
-    BOOL _isPerformingFetch;
-    BOOL _isSetup;
-    NSURL *_documentDirectoryURL;
     NSURL *_pendingURLToHandle;
+    BOOL _isSetup;
 }
 
 @end
 
 @implementation AppDelegate
-
-+ (void)initialize
-{
-    [DDLog setLevel:DDLogLevelDebug forClassWithName:@"XMPPAccountManager"];
-    [DDLog setLevel:DDLogLevelDebug forClassWithName:@"XMPPClient"];
-    [DDLog setLevel:DDLogLevelDebug forClassWithName:@"XMPPWebsocketStream"];
-    [DDLog setLevel:DDLogLevelDebug forClassWithName:@"XMPPStreamFeatureStreamManagement"];
-}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -82,45 +71,6 @@ static DDLogLevel ddLogLevel = DDLogLevelInfo;
     }
 
     return YES;
-}
-
-- (void)applicationDidEnterBackground:(UIApplication *)application
-{
-    DDLogInfo(@"Application will enter background.");
-    _accountManagerBackgroundTaskIdentifier = UIBackgroundTaskInvalid;
-
-    _accountManagerBackgroundTaskIdentifier = [[UIApplication sharedApplication] beginBackgroundTaskWithName:@"Account Manager"
-                                                                                           expirationHandler:^{
-                                                                                               DDLogInfo(@"Background task expired.");
-                                                                                               [[UIApplication sharedApplication] endBackgroundTask:_accountManagerBackgroundTaskIdentifier];
-                                                                                               _accountManagerBackgroundTaskIdentifier = UIBackgroundTaskInvalid;
-                                                                                               [DDLog flushLog];
-                                                                                           }];
-
-    if (_accountManagerBackgroundTaskIdentifier == UIBackgroundTaskInvalid) {
-        DDLogInfo(@"Entering the background.");
-        [DDLog flushLog];
-    } else {
-        DDLogInfo(@"Continue account manager with a long running task (%lu) in the background.", (unsigned long)_accountManagerBackgroundTaskIdentifier);
-    }
-}
-
-- (void)applicationWillEnterForeground:(UIApplication *)application
-{
-    DDLogInfo(@"Application will enter foreground.");
-
-    [_communicationService exchangeAcknowledgements];
-
-    if (_accountManagerBackgroundTaskIdentifier != UIBackgroundTaskInvalid) {
-        DDLogInfo(@"Canceling background task (%lu) for account manager.", (unsigned long)_accountManagerBackgroundTaskIdentifier);
-        [[UIApplication sharedApplication] endBackgroundTask:_accountManagerBackgroundTaskIdentifier];
-        _accountManagerBackgroundTaskIdentifier = UIBackgroundTaskInvalid;
-    }
-}
-
-- (void)applicationWillTerminate:(UIApplication *)application
-{
-    DDLogInfo(@"Application will terminate.");
 }
 
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *, id> *)options
