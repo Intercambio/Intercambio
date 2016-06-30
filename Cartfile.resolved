@@ -1,5 +1,5 @@
 github "CocoaLumberjack/CocoaLumberjack" "2.3.0"
-github "anagromataf/Fountain" "2.3.2"
+github "anagromataf/Fountain" "2.4.1"
 github "hamcrest/OCHamcrest" "v5.4.0"
 github "AliSoftware/OHHTTPStubs" "5.1.0"
 github "Internetslum/PureXML" "1.1"
@@ -10,4 +10,4 @@ github "anagromataf/iso-8601-date-formatter" "e3cd1805147c2b869eb1b2a659c221556e
 github "jonreid/OCMockito" "v3.0.2"
 github "Internetslum/CoreXMPP" "1.2"
 github "Internetslum/XMPPMessageArchive" "1.2"
-github "Internetslum/IntercambioCore" "1.1"
+github "Internetslum/IntercambioCore" "1.2"

@@ -1,5 +1,5 @@
 github "Internetslum/XMPPMessageArchive" ~> 1.2
 github "Internetslum/CoreXMPP" ~> 1.2
 github "Internetslum/PureXML" ~> 1.0
-github "Internetslum/IntercambioCore" ~> 1.1
-github "anagromataf/Fountain" ~> 2.3.2
+github "Internetslum/IntercambioCore" ~> 1.2
+github "anagromataf/Fountain" ~> 2.4

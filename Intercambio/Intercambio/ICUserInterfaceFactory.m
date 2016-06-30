@@ -127,9 +127,9 @@
                                                           if (accountURL) {
                                                               NSDictionary *properties = @{ ICAccountURIKey : accountURL,
                                                                                             ICAccountEnabledKey : @(YES) };
-                                                              [accountDataSource insertItemWithProperties:properties
-                                                                                              basedOnType:nil
-                                                                                              atIndexPath:nil];
+                                                              [accountDataSource insertItem:properties
+                                                                        atProposedIndexPath:nil
+                                                                                      error:nil];
                                                           }
                                                       }];
 

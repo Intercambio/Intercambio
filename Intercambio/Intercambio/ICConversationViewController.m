@@ -33,7 +33,7 @@
 
 @interface ICConversationViewController () <UITextViewDelegate, CLTokenInputViewDelegate> {
     FTCollectionViewAdapter *_collectionViewAdapter;
-    id<FTDataSource, FTReverseDataSource, FTMutableDataSource, FTReverseMutableDataSource> _dataSource;
+    id<FTReverseDataSource, FTReverseMutableDataSource, FTFutureItemsDataSource> _dataSource;
     NSMapTable *_composeCellsByTextView;
     BOOL _endpointSearchBarHidden;
     BOOL _shouldScrollToBottom;
@@ -218,7 +218,7 @@
 
 #pragma mark Data Source
 
-- (void)setDataSource:(id<FTDataSource, FTReverseDataSource, FTMutableDataSource, FTReverseMutableDataSource>)dataSource
+- (void)setDataSource:(id<FTReverseDataSource, FTReverseMutableDataSource, FTFutureItemsDataSource>)dataSource
 {
     if (_dataSource != dataSource) {
         _dataSource = dataSource;
@@ -262,15 +262,15 @@
             if (hasContent) {
                 [_dummyTextView becomeFirstResponder];
 
-                [_dataSource insertItemWithProperties:@{}
-                                          basedOnType:cellModel
-                                          atIndexPath:nil];
-
-                if ([_dataSource numberOfFutureItemTypesInSection:0] > 0) {
-                    NSIndexPath *newIndexPath = [NSIndexPath indexPathForItem:[_dataSource numberOfItemsInSection:0]
-                                                                    inSection:0];
-                    ICMessageComposeCell *cell = (ICMessageComposeCell *)[self.collectionView cellForItemAtIndexPath:newIndexPath];
-                    [cell.messageTextView becomeFirstResponder];
+                NSError *error = nil;
+                NSIndexPath *newIndexPath = [_dataSource insertItem:cellModel atProposedIndexPath:nil error:&error];
+                if (newIndexPath) {
+                    if ([_dataSource numberOfFutureItemsInSection:0] > 0) {
+                        NSIndexPath *newIndexPath = [NSIndexPath indexPathForItem:[_dataSource numberOfItemsInSection:0]
+                                                                        inSection:0];
+                        ICMessageComposeCell *cell = (ICMessageComposeCell *)[self.collectionView cellForItemAtIndexPath:newIndexPath];
+                        [cell.messageTextView becomeFirstResponder];
+                    }
                 }
             }
 
@@ -370,8 +370,11 @@
                 [mutableDataSource canDeleteItemAtIndexPath:indexPath]) {
 
                 [_collectionViewAdapter performUserDrivenChange:^{
-                    [mutableDataSource deleteItemAtIndexPath:indexPath];
-                    [self.collectionView deleteItemsAtIndexPaths:@[ indexPath ]];
+                    NSError *error = nil;
+                    BOOL success = [mutableDataSource deleteItemAtIndexPath:indexPath error:&error];
+                    if (success) {
+                        [self.collectionView deleteItemsAtIndexPaths:@[ indexPath ]];
+                    }
                 }];
             }
         }
@@ -566,11 +569,11 @@
     NSUInteger numberOfItemsInSection = [_dataSource numberOfItemsInSection:indexPath.section];
     if (indexPath.item < numberOfItemsInSection) {
         cellModel = [_dataSource itemAtIndexPath:indexPath];
-    } else if (_collectionViewAdapter.editing && [_dataSource conformsToProtocol:@protocol(FTMutableDataSource)]) {
-        id<FTMutableDataSource> mutableDataSource = (id<FTMutableDataSource>)_dataSource;
+    } else if (_collectionViewAdapter.editing && [_dataSource conformsToProtocol:@protocol(FTFutureItemsDataSource)]) {
+        id<FTFutureItemsDataSource> futureItemDataSource = (id<FTFutureItemsDataSource>)_dataSource;
         NSIndexPath *futureItemIndexPath = [NSIndexPath indexPathForItem:indexPath.item - numberOfItemsInSection
                                                                inSection:indexPath.section];
-        cellModel = [mutableDataSource futureItemTypeAtIndexPath:futureItemIndexPath];
+        cellModel = [futureItemDataSource futureItemAtIndexPath:futureItemIndexPath];
     }
 
     return cellModel;
