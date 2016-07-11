@@ -12,6 +12,8 @@ import CoreXMPP
 
 public class AccountModuleInteractorImpl : AccountModuleInteractor {
 
+    internal weak var presenter: AccountModulePresenter?
+    
     private let accountJID: JID
     private let keyChain: KeyChain
     private let accountManager: AccountManager
@@ -111,7 +113,7 @@ public class AccountModuleInteractorImpl : AccountModuleInteractor {
         if let userInfo = notification.userInfo,
         let item = userInfo[KeyChainItemKey] as? KeyChainItem {
             if item.jid == accountJID {
-                self.postAccountDidChangeNotification()
+                self.handleAccountUpdate()
             }
         }
     }
@@ -120,13 +122,18 @@ public class AccountModuleInteractorImpl : AccountModuleInteractor {
         if let userInfo = notification.userInfo,
         let jid = userInfo[AccountManagerAccountJIDKey] as? JID {
             if jid == accountJID {
-                self.postAccountDidChangeNotification()
+                self.handleAccountUpdate()
             }
         }
     }
 
-    private func postAccountDidChangeNotification() {
+    private func handleAccountUpdate() {
+        
         let center = NotificationCenter.default
         center.post(name: AccountModuleInteractorDidUpdateAccount, object: self)
+        
+        if let account = self.account {
+            self.presenter?.present(account: account)
+        }
     }
 }
