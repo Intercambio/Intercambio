@@ -14,6 +14,15 @@ class AccountModulePresenterImplTests: XCTestCase {
     
     internal class TestModel : AccountViewModel {
         var identifier: String = "undefined"
+        var accountURI: URL? {
+            get {
+                var components = URLComponents()
+                components.scheme = "xmpp"
+                components.host = "example.com"
+                components.user = "romeo"
+                return components.url
+            }
+        }
         var enabled: Bool = false
         var state: AccountConnectionState = AccountConnectionState.disconnected
         var name: String?
@@ -35,6 +44,22 @@ class AccountModulePresenterImplTests: XCTestCase {
         var connectionButtonHidden: Bool = false
         var nextConnectionLabelHidden: Bool = false
         var errorMessageLabelHidden: Bool = false
+    }
+    
+    class TestInteractor : AccountModuleInteractor {
+        var account: AccountViewModel? = TestModel()
+        func enable() throws {}
+        func disable() throws {}
+        func connect() throws {
+            NotificationCenter.default().post(name: Notification.Name(rawValue: "TestInteractorConnect"), object: self)
+        }
+        func update(options: Dictionary<String, AnyObject>) throws {}
+    }
+    
+    class TestRouter : AccountModuleRouter {
+        func showSettings(for accountURI: URL) {
+            NotificationCenter.default().post(name: Notification.Name(rawValue: "TestRouterShowSettings"), object: self, userInfo: ["uri": accountURI])
+        }
     }
     
     func testDisabledAccount() {
@@ -162,5 +187,48 @@ class AccountModulePresenterImplTests: XCTestCase {
             return userInterface.nextConnectionLabel != "Reconnecting in 9 seconds …"
         }
         self.waitForExpectations(withTimeout: 2.0, handler: nil)
+    }
+    
+    func testConnectAccount() {
+        
+        let interactor = TestInteractor()
+        
+        let presenter = AccountModulePresenterImpl()
+        presenter.interactor = interactor
+        
+        self.expectation(forNotification: "TestInteractorConnect",
+                         object: interactor) { (n) -> Bool in true }
+        
+        presenter.connectAccount()
+        
+        self.waitForExpectations(withTimeout: 1.0, handler: nil)
+    }
+    
+    func testShowSettings() {
+        
+        let router = TestRouter()
+        let interactor = TestInteractor()
+        
+        let presenter = AccountModulePresenterImpl()
+        presenter.interactor = interactor
+        presenter.router = router
+        
+        self.expectation(forNotification: "TestRouterShowSettings", object: router) {
+            (notification) -> Bool in
+            if let userInfo = notification.userInfo,
+                let uri = userInfo["uri"] as? URL {
+                XCTAssertEqual(uri.scheme, "xmpp")
+                XCTAssertEqual(uri.host, "example.com")
+                XCTAssertEqual(uri.user, "romeo")
+                if uri.absoluteString == "xmpp://romeo@example.com"  {
+                    return true
+                }
+            }
+            return false
+        }
+        
+        presenter.showAccountSettings()
+        
+        self.waitForExpectations(withTimeout: 1.0, handler: nil)
     }
 }

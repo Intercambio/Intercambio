@@ -55,6 +55,8 @@
 		F69A03F51C7B4D3000308F85 /* ICAccountOptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F69A03F41C7B4D3000308F85 /* ICAccountOptionsViewController.m */; };
 		F69A03FE1C7CA20A00308F85 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F69A03FD1C7CA20A00308F85 /* Assets.xcassets */; };
 		F6A2592A1D33C3FE0005C533 /* AccountModulePresenterImplTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A259291D33C3FE0005C533 /* AccountModulePresenterImplTests.swift */; };
+		F6A2592E1D33EC080005C533 /* AccountModuleEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A2592D1D33EC080005C533 /* AccountModuleEventHandler.swift */; };
+		F6A259301D33EE220005C533 /* AccountModuleRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A2592F1D33EE220005C533 /* AccountModuleRouter.swift */; };
 		F6A697031CFC348700E0A0D2 /* Fountain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6A697021CFC348700E0A0D2 /* Fountain.framework */; };
 		F6B26F9F1C6942650099CBC9 /* ICConversationLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = F6B26F9E1C6942650099CBC9 /* ICConversationLayout.m */; };
 		F6B26FA21C6A30790099CBC9 /* ICConversationLayoutAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = F6B26FA11C6A30790099CBC9 /* ICConversationLayoutAttributes.m */; };
@@ -209,6 +211,8 @@
 		F69A03F41C7B4D3000308F85 /* ICAccountOptionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ICAccountOptionsViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		F69A03FD1C7CA20A00308F85 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F6A259291D33C3FE0005C533 /* AccountModulePresenterImplTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AccountModulePresenterImplTests.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		F6A2592D1D33EC080005C533 /* AccountModuleEventHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountModuleEventHandler.swift; sourceTree = "<group>"; };
+		F6A2592F1D33EE220005C533 /* AccountModuleRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountModuleRouter.swift; sourceTree = "<group>"; };
 		F6A697021CFC348700E0A0D2 /* Fountain.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fountain.framework; path = ../Carthage/Build/iOS/Fountain.framework; sourceTree = "<group>"; };
 		F6ACB0FC1D23BFB8002F3A66 /* Secrets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Secrets.h; sourceTree = "<group>"; };
 		F6B26F9D1C6942650099CBC9 /* ICConversationLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICConversationLayout.h; sourceTree = "<group>"; };
@@ -673,9 +677,11 @@
 			isa = PBXGroup;
 			children = (
 				F63A66701D26647700FCC82E /* AccountModule.swift */,
+				F6A2592F1D33EE220005C533 /* AccountModuleRouter.swift */,
 				F605909B1D2F97AB0071FC63 /* AccountModuleInteractor.swift */,
 				F605909D1D2F97E70071FC63 /* AccountModulePresenter.swift */,
 				F635166D1D33A52A007822F3 /* AccountModuleUserInterface.swift */,
+				F6A2592D1D33EC080005C533 /* AccountModuleEventHandler.swift */,
 				F63A66631D265BCA00FCC82E /* Application Logic */,
 				F6E605021C787353000CCDD9 /* ICAccountSettingsViewController.h */,
 				F6E605031C787353000CCDD9 /* ICAccountSettingsViewController.m */,
@@ -920,6 +926,7 @@
 				F65751351D0FF4CE0038AB25 /* ICAccountPickerViewController.m in Sources */,
 				F62F71B31C66736200656D3C /* ICConversationCell.m in Sources */,
 				F6826A191D0F371B007A3934 /* ICAccountCell.m in Sources */,
+				F6A259301D33EE220005C533 /* AccountModuleRouter.swift in Sources */,
 				F68269CF1D0EECE2007A3934 /* ICAppWireframe.m in Sources */,
 				F676EFA81CDCE699003047EC /* ICConversationChapterFragment.m in Sources */,
 				F63516771D33C076007822F3 /* AccountModulePresenterImpl.swift in Sources */,
@@ -947,6 +954,7 @@
 				F63A66731D26669A00FCC82E /* AccountModuleInteractorImpl.swift in Sources */,
 				F6D807DA1D17F53E002953AB /* ICURLHandler.m in Sources */,
 				F676EF9B1CDCD63F003047EC /* ICConversationMessageFragment.m in Sources */,
+				F6A2592E1D33EC080005C533 /* AccountModuleEventHandler.swift in Sources */,
 				F69A03F51C7B4D3000308F85 /* ICAccountOptionsViewController.m in Sources */,
 				F6B26FA21C6A30790099CBC9 /* ICConversationLayoutAttributes.m in Sources */,
 			);

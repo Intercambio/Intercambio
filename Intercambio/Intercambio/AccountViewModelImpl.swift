@@ -28,6 +28,14 @@ class AccountViewModelImpl : AccountViewModel {
         get { return keyChainItem.identifier }
     }
     
+    var accountURI: URL? {
+        var components = URLComponents()
+        components.scheme = "xmpp"
+        components.host = keyChainItem.jid.host
+        components.user = keyChainItem.jid.user
+        return components.url
+    }
+    
     var enabled: Bool {
         get { return keyChainItem.invisible }
     }
@@ -61,6 +69,7 @@ class AccountViewModelImpl : AccountViewModel {
 
 class AccountViewModelEmptyImpl : AccountViewModel {
     let identifier = "undefined"
+    let accountURI: URL? = nil
     let enabled: Bool = false
     let state = AccountConnectionState.disconnected
     let name: String? = nil

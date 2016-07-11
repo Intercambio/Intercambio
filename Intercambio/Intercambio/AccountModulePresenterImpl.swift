@@ -10,10 +10,13 @@ import Foundation
 import IntercambioCore
 import CoreXMPP
 
-public class AccountModulePresenterImpl : AccountModulePresenter {
+public class AccountModulePresenterImpl : AccountModulePresenter, AccountModuleEventHandler {
     
     internal var userInterface: AccountModuleUserInterface?
-    internal var displayLink: CADisplayLink?
+    internal var interactor: AccountModuleInteractor?
+    internal var router: AccountModuleRouter?
+    
+    private var displayLink: CADisplayLink?
     private var account: AccountViewModel?
     
     deinit {
@@ -28,6 +31,23 @@ public class AccountModulePresenterImpl : AccountModulePresenter {
             enableNextConnectionAttemptTimer()
         } else {
             disableNextConnectionAttemptTimer()
+        }
+    }
+    
+    public func connectAccount() {
+        if let interactor = self.interactor {
+            do {
+                try interactor.connect()
+            } catch {
+                
+            }
+        }
+    }
+    
+    public func showAccountSettings() {
+        if let router = self.router,
+           let uri = self.interactor?.account?.accountURI {
+            router.showSettings(for: uri)
         }
     }
     
@@ -106,4 +126,5 @@ public class AccountModulePresenterImpl : AccountModulePresenter {
             return nil
         }
     }
+
 }

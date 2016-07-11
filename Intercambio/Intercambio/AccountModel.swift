@@ -13,6 +13,7 @@ public typealias AccountConnectionState = CoreXMPP.AccountConnectionState
 
 public protocol AccountViewModel {
     var identifier: String { get }
+    var accountURI: URL? { get }
     var enabled: Bool { get }
     var state: AccountConnectionState { get }
     var name: String? { get }
