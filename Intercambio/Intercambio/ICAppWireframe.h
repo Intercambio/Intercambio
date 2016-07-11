@@ -10,6 +10,7 @@
 #import "ICAccountsUserInterface.h"
 #import "ICConversationUserInterface.h"
 #import "ICRecentConversationsUserInterface.h"
+#import "Intercambio-Swift.h"
 #import <UIKit/UIKit.h>
 
 @class ICAppWireframe;
@@ -27,10 +28,12 @@
 - (UIAlertController *)alertForSelectingAccountInAppWireframe:(ICAppWireframe *)appWireframe withCompletion:(void (^)(NSURL *accountURI))completion;
 @end
 
-@interface ICAppWireframe : NSObject
+@interface ICAppWireframe : NSObject <AccountModuleRouter>
 
 @property (nonatomic, weak) id<ICAppWireframeDelegate> delegate;
 @property (nonatomic, strong) UIWindow *window;
+
+@property (nonatomic, strong) AccountModule *accountModule;
 
 #pragma mark Main User Interface
 - (void)presentLaunchScreen;

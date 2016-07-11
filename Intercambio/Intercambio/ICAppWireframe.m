@@ -86,14 +86,7 @@
                            fromViewController:(UIViewController *)sender
 {
     UIViewController *viewController = [self accountSettingsViewControllerWithURI:accountURI];
-
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
-    navigationController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-    navigationController.modalPresentationStyle = UIModalPresentationFormSheet;
-
-    [self.splitViewController presentViewController:navigationController
-                                           animated:YES
-                                         completion:nil];
+    [self.splitViewController showDetailViewController:viewController sender:sender];
 }
 
 - (void)presentUserInterfaceForNewAccountFromViewController:(UIViewController *)viewController
@@ -241,6 +234,12 @@
     }
 }
 
+#pragma mark AccountModuleRouter
+
+- (void)showSettingsFor:(NSURL *_Nonnull)accountURI
+{
+}
+
 #pragma mark -
 
 - (UIViewController *)recentConversationsViewController
@@ -287,13 +286,7 @@
 
 - (UIViewController *)accountSettingsViewControllerWithURI:(NSURL *)accountURI;
 {
-    UIViewController *viewController = nil;
-    if ([self.delegate respondsToSelector:@selector(viewControllerForAccountSettingsInAppWireframe:)]) {
-        UIViewController<ICAccountSettingsUserInterface> *accountSettingsViewController = [self.delegate viewControllerForAccountSettingsInAppWireframe:self];
-        accountSettingsViewController.accountURI = accountURI;
-        viewController = accountSettingsViewController;
-    }
-    [self prepareViewController:viewController];
+    UIViewController *viewController = [self.accountModule viewControllerWithUri:accountURI];
     return viewController ?: [[ICEmptyViewController alloc] init];
 }
 
