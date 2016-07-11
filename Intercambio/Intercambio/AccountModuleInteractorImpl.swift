@@ -12,7 +12,13 @@ import CoreXMPP
 
 public class AccountModuleInteractorImpl : AccountModuleInteractor {
 
-    internal weak var presenter: AccountModulePresenter?
+    internal weak var presenter: AccountModulePresenter? {
+        didSet {
+            if let account = self.account {
+                presenter?.present(account: account)
+            }
+        }
+    }
     
     private let accountJID: JID
     private let keyChain: KeyChain

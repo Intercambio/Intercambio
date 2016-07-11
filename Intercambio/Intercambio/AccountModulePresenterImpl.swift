@@ -12,7 +12,12 @@ import CoreXMPP
 
 public class AccountModulePresenterImpl : AccountModulePresenter, AccountModuleEventHandler {
     
-    internal weak var userInterface: AccountModuleUserInterface?
+    internal weak var userInterface: AccountModuleUserInterface? {
+        didSet {
+            updateInterface()
+        }
+    }
+    
     internal var interactor: AccountModuleInteractor?
     internal var router: AccountModuleRouter?
     
