@@ -36,7 +36,7 @@ class AccountModulePresenterImplTests: XCTestCase {
         var stateLabel: String?
         var nextConnectionLabel: String? {
             didSet {
-                NotificationCenter.default().post(name: NSNotification.Name(rawValue: "TestUserInterfaceDidChange"), object: self)
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "TestUserInterfaceDidChange"), object: self)
             }
         }
         var errorMessageLabel : String?
@@ -51,14 +51,14 @@ class AccountModulePresenterImplTests: XCTestCase {
         func enable() throws {}
         func disable() throws {}
         func connect() throws {
-            NotificationCenter.default().post(name: Notification.Name(rawValue: "TestInteractorConnect"), object: self)
+            NotificationCenter.default.post(name: Notification.Name(rawValue: "TestInteractorConnect"), object: self)
         }
         func update(options: Dictionary<String, AnyObject>) throws {}
     }
     
     class TestRouter : AccountModuleRouter {
         func showSettings(for accountURI: URL) {
-            NotificationCenter.default().post(name: Notification.Name(rawValue: "TestRouterShowSettings"), object: self, userInfo: ["uri": accountURI])
+            NotificationCenter.default.post(name: Notification.Name(rawValue: "TestRouterShowSettings"), object: self, userInfo: ["uri": accountURI])
         }
     }
     

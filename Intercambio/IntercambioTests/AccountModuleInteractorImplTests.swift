@@ -102,7 +102,7 @@ class AccountModuleInteractorImplTests : XCTestCase {
         }
         
         AccountModuleInteractorImplTests.accountInfo = TestAccountInfo(state: .connected)
-        NotificationCenter.default().post(name: NSNotification.Name(rawValue: AccountManagerDidChangeAccount),
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: AccountManagerDidChangeAccount),
                                           object: accountManager,
                                           userInfo: [AccountManagerAccountJIDKey: jid,
                                                      AccountManagerAccountInfoKey: AccountModuleInteractorImplTests.accountInfo!])
@@ -238,7 +238,7 @@ class AccountModuleInteractorImplTests : XCTestCase {
         }
         
         override func connect(_ account: JID) {
-            NotificationCenter.default().post(name: NSNotification.Name(rawValue: "TestAccountManagerDidConnect"),
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "TestAccountManagerDidConnect"),
                                               object: self)
         }
     }

@@ -58,7 +58,7 @@ public class AccountModulePresenterImpl : AccountModulePresenter, AccountModuleE
         } else {
             displayLink.preferredFrameRate = 1.0
         }
-        displayLink.add(to: RunLoop.main(), forMode: RunLoopMode.defaultRunLoopMode.rawValue)
+        displayLink.add(to: RunLoop.main, forMode: RunLoopMode.defaultRunLoopMode)
         self.displayLink = displayLink
     }
     

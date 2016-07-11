@@ -71,36 +71,36 @@ public class AccountModuleInteractorImpl : AccountModuleInteractor {
     private lazy var notificationObservers = [NSObjectProtocol]()
     
     private func registerNotificationObservers() {
-        let center = NotificationCenter.default()
+        let center = NotificationCenter.default
         
         notificationObservers.append(center.addObserver(forName: NSNotification.Name(rawValue: KeyChainDidAddItemNotification),
                                                         object: keyChain,
-                                                        queue: OperationQueue.main()) { [weak self] (notification) in
+                                                        queue: OperationQueue.main) { [weak self] (notification) in
                                                             self?.forwardKeyChainNotification(notification) })
         
         notificationObservers.append(center.addObserver(forName: NSNotification.Name(rawValue: KeyChainDidUpdateItemNotification),
                                                         object: keyChain,
-                                                        queue: OperationQueue.main()) { [weak self] (notification) in
+                                                        queue: OperationQueue.main) { [weak self] (notification) in
                                                             self?.forwardKeyChainNotification(notification) })
         
         notificationObservers.append(center.addObserver(forName: NSNotification.Name(rawValue: KeyChainDidRemoveItemNotification),
                                                         object: keyChain,
-                                                        queue: OperationQueue.main()) { [weak self] (notification) in
+                                                        queue: OperationQueue.main) { [weak self] (notification) in
                                                             self?.forwardKeyChainNotification(notification) })
         
         notificationObservers.append(center.addObserver(forName: NSNotification.Name(rawValue: KeyChainDidClearNotification),
                                                         object: keyChain,
-                                                        queue: OperationQueue.main()) { [weak self] (notification) in
+                                                        queue: OperationQueue.main) { [weak self] (notification) in
                                                             self?.forwardKeyChainNotification(notification) })
         
         notificationObservers.append(center.addObserver(forName: NSNotification.Name(rawValue: AccountManagerDidChangeAccount),
                                                         object: accountManager,
-                                                        queue: OperationQueue.main()) { [weak self] (notification) in
+                                                        queue: OperationQueue.main) { [weak self] (notification) in
                                                             self?.forwardAccountManagerDidChangeAccountNotification(notification) })
     }
     
     private func unregisterNotificationObservers() {
-        let center = NotificationCenter.default()
+        let center = NotificationCenter.default
         for observer in notificationObservers {
             center.removeObserver(observer)
         }
@@ -126,7 +126,7 @@ public class AccountModuleInteractorImpl : AccountModuleInteractor {
     }
 
     private func postAccountDidChangeNotification() {
-        let center = NotificationCenter.default()
+        let center = NotificationCenter.default
         center.post(name: AccountModuleInteractorDidUpdateAccount, object: self)
     }
 }
