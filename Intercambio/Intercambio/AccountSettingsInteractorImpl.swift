@@ -75,28 +75,28 @@ public class AccountSettingsInteractorImpl : AccountSettingsInteractor {
         
         notificationObservers.append(center.addObserver(forName: NSNotification.Name(rawValue: KeyChainDidAddItemNotification),
                                                         object: keyChain,
-                                                        queue: OperationQueue.main(),
-                                                        using: forwardKeyChainNotification))
+                                                        queue: OperationQueue.main()) { [weak self] (notification) in
+                                                            self?.forwardKeyChainNotification(notification) })
         
         notificationObservers.append(center.addObserver(forName: NSNotification.Name(rawValue: KeyChainDidUpdateItemNotification),
                                                         object: keyChain,
-                                                        queue: OperationQueue.main(),
-                                                        using: forwardKeyChainNotification))
+                                                        queue: OperationQueue.main()) { [weak self] (notification) in
+                                                            self?.forwardKeyChainNotification(notification) })
         
         notificationObservers.append(center.addObserver(forName: NSNotification.Name(rawValue: KeyChainDidRemoveItemNotification),
                                                         object: keyChain,
-                                                        queue: OperationQueue.main(),
-                                                        using: forwardKeyChainNotification))
+                                                        queue: OperationQueue.main()) { [weak self] (notification) in
+                                                            self?.forwardKeyChainNotification(notification) })
         
         notificationObservers.append(center.addObserver(forName: NSNotification.Name(rawValue: KeyChainDidClearNotification),
                                                         object: keyChain,
-                                                        queue: OperationQueue.main(),
-                                                        using: forwardKeyChainNotification))
+                                                        queue: OperationQueue.main()) { [weak self] (notification) in
+                                                            self?.forwardKeyChainNotification(notification) })
         
         notificationObservers.append(center.addObserver(forName: NSNotification.Name(rawValue: AccountManagerDidChangeAccount),
                                                         object: accountManager,
-                                                        queue: OperationQueue.main(),
-                                                        using: forwardAccountManagerDidChangeAccountNotification))
+                                                        queue: OperationQueue.main()) { [weak self] (notification) in
+                                                            self?.forwardAccountManagerDidChangeAccountNotification(notification) })
     }
     
     private func unregisterNotificationObservers() {
