@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol AccountModuleUserInterface {
+public protocol AccountModuleUserInterface : class {
     
     var accountLabel: String? { get set}
     var stateLabel: String? { get set}

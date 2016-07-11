@@ -8,6 +8,6 @@
 
 import Foundation
 
-public protocol AccountModulePresenter {
+public protocol AccountModulePresenter : class {
     func present(account: AccountViewModel)
 }

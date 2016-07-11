@@ -8,6 +8,6 @@
 
 import Foundation
 
-public protocol AccountModuleRouter {
+public protocol AccountModuleRouter : class {
     func showSettings(for accountURI: URL)
 }

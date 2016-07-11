@@ -10,7 +10,7 @@ import Foundation
 
 public let AccountModuleInteractorDidUpdateAccount = Notification.Name("AccountModuleInteractorDidUpdateAccount")
 
-public protocol AccountModuleInteractor {
+public protocol AccountModuleInteractor : class {
     var account: AccountViewModel? { get }
     func enable() throws
     func disable() throws

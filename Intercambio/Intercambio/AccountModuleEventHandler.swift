@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol AccountModuleEventHandler {
+public protocol AccountModuleEventHandler : class {
     func connectAccount()
     func showAccountSettings()
 }
