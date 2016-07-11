@@ -1,5 +1,5 @@
 //
-//  AccountSettingsInterface.swift
+//  AccountModuleInterface.swift
 //  Intercambio
 //
 //  Created by Tobias Kraentzer on 11.07.16.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol AccountSettingsUserInterface {
+public protocol AccountModuleUserInterface {
     
     var accountLabel: String? { get set}
     var stateLabel: String? { get set}

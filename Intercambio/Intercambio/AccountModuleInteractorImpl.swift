@@ -1,5 +1,5 @@
 //
-//  AccountSettingsInteractorImpl.swift
+//  AccountModuleInteractorImpl.swift
 //  Intercambio
 //
 //  Created by Tobias Kraentzer on 01.07.16.
@@ -10,7 +10,7 @@ import Foundation
 import IntercambioCore
 import CoreXMPP
 
-public class AccountSettingsInteractorImpl : AccountSettingsInteractor {
+public class AccountModuleInteractorImpl : AccountModuleInteractor {
 
     private let accountJID: JID
     private let keyChain: KeyChain
@@ -127,6 +127,6 @@ public class AccountSettingsInteractorImpl : AccountSettingsInteractor {
 
     private func postAccountDidChangeNotification() {
         let center = NotificationCenter.default()
-        center.post(name: AccountSettingsInteractorDidUpdateAccount, object: self)
+        center.post(name: AccountModuleInteractorDidUpdateAccount, object: self)
     }
 }

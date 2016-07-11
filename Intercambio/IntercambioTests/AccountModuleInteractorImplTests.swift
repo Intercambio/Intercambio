@@ -1,5 +1,5 @@
 //
-//  AccountSettingsInteractorImplTests.swift
+//  AccountModuleInteractorImplTests.swift
 //  Intercambio
 //
 //  Created by Tobias Kraentzer on 01.07.16.
@@ -11,18 +11,18 @@ import IntercambioCore
 import CoreXMPP
 @testable import Intercambio
 
-class AccountSettingsInteractorImplTests : XCTestCase {
+class AccountModuleInteractorImplTests : XCTestCase {
     
     static var accountInfo: TestAccountInfo?
     
     override func setUp() {
         super.setUp()
-        let keyChain = KeyChain(named: "AccountSettingsInteractorImplTests")
+        let keyChain = KeyChain(named: "AccountModuleInteractorImplTests")
         try! keyChain.clear()
     }
     
     override func tearDown() {
-        let keyChain = KeyChain(named: "AccountSettingsInteractorImplTests")
+        let keyChain = KeyChain(named: "AccountModuleInteractorImplTests")
         try! keyChain.clear()
         super.tearDown()
     }
@@ -32,9 +32,9 @@ class AccountSettingsInteractorImplTests : XCTestCase {
     func testNonExistingAccount() {
         let jid = JID("romeo@example.com")!
         
-        let keyChain = KeyChain(named: "AccountSettingsInteractorImplTests")
+        let keyChain = KeyChain(named: "AccountModuleInteractorImplTests")
         let accountManager = TestAccountManager()
-        let interactor = AccountSettingsInteractorImpl(accountJID: jid,
+        let interactor = AccountModuleInteractorImpl(accountJID: jid,
                                                        keyChain: keyChain,
                                                        accountManager: accountManager)
         
@@ -44,14 +44,14 @@ class AccountSettingsInteractorImplTests : XCTestCase {
     func testExistingAccount(){
         let jid = JID("romeo@example.com")!
         
-        let keyChain = KeyChain(named: "AccountSettingsInteractorImplTests")
+        let keyChain = KeyChain(named: "AccountModuleInteractorImplTests")
         let item = KeyChainItem(jid: jid,
                                 invisible: false,
                                 options: [:])
         try! keyChain.add(item)
         
         let accountManager = TestAccountManager()
-        let interactor = AccountSettingsInteractorImpl(accountJID: jid,
+        let interactor = AccountModuleInteractorImpl(accountJID: jid,
                                                        keyChain: keyChain,
                                                        accountManager: accountManager)
         
@@ -61,15 +61,15 @@ class AccountSettingsInteractorImplTests : XCTestCase {
     func testUpdateAccountViaKeyChain() {
         let jid = JID("romeo@example.com")!
         
-        let keyChain = KeyChain(named: "AccountSettingsInteractorImplTests")
+        let keyChain = KeyChain(named: "AccountModuleInteractorImplTests")
         let accountManager = TestAccountManager()
-        let interactor = AccountSettingsInteractorImpl(accountJID: jid,
+        let interactor = AccountModuleInteractorImpl(accountJID: jid,
                                                        keyChain: keyChain,
                                                        accountManager: accountManager)
         
         XCTAssertNil(interactor.account)
         
-        self.expectation(forNotification: AccountSettingsInteractorDidUpdateAccount.rawValue,
+        self.expectation(forNotification: AccountModuleInteractorDidUpdateAccount.rawValue,
                          object: interactor) {
             (notification)->Bool in true
         }
@@ -85,27 +85,27 @@ class AccountSettingsInteractorImplTests : XCTestCase {
     func testUpdateAccountViaAccountManager() {
         let jid = JID("romeo@example.com")!
         
-        let keyChain = KeyChain(named: "AccountSettingsInteractorImplTests")
+        let keyChain = KeyChain(named: "AccountModuleInteractorImplTests")
         let item = KeyChainItem(jid: jid, invisible: false, options: [:])
         try! keyChain.add(item)
         
         let accountManager = TestAccountManager()
-        let interactor = AccountSettingsInteractorImpl(accountJID: jid,
+        let interactor = AccountModuleInteractorImpl(accountJID: jid,
                                                        keyChain: keyChain,
                                                        accountManager: accountManager)
         
         XCTAssertEqual(interactor.account?.state, AccountConnectionState.disconnected)
         
-        self.expectation(forNotification: AccountSettingsInteractorDidUpdateAccount.rawValue,
+        self.expectation(forNotification: AccountModuleInteractorDidUpdateAccount.rawValue,
                          object: interactor) {
             (notification)->Bool in true
         }
         
-        AccountSettingsInteractorImplTests.accountInfo = TestAccountInfo(state: .connected)
+        AccountModuleInteractorImplTests.accountInfo = TestAccountInfo(state: .connected)
         NotificationCenter.default().post(name: NSNotification.Name(rawValue: AccountManagerDidChangeAccount),
                                           object: accountManager,
                                           userInfo: [AccountManagerAccountJIDKey: jid,
-                                                     AccountManagerAccountInfoKey: AccountSettingsInteractorImplTests.accountInfo!])
+                                                     AccountManagerAccountInfoKey: AccountModuleInteractorImplTests.accountInfo!])
         
         self.waitForExpectations(withTimeout: 1.0, handler: nil)
         
@@ -115,12 +115,12 @@ class AccountSettingsInteractorImplTests : XCTestCase {
     func testEnableAccount() {
         let jid = JID("romeo@example.com")!
         
-        let keyChain = KeyChain(named: "AccountSettingsInteractorImplTests")
+        let keyChain = KeyChain(named: "AccountModuleInteractorImplTests")
         var item = KeyChainItem(jid: jid, invisible: true, options: [:])
         try! keyChain.add(item)
         
         let accountManager = TestAccountManager()
-        let interactor = AccountSettingsInteractorImpl(accountJID: jid,
+        let interactor = AccountModuleInteractorImpl(accountJID: jid,
                                                        keyChain: keyChain,
                                                        accountManager: accountManager)
         
@@ -147,12 +147,12 @@ class AccountSettingsInteractorImplTests : XCTestCase {
     func testDisableAccount() {
         let jid = JID("romeo@example.com")!
         
-        let keyChain = KeyChain(named: "AccountSettingsInteractorImplTests")
+        let keyChain = KeyChain(named: "AccountModuleInteractorImplTests")
         var item = KeyChainItem(jid: jid, invisible: false, options: [:])
         try! keyChain.add(item)
         
         let accountManager = TestAccountManager()
-        let interactor = AccountSettingsInteractorImpl(accountJID: jid,
+        let interactor = AccountModuleInteractorImpl(accountJID: jid,
                                                        keyChain: keyChain,
                                                        accountManager: accountManager)
         
@@ -179,12 +179,12 @@ class AccountSettingsInteractorImplTests : XCTestCase {
     func testUpdateAccount() {
         let jid = JID("romeo@example.com")!
         
-        let keyChain = KeyChain(named: "AccountSettingsInteractorImplTests")
+        let keyChain = KeyChain(named: "AccountModuleInteractorImplTests")
         var item = KeyChainItem(jid: jid, invisible: false, options: [:])
         try! keyChain.add(item)
         
         let accountManager = TestAccountManager()
-        let interactor = AccountSettingsInteractorImpl(accountJID: jid,
+        let interactor = AccountModuleInteractorImpl(accountJID: jid,
                                                        keyChain: keyChain,
                                                        accountManager: accountManager)
         
@@ -211,12 +211,12 @@ class AccountSettingsInteractorImplTests : XCTestCase {
     func testConnectAccount() {
         let jid = JID("romeo@example.com")!
         
-        let keyChain = KeyChain(named: "AccountSettingsInteractorImplTests")
+        let keyChain = KeyChain(named: "AccountModuleInteractorImplTests")
         let item = KeyChainItem(jid: jid, invisible: false, options: [:])
         try! keyChain.add(item)
         
         let accountManager = TestAccountManager()
-        let interactor = AccountSettingsInteractorImpl(accountJID: jid,
+        let interactor = AccountModuleInteractorImpl(accountJID: jid,
                                                        keyChain: keyChain,
                                                        accountManager: accountManager)
         

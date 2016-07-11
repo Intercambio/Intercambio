@@ -1,5 +1,5 @@
 //
-//  AccountSettingsPresenterImplTests.swift
+//  AccountModulePresenterImplTests.swift
 //  Intercambio
 //
 //  Created by Tobias Kraentzer on 11.07.16.
@@ -10,7 +10,7 @@ import XCTest
 import CoreXMPP
 @testable import Intercambio
 
-class AccountSettingsPresenterImplTests: XCTestCase {
+class AccountModulePresenterImplTests: XCTestCase {
     
     internal class TestModel : AccountViewModel {
         var identifier: String = "undefined"
@@ -22,7 +22,7 @@ class AccountSettingsPresenterImplTests: XCTestCase {
         var nextConnectionAttempt: Date?
     }
     
-    class TestUserInterface : NSObject, AccountSettingsUserInterface {
+    class TestUserInterface : NSObject, AccountModuleUserInterface {
         var accountLabel: String?
         var stateLabel: String?
         var nextConnectionLabel: String? {
@@ -42,7 +42,7 @@ class AccountSettingsPresenterImplTests: XCTestCase {
         let account = TestModel()
         let userInterface = TestUserInterface()
         
-        let presenter = AccountSettingsPresenterImpl()
+        let presenter = AccountModulePresenterImpl()
         presenter.userInterface = userInterface
         
         presenter.present(account: account)
@@ -60,7 +60,7 @@ class AccountSettingsPresenterImplTests: XCTestCase {
         let account = TestModel()
         let userInterface = TestUserInterface()
         
-        let presenter = AccountSettingsPresenterImpl()
+        let presenter = AccountModulePresenterImpl()
         presenter.userInterface = userInterface
         
         account.enabled = true
@@ -83,7 +83,7 @@ class AccountSettingsPresenterImplTests: XCTestCase {
         let account = TestModel()
         let userInterface = TestUserInterface()
         
-        let presenter = AccountSettingsPresenterImpl()
+        let presenter = AccountModulePresenterImpl()
         presenter.userInterface = userInterface
         
         account.enabled = true
@@ -106,7 +106,7 @@ class AccountSettingsPresenterImplTests: XCTestCase {
         let account = TestModel()
         let userInterface = TestUserInterface()
         
-        let presenter = AccountSettingsPresenterImpl()
+        let presenter = AccountModulePresenterImpl()
         presenter.userInterface = userInterface
         
         account.enabled = true
@@ -129,7 +129,7 @@ class AccountSettingsPresenterImplTests: XCTestCase {
         let account = TestModel()
         let userInterface = TestUserInterface()
         
-        let presenter = AccountSettingsPresenterImpl()
+        let presenter = AccountModulePresenterImpl()
         presenter.userInterface = userInterface
         
         account.enabled = true
@@ -146,7 +146,7 @@ class AccountSettingsPresenterImplTests: XCTestCase {
         let account = TestModel()
         let userInterface = TestUserInterface()
         
-        let presenter = AccountSettingsPresenterImpl()
+        let presenter = AccountModulePresenterImpl()
         presenter.userInterface = userInterface
         
         account.enabled = true

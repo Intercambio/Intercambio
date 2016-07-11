@@ -1,5 +1,5 @@
     //
-//  AccountSettingsPresenterImpl.swift
+//  AccountModulePresenterImpl.swift
 //  Intercambio
 //
 //  Created by Tobias Kraentzer on 11.07.16.
@@ -10,9 +10,9 @@ import Foundation
 import IntercambioCore
 import CoreXMPP
 
-public class AccountSettingsPresenterImpl : AccountSettingsPresenter {
+public class AccountModulePresenterImpl : AccountModulePresenter {
     
-    internal var userInterface: AccountSettingsUserInterface?
+    internal var userInterface: AccountModuleUserInterface?
     internal var displayLink: CADisplayLink?
     private var account: AccountViewModel?
     
@@ -75,13 +75,13 @@ public class AccountSettingsPresenterImpl : AccountSettingsPresenter {
     private func connectionStateLabel(for account: AccountViewModel) -> String? {
         if account.enabled {
             switch account.state {
-            case .disconnected: return NSLocalizedString("disconnected", comment: "AccountSettingsPresenterImpl disconnected")
-            case .connecting: return NSLocalizedString("connecting", comment: "AccountSettingsPresenterImpl connecting")
-            case .connected: return NSLocalizedString("connected", comment: "AccountSettingsPresenterImpl connected")
-            case .disconnecting: return NSLocalizedString("disconnecting", comment: "AccountSettingsPresenterImpl disconnecting")
+            case .disconnected: return NSLocalizedString("disconnected", comment: "AccountModulePresenterImpl disconnected")
+            case .connecting: return NSLocalizedString("connecting", comment: "AccountModulePresenterImpl connecting")
+            case .connected: return NSLocalizedString("connected", comment: "AccountModulePresenterImpl connected")
+            case .disconnecting: return NSLocalizedString("disconnecting", comment: "AccountModulePresenterImpl disconnecting")
             }
         } else {
-            return NSLocalizedString("disabled", comment: "AccountSettingsPresenterImpl disabled")
+            return NSLocalizedString("disabled", comment: "AccountModulePresenterImpl disabled")
         }
     }
     
@@ -89,10 +89,10 @@ public class AccountSettingsPresenterImpl : AccountSettingsPresenter {
         if let date = account.nextConnectionAttempt {
             let timeInterval = date.timeIntervalSinceNow
             if timeInterval > 0 {
-                let template = NSLocalizedString("Reconnecting in %d seconds …", comment: "AccountSettingsPresenterImpl reconnecting in x seconds")
+                let template = NSLocalizedString("Reconnecting in %d seconds …", comment: "AccountModulePresenterImpl reconnecting in x seconds")
                 return String(format: template, Int(timeInterval))
             } else {
-                return NSLocalizedString("Trying to reconnect …", comment: "AccountSettingsPresenterImpl reconnecting")
+                return NSLocalizedString("Trying to reconnect …", comment: "AccountModulePresenterImpl reconnecting")
             }
         } else {
             return nil

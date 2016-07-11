@@ -1,5 +1,5 @@
 //
-//  AccountSettingsInteractor.swift
+//  AccountModuleInteractor.swift
 //  Intercambio
 //
 //  Created by Tobias Kraentzer on 08.07.16.
@@ -8,9 +8,9 @@
 
 import Foundation
 
-public let AccountSettingsInteractorDidUpdateAccount = Notification.Name("AccountSettingsInteractorDidUpdateAccount")
+public let AccountModuleInteractorDidUpdateAccount = Notification.Name("AccountModuleInteractorDidUpdateAccount")
 
-public protocol AccountSettingsInteractor {
+public protocol AccountModuleInteractor {
     var account: AccountViewModel? { get }
     func enable() throws
     func disable() throws

@@ -1,5 +1,5 @@
 //
-//  AccountSettingsAccountViewModel.swift
+//  AccountModuleAccountViewModel.swift
 //  Intercambio
 //
 //  Created by Tobias Kraentzer on 01.07.16.
