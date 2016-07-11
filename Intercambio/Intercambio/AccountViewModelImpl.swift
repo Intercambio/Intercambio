@@ -37,7 +37,7 @@ class AccountViewModelImpl : AccountViewModel {
     }
     
     var enabled: Bool {
-        get { return keyChainItem.invisible }
+        get { return keyChainItem.invisible == false }
     }
     
     var state: AccountConnectionState {
