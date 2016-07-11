@@ -20,6 +20,8 @@ class AccountModuleViewController: UITableViewController, AccountModuleUserInter
     var nextConnectionLabelHidden: Bool = true { didSet { updateUserInterface() } }
     var errorMessageLabelHidden: Bool = true { didSet { updateUserInterface() } }
 
+    internal var eventHandler: AccountModuleEventHandler?
+    
     private var headerView: AccountModuleHeaderView?
     
     init() {
@@ -37,7 +39,18 @@ class AccountModuleViewController: UITableViewController, AccountModuleUserInter
         self.headerView = nib.instantiate(withOwner: self, options: nil).first as? AccountModuleHeaderView
         self.tableView.tableHeaderView = self.headerView
         
+        self.headerView?.connectButton.addTarget(self, action: #selector(connect), for: .touchUpInside)
+        self.headerView?.settingsButton.addTarget(self, action: #selector(showSettings), for: .touchUpInside)
+        
         updateUserInterface()
+    }
+    
+    @IBAction func connect(_ sender: UIButton) {
+        eventHandler?.connectAccount()
+    }
+    
+    @IBAction func showSettings(_ sender: UIButton) {
+        eventHandler?.showAccountSettings()
     }
     
     private func updateUserInterface() {

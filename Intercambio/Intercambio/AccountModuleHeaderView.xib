@@ -13,7 +13,8 @@
             <rect key="frame" x="0.0" y="0.0" width="345" height="264"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="u5t-f5-CTz">
+                <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="u5t-f5-CTz">
+                    <frame key="frameInset" minX="8" minY="8" width="329" height="67"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="b8Q-pU-h5a">
                             <subviews>
@@ -24,18 +25,12 @@
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CFr-XN-VFi">
                                     <state key="normal" image="740-gear-toolbar"/>
-                                    <connections>
-                                        <action selector="showSettings:" destination="iN0-l3-epB" eventType="touchUpInside" id="K4e-5l-lAk"/>
-                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SAc-Os-aWw">
                                     <color key="backgroundColor" red="0.85310006648936176" green="0.85310006648936176" blue="0.85310006648936176" alpha="1" colorSpace="calibratedRGB"/>
                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                     <inset key="contentEdgeInsets" minX="6" minY="2" maxX="6" maxY="2"/>
                                     <state key="normal" title="connect"/>
-                                    <connections>
-                                        <action selector="connect:" destination="iN0-l3-epB" eventType="touchUpInside" id="dyc-75-d7s"/>
-                                    </connections>
                                 </button>
                             </subviews>
                         </stackView>
@@ -49,7 +44,8 @@
                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Failed to connect to the server. Please try later." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mb4-oi-yqk">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Failed to connect to the server. Please try later." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mb4-oi-yqk">
+                            <frame key="frameInset" minY="51" width="285" height="16"/>
                             <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>

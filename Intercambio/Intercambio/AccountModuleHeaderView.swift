@@ -9,17 +9,10 @@
 import UIKit
 
 class AccountModuleHeaderView: UIView {
-
     @IBOutlet weak var accountLabel: UILabel!
     @IBOutlet weak var connectionStateLabel: UILabel!
     @IBOutlet weak var nextConnectionAttemptLabel: UILabel!
     @IBOutlet weak var errorMessageLabel: UILabel!
     @IBOutlet weak var settingsButton: UIButton!
     @IBOutlet weak var connectButton: UIButton!
-    
-    @IBAction func connect(_ sender: UIButton) {
-    }
-    
-    @IBAction func showSettings(_ sender: UIButton) {
-    }
 }
