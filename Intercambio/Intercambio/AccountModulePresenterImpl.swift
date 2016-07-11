@@ -70,7 +70,7 @@ public class AccountModulePresenterImpl : AccountModulePresenter, AccountModuleE
     }
     
     private func updateInterface() {
-        if var userInterface = self.userInterface {
+        if let userInterface = self.userInterface {
             if let account = self.account {
                 userInterface.accountLabel = account.identifier
                 userInterface.stateLabel = connectionStateLabel(for: account)
@@ -85,7 +85,7 @@ public class AccountModulePresenterImpl : AccountModulePresenter, AccountModuleE
     }
     
     @objc private func updateNextConnectionLabel() {
-        if var userInterface = self.userInterface {
+        if let userInterface = self.userInterface {
             if let account = self.account {
                 userInterface.nextConnectionLabel = nextConnectionLabel(for: account)
             }
