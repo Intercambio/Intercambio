@@ -59,9 +59,9 @@ public class AccountModulePresenterImpl : AccountModulePresenter, AccountModuleE
     private func enableNextConnectionAttemptTimer() {
         let displayLink = CADisplayLink.init(target: self, selector: #selector(updateNextConnectionLabel))
         if #available(iOS 10.0, *) {
-            displayLink.preferredFramesPerSecond = 1
+            displayLink.preferredFramesPerSecond = 2
         } else {
-            displayLink.preferredFrameRate = 1.0
+            displayLink.frameInterval = 30
         }
         displayLink.add(to: RunLoop.main, forMode: RunLoopMode.defaultRunLoopMode)
         self.displayLink = displayLink
