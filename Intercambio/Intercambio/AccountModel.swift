@@ -13,8 +13,10 @@ public typealias AccountConnectionState = CoreXMPP.AccountConnectionState
 
 public protocol AccountViewModel {
     var identifier: String { get }
-    var enabled: Boolean { get }
+    var enabled: Bool { get }
     var state: AccountConnectionState { get }
     var name: String? { get }
     var options: Dictionary<NSObject, AnyObject> { get }
+    var error: NSError? { get }
+    var nextConnectionAttempt: Date? { get }
 }

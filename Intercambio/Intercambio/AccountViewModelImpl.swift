@@ -28,7 +28,7 @@ class AccountViewModelImpl : AccountViewModel {
         get { return keyChainItem.identifier }
     }
     
-    var enabled: Boolean {
+    var enabled: Bool {
         get { return keyChainItem.invisible }
     }
     
@@ -49,12 +49,22 @@ class AccountViewModelImpl : AccountViewModel {
     var options: Dictionary<NSObject, AnyObject> {
         get { return keyChainItem.options }
     }
+    
+    var error: NSError? {
+        get { return info?.recentError }
+    }
+    
+    var nextConnectionAttempt: Date? {
+        get { return info?.nextConnectionAttempt }
+    }
 }
 
 class AccountViewModelEmptyImpl : AccountViewModel {
     let identifier = "undefined"
-    let enabled: Boolean = false
+    let enabled: Bool = false
     let state = AccountConnectionState.disconnected
     let name: String? = nil
     let options: Dictionary<NSObject, AnyObject> = [:]
+    let error: NSError? = nil
+    let nextConnectionAttempt: Date? = nil
 }

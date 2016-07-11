@@ -20,6 +20,8 @@
 		F62F71D51C68D84E00656D3C /* ICMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F62F71D41C68D84E00656D3C /* ICMessageCell.m */; };
 		F63404271C65F78300464F3E /* ICEmptyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F63404251C65F78300464F3E /* ICEmptyViewController.m */; };
 		F63404281C65F78300464F3E /* ICEmptyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F63404261C65F78300464F3E /* ICEmptyViewController.xib */; };
+		F635166E1D33A52A007822F3 /* AccountSettingsUserInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = F635166D1D33A52A007822F3 /* AccountSettingsUserInterface.swift */; };
+		F63516771D33C076007822F3 /* AccountSettingsPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63516761D33C076007822F3 /* AccountSettingsPresenterImpl.swift */; };
 		F63A666B1D2662DE00FCC82E /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63A666A1D2662DE00FCC82E /* AccountModel.swift */; };
 		F63A66711D26647700FCC82E /* AccountSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63A66701D26647700FCC82E /* AccountSettings.swift */; };
 		F63A66731D26669A00FCC82E /* AccountSettingsInteractorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63A66721D26669A00FCC82E /* AccountSettingsInteractorImpl.swift */; };
@@ -52,6 +54,7 @@
 		F6826A201D0F4476007A3934 /* ICUserInterfaceFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = F6826A1F1D0F4476007A3934 /* ICUserInterfaceFactory.m */; };
 		F69A03F51C7B4D3000308F85 /* ICAccountOptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F69A03F41C7B4D3000308F85 /* ICAccountOptionsViewController.m */; };
 		F69A03FE1C7CA20A00308F85 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F69A03FD1C7CA20A00308F85 /* Assets.xcassets */; };
+		F6A2592A1D33C3FE0005C533 /* AccountSettingsPresenterImplTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A259291D33C3FE0005C533 /* AccountSettingsPresenterImplTests.swift */; };
 		F6A697031CFC348700E0A0D2 /* Fountain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6A697021CFC348700E0A0D2 /* Fountain.framework */; };
 		F6B26F9F1C6942650099CBC9 /* ICConversationLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = F6B26F9E1C6942650099CBC9 /* ICConversationLayout.m */; };
 		F6B26FA21C6A30790099CBC9 /* ICConversationLayoutAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = F6B26FA11C6A30790099CBC9 /* ICConversationLayoutAttributes.m */; };
@@ -140,6 +143,8 @@
 		F63404241C65F78300464F3E /* ICEmptyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICEmptyViewController.h; sourceTree = "<group>"; };
 		F63404251C65F78300464F3E /* ICEmptyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICEmptyViewController.m; sourceTree = "<group>"; };
 		F63404261C65F78300464F3E /* ICEmptyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ICEmptyViewController.xib; sourceTree = "<group>"; };
+		F635166D1D33A52A007822F3 /* AccountSettingsUserInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountSettingsUserInterface.swift; sourceTree = "<group>"; };
+		F63516761D33C076007822F3 /* AccountSettingsPresenterImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountSettingsPresenterImpl.swift; sourceTree = "<group>"; };
 		F63A66671D2660BD00FCC82E /* Intercambio-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Intercambio-Bridging-Header.h"; sourceTree = "<group>"; };
 		F63A666A1D2662DE00FCC82E /* AccountModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountModel.swift; sourceTree = "<group>"; };
 		F63A66701D26647700FCC82E /* AccountSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountSettings.swift; sourceTree = "<group>"; };
@@ -203,6 +208,7 @@
 		F69A03F31C7B4D3000308F85 /* ICAccountOptionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = ICAccountOptionsViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		F69A03F41C7B4D3000308F85 /* ICAccountOptionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ICAccountOptionsViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		F69A03FD1C7CA20A00308F85 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F6A259291D33C3FE0005C533 /* AccountSettingsPresenterImplTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountSettingsPresenterImplTests.swift; sourceTree = "<group>"; };
 		F6A697021CFC348700E0A0D2 /* Fountain.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fountain.framework; path = ../Carthage/Build/iOS/Fountain.framework; sourceTree = "<group>"; };
 		F6ACB0FC1D23BFB8002F3A66 /* Secrets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Secrets.h; sourceTree = "<group>"; };
 		F6B26F9D1C6942650099CBC9 /* ICConversationLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICConversationLayout.h; sourceTree = "<group>"; };
@@ -408,8 +414,9 @@
 		F63A66631D265BCA00FCC82E /* Application Logic */ = {
 			isa = PBXGroup;
 			children = (
-				F63A66721D26669A00FCC82E /* AccountSettingsInteractorImpl.swift */,
 				F63A66741D26672000FCC82E /* AccountViewModelImpl.swift */,
+				F63A66721D26669A00FCC82E /* AccountSettingsInteractorImpl.swift */,
+				F63516761D33C076007822F3 /* AccountSettingsPresenterImpl.swift */,
 			);
 			name = "Application Logic";
 			sourceTree = "<group>";
@@ -417,8 +424,9 @@
 		F63A66791D26685C00FCC82E /* Account Settings */ = {
 			isa = PBXGroup;
 			children = (
-				F63A66771D26685300FCC82E /* AccountSettingsInteractorImplTests.swift */,
 				F6E08EAB1D267CB900241CBE /* AccountViewModelImplTests.swift */,
+				F63A66771D26685300FCC82E /* AccountSettingsInteractorImplTests.swift */,
+				F6A259291D33C3FE0005C533 /* AccountSettingsPresenterImplTests.swift */,
 			);
 			name = "Account Settings";
 			sourceTree = "<group>";
@@ -651,6 +659,7 @@
 				F63A66701D26647700FCC82E /* AccountSettings.swift */,
 				F605909B1D2F97AB0071FC63 /* AccountSettingsInteractor.swift */,
 				F605909D1D2F97E70071FC63 /* AccountSettingsPresenter.swift */,
+				F635166D1D33A52A007822F3 /* AccountSettingsUserInterface.swift */,
 				F63A66631D265BCA00FCC82E /* Application Logic */,
 				F6E605021C787353000CCDD9 /* ICAccountSettingsViewController.h */,
 				F6E605031C787353000CCDD9 /* ICAccountSettingsViewController.m */,
@@ -897,10 +906,12 @@
 				F6826A191D0F371B007A3934 /* ICAccountCell.m in Sources */,
 				F68269CF1D0EECE2007A3934 /* ICAppWireframe.m in Sources */,
 				F676EFA81CDCE699003047EC /* ICConversationChapterFragment.m in Sources */,
+				F63516771D33C076007822F3 /* AccountSettingsPresenterImpl.swift in Sources */,
 				F62F71D51C68D84E00656D3C /* ICMessageCell.m in Sources */,
 				F6EF1F441C72066C0083F4BE /* CLToken.m in Sources */,
 				F6EF1F411C72066C0083F4BE /* CLTokenInputView.m in Sources */,
 				F63A66751D26672000FCC82E /* AccountViewModelImpl.swift in Sources */,
+				F635166E1D33A52A007822F3 /* AccountSettingsUserInterface.swift in Sources */,
 				F605909E1D2F97E70071FC63 /* AccountSettingsPresenter.swift in Sources */,
 				F6EF1F521C73B5D50083F4BE /* ICAccountsViewController.m in Sources */,
 				F619BDC51C4D071700F87F50 /* AppDelegate.m in Sources */,
@@ -934,6 +945,7 @@
 				F6D807E61D1827E3002953AB /* NSURLIntercambioTests.m in Sources */,
 				F676EFAA1CDCE99F003047EC /* ICConversationFragmentTests.m in Sources */,
 				F6D807DD1D17F9EE002953AB /* ICURLHandlerTests.m in Sources */,
+				F6A2592A1D33C3FE0005C533 /* AccountSettingsPresenterImplTests.swift in Sources */,
 				F619BDDB1C4D071700F87F50 /* IntercambioTests.m in Sources */,
 				F63A66781D26685300FCC82E /* AccountSettingsInteractorImplTests.swift in Sources */,
 			);
