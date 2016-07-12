@@ -13,6 +13,9 @@
 @interface ICAppWireframe () <UITabBarControllerDelegate, UISplitViewControllerDelegate>
 @property (nonatomic, weak) UISplitViewController *splitViewController;
 @property (nonatomic, weak) UITabBarController *tabBarController;
+
+@property (nonatomic, weak) UINavigationController *conversationsNavigationController;
+@property (nonatomic, weak) UINavigationController *accountsNavigationController;
 @end
 
 @implementation ICAppWireframe
@@ -52,6 +55,9 @@
     self.tabBarController = tabBar;
     self.splitViewController = mainViewController;
 
+    self.conversationsNavigationController = conversationsNavigationController;
+    self.accountsNavigationController = accountsNavigationController;
+
     self.window.rootViewController = mainViewController;
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
@@ -85,8 +91,19 @@
 - (void)presentUserInterfaceForAccountWithURI:(NSURL *)accountURI
                            fromViewController:(UIViewController *)sender
 {
+    BOOL accountsNavigationVisible = self.tabBarController.selectedViewController == self.accountsNavigationController;
+
     UIViewController *viewController = [self accountSettingsViewControllerWithURI:accountURI];
-    [self.splitViewController showDetailViewController:viewController sender:sender];
+    if ([self.accountsNavigationController.viewControllers count] > 1) {
+        [self.accountsNavigationController popToRootViewControllerAnimated:NO];
+        [self.accountsNavigationController pushViewController:viewController animated:NO];
+    } else {
+        [self.accountsNavigationController pushViewController:viewController animated:accountsNavigationVisible];
+    }
+
+    if (!accountsNavigationVisible) {
+        self.tabBarController.selectedViewController = self.accountsNavigationController;
+    }
 }
 
 - (void)presentUserInterfaceForNewAccountFromViewController:(UIViewController *)viewController
