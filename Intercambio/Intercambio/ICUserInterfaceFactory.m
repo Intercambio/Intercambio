@@ -88,14 +88,6 @@
     return viewController;
 }
 
-- (UIViewController<ICAccountSettingsUserInterface> *)viewControllerForAccountSettingsInAppWireframe:(ICAppWireframe *)appWireframe
-{
-    UIStoryboard *accountSettings = [UIStoryboard storyboardWithName:@"AccountSettings" bundle:[NSBundle mainBundle]];
-    ICAccountSettingsViewController *viewController = [accountSettings instantiateViewControllerWithIdentifier:@"ICAccountSettings"];
-    viewController.accountProvider = self.communicationService;
-    return viewController;
-}
-
 - (UINavigationController *)appWireframe:(ICAppWireframe *)appWireframe navigationControllerForPrimaryViewController:(UIViewController *)primaryViewController
 {
     ICNavigationController *navigationController = [[ICNavigationController alloc] initWithRootViewController:primaryViewController];

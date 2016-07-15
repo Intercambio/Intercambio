@@ -52,7 +52,7 @@ public class AccountModulePresenterImpl : AccountModulePresenter, AccountModuleE
     public func showAccountSettings() {
         if let router = self.router,
            let uri = self.interactor?.account?.accountURI {
-            router.showSettings(for: uri)
+            router.presentSettingsUserInterface(for: uri)
         }
     }
     

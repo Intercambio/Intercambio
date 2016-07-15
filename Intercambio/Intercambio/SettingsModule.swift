@@ -9,6 +9,12 @@
 import UIKit
 import IntercambioCore
 
+@objc public protocol SettingsModuleDelegate : class {
+    @objc optional func settingsControllerDidCancel(_ controller: UIViewController)
+    @objc optional func settingsControllerDidSave(_ controller: UIViewController)
+    @objc optional func settingsController(_ controller: UIViewController, didFail: NSError)
+}
+
 public class SettingsModule : NSObject {
     
     private let service: CommunicationService
@@ -17,7 +23,7 @@ public class SettingsModule : NSObject {
         self.service = service
     }
     
-    public func viewController(uri: URL) -> (UIViewController?) {
+    public func viewController(uri: URL, delegate: SettingsModuleDelegate? = nil) -> (UIViewController?) {
         
         if let host = uri.host,
             let jid = JID(user: uri.user, host: host, resource: nil) {
@@ -36,6 +42,7 @@ public class SettingsModule : NSObject {
             interactor.presenter = presenter
             presenter.userInterface = viewControler
             
+            viewControler.delegate = delegate
             return viewControler
         } else {
             return nil

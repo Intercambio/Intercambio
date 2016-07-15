@@ -10,7 +10,7 @@
 #import "ICAccountShareActivityItemSource.h"
 #import "ICEmptyViewController.h"
 
-@interface ICAppWireframe () <UITabBarControllerDelegate, UISplitViewControllerDelegate>
+@interface ICAppWireframe () <UITabBarControllerDelegate, UISplitViewControllerDelegate, SettingsModuleDelegate>
 @property (nonatomic, weak) UISplitViewController *splitViewController;
 @property (nonatomic, weak) UITabBarController *tabBarController;
 
@@ -93,7 +93,7 @@
 {
     BOOL accountsNavigationVisible = self.tabBarController.selectedViewController == self.accountsNavigationController;
 
-    UIViewController *viewController = [self accountSettingsViewControllerWithURI:accountURI];
+    UIViewController *viewController = [self.accountModule viewControllerWithUri:accountURI];
     if ([self.accountsNavigationController.viewControllers count] > 1) {
         [self.accountsNavigationController popToRootViewControllerAnimated:NO];
         [self.accountsNavigationController pushViewController:viewController animated:NO];
@@ -253,8 +253,43 @@
 
 #pragma mark AccountModuleRouter
 
-- (void)showSettingsFor:(NSURL *_Nonnull)accountURI
+- (void)presentSettingsUserInterfaceFor:(NSURL *_Nonnull)accountURI
 {
+    UIViewController *viewController = [self.settingsModule viewControllerWithUri:accountURI delegate:self];
+
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
+    navigationController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    navigationController.modalPresentationStyle = UIModalPresentationFormSheet;
+
+    [self.splitViewController presentViewController:navigationController
+                                           animated:YES
+                                         completion:nil];
+}
+
+#pragma mark SettingsModuleDelegate
+
+- (void)settingsControllerDidCancel:(UIViewController *_Nonnull)controller
+{
+    [controller dismissViewControllerAnimated:YES
+                                   completion:^{
+
+                                   }];
+}
+
+- (void)settingsControllerDidSave:(UIViewController *_Nonnull)controller
+{
+    [controller dismissViewControllerAnimated:YES
+                                   completion:^{
+
+                                   }];
+}
+
+- (void)settingsController:(UIViewController *_Nonnull)controller didFail:(NSError *_Nonnull)didFail
+{
+    [controller dismissViewControllerAnimated:YES
+                                   completion:^{
+
+                                   }];
 }
 
 #pragma mark -
@@ -298,12 +333,6 @@
         viewController = [self.delegate viewControllerForAccountsInAppWireframe:self];
     }
     [self prepareViewController:viewController];
-    return viewController ?: [[ICEmptyViewController alloc] init];
-}
-
-- (UIViewController *)accountSettingsViewControllerWithURI:(NSURL *)accountURI;
-{
-    UIViewController *viewController = [self.accountModule viewControllerWithUri:accountURI];
     return viewController ?: [[ICEmptyViewController alloc] init];
 }
 

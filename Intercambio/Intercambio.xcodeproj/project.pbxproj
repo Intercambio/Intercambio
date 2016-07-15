@@ -141,6 +141,7 @@
 /* Begin PBXFileReference section */
 		F605909B1D2F97AB0071FC63 /* AccountModuleInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AccountModuleInteractor.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		F605909D1D2F97E70071FC63 /* AccountModulePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AccountModulePresenter.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		F60881A41D3777340028FDEB /* Intercambio.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Intercambio.entitlements; sourceTree = "<group>"; };
 		F60DFF851C6DE04600764E26 /* ICConversationLayoutInvalidationContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICConversationLayoutInvalidationContext.h; sourceTree = "<group>"; };
 		F60DFF861C6DE04600764E26 /* ICConversationLayoutInvalidationContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICConversationLayoutInvalidationContext.m; sourceTree = "<group>"; };
 		F6151BAE1D353263000551B6 /* SettingsModuleUserInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsModuleUserInterface.swift; sourceTree = "<group>"; };
@@ -269,7 +270,6 @@
 		F6D807E21D1826EB002953AB /* NSURL+Intercambio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+Intercambio.h"; sourceTree = "<group>"; };
 		F6D807E31D1826EB002953AB /* NSURL+Intercambio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+Intercambio.m"; sourceTree = "<group>"; };
 		F6D807E51D1827E3002953AB /* NSURLIntercambioTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSURLIntercambioTests.m; sourceTree = "<group>"; };
-		F6DB5BA91D35278100C1FE43 /* Intercambio.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Intercambio.entitlements; sourceTree = "<group>"; };
 		F6E08EAB1D267CB900241CBE /* AccountViewModelImplTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewModelImplTests.swift; sourceTree = "<group>"; };
 		F6E2431A1CC1595600523F46 /* XMPPMessageArchive.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XMPPMessageArchive.framework; path = ../Carthage/Build/iOS/XMPPMessageArchive.framework; sourceTree = "<group>"; };
 		F6E251E91CA3EA8B0061531E /* Cartfile.private */ = {isa = PBXFileReference; lastKnownFileType = text; name = Cartfile.private; path = ../Cartfile.private; sourceTree = "<group>"; };
@@ -393,7 +393,6 @@
 		F619BDBF1C4D071700F87F50 /* Intercambio */ = {
 			isa = PBXGroup;
 			children = (
-				F6DB5BA91D35278100C1FE43 /* Intercambio.entitlements */,
 				F6ACB0FC1D23BFB8002F3A66 /* Secrets.h */,
 				F619BDC31C4D071700F87F50 /* AppDelegate.h */,
 				F619BDC41C4D071700F87F50 /* AppDelegate.m */,
@@ -411,6 +410,7 @@
 		F619BDC01C4D071700F87F50 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F60881A41D3777340028FDEB /* Intercambio.entitlements */,
 				F63A66671D2660BD00FCC82E /* Intercambio-Bridging-Header.h */,
 				F619BDD11C4D071700F87F50 /* Info.plist */,
 				F619BDC11C4D071700F87F50 /* main.m */,
@@ -892,11 +892,17 @@
 						DevelopmentTeam = EJW69VRSSH;
 						LastSwiftMigration = 0800;
 						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 0;
+							};
 							com.apple.BackgroundModes = {
 								enabled = 0;
 							};
 							com.apple.Keychain = {
 								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 0;
 							};
 						};
 					};

@@ -20,7 +20,6 @@
 - (UIViewController<ICRecentConversationsUserInterface> *)viewControllerForRecentConversationsInAppWireframe:(ICAppWireframe *)appWireframe;
 - (UIViewController<ICAccountsUserInterface> *)viewControllerForAccountsInAppWireframe:(ICAppWireframe *)appWireframe;
 - (UIViewController<ICConversationUserInterface> *)viewControllerForConversationInAppWireframe:(ICAppWireframe *)appWireframe;
-- (UIViewController<ICAccountSettingsUserInterface> *)viewControllerForAccountSettingsInAppWireframe:(ICAppWireframe *)appWireframe;
 
 - (UINavigationController *)appWireframe:(ICAppWireframe *)appWireframe navigationControllerForPrimaryViewController:(UIViewController *)primaryViewController;
 
@@ -34,6 +33,7 @@
 @property (nonatomic, strong) UIWindow *window;
 
 @property (nonatomic, strong) AccountModule *accountModule;
+@property (nonatomic, strong) SettingsModule *settingsModule;
 
 #pragma mark Main User Interface
 - (void)presentLaunchScreen;

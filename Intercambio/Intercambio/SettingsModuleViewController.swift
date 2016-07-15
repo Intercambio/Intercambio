@@ -11,6 +11,8 @@ import Fountain
 
 class SettingsModuleViewController: UITableViewController, SettingsModuleUserInterface {
     
+    internal var delegate: SettingsModuleDelegate?
+    
     internal var eventHandler: SettingsModuleEventHandler?
     
     var dataSource: FTDataSource? {
@@ -72,15 +74,21 @@ class SettingsModuleViewController: UITableViewController, SettingsModuleUserInt
     }
     
     func cancel(sender: AnyObject) {
-        dismiss(animated: true, completion: nil)
+        if let settingsControllerDidCancel = delegate?.settingsControllerDidCancel {
+            settingsControllerDidCancel(self)
+        }
     }
     
     func safe(sender: AnyObject) {
         do {
             try eventHandler?.save()
-            dismiss(animated: true, completion: nil)
-        } catch {
-            
+            if let settingsControllerDidSave = delegate?.settingsControllerDidSave {
+                settingsControllerDidSave(self)
+            }
+        } catch let error as NSError {
+            if let settingsController = delegate?.settingsController {
+                settingsController(self, didFail: error)
+            }
         }
     }
 }

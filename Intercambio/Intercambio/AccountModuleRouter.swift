@@ -9,5 +9,5 @@
 import Foundation
 
 @objc public protocol AccountModuleRouter : class {
-    func showSettings(for accountURI: URL)
+    func presentSettingsUserInterface(for accountURI: URL)
 }
