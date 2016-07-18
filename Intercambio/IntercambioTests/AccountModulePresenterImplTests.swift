@@ -57,7 +57,7 @@ class AccountModulePresenterImplTests: XCTestCase {
     }
     
     class TestRouter : AccountModuleRouter {
-        func showSettings(for accountURI: URL) {
+        func presentSettingsUserInterface(for accountURI: URL) {
             NotificationCenter.default.post(name: Notification.Name(rawValue: "TestRouterShowSettings"), object: self, userInfo: ["uri": accountURI])
         }
     }
