@@ -15,6 +15,13 @@ class AccountModuleHeaderView: UIView {
     @IBOutlet weak var connectionStateLabel: UILabel!
     @IBOutlet weak var settingsButton: UIButton!
     
+    
+    @IBOutlet weak var reconnectContainerView: UIView!
+    
+    @IBOutlet weak var errorMessageLabel: UILabel!
+    @IBOutlet weak var nextReconnectionLabel: UILabel!
+    @IBOutlet weak var reconnectButton: UIButton!
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         avatarImageView.layer.cornerRadius = avatarImageView.bounds.width / 2.0

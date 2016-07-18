@@ -39,9 +39,15 @@ class AccountModuleViewController: UITableViewController, AccountModuleUserInter
         self.headerView = nib.instantiate(withOwner: self, options: nil).first as? AccountModuleHeaderView
         self.tableView.tableHeaderView = self.headerView
         
+        self.headerView?.reconnectButton.addTarget(self, action: #selector(connect), for: .touchUpInside)
         self.headerView?.settingsButton.addTarget(self, action: #selector(showSettings), for: .touchUpInside)
         
         updateUserInterface()
+        layoutTableHeaderView()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         layoutTableHeaderView()
     }
     
@@ -56,16 +62,29 @@ class AccountModuleViewController: UITableViewController, AccountModuleUserInter
     private func updateUserInterface() {
         self.headerView?.accountLabel.text = self.accountLabel
         self.headerView?.connectionStateLabel.text = self.stateLabel
+        
+        self.headerView?.nextReconnectionLabel.text = self.nextConnectionLabel
+        self.headerView?.errorMessageLabel.text = self.errorMessageLabel
+        
+        self.headerView?.reconnectButton.isEnabled = self.connectionButtonEnabled
+        self.headerView?.reconnectContainerView.isHidden = self.connectionButtonHidden
+        
+        tableView.setNeedsLayout()
     }
     
     private func layoutTableHeaderView() {
         if let headerView = self.headerView {
             headerView.setNeedsLayout()
             headerView.layoutIfNeeded()
+            headerView.errorMessageLabel.preferredMaxLayoutWidth = UIEdgeInsetsInsetRect(tableView.bounds, tableView.layoutMargins).width
             let height = headerView.systemLayoutSizeFitting(UILayoutFittingCompressedSize).height
-            var frame = headerView.frame
-            frame.size.height = height
-            headerView.frame = frame
+            if round(height) != round(headerView.bounds.size.height) {
+                var frame = headerView.frame
+                frame.size.height = height
+                headerView.frame = frame
+                tableView.beginUpdates()
+                tableView.endUpdates()
+            }
         }
     }
 }
