@@ -7,7 +7,6 @@
 //
 
 #import "ICUserInterfaceFactory.h"
-#import "ICAccountSettingsViewController.h"
 #import "ICAccountsViewController.h"
 #import "ICConversationViewController.h"
 #import "ICConversationViewController.h"

@@ -42,8 +42,6 @@ class AccountModulePresenterImplTests: XCTestCase {
         var errorMessageLabel : String?
         var connectionButtonEnabled: Bool = false
         var connectionButtonHidden: Bool = false
-        var nextConnectionLabelHidden: Bool = false
-        var errorMessageLabelHidden: Bool = false
     }
     
     class TestInteractor : AccountModuleInteractor {
@@ -77,8 +75,6 @@ class AccountModulePresenterImplTests: XCTestCase {
         XCTAssertEqual(userInterface.nextConnectionLabel, nil)
         XCTAssertEqual(userInterface.errorMessageLabel, nil)
         XCTAssertTrue(userInterface.connectionButtonHidden)
-        XCTAssertTrue(userInterface.nextConnectionLabelHidden)
-        XCTAssertTrue(userInterface.errorMessageLabelHidden)
     }
     
     func testDisconnected() {
@@ -100,8 +96,6 @@ class AccountModulePresenterImplTests: XCTestCase {
         XCTAssertEqual(userInterface.errorMessageLabel, nil)
         XCTAssertFalse(userInterface.connectionButtonHidden)
         XCTAssertTrue(userInterface.connectionButtonEnabled)
-        XCTAssertTrue(userInterface.nextConnectionLabelHidden)
-        XCTAssertTrue(userInterface.errorMessageLabelHidden)
     }
     
     func testConnecting() {
@@ -123,8 +117,6 @@ class AccountModulePresenterImplTests: XCTestCase {
         XCTAssertEqual(userInterface.errorMessageLabel, nil)
         XCTAssertFalse(userInterface.connectionButtonHidden)
         XCTAssertFalse(userInterface.connectionButtonEnabled)
-        XCTAssertTrue(userInterface.nextConnectionLabelHidden)
-        XCTAssertTrue(userInterface.errorMessageLabelHidden)
     }
     
     func testConnected() {
@@ -146,8 +138,6 @@ class AccountModulePresenterImplTests: XCTestCase {
         XCTAssertEqual(userInterface.errorMessageLabel, nil)
         XCTAssertTrue(userInterface.connectionButtonHidden)
         XCTAssertFalse(userInterface.connectionButtonEnabled)
-        XCTAssertTrue(userInterface.nextConnectionLabelHidden)
-        XCTAssertTrue(userInterface.errorMessageLabelHidden)
     }
     
     func testError() {
@@ -163,7 +153,6 @@ class AccountModulePresenterImplTests: XCTestCase {
         
         presenter.present(account: account)
         
-        XCTAssertFalse(userInterface.errorMessageLabelHidden)
         XCTAssertEqual(userInterface.errorMessageLabel, "Connection Error.")
     }
     
@@ -180,7 +169,6 @@ class AccountModulePresenterImplTests: XCTestCase {
         
         presenter.present(account: account)
         
-        XCTAssertFalse(userInterface.nextConnectionLabelHidden)
         XCTAssertEqual(userInterface.nextConnectionLabel, "Reconnecting in 9 seconds …")
         
         self.expectation(forNotification: "TestUserInterfaceDidChange", object: userInterface) { (notification) -> Bool in

@@ -17,8 +17,6 @@ class AccountModuleViewController: UITableViewController, AccountModuleUserInter
     
     var connectionButtonEnabled: Bool = false { didSet { updateUserInterface() } }
     var connectionButtonHidden: Bool = false { didSet { updateUserInterface() } }
-    var nextConnectionLabelHidden: Bool = true { didSet { updateUserInterface() } }
-    var errorMessageLabelHidden: Bool = true { didSet { updateUserInterface() } }
 
     internal var eventHandler: AccountModuleEventHandler?
     

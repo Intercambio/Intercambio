@@ -83,8 +83,6 @@ public class AccountModulePresenterImpl : AccountModulePresenter, AccountModuleE
                 userInterface.errorMessageLabel = errorMessageLabel(for: account)
                 userInterface.connectionButtonEnabled = account.state == .disconnected
                 userInterface.connectionButtonHidden = account.state == .connected || !account.enabled
-                userInterface.nextConnectionLabelHidden = account.state != .disconnected || account.nextConnectionAttempt == nil
-                userInterface.errorMessageLabelHidden = account.state == .connected || account.error == nil
             }
         }
     }

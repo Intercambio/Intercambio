@@ -17,6 +17,4 @@ public protocol AccountModuleUserInterface : class {
     
     var connectionButtonEnabled: Bool { get set }
     var connectionButtonHidden: Bool { get set }
-    var nextConnectionLabelHidden: Bool { get set }
-    var errorMessageLabelHidden: Bool { get set }
 }
