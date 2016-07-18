@@ -15,6 +15,12 @@ class SettingsModuleViewController: UITableViewController, SettingsModuleUserInt
     
     internal var eventHandler: SettingsModuleEventHandler?
     
+    var identifier: String? {
+        didSet {
+            navigationItem.prompt = identifier
+        }
+    }
+    
     var dataSource: FTDataSource? {
         didSet { tableViewAdapter?.dataSource = dataSource }
     }
@@ -31,7 +37,10 @@ class SettingsModuleViewController: UITableViewController, SettingsModuleUserInt
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+
+        navigationItem.title = NSLocalizedString("Settings", comment: "")
+        navigationItem.prompt = identifier
+
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancel(sender:)))
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(safe(sender:)))
         

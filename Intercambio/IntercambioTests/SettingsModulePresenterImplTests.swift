@@ -24,6 +24,7 @@ class SettingsModulePresenterImplTests: XCTestCase {
     }
     
     class UserInterface : SettingsModuleUserInterface {
+        var identifier: String?
         var dataSource: FTDataSource?
     }
     

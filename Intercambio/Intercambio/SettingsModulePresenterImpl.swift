@@ -11,8 +11,16 @@ import Fountain
 
 public class SettingsModulePresenterImpl : SettingsModulePresenter, SettingsModuleEventHandler {
     
-    internal weak var userInterface: SettingsModuleUserInterface?
-    internal var interactor: SettingsModuleInteractor?
+    internal weak var userInterface: SettingsModuleUserInterface? {
+        didSet {
+            updateIdentifier()
+        }
+    }
+    internal var interactor: SettingsModuleInteractor? {
+        didSet {
+            updateIdentifier()
+        }
+    }
     
     private var dataSource: FTDataSource?
     
@@ -70,5 +78,9 @@ public class SettingsModulePresenterImpl : SettingsModulePresenter, SettingsModu
         }
         
         return settings
+    }
+    
+    private func updateIdentifier() {
+        userInterface?.identifier = interactor?.identifier
     }
 }
