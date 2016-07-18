@@ -39,10 +39,10 @@ class AccountModuleViewController: UITableViewController, AccountModuleUserInter
         self.headerView = nib.instantiate(withOwner: self, options: nil).first as? AccountModuleHeaderView
         self.tableView.tableHeaderView = self.headerView
         
-        self.headerView?.connectButton.addTarget(self, action: #selector(connect), for: .touchUpInside)
         self.headerView?.settingsButton.addTarget(self, action: #selector(showSettings), for: .touchUpInside)
         
         updateUserInterface()
+        layoutTableHeaderView()
     }
     
     @IBAction func connect(_ sender: UIButton) {
@@ -56,12 +56,16 @@ class AccountModuleViewController: UITableViewController, AccountModuleUserInter
     private func updateUserInterface() {
         self.headerView?.accountLabel.text = self.accountLabel
         self.headerView?.connectionStateLabel.text = self.stateLabel
-        self.headerView?.nextConnectionAttemptLabel.text = self.nextConnectionLabel
-        self.headerView?.errorMessageLabel.text = self.errorMessageLabel
-        
-        self.headerView?.connectButton.isHidden = self.connectionButtonHidden
-        self.headerView?.connectButton.isEnabled = self.connectionButtonEnabled
-        self.headerView?.nextConnectionAttemptLabel.isHidden = self.nextConnectionLabelHidden
-        self.headerView?.errorMessageLabel.isHidden = self.errorMessageLabelHidden
+    }
+    
+    private func layoutTableHeaderView() {
+        if let headerView = self.headerView {
+            headerView.setNeedsLayout()
+            headerView.layoutIfNeeded()
+            let height = headerView.systemLayoutSizeFitting(UILayoutFittingCompressedSize).height
+            var frame = headerView.frame
+            frame.size.height = height
+            headerView.frame = frame
+        }
     }
 }

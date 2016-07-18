@@ -9,10 +9,14 @@
 import UIKit
 
 class AccountModuleHeaderView: UIView {
+    
+    @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var accountLabel: UILabel!
     @IBOutlet weak var connectionStateLabel: UILabel!
-    @IBOutlet weak var nextConnectionAttemptLabel: UILabel!
-    @IBOutlet weak var errorMessageLabel: UILabel!
     @IBOutlet weak var settingsButton: UIButton!
-    @IBOutlet weak var connectButton: UIButton!
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        avatarImageView.layer.cornerRadius = avatarImageView.bounds.width / 2.0
+    }
 }
