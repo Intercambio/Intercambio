@@ -1,5 +1,5 @@
 //
-//  AccountModulePresenterImplTests.swift
+//  AccountPresenterTests.swift
 //  Intercambio
 //
 //  Created by Tobias Kraentzer on 11.07.16.
@@ -10,9 +10,9 @@ import XCTest
 import CoreXMPP
 @testable import Intercambio
 
-class AccountModulePresenterImplTests: XCTestCase {
+class AccountPresenterTests: XCTestCase {
     
-    internal class TestModel : AccountViewModel {
+    internal class TestModel : AccountPresentationModel {
         var identifier: String = "undefined"
         var accountURI: URL? {
             get {
@@ -24,14 +24,14 @@ class AccountModulePresenterImplTests: XCTestCase {
             }
         }
         var enabled: Bool = false
-        var state: AccountConnectionState = AccountConnectionState.disconnected
+        var state: AccountPresentationModelConnectionState = AccountPresentationModelConnectionState.disconnected
         var name: String?
         var options: Dictionary<NSObject, AnyObject> = [:]
         var error: NSError?
         var nextConnectionAttempt: Date?
     }
     
-    class TestUserInterface : NSObject, AccountModuleUserInterface {
+    class TestUserInterface : NSObject, AccountView {
         var accountLabel: String?
         var stateLabel: String?
         var nextConnectionLabel: String? {
@@ -44,8 +44,8 @@ class AccountModulePresenterImplTests: XCTestCase {
         var connectionButtonHidden: Bool = false
     }
     
-    class TestInteractor : AccountModuleInteractor {
-        var account: AccountViewModel? = TestModel()
+    class TestInteractor : AccountProvider {
+        var account: AccountPresentationModel? = TestModel()
         func enable() throws {}
         func disable() throws {}
         func connect() throws {
@@ -54,7 +54,7 @@ class AccountModulePresenterImplTests: XCTestCase {
         func update(options: Dictionary<String, AnyObject>) throws {}
     }
     
-    class TestRouter : AccountModuleRouter {
+    class TestRouter : AccountRouter {
         func presentSettingsUserInterface(for accountURI: URL) {
             NotificationCenter.default.post(name: Notification.Name(rawValue: "TestRouterShowSettings"), object: self, userInfo: ["uri": accountURI])
         }
@@ -63,26 +63,26 @@ class AccountModulePresenterImplTests: XCTestCase {
     func testDisabledAccount() {
         
         let account = TestModel()
-        let userInterface = TestUserInterface()
+        let view = TestUserInterface()
         
-        let presenter = AccountModulePresenterImpl()
-        presenter.userInterface = userInterface
+        let presenter = AccountPresenter()
+        presenter.view = view
         
         presenter.present(account: account)
         
-        XCTAssertEqual(userInterface.accountLabel, "undefined")
-        XCTAssertEqual(userInterface.stateLabel, "disabled")
-        XCTAssertEqual(userInterface.nextConnectionLabel, nil)
-        XCTAssertEqual(userInterface.errorMessageLabel, nil)
-        XCTAssertTrue(userInterface.connectionButtonHidden)
+        XCTAssertEqual(view.accountLabel, "undefined")
+        XCTAssertEqual(view.stateLabel, "disabled")
+        XCTAssertEqual(view.nextConnectionLabel, nil)
+        XCTAssertEqual(view.errorMessageLabel, nil)
+        XCTAssertTrue(view.connectionButtonHidden)
     }
     
     func testDisconnected() {
         let account = TestModel()
-        let userInterface = TestUserInterface()
+        let view = TestUserInterface()
         
-        let presenter = AccountModulePresenterImpl()
-        presenter.userInterface = userInterface
+        let presenter = AccountPresenter()
+        presenter.view = view
         
         account.enabled = true
         account.state = .disconnected
@@ -90,20 +90,20 @@ class AccountModulePresenterImplTests: XCTestCase {
         
         presenter.present(account: account)
         
-        XCTAssertEqual(userInterface.accountLabel, "My Account")
-        XCTAssertEqual(userInterface.stateLabel, "disconnected")
-        XCTAssertEqual(userInterface.nextConnectionLabel, nil)
-        XCTAssertEqual(userInterface.errorMessageLabel, nil)
-        XCTAssertFalse(userInterface.connectionButtonHidden)
-        XCTAssertTrue(userInterface.connectionButtonEnabled)
+        XCTAssertEqual(view.accountLabel, "My Account")
+        XCTAssertEqual(view.stateLabel, "disconnected")
+        XCTAssertEqual(view.nextConnectionLabel, nil)
+        XCTAssertEqual(view.errorMessageLabel, nil)
+        XCTAssertFalse(view.connectionButtonHidden)
+        XCTAssertTrue(view.connectionButtonEnabled)
     }
     
     func testConnecting() {
         let account = TestModel()
-        let userInterface = TestUserInterface()
+        let view = TestUserInterface()
         
-        let presenter = AccountModulePresenterImpl()
-        presenter.userInterface = userInterface
+        let presenter = AccountPresenter()
+        presenter.view = view
         
         account.enabled = true
         account.state = .connecting
@@ -111,20 +111,20 @@ class AccountModulePresenterImplTests: XCTestCase {
         
         presenter.present(account: account)
         
-        XCTAssertEqual(userInterface.accountLabel, "My Account")
-        XCTAssertEqual(userInterface.stateLabel, "connecting")
-        XCTAssertEqual(userInterface.nextConnectionLabel, nil)
-        XCTAssertEqual(userInterface.errorMessageLabel, nil)
-        XCTAssertFalse(userInterface.connectionButtonHidden)
-        XCTAssertFalse(userInterface.connectionButtonEnabled)
+        XCTAssertEqual(view.accountLabel, "My Account")
+        XCTAssertEqual(view.stateLabel, "connecting")
+        XCTAssertEqual(view.nextConnectionLabel, nil)
+        XCTAssertEqual(view.errorMessageLabel, nil)
+        XCTAssertFalse(view.connectionButtonHidden)
+        XCTAssertFalse(view.connectionButtonEnabled)
     }
     
     func testConnected() {
         let account = TestModel()
-        let userInterface = TestUserInterface()
+        let view = TestUserInterface()
         
-        let presenter = AccountModulePresenterImpl()
-        presenter.userInterface = userInterface
+        let presenter = AccountPresenter()
+        presenter.view = view
         
         account.enabled = true
         account.state = .connected
@@ -132,20 +132,20 @@ class AccountModulePresenterImplTests: XCTestCase {
         
         presenter.present(account: account)
         
-        XCTAssertEqual(userInterface.accountLabel, "My Account")
-        XCTAssertEqual(userInterface.stateLabel, "connected")
-        XCTAssertEqual(userInterface.nextConnectionLabel, nil)
-        XCTAssertEqual(userInterface.errorMessageLabel, nil)
-        XCTAssertTrue(userInterface.connectionButtonHidden)
-        XCTAssertFalse(userInterface.connectionButtonEnabled)
+        XCTAssertEqual(view.accountLabel, "My Account")
+        XCTAssertEqual(view.stateLabel, "connected")
+        XCTAssertEqual(view.nextConnectionLabel, nil)
+        XCTAssertEqual(view.errorMessageLabel, nil)
+        XCTAssertTrue(view.connectionButtonHidden)
+        XCTAssertFalse(view.connectionButtonEnabled)
     }
     
     func testError() {
         let account = TestModel()
-        let userInterface = TestUserInterface()
+        let view = TestUserInterface()
         
-        let presenter = AccountModulePresenterImpl()
-        presenter.userInterface = userInterface
+        let presenter = AccountPresenter()
+        presenter.view = view
         
         account.enabled = true
         account.state = .disconnected
@@ -153,15 +153,15 @@ class AccountModulePresenterImplTests: XCTestCase {
         
         presenter.present(account: account)
         
-        XCTAssertEqual(userInterface.errorMessageLabel, "Connection Error.")
+        XCTAssertEqual(view.errorMessageLabel, "Connection Error.")
     }
     
     func testNextConnection() {
         let account = TestModel()
-        let userInterface = TestUserInterface()
+        let view = TestUserInterface()
         
-        let presenter = AccountModulePresenterImpl()
-        presenter.userInterface = userInterface
+        let presenter = AccountPresenter()
+        presenter.view = view
         
         account.enabled = true
         account.state = .disconnected
@@ -169,10 +169,10 @@ class AccountModulePresenterImplTests: XCTestCase {
         
         presenter.present(account: account)
         
-        XCTAssertEqual(userInterface.nextConnectionLabel, "Reconnecting in 9 seconds …")
+        XCTAssertEqual(view.nextConnectionLabel, "Reconnecting in 9 seconds …")
         
-        self.expectation(forNotification: "TestUserInterfaceDidChange", object: userInterface) { (notification) -> Bool in
-            return userInterface.nextConnectionLabel != "Reconnecting in 9 seconds …"
+        self.expectation(forNotification: "TestUserInterfaceDidChange", object: view) { (notification) -> Bool in
+            return view.nextConnectionLabel != "Reconnecting in 9 seconds …"
         }
         self.waitForExpectations(timeout: 2.0, handler: nil)
     }
@@ -181,7 +181,7 @@ class AccountModulePresenterImplTests: XCTestCase {
         
         let interactor = TestInteractor()
         
-        let presenter = AccountModulePresenterImpl()
+        let presenter = AccountPresenter()
         presenter.interactor = interactor
         
         self.expectation(forNotification: "TestInteractorConnect",
@@ -197,7 +197,7 @@ class AccountModulePresenterImplTests: XCTestCase {
         let router = TestRouter()
         let interactor = TestInteractor()
         
-        let presenter = AccountModulePresenterImpl()
+        let presenter = AccountPresenter()
         presenter.interactor = interactor
         presenter.router = router
         

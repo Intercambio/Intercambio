@@ -1,5 +1,5 @@
 //
-//  AccountModuleViewController.swift
+//  AccountViewController.swift
 //  Intercambio
 //
 //  Created by Tobias Kraentzer on 11.07.16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AccountModuleViewController: UITableViewController, AccountModuleUserInterface {
+class AccountViewController: UITableViewController, AccountView {
 
     var accountLabel: String? { didSet { updateUserInterface() } }
     var stateLabel: String? { didSet { updateUserInterface() } }
@@ -18,9 +18,9 @@ class AccountModuleViewController: UITableViewController, AccountModuleUserInter
     var connectionButtonEnabled: Bool = false { didSet { updateUserInterface() } }
     var connectionButtonHidden: Bool = false { didSet { updateUserInterface() } }
 
-    internal var eventHandler: AccountModuleEventHandler?
+    var eventHandler: AccountViewEventHandler?
     
-    private var headerView: AccountModuleHeaderView?
+    private var headerView: AccountViewControllerHeaderView?
     
     init() {
         super.init(style: .grouped)
@@ -33,8 +33,8 @@ class AccountModuleViewController: UITableViewController, AccountModuleUserInter
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let nib = UINib(nibName: "AccountModuleHeaderView", bundle: Bundle.main)
-        self.headerView = nib.instantiate(withOwner: self, options: nil).first as? AccountModuleHeaderView
+        let nib = UINib(nibName: "AccountViewControllerHeaderView", bundle: Bundle.main)
+        self.headerView = nib.instantiate(withOwner: self, options: nil).first as? AccountViewControllerHeaderView
         self.tableView.tableHeaderView = self.headerView
         
         self.headerView?.reconnectButton.addTarget(self, action: #selector(connect), for: .touchUpInside)

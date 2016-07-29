@@ -239,8 +239,7 @@
     }
 }
 
-#pragma mark AccountModuleRouter, AccountListRouter
-
+#pragma mark AccountRouter, AccountListRouter
 
 - (void)presentNewAccountUserInterface
 {

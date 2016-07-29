@@ -15,12 +15,12 @@ class AccountListPresentationDataSourceTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        let keyChain = KeyChain(named: "AccountModuleInteractorImplTests")
+        let keyChain = KeyChain(named: "AccountListPresentationDataSourceTests")
         try! keyChain.clear()
     }
     
     override func tearDown() {
-        let keyChain = KeyChain(named: "AccountModuleInteractorImplTests")
+        let keyChain = KeyChain(named: "AccountListPresentationDataSourceTests")
         try! keyChain.clear()
         super.tearDown()
     }
@@ -28,7 +28,7 @@ class AccountListPresentationDataSourceTests: XCTestCase {
     // Tests
     
     func test() {
-        let keyChain = KeyChain(named: "AccountModuleInteractorImplTests")
+        let keyChain = KeyChain(named: "AccountListPresentationDataSourceTests")
         let dataSource = AccountListPresentationDataSource(keyChain: keyChain)
         
         XCTAssertEqual(dataSource.numberOfSections(), 1)

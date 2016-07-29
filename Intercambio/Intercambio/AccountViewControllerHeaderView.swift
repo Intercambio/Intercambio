@@ -1,5 +1,5 @@
 //
-//  AccountModuleHeaderView.swift
+//  AccountViewControllerHeaderView.swift
 //  Intercambio
 //
 //  Created by Tobias Kraentzer on 11.07.16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AccountModuleHeaderView: UIView {
+class AccountViewControllerHeaderView: UIView {
     
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var accountLabel: UILabel!

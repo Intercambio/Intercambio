@@ -1,5 +1,5 @@
 //
-//  AccountModuleInteractor.swift
+//  AccountProvider.swift
 //  Intercambio
 //
 //  Created by Tobias Kraentzer on 08.07.16.
@@ -8,10 +8,10 @@
 
 import Foundation
 
-public let AccountModuleInteractorDidUpdateAccount = Notification.Name("AccountModuleInteractorDidUpdateAccount")
+let AccountProviderDidUpdateAccount = Notification.Name("AccountProviderDidUpdateAccount")
 
-public protocol AccountModuleInteractor : class {
-    var account: AccountViewModel? { get }
+protocol AccountProvider : class {
+    var account: AccountPresentationModel? { get }
     func enable() throws
     func disable() throws
     func connect() throws

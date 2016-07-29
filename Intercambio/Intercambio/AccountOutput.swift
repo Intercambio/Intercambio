@@ -1,5 +1,5 @@
 //
-//  AccountModulePresenter.swift
+//  AccountOutput.swift
 //  Intercambio
 //
 //  Created by Tobias Kraentzer on 08.07.16.
@@ -8,6 +8,6 @@
 
 import Foundation
 
-public protocol AccountModulePresenter : class {
-    func present(account: AccountViewModel)
+protocol AccountOutput : class {
+    func present(account: AccountPresentationModel)
 }

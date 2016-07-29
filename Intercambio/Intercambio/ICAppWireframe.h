@@ -26,7 +26,7 @@
 - (UIAlertController *)alertForSelectingAccountInAppWireframe:(ICAppWireframe *)appWireframe withCompletion:(void (^)(NSURL *accountURI))completion;
 @end
 
-@interface ICAppWireframe : NSObject <AccountModuleRouter, AccountListRouter>
+@interface ICAppWireframe : NSObject <AccountRouter, AccountListRouter>
 
 @property (nonatomic, weak) id<ICAppWireframeDelegate> delegate;
 @property (nonatomic, strong) UIWindow *window;

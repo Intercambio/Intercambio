@@ -1,5 +1,5 @@
 //
-//  AccountModuleInteractorImpl.swift
+//  AccountInteractor.swift
 //  Intercambio
 //
 //  Created by Tobias Kraentzer on 01.07.16.
@@ -10,12 +10,12 @@ import Foundation
 import IntercambioCore
 import CoreXMPP
 
-public class AccountModuleInteractorImpl : AccountModuleInteractor {
+class AccountInteractor : AccountProvider {
 
-    internal weak var presenter: AccountModulePresenter? {
+    weak var output: AccountOutput? {
         didSet {
             if let account = self.account {
-                presenter?.present(account: account)
+                output?.present(account: account)
             }
         }
     }
@@ -35,19 +35,19 @@ public class AccountModuleInteractorImpl : AccountModuleInteractor {
         unregisterNotificationObservers()
     }
     
-    public var account: AccountViewModel? {
+    var account: AccountPresentationModel? {
         get {
             do {
                 let item = try keyChain.item(jid: accountJID)
                 let info = accountManager.info(for: accountJID)
-                return AccountViewModelImpl(keyChainItem: item, info:  info)
+                return AccountPresentationModelImpl(keyChainItem: item, info:  info)
             } catch {
                 return nil
             }
         }
     }
     
-    public func enable() throws {
+    func enable() throws {
         var item = try keyChain.item(jid: accountJID)
         if item.invisible == true {
             item = KeyChainItem(jid: item.jid, invisible: false, options: item.options)
@@ -55,7 +55,7 @@ public class AccountModuleInteractorImpl : AccountModuleInteractor {
         }
     }
     
-    public func disable() throws {
+    func disable() throws {
         var item = try keyChain.item(jid: accountJID)
         if item.invisible == false {
             item = KeyChainItem(jid: item.jid, invisible: true, options: item.options)
@@ -63,14 +63,13 @@ public class AccountModuleInteractorImpl : AccountModuleInteractor {
         }
     }
     
-    public func update(options: Dictionary<String, AnyObject>) throws
-    {
+    func update(options: Dictionary<String, AnyObject>) throws {
         var item = try keyChain.item(jid : accountJID)
         item = KeyChainItem(jid: item.jid, invisible: item.invisible, options: options)
         try keyChain.update(item)
     }
     
-    public func connect() throws {
+    func connect() throws {
         accountManager.connect(accountJID)
     }
     
@@ -136,10 +135,10 @@ public class AccountModuleInteractorImpl : AccountModuleInteractor {
     private func handleAccountUpdate() {
         
         let center = NotificationCenter.default
-        center.post(name: AccountModuleInteractorDidUpdateAccount, object: self)
+        center.post(name: AccountProviderDidUpdateAccount, object: self)
         
         if let account = self.account {
-            self.presenter?.present(account: account)
+            self.output?.present(account: account)
         }
     }
 }

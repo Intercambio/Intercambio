@@ -1,5 +1,5 @@
 //
-//  AccountModuleRouter.swift
+//  AccountViewEventHandler.swift
 //  Intercambio
 //
 //  Created by Tobias Kraentzer on 11.07.16.
@@ -8,6 +8,7 @@
 
 import Foundation
 
-@objc public protocol AccountModuleRouter : class {
-    func presentSettingsUserInterface(for accountURI: URL)
+protocol AccountViewEventHandler : class {
+    func connectAccount()
+    func showAccountSettings()
 }

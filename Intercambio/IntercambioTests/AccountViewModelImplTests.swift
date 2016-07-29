@@ -1,5 +1,5 @@
 //
-//  AccountViewModelImplTests.swift
+//  AccountPresentationModelImplTests.swift
 //  Intercambio
 //
 //  Created by Tobias Kraentzer on 01.07.16.
@@ -11,11 +11,11 @@ import IntercambioCore
 import CoreXMPP
 @testable import Intercambio
 
-class AccountViewModelImplTests : XCTestCase {
+class AccountPresentationModelImplTests : XCTestCase {
     
     func test() {
         let item = KeyChainItem(jid: JID("romeo@example.com")!, invisible: false, options: [:])
-        let model = AccountViewModelImpl(keyChainItem: item)
+        let model = AccountPresentationModelImpl(keyChainItem: item)
         XCTAssertEqual(model.identifier, "romeo@example.com")
     }
 }

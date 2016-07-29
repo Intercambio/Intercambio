@@ -10,7 +10,7 @@ import Foundation
 import IntercambioCore
 import CoreXMPP
 
-class AccountViewModelImpl : AccountViewModel {
+class AccountPresentationModelImpl : AccountPresentationModel {
     
     let keyChainItem: KeyChainItem
     let info: AccountInfo?
@@ -40,7 +40,7 @@ class AccountViewModelImpl : AccountViewModel {
         get { return keyChainItem.invisible == false }
     }
     
-    var state: AccountConnectionState {
+    var state: AccountPresentationModelConnectionState {
         get {
             if let i = info {
                 return i.connectionState
@@ -67,11 +67,11 @@ class AccountViewModelImpl : AccountViewModel {
     }
 }
 
-class AccountViewModelEmptyImpl : AccountViewModel {
+class AccountViewModelEmptyImpl : AccountPresentationModel {
     let identifier = "undefined"
     let accountURI: URL? = nil
     let enabled: Bool = false
-    let state = AccountConnectionState.disconnected
+    let state = AccountPresentationModelConnectionState.disconnected
     let name: String? = nil
     let options: Dictionary<NSObject, AnyObject> = [:]
     let error: NSError? = nil

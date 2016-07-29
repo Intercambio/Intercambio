@@ -31,12 +31,12 @@ class AccountListPresenterTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        let keyChain = KeyChain(named: "AccountModuleInteractorImplTests")
+        let keyChain = KeyChain(named: "AccountListPresenterTests")
         try! keyChain.clear()
     }
     
     override func tearDown() {
-        let keyChain = KeyChain(named: "AccountModuleInteractorImplTests")
+        let keyChain = KeyChain(named: "AccountListPresenterTests")
         try! keyChain.clear()
         super.tearDown()
     }
@@ -44,7 +44,7 @@ class AccountListPresenterTests: XCTestCase {
     // Tests
     
     func testSetDataSource() {
-        let keyChain = KeyChain(named: "AccountModuleInteractorImplTests")
+        let keyChain = KeyChain(named: "AccountListPresenterTests")
         let presenter = AccountListPresenter(keyChain: keyChain, router: Router())
         
         let view = View()
@@ -55,7 +55,7 @@ class AccountListPresenterTests: XCTestCase {
     }
     
     func testPresentAccount() {
-        let keyChain = KeyChain(named: "AccountModuleInteractorImplTests")
+        let keyChain = KeyChain(named: "AccountListPresenterTests")
         let jid = JID("romeo@example.com")!
         let item = KeyChainItem(jid: jid,
                                 invisible: false,
@@ -76,7 +76,7 @@ class AccountListPresenterTests: XCTestCase {
     }
     
     func testPresentNewAccount() {
-        let keyChain = KeyChain(named: "AccountModuleInteractorImplTests")
+        let keyChain = KeyChain(named: "AccountListPresenterTests")
         let presenter = AccountListPresenter(keyChain: keyChain, router: Router())
                 
         expectation(forNotification: "presentNewAccountUserInterface", object: presenter.router) { (n) -> Bool in true }

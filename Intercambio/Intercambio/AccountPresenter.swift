@@ -1,5 +1,5 @@
     //
-//  AccountModulePresenterImpl.swift
+//  AccountPresenter.swift
 //  Intercambio
 //
 //  Created by Tobias Kraentzer on 11.07.16.
@@ -10,27 +10,27 @@ import Foundation
 import IntercambioCore
 import CoreXMPP
 
-public class AccountModulePresenterImpl : AccountModulePresenter, AccountModuleEventHandler {
+class AccountPresenter : AccountOutput, AccountViewEventHandler {
     
-    internal weak var userInterface: AccountModuleUserInterface? {
+    weak var view: AccountView? {
         didSet {
-            updateInterface()
+            updateView()
         }
     }
     
-    internal var interactor: AccountModuleInteractor?
-    internal var router: AccountModuleRouter?
+    var interactor: AccountProvider?
+    var router: AccountRouter?
     
     private var displayLink: CADisplayLink?
-    private var account: AccountViewModel?
+    private var account: AccountPresentationModel?
     
     deinit {
         disableNextConnectionAttemptTimer()
     }
     
-    public func present(account: AccountViewModel) {
+    func present(account: AccountPresentationModel) {
         self.account = account
-        updateInterface()
+        updateView()
         
         if account.nextConnectionAttempt != nil {
             enableNextConnectionAttemptTimer()
@@ -39,7 +39,7 @@ public class AccountModulePresenterImpl : AccountModulePresenter, AccountModuleE
         }
     }
     
-    public func connectAccount() {
+    func connectAccount() {
         if let interactor = self.interactor {
             do {
                 try interactor.connect()
@@ -49,7 +49,7 @@ public class AccountModulePresenterImpl : AccountModulePresenter, AccountModuleE
         }
     }
     
-    public func showAccountSettings() {
+    func showAccountSettings() {
         if let router = self.router,
            let uri = self.interactor?.account?.accountURI {
             router.presentSettingsUserInterface(for: uri)
@@ -74,55 +74,55 @@ public class AccountModulePresenterImpl : AccountModulePresenter, AccountModuleE
         }
     }
     
-    private func updateInterface() {
-        if let userInterface = self.userInterface {
+    private func updateView() {
+        if let view = self.view {
             if let account = self.account {
-                userInterface.accountLabel = account.identifier
-                userInterface.stateLabel = connectionStateLabel(for: account)
-                userInterface.nextConnectionLabel = nextConnectionLabel(for: account)
-                userInterface.errorMessageLabel = errorMessageLabel(for: account)
-                userInterface.connectionButtonEnabled = account.state == .disconnected
-                userInterface.connectionButtonHidden = account.state == .connected || !account.enabled
+                view.accountLabel = account.identifier
+                view.stateLabel = connectionStateLabel(for: account)
+                view.nextConnectionLabel = nextConnectionLabel(for: account)
+                view.errorMessageLabel = errorMessageLabel(for: account)
+                view.connectionButtonEnabled = account.state == .disconnected
+                view.connectionButtonHidden = account.state == .connected || !account.enabled
             }
         }
     }
     
     @objc private func updateNextConnectionLabel() {
-        if let userInterface = self.userInterface {
+        if let view = self.view {
             if let account = self.account {
-                userInterface.nextConnectionLabel = nextConnectionLabel(for: account)
+                view.nextConnectionLabel = nextConnectionLabel(for: account)
             }
         }
     }
     
-    private func connectionStateLabel(for account: AccountViewModel) -> String? {
+    private func connectionStateLabel(for account: AccountPresentationModel) -> String? {
         if account.enabled {
             switch account.state {
-            case .disconnected: return NSLocalizedString("disconnected", comment: "AccountModulePresenterImpl disconnected")
-            case .connecting: return NSLocalizedString("connecting", comment: "AccountModulePresenterImpl connecting")
-            case .connected: return NSLocalizedString("connected", comment: "AccountModulePresenterImpl connected")
-            case .disconnecting: return NSLocalizedString("disconnecting", comment: "AccountModulePresenterImpl disconnecting")
+            case .disconnected: return NSLocalizedString("disconnected", comment: "AccountPresenter disconnected")
+            case .connecting: return NSLocalizedString("connecting", comment: "AccountPresenter connecting")
+            case .connected: return NSLocalizedString("connected", comment: "AccountPresenter connected")
+            case .disconnecting: return NSLocalizedString("disconnecting", comment: "AccountPresenter disconnecting")
             }
         } else {
-            return NSLocalizedString("disabled", comment: "AccountModulePresenterImpl disabled")
+            return NSLocalizedString("disabled", comment: "AccountPresenter disabled")
         }
     }
     
-    private func nextConnectionLabel(for account: AccountViewModel) -> String? {
+    private func nextConnectionLabel(for account: AccountPresentationModel) -> String? {
         if let date = account.nextConnectionAttempt {
             let timeInterval = date.timeIntervalSinceNow
             if timeInterval > 0 {
-                let template = NSLocalizedString("Reconnecting in %d seconds …", comment: "AccountModulePresenterImpl reconnecting in x seconds")
+                let template = NSLocalizedString("Reconnecting in %d seconds …", comment: "AccountPresenter reconnecting in x seconds")
                 return String(format: template, Int(timeInterval))
             } else {
-                return NSLocalizedString("Trying to reconnect …", comment: "AccountModulePresenterImpl reconnecting")
+                return NSLocalizedString("Trying to reconnect …", comment: "AccountPresenter reconnecting")
             }
         } else {
             return nil
         }
     }
 
-    private func errorMessageLabel(for account: AccountViewModel) -> String? {
+    private func errorMessageLabel(for account: AccountPresentationModel) -> String? {
         if let error = account.error {
             return error.localizedDescription
         } else {

@@ -9,12 +9,16 @@
 import UIKit
 import IntercambioCore
 
+@objc public protocol AccountRouter : class {
+    func presentSettingsUserInterface(for accountURI: URL)
+}
+
 public class AccountModule : NSObject {
     
     private let service: CommunicationService
-    private let router: AccountModuleRouter
+    private let router: AccountRouter
     
-    init(service: CommunicationService, router: AccountModuleRouter) {
+    public init(service: CommunicationService, router: AccountRouter) {
         self.service = service
         self.router = router
     }
@@ -24,20 +28,20 @@ public class AccountModule : NSObject {
         if let host = uri.host,
             let jid = JID(user: uri.user, host: host, resource: nil) {
             
-            let interactor = AccountModuleInteractorImpl(accountJID: jid,
+            let interactor = AccountInteractor(accountJID: jid,
                                                          keyChain: service.keyChain,
                                                          accountManager: service.accountManager)
             
-            let presenter = AccountModulePresenterImpl()
-            let viewControler = AccountModuleViewController()
+            let presenter = AccountPresenter()
+            let viewControler = AccountViewController()
             
             // strong references (view controller -> presenter -> interactor)
             viewControler.eventHandler = presenter
             presenter.interactor = interactor
             
             // weak references
-            interactor.presenter = presenter
-            presenter.userInterface = viewControler
+            interactor.output = presenter
+            presenter.view = viewControler
             presenter.router = router
             
             return viewControler
