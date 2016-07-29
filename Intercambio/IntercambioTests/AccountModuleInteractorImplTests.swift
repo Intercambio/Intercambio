@@ -77,7 +77,7 @@ class AccountModuleInteractorImplTests : XCTestCase {
         let item = KeyChainItem(jid: jid, invisible: false, options: [:])
         try! keyChain.add(item)
         
-        self.waitForExpectations(withTimeout: 1.0, handler: nil)
+        self.waitForExpectations(timeout: 1.0, handler: nil)
         
         XCTAssertEqual(interactor.account?.identifier, jid.stringValue)
     }
@@ -107,7 +107,7 @@ class AccountModuleInteractorImplTests : XCTestCase {
                                           userInfo: [AccountManagerAccountJIDKey: jid,
                                                      AccountManagerAccountInfoKey: AccountModuleInteractorImplTests.accountInfo!])
         
-        self.waitForExpectations(withTimeout: 1.0, handler: nil)
+        self.waitForExpectations(timeout: 1.0, handler: nil)
         
         XCTAssertEqual(interactor.account?.state, AccountConnectionState.connected)
     }
@@ -138,7 +138,7 @@ class AccountModuleInteractorImplTests : XCTestCase {
         
         try! interactor.enable()
         
-        self.waitForExpectations(withTimeout: 1.0, handler: nil)
+        self.waitForExpectations(timeout: 1.0, handler: nil)
         
         item = try! keyChain.item(jid: jid)
         XCTAssertFalse(item.invisible)
@@ -170,7 +170,7 @@ class AccountModuleInteractorImplTests : XCTestCase {
         
         try! interactor.disable()
         
-        self.waitForExpectations(withTimeout: 1.0, handler: nil)
+        self.waitForExpectations(timeout: 1.0, handler: nil)
         
         item = try! keyChain.item(jid: jid)
         XCTAssertTrue(item.invisible)
@@ -202,7 +202,7 @@ class AccountModuleInteractorImplTests : XCTestCase {
         
         try! interactor.update(options: ["foo":"bar"])
         
-        self.waitForExpectations(withTimeout: 1.0, handler: nil)
+        self.waitForExpectations(timeout: 1.0, handler: nil)
         
         item = try! keyChain.item(jid: jid)
         XCTAssertEqual(item.options["foo"] as? String, "bar")
@@ -226,7 +226,7 @@ class AccountModuleInteractorImplTests : XCTestCase {
         
         try! interactor.connect()
         
-        self.waitForExpectations(withTimeout: 1.0, handler: nil)
+        self.waitForExpectations(timeout: 1.0, handler: nil)
     }
     
     // Helper

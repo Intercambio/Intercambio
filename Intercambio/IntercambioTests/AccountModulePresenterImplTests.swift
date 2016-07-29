@@ -174,7 +174,7 @@ class AccountModulePresenterImplTests: XCTestCase {
         self.expectation(forNotification: "TestUserInterfaceDidChange", object: userInterface) { (notification) -> Bool in
             return userInterface.nextConnectionLabel != "Reconnecting in 9 seconds …"
         }
-        self.waitForExpectations(withTimeout: 2.0, handler: nil)
+        self.waitForExpectations(timeout: 2.0, handler: nil)
     }
     
     func testConnectAccount() {
@@ -189,7 +189,7 @@ class AccountModulePresenterImplTests: XCTestCase {
         
         presenter.connectAccount()
         
-        self.waitForExpectations(withTimeout: 1.0, handler: nil)
+        self.waitForExpectations(timeout: 1.0, handler: nil)
     }
     
     func testShowSettings() {
@@ -217,6 +217,6 @@ class AccountModulePresenterImplTests: XCTestCase {
         
         presenter.showAccountSettings()
         
-        self.waitForExpectations(withTimeout: 1.0, handler: nil)
+        self.waitForExpectations(timeout: 1.0, handler: nil)
     }
 }
