@@ -1,5 +1,5 @@
 github "CocoaLumberjack/CocoaLumberjack" "2.3.0"
-github "anagromataf/Fountain" "2.4.2"
+github "anagromataf/Fountain" "2.4.3"
 github "hamcrest/OCHamcrest" "v5.4.0"
 github "AliSoftware/OHHTTPStubs" "5.1.0"
 github "Internetslum/PureXML" "1.1"

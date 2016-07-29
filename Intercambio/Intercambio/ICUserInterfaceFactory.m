@@ -7,7 +7,6 @@
 //
 
 #import "ICUserInterfaceFactory.h"
-#import "ICAccountsViewController.h"
 #import "ICConversationViewController.h"
 #import "ICConversationViewController.h"
 #import "ICNavigationController.h"
@@ -69,13 +68,6 @@
     ICRecentConversationsViewController *recentConversationsViewController = [[ICRecentConversationsViewController alloc] init];
     recentConversationsViewController.dataSource = self.communicationService.conversationDataSource;
     return recentConversationsViewController;
-}
-
-- (UIViewController *)viewControllerForAccountsInAppWireframe:(ICAppWireframe *)appWireframe
-{
-    ICAccountsViewController *accountsViewController = [[ICAccountsViewController alloc] init];
-    accountsViewController.dataSource = self.communicationService.accountDataSource;
-    return accountsViewController;
 }
 
 - (UIViewController<ICConversationUserInterface> *)viewControllerForConversationInAppWireframe:(ICAppWireframe *)appWireframe

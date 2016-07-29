@@ -55,14 +55,20 @@
 		F676EFAE1CDCEE20003047EC /* ICConversationLayoutItem_Message.m in Sources */ = {isa = PBXBuildFile; fileRef = F676EFAD1CDCEE20003047EC /* ICConversationLayoutItem_Message.m */; };
 		F676EFB21CDE4570003047EC /* ICConversationTimestampView.m in Sources */ = {isa = PBXBuildFile; fileRef = F676EFB11CDE4570003047EC /* ICConversationTimestampView.m */; };
 		F68269CF1D0EECE2007A3934 /* ICAppWireframe.m in Sources */ = {isa = PBXBuildFile; fileRef = F68269CE1D0EECE2007A3934 /* ICAppWireframe.m */; };
-		F6826A191D0F371B007A3934 /* ICAccountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F6826A181D0F371B007A3934 /* ICAccountCell.m */; };
 		F6826A1D1D0F38BD007A3934 /* UITableView+CellAction.m in Sources */ = {isa = PBXBuildFile; fileRef = F6826A1C1D0F38BD007A3934 /* UITableView+CellAction.m */; };
 		F6826A201D0F4476007A3934 /* ICUserInterfaceFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = F6826A1F1D0F4476007A3934 /* ICUserInterfaceFactory.m */; };
+		F68EDFFA1D3D3CE800AFCB9D /* AccountListModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68EDFF91D3D3CE800AFCB9D /* AccountListModule.swift */; };
+		F68EE0001D3D3EAD00AFCB9D /* AccountListPresentationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68EDFFF1D3D3EAD00AFCB9D /* AccountListPresentationModel.swift */; };
+		F68EE0021D3D457C00AFCB9D /* AccountListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68EE0011D3D457C00AFCB9D /* AccountListPresenter.swift */; };
 		F6A2592A1D33C3FE0005C533 /* AccountModulePresenterImplTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A259291D33C3FE0005C533 /* AccountModulePresenterImplTests.swift */; };
 		F6A2592E1D33EC080005C533 /* AccountModuleEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A2592D1D33EC080005C533 /* AccountModuleEventHandler.swift */; };
 		F6A259301D33EE220005C533 /* AccountModuleRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A2592F1D33EE220005C533 /* AccountModuleRouter.swift */; };
 		F6A259331D33F5CF0005C533 /* AccountModuleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A259321D33F5CF0005C533 /* AccountModuleViewController.swift */; };
 		F6A259351D33F8FF0005C533 /* AccountModuleHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6A259341D33F8FF0005C533 /* AccountModuleHeaderView.xib */; };
+		F6A41B711D4B9F220077321C /* AccountListViewEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A41B701D4B9F220077321C /* AccountListViewEventHandler.swift */; };
+		F6A41B741D4B9F400077321C /* AccountListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A41B731D4B9F400077321C /* AccountListView.swift */; };
+		F6A41B761D4BA2140077321C /* AccountListPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A41B751D4BA2140077321C /* AccountListPresenterTests.swift */; };
+		F6A41B791D4BA89E0077321C /* AccountListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A41B781D4BA89E0077321C /* AccountListViewController.swift */; };
 		F6A697031CFC348700E0A0D2 /* Fountain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6A697021CFC348700E0A0D2 /* Fountain.framework */; };
 		F6A9F9901D345B7D007D8718 /* SettingsModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A9F98F1D345B7D007D8718 /* SettingsModule.swift */; };
 		F6A9F9921D345B8F007D8718 /* SettingsModuleInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A9F9911D345B8F007D8718 /* SettingsModuleInteractor.swift */; };
@@ -73,6 +79,8 @@
 		F6B26F9F1C6942650099CBC9 /* ICConversationLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = F6B26F9E1C6942650099CBC9 /* ICConversationLayout.m */; };
 		F6B26FA21C6A30790099CBC9 /* ICConversationLayoutAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = F6B26FA11C6A30790099CBC9 /* ICConversationLayoutAttributes.m */; };
 		F6B26FAB1C6B79310099CBC9 /* ICMessageComposeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F6B26FAA1C6B79310099CBC9 /* ICMessageComposeCell.m */; };
+		F6B3CC621D4B85A600234F9B /* AccountListPresentationDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B3CC611D4B85A600234F9B /* AccountListPresentationDataSource.swift */; };
+		F6B3CC661D4B95A900234F9B /* AccountListPresentationDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B3CC651D4B95A900234F9B /* AccountListPresentationDataSourceTests.swift */; };
 		F6BA3EE71D36434B00C12E3D /* FromSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BA3EE61D36434B00C12E3D /* FromSection.swift */; };
 		F6BA3EE91D36438200C12E3D /* FormItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BA3EE81D36438200C12E3D /* FormItem.swift */; };
 		F6C6BD6F1D3645BD00CF3B8B /* SettingsModuleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C6BD6E1D3645BD00CF3B8B /* SettingsModuleViewController.swift */; };
@@ -97,7 +105,6 @@
 		F6EF1F421C72066C0083F4BE /* CLTokenView.m in Sources */ = {isa = PBXBuildFile; fileRef = F6EF1F3C1C72066C0083F4BE /* CLTokenView.m */; };
 		F6EF1F431C72066C0083F4BE /* CLBackspaceDetectingTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = F6EF1F3E1C72066C0083F4BE /* CLBackspaceDetectingTextField.m */; };
 		F6EF1F441C72066C0083F4BE /* CLToken.m in Sources */ = {isa = PBXBuildFile; fileRef = F6EF1F401C72066C0083F4BE /* CLToken.m */; };
-		F6EF1F521C73B5D50083F4BE /* ICAccountsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F6EF1F511C73B5D50083F4BE /* ICAccountsViewController.m */; };
 		F6F56AF31C51416600C34CC8 /* SocketRocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F684140B1C4D8A7F009B37BE /* SocketRocket.framework */; };
 		F6F56AF41C51416600C34CC8 /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F68413FF1C4D8901009B37BE /* CocoaLumberjack.framework */; };
 		F6F56AF51C51416600C34CC8 /* CoreXMPP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F68414001C4D8901009B37BE /* CoreXMPP.framework */; };
@@ -220,8 +227,6 @@
 		F6826A131D0F1147007A3934 /* ICAccountsUserInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICAccountsUserInterface.h; sourceTree = "<group>"; };
 		F6826A151D0F1879007A3934 /* ICUserInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICUserInterface.h; sourceTree = "<group>"; };
 		F6826A161D0F1A67007A3934 /* ICAccountSettingsUserInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICAccountSettingsUserInterface.h; sourceTree = "<group>"; };
-		F6826A171D0F371B007A3934 /* ICAccountCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICAccountCell.h; sourceTree = "<group>"; };
-		F6826A181D0F371B007A3934 /* ICAccountCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICAccountCell.m; sourceTree = "<group>"; };
 		F6826A1B1D0F38BD007A3934 /* UITableView+CellAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+CellAction.h"; sourceTree = "<group>"; };
 		F6826A1C1D0F38BD007A3934 /* UITableView+CellAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+CellAction.m"; sourceTree = "<group>"; };
 		F6826A1E1D0F4476007A3934 /* ICUserInterfaceFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICUserInterfaceFactory.h; sourceTree = "<group>"; };
@@ -230,11 +235,18 @@
 		F68414001C4D8901009B37BE /* CoreXMPP.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreXMPP.framework; path = ../Carthage/Build/iOS/CoreXMPP.framework; sourceTree = "<group>"; };
 		F68414011C4D8901009B37BE /* PureXML.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PureXML.framework; path = ../Carthage/Build/iOS/PureXML.framework; sourceTree = "<group>"; };
 		F684140B1C4D8A7F009B37BE /* SocketRocket.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SocketRocket.framework; path = ../Carthage/Build/iOS/SocketRocket.framework; sourceTree = "<group>"; };
+		F68EDFF91D3D3CE800AFCB9D /* AccountListModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountListModule.swift; sourceTree = "<group>"; };
+		F68EDFFF1D3D3EAD00AFCB9D /* AccountListPresentationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountListPresentationModel.swift; sourceTree = "<group>"; };
+		F68EE0011D3D457C00AFCB9D /* AccountListPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountListPresenter.swift; sourceTree = "<group>"; };
 		F6A259291D33C3FE0005C533 /* AccountModulePresenterImplTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AccountModulePresenterImplTests.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		F6A2592D1D33EC080005C533 /* AccountModuleEventHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountModuleEventHandler.swift; sourceTree = "<group>"; };
 		F6A2592F1D33EE220005C533 /* AccountModuleRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountModuleRouter.swift; sourceTree = "<group>"; };
 		F6A259321D33F5CF0005C533 /* AccountModuleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountModuleViewController.swift; sourceTree = "<group>"; };
 		F6A259341D33F8FF0005C533 /* AccountModuleHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccountModuleHeaderView.xib; sourceTree = "<group>"; };
+		F6A41B701D4B9F220077321C /* AccountListViewEventHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountListViewEventHandler.swift; sourceTree = "<group>"; };
+		F6A41B731D4B9F400077321C /* AccountListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountListView.swift; sourceTree = "<group>"; };
+		F6A41B751D4BA2140077321C /* AccountListPresenterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountListPresenterTests.swift; sourceTree = "<group>"; };
+		F6A41B781D4BA89E0077321C /* AccountListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountListViewController.swift; sourceTree = "<group>"; };
 		F6A697021CFC348700E0A0D2 /* Fountain.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fountain.framework; path = ../Carthage/Build/iOS/Fountain.framework; sourceTree = "<group>"; };
 		F6A9F98F1D345B7D007D8718 /* SettingsModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsModule.swift; sourceTree = "<group>"; };
 		F6A9F9911D345B8F007D8718 /* SettingsModuleInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsModuleInteractor.swift; sourceTree = "<group>"; };
@@ -249,6 +261,8 @@
 		F6B26FA11C6A30790099CBC9 /* ICConversationLayoutAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICConversationLayoutAttributes.m; sourceTree = "<group>"; };
 		F6B26FA91C6B79310099CBC9 /* ICMessageComposeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICMessageComposeCell.h; sourceTree = "<group>"; };
 		F6B26FAA1C6B79310099CBC9 /* ICMessageComposeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ICMessageComposeCell.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		F6B3CC611D4B85A600234F9B /* AccountListPresentationDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountListPresentationDataSource.swift; sourceTree = "<group>"; };
+		F6B3CC651D4B95A900234F9B /* AccountListPresentationDataSourceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountListPresentationDataSourceTests.swift; sourceTree = "<group>"; };
 		F6BA3EE61D36434B00C12E3D /* FromSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FromSection.swift; sourceTree = "<group>"; };
 		F6BA3EE81D36438200C12E3D /* FormItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormItem.swift; sourceTree = "<group>"; };
 		F6C6BD6E1D3645BD00CF3B8B /* SettingsModuleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsModuleViewController.swift; sourceTree = "<group>"; };
@@ -284,8 +298,6 @@
 		F6EF1F401C72066C0083F4BE /* CLToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLToken.m; sourceTree = "<group>"; };
 		F6EF1F491C737B9A0083F4BE /* CLTokenInputView-LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "CLTokenInputView-LICENSE"; sourceTree = "<group>"; };
 		F6EF1F4A1C737B9A0083F4BE /* CLTokenInputView-README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "CLTokenInputView-README.md"; sourceTree = "<group>"; };
-		F6EF1F501C73B5D50083F4BE /* ICAccountsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICAccountsViewController.h; sourceTree = "<group>"; };
-		F6EF1F511C73B5D50083F4BE /* ICAccountsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICAccountsViewController.m; sourceTree = "<group>"; };
 		F6F56AFD1C5395A700C34CC8 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Cartfile; path = ../Cartfile; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -414,6 +426,7 @@
 			isa = PBXGroup;
 			children = (
 				F6A2592C1D33EB3F0005C533 /* Models */,
+				F6B3CC641D4B959800234F9B /* Account List */,
 				F63A66791D26685C00FCC82E /* Account Module */,
 				F6A9F9981D351E67007D8718 /* Settings Module */,
 				F619BDDA1C4D071700F87F50 /* IntercambioTests.m */,
@@ -589,11 +602,11 @@
 		F6826A101D0EF151007A3934 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				F68EDFF81D3D3CD300AFCB9D /* Account List Module */,
 				F6E604FE1C787273000CCDD9 /* Account Module */,
 				F6A9F98E1D345B41007D8718 /* Settings Module */,
 				F6CDE9511CC52DAC009C2D48 /* Recent Conversations */,
 				F62F71C91C68CFE900656D3C /* Conversation */,
-				F6EF1F531C73B5D90083F4BE /* Accounts */,
 			);
 			name = Modules;
 			sourceTree = "<group>";
@@ -608,15 +621,6 @@
 				F6826A131D0F1147007A3934 /* ICAccountsUserInterface.h */,
 			);
 			name = Protocols;
-			sourceTree = "<group>";
-		};
-		F6826A1A1D0F3720007A3934 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				F6826A171D0F371B007A3934 /* ICAccountCell.h */,
-				F6826A181D0F371B007A3934 /* ICAccountCell.m */,
-			);
-			name = Cells;
 			sourceTree = "<group>";
 		};
 		F6826A211D0F45C8007A3934 /* User Interface Factory */ = {
@@ -647,6 +651,17 @@
 				F68414011C4D8901009B37BE /* PureXML.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F68EDFF81D3D3CD300AFCB9D /* Account List Module */ = {
+			isa = PBXGroup;
+			children = (
+				F68EDFF91D3D3CE800AFCB9D /* AccountListModule.swift */,
+				F6A41B721D4B9F2A0077321C /* Protocols */,
+				F6B3CC631D4B904200234F9B /* Presenter */,
+				F6A41B771D4BA8820077321C /* View */,
+			);
+			name = "Account List Module";
 			sourceTree = "<group>";
 		};
 		F69C166A1C651F2800BC66F1 /* User Interface */ = {
@@ -692,6 +707,24 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
+		F6A41B721D4B9F2A0077321C /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				F6A41B731D4B9F400077321C /* AccountListView.swift */,
+				F6A41B701D4B9F220077321C /* AccountListViewEventHandler.swift */,
+				F68EDFFF1D3D3EAD00AFCB9D /* AccountListPresentationModel.swift */,
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
+		F6A41B771D4BA8820077321C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F6A41B781D4BA89E0077321C /* AccountListViewController.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		F6A9F98E1D345B41007D8718 /* Settings Module */ = {
 			isa = PBXGroup;
 			children = (
@@ -724,6 +757,24 @@
 				F6151BB81D353B84000551B6 /* SettingsModulePresenterImplTests.swift */,
 			);
 			name = "Settings Module";
+			sourceTree = "<group>";
+		};
+		F6B3CC631D4B904200234F9B /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				F68EE0011D3D457C00AFCB9D /* AccountListPresenter.swift */,
+				F6B3CC611D4B85A600234F9B /* AccountListPresentationDataSource.swift */,
+			);
+			name = Presenter;
+			sourceTree = "<group>";
+		};
+		F6B3CC641D4B959800234F9B /* Account List */ = {
+			isa = PBXGroup;
+			children = (
+				F6B3CC651D4B95A900234F9B /* AccountListPresentationDataSourceTests.swift */,
+				F6A41B751D4BA2140077321C /* AccountListPresenterTests.swift */,
+			);
+			name = "Account List";
 			sourceTree = "<group>";
 		};
 		F6CDE9511CC52DAC009C2D48 /* Recent Conversations */ = {
@@ -785,16 +836,6 @@
 				F6EF1F401C72066C0083F4BE /* CLToken.m */,
 			);
 			name = CLTokenInputView;
-			sourceTree = "<group>";
-		};
-		F6EF1F531C73B5D90083F4BE /* Accounts */ = {
-			isa = PBXGroup;
-			children = (
-				F6EF1F501C73B5D50083F4BE /* ICAccountsViewController.h */,
-				F6EF1F511C73B5D50083F4BE /* ICAccountsViewController.m */,
-				F6826A1A1D0F3720007A3934 /* Cells */,
-			);
-			name = Accounts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1019,7 +1060,6 @@
 				F62F71B31C66736200656D3C /* ICConversationCell.m in Sources */,
 				F6555A571D340E52009C4324 /* AccountModuleHeaderView.swift in Sources */,
 				F6A9F9941D345BED007D8718 /* Settings.swift in Sources */,
-				F6826A191D0F371B007A3934 /* ICAccountCell.m in Sources */,
 				F6A259301D33EE220005C533 /* AccountModuleRouter.swift in Sources */,
 				F68269CF1D0EECE2007A3934 /* ICAppWireframe.m in Sources */,
 				F676EFA81CDCE699003047EC /* ICConversationChapterFragment.m in Sources */,
@@ -1028,18 +1068,22 @@
 				F6EF1F441C72066C0083F4BE /* CLToken.m in Sources */,
 				F6151BB51D353A6A000551B6 /* SettingsModuleEventHandler.swift in Sources */,
 				F6B056771D352F99002D93D9 /* SettingsModulePresenter.swift in Sources */,
+				F6A41B741D4B9F400077321C /* AccountListView.swift in Sources */,
 				F6C6BD741D3669D500CF3B8B /* SettingsModuleURLCell.swift in Sources */,
+				F6B3CC621D4B85A600234F9B /* AccountListPresentationDataSource.swift in Sources */,
+				F68EDFFA1D3D3CE800AFCB9D /* AccountListModule.swift in Sources */,
 				F6EF1F411C72066C0083F4BE /* CLTokenInputView.m in Sources */,
 				F63A66751D26672000FCC82E /* AccountViewModelImpl.swift in Sources */,
 				F635166E1D33A52A007822F3 /* AccountModuleUserInterface.swift in Sources */,
 				F605909E1D2F97E70071FC63 /* AccountModulePresenter.swift in Sources */,
-				F6EF1F521C73B5D50083F4BE /* ICAccountsViewController.m in Sources */,
 				F619BDC51C4D071700F87F50 /* AppDelegate.m in Sources */,
 				F6826A1D1D0F38BD007A3934 /* UITableView+CellAction.m in Sources */,
 				F60DFF871C6DE04600764E26 /* ICConversationLayoutInvalidationContext.m in Sources */,
 				F65F98451CAD2831009A2FE5 /* ICConnectionStateView.m in Sources */,
 				F6826A201D0F4476007A3934 /* ICUserInterfaceFactory.m in Sources */,
 				F6D807E41D1826EB002953AB /* NSURL+Intercambio.m in Sources */,
+				F6A41B711D4B9F220077321C /* AccountListViewEventHandler.swift in Sources */,
+				F68EE0021D3D457C00AFCB9D /* AccountListPresenter.swift in Sources */,
 				F6B26F9F1C6942650099CBC9 /* ICConversationLayout.m in Sources */,
 				F619BDC21C4D071700F87F50 /* main.m in Sources */,
 				F6E252151CAAC8010061531E /* ICAccountShareActivityItemSource.m in Sources */,
@@ -1052,12 +1096,14 @@
 				F6BA3EE71D36434B00C12E3D /* FromSection.swift in Sources */,
 				F63A66731D26669A00FCC82E /* AccountModuleInteractorImpl.swift in Sources */,
 				F6D807DA1D17F53E002953AB /* ICURLHandler.m in Sources */,
+				F68EE0001D3D3EAD00AFCB9D /* AccountListPresentationModel.swift in Sources */,
 				F6151BAF1D353263000551B6 /* SettingsModuleUserInterface.swift in Sources */,
 				F676EF9B1CDCD63F003047EC /* ICConversationMessageFragment.m in Sources */,
 				F6A2592E1D33EC080005C533 /* AccountModuleEventHandler.swift in Sources */,
 				F6C6BD6F1D3645BD00CF3B8B /* SettingsModuleViewController.swift in Sources */,
 				F6A259331D33F5CF0005C533 /* AccountModuleViewController.swift in Sources */,
 				F6A9F9901D345B7D007D8718 /* SettingsModule.swift in Sources */,
+				F6A41B791D4BA89E0077321C /* AccountListViewController.swift in Sources */,
 				F6B26FA21C6A30790099CBC9 /* ICConversationLayoutAttributes.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1072,10 +1118,12 @@
 				F676EFAA1CDCE99F003047EC /* ICConversationFragmentTests.m in Sources */,
 				F6A9F99A1D351E7B007D8718 /* SettingsModuleInteractorImplTests.swift in Sources */,
 				F6D807DD1D17F9EE002953AB /* ICURLHandlerTests.m in Sources */,
+				F6A41B761D4BA2140077321C /* AccountListPresenterTests.swift in Sources */,
 				F6A2592A1D33C3FE0005C533 /* AccountModulePresenterImplTests.swift in Sources */,
 				F6151BB91D353B84000551B6 /* SettingsModulePresenterImplTests.swift in Sources */,
 				F619BDDB1C4D071700F87F50 /* IntercambioTests.m in Sources */,
 				F63A66781D26685300FCC82E /* AccountModuleInteractorImplTests.swift in Sources */,
+				F6B3CC661D4B95A900234F9B /* AccountListPresentationDataSourceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

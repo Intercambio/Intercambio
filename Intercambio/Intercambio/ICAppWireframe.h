@@ -18,7 +18,6 @@
 @protocol ICAppWireframeDelegate <NSObject>
 @optional
 - (UIViewController<ICRecentConversationsUserInterface> *)viewControllerForRecentConversationsInAppWireframe:(ICAppWireframe *)appWireframe;
-- (UIViewController<ICAccountsUserInterface> *)viewControllerForAccountsInAppWireframe:(ICAppWireframe *)appWireframe;
 - (UIViewController<ICConversationUserInterface> *)viewControllerForConversationInAppWireframe:(ICAppWireframe *)appWireframe;
 
 - (UINavigationController *)appWireframe:(ICAppWireframe *)appWireframe navigationControllerForPrimaryViewController:(UIViewController *)primaryViewController;
@@ -27,11 +26,12 @@
 - (UIAlertController *)alertForSelectingAccountInAppWireframe:(ICAppWireframe *)appWireframe withCompletion:(void (^)(NSURL *accountURI))completion;
 @end
 
-@interface ICAppWireframe : NSObject <AccountModuleRouter>
+@interface ICAppWireframe : NSObject <AccountModuleRouter, AccountListRouter>
 
 @property (nonatomic, weak) id<ICAppWireframeDelegate> delegate;
 @property (nonatomic, strong) UIWindow *window;
 
+@property (nonatomic, strong) AccountListModule *accountListModule;
 @property (nonatomic, strong) AccountModule *accountModule;
 @property (nonatomic, strong) SettingsModule *settingsModule;
 

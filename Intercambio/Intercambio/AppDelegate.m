@@ -60,6 +60,7 @@ static DDLogLevel ddLogLevel = DDLogLevelInfo;
     _appWireframe.delegate = _userInterfaceFactory;
     _appWireframe.window = self.window;
 
+    _appWireframe.accountListModule = [[AccountListModule alloc] initWithService:_communicationService router:_appWireframe];
     _appWireframe.accountModule = [[AccountModule alloc] initWithService:_communicationService router:_appWireframe];
     _appWireframe.settingsModule = [[SettingsModule alloc] initWithService:_communicationService];
 

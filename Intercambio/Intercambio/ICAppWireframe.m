@@ -34,7 +34,7 @@
 - (void)presentMainInterface
 {
     UINavigationController *conversationsNavigationController = [self navigationControllerForPrimaryViewController:[self recentConversationsViewController]];
-    UINavigationController *accountsNavigationController = [self navigationControllerForPrimaryViewController:[self accountsViewController]];
+    UINavigationController *accountsNavigationController = [self navigationControllerForPrimaryViewController:[self.accountListModule viewController]];
 
     UITabBarController *tabBar = [[UITabBarController alloc] init];
     tabBar.view.backgroundColor = [UIColor whiteColor];
@@ -91,19 +91,7 @@
 - (void)presentUserInterfaceForAccountWithURI:(NSURL *)accountURI
                            fromViewController:(UIViewController *)sender
 {
-    BOOL accountsNavigationVisible = self.tabBarController.selectedViewController == self.accountsNavigationController;
-
-    UIViewController *viewController = [self.accountModule viewControllerWithUri:accountURI];
-    if ([self.accountsNavigationController.viewControllers count] > 1) {
-        [self.accountsNavigationController popToRootViewControllerAnimated:NO];
-        [self.accountsNavigationController pushViewController:viewController animated:NO];
-    } else {
-        [self.accountsNavigationController pushViewController:viewController animated:accountsNavigationVisible];
-    }
-
-    if (!accountsNavigationVisible) {
-        self.tabBarController.selectedViewController = self.accountsNavigationController;
-    }
+    [self presentAccountUserInterfaceFor:accountURI];
 }
 
 - (void)presentUserInterfaceForNewAccountFromViewController:(UIViewController *)viewController
@@ -251,7 +239,35 @@
     }
 }
 
-#pragma mark AccountModuleRouter
+#pragma mark AccountModuleRouter, AccountListRouter
+
+
+- (void)presentNewAccountUserInterface
+{
+    UIAlertController *alert = [self alertForNewAccount];
+    if (alert) {
+        [self.splitViewController presentViewController:alert
+                                               animated:YES
+                                             completion:nil];
+    }
+}
+
+- (void)presentAccountUserInterfaceFor:(NSURL *)accountURI
+{
+    BOOL accountsNavigationVisible = self.tabBarController.selectedViewController == self.accountsNavigationController;
+    
+    UIViewController *viewController = [self.accountModule viewControllerWithUri:accountURI];
+    if ([self.accountsNavigationController.viewControllers count] > 1) {
+        [self.accountsNavigationController popToRootViewControllerAnimated:NO];
+        [self.accountsNavigationController pushViewController:viewController animated:NO];
+    } else {
+        [self.accountsNavigationController pushViewController:viewController animated:accountsNavigationVisible];
+    }
+    
+    if (!accountsNavigationVisible) {
+        self.tabBarController.selectedViewController = self.accountsNavigationController;
+    }
+}
 
 - (void)presentSettingsUserInterfaceFor:(NSURL *_Nonnull)accountURI
 {
@@ -321,16 +337,6 @@
     UIViewController *viewController = nil;
     if ([self.delegate respondsToSelector:@selector(viewControllerForConversationInAppWireframe:)]) {
         viewController = [self.delegate viewControllerForConversationInAppWireframe:self];
-    }
-    [self prepareViewController:viewController];
-    return viewController ?: [[ICEmptyViewController alloc] init];
-}
-
-- (UIViewController *)accountsViewController
-{
-    UIViewController *viewController = nil;
-    if ([self.delegate respondsToSelector:@selector(viewControllerForAccountsInAppWireframe:)]) {
-        viewController = [self.delegate viewControllerForAccountsInAppWireframe:self];
     }
     [self prepareViewController:viewController];
     return viewController ?: [[ICEmptyViewController alloc] init];
