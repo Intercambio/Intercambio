@@ -1,5 +1,5 @@
 //
-//  SettingsModuleInteractorImpl.swift
+//  SettingsInteractor.swift
 //  Intercambio
 //
 //  Created by Tobias Kraentzer on 12.07.16.
@@ -10,12 +10,12 @@ import Foundation
 import IntercambioCore
 import CoreXMPP
 
-public class SettingsModuleInteractorImpl : SettingsModuleInteractor {
+class SettingsInteractor : SettingsProvider {
     
-    internal weak var presenter: SettingsModulePresenter?
+    weak var presenter: SettingsOutput?
     
-    public let accountURI: URL?
-    public let identifier: String
+    let accountURI: URL?
+    let identifier: String
     
     private let accountJID: JID
     private let keyChain: KeyChain
@@ -35,7 +35,7 @@ public class SettingsModuleInteractorImpl : SettingsModuleInteractor {
         
     }
     
-    public var settings: Settings {
+    var settings: Settings {
         get {
             do {
                 let item = try keyChain.item(jid: accountJID)
@@ -46,7 +46,7 @@ public class SettingsModuleInteractorImpl : SettingsModuleInteractor {
         }
     }
     
-    public func update(settings: Settings) throws {
+    func update(settings: Settings) throws {
         var item = try keyChain.item(jid: accountJID)
         item = KeyChainItem(jid: item.jid, invisible: false, options: values(settings))
         try keyChain.update(item)

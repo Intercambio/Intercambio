@@ -1,5 +1,5 @@
 //
-//  SettingsModuleURLCell.swift
+//  FormItemURLCell.swift
 //  Intercambio
 //
 //  Created by Tobias Kraentzer on 13.07.16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SettingsModuleURLCell: UITableViewCell, UITextFieldDelegate {
+class FormItemURLCell: UITableViewCell, UITextFieldDelegate {
     
     var formItem: FormItem<URL>? {
         didSet {

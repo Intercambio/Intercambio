@@ -28,10 +28,7 @@ public class AccountModule : NSObject {
         if let host = uri.host,
             let jid = JID(user: uri.user, host: host, resource: nil) {
             
-            let interactor = AccountInteractor(accountJID: jid,
-                                                         keyChain: service.keyChain,
-                                                         accountManager: service.accountManager)
-            
+            let interactor = AccountInteractor(accountJID: jid, keyChain: service.keyChain, accountManager: service.accountManager)
             let presenter = AccountPresenter()
             let viewControler = AccountViewController()
             

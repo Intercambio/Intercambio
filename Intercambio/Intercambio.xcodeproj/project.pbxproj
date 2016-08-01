@@ -10,10 +10,8 @@
 		F605909C1D2F97AB0071FC63 /* AccountProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F605909B1D2F97AB0071FC63 /* AccountProvider.swift */; };
 		F605909E1D2F97E70071FC63 /* AccountOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F605909D1D2F97E70071FC63 /* AccountOutput.swift */; };
 		F60DFF871C6DE04600764E26 /* ICConversationLayoutInvalidationContext.m in Sources */ = {isa = PBXBuildFile; fileRef = F60DFF861C6DE04600764E26 /* ICConversationLayoutInvalidationContext.m */; };
-		F6151BAF1D353263000551B6 /* SettingsModuleUserInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6151BAE1D353263000551B6 /* SettingsModuleUserInterface.swift */; };
-		F6151BB31D3538CD000551B6 /* SettingsModulePresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6151BB21D3538CD000551B6 /* SettingsModulePresenterImpl.swift */; };
-		F6151BB51D353A6A000551B6 /* SettingsModuleEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6151BB41D353A6A000551B6 /* SettingsModuleEventHandler.swift */; };
-		F6151BB91D353B84000551B6 /* SettingsModulePresenterImplTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6151BB81D353B84000551B6 /* SettingsModulePresenterImplTests.swift */; };
+		F6151BB31D3538CD000551B6 /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6151BB21D3538CD000551B6 /* SettingsPresenter.swift */; };
+		F6151BB91D353B84000551B6 /* SettingsPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6151BB81D353B84000551B6 /* SettingsPresenterTests.swift */; };
 		F619BDC21C4D071700F87F50 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F619BDC11C4D071700F87F50 /* main.m */; };
 		F619BDC51C4D071700F87F50 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F619BDC41C4D071700F87F50 /* AppDelegate.m */; };
 		F619BDD01C4D071700F87F50 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F619BDCE1C4D071700F87F50 /* LaunchScreen.storyboard */; };
@@ -32,6 +30,10 @@
 		F63A66751D26672000FCC82E /* AccountViewModelImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63A66741D26672000FCC82E /* AccountViewModelImpl.swift */; };
 		F63A66781D26685300FCC82E /* AccountInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63A66771D26685300FCC82E /* AccountInteractorTests.swift */; };
 		F640F0E41C63B7A500F65A9B /* FMDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F640F0E11C63B7A500F65A9B /* FMDB.framework */; };
+		F65237451D4FF0C200285713 /* SettingsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65237441D4FF0C200285713 /* SettingsProvider.swift */; };
+		F65237481D4FF15700285713 /* SettingsOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65237471D4FF15700285713 /* SettingsOutput.swift */; };
+		F652374A1D4FF17B00285713 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65237491D4FF17B00285713 /* SettingsView.swift */; };
+		F652374C1D4FF1BC00285713 /* SettingsViewEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F652374B1D4FF1BC00285713 /* SettingsViewEventHandler.swift */; };
 		F6555A571D340E52009C4324 /* AccountViewControllerHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6555A561D340E52009C4324 /* AccountViewControllerHeaderView.swift */; };
 		F6555A591D3413AE009C4324 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F6555A581D3413AE009C4324 /* Assets.xcassets */; };
 		F65751351D0FF4CE0038AB25 /* ICAccountPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F65751341D0FF4CE0038AB25 /* ICAccountPickerViewController.m */; };
@@ -70,11 +72,8 @@
 		F6A41B791D4BA89E0077321C /* AccountListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A41B781D4BA89E0077321C /* AccountListViewController.swift */; };
 		F6A697031CFC348700E0A0D2 /* Fountain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6A697021CFC348700E0A0D2 /* Fountain.framework */; };
 		F6A9F9901D345B7D007D8718 /* SettingsModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A9F98F1D345B7D007D8718 /* SettingsModule.swift */; };
-		F6A9F9921D345B8F007D8718 /* SettingsModuleInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A9F9911D345B8F007D8718 /* SettingsModuleInteractor.swift */; };
-		F6A9F9941D345BED007D8718 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A9F9931D345BED007D8718 /* Settings.swift */; };
-		F6A9F9971D351DEE007D8718 /* SettingsModuleInteractorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A9F9961D351DEE007D8718 /* SettingsModuleInteractorImpl.swift */; };
-		F6A9F99A1D351E7B007D8718 /* SettingsModuleInteractorImplTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A9F9991D351E7B007D8718 /* SettingsModuleInteractorImplTests.swift */; };
-		F6B056771D352F99002D93D9 /* SettingsModulePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B056761D352F99002D93D9 /* SettingsModulePresenter.swift */; };
+		F6A9F9971D351DEE007D8718 /* SettingsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A9F9961D351DEE007D8718 /* SettingsInteractor.swift */; };
+		F6A9F99A1D351E7B007D8718 /* SettingsInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A9F9991D351E7B007D8718 /* SettingsInteractorTests.swift */; };
 		F6B26F9F1C6942650099CBC9 /* ICConversationLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = F6B26F9E1C6942650099CBC9 /* ICConversationLayout.m */; };
 		F6B26FA21C6A30790099CBC9 /* ICConversationLayoutAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = F6B26FA11C6A30790099CBC9 /* ICConversationLayoutAttributes.m */; };
 		F6B26FAB1C6B79310099CBC9 /* ICMessageComposeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F6B26FAA1C6B79310099CBC9 /* ICMessageComposeCell.m */; };
@@ -82,10 +81,10 @@
 		F6B3CC661D4B95A900234F9B /* AccountListPresentationDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B3CC651D4B95A900234F9B /* AccountListPresentationDataSourceTests.swift */; };
 		F6BA3EE71D36434B00C12E3D /* FromSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BA3EE61D36434B00C12E3D /* FromSection.swift */; };
 		F6BA3EE91D36438200C12E3D /* FormItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BA3EE81D36438200C12E3D /* FormItem.swift */; };
-		F6C6BD6F1D3645BD00CF3B8B /* SettingsModuleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C6BD6E1D3645BD00CF3B8B /* SettingsModuleViewController.swift */; };
+		F6C6BD6F1D3645BD00CF3B8B /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C6BD6E1D3645BD00CF3B8B /* SettingsViewController.swift */; };
 		F6C6BD711D364AFC00CF3B8B /* FormDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C6BD701D364AFC00CF3B8B /* FormDataSource.swift */; };
-		F6C6BD741D3669D500CF3B8B /* SettingsModuleURLCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C6BD721D3669D500CF3B8B /* SettingsModuleURLCell.swift */; };
-		F6C6BD751D3669D500CF3B8B /* SettingsModuleURLCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6C6BD731D3669D500CF3B8B /* SettingsModuleURLCell.xib */; };
+		F6C6BD741D3669D500CF3B8B /* FormItemURLCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C6BD721D3669D500CF3B8B /* FormItemURLCell.swift */; };
+		F6C6BD751D3669D500CF3B8B /* FormItemURLCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6C6BD731D3669D500CF3B8B /* FormItemURLCell.xib */; };
 		F6CDE9541CC52DD9009C2D48 /* ICRecentConversationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F6CDE9531CC52DD9009C2D48 /* ICRecentConversationsViewController.m */; };
 		F6D807D51D17D8DE002953AB /* ICConversationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6D807D41D17D8DE002953AB /* ICConversationCell.xib */; };
 		F6D807D71D17DD95002953AB /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F6D807D61D17DD95002953AB /* fontawesome-webfont.ttf */; };
@@ -147,10 +146,8 @@
 		F60881A41D3777340028FDEB /* Intercambio.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Intercambio.entitlements; sourceTree = "<group>"; };
 		F60DFF851C6DE04600764E26 /* ICConversationLayoutInvalidationContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICConversationLayoutInvalidationContext.h; sourceTree = "<group>"; };
 		F60DFF861C6DE04600764E26 /* ICConversationLayoutInvalidationContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICConversationLayoutInvalidationContext.m; sourceTree = "<group>"; };
-		F6151BAE1D353263000551B6 /* SettingsModuleUserInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsModuleUserInterface.swift; sourceTree = "<group>"; };
-		F6151BB21D3538CD000551B6 /* SettingsModulePresenterImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsModulePresenterImpl.swift; sourceTree = "<group>"; };
-		F6151BB41D353A6A000551B6 /* SettingsModuleEventHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsModuleEventHandler.swift; sourceTree = "<group>"; };
-		F6151BB81D353B84000551B6 /* SettingsModulePresenterImplTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsModulePresenterImplTests.swift; sourceTree = "<group>"; };
+		F6151BB21D3538CD000551B6 /* SettingsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
+		F6151BB81D353B84000551B6 /* SettingsPresenterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsPresenterTests.swift; sourceTree = "<group>"; };
 		F619BDBD1C4D071700F87F50 /* Intercambio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Intercambio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F619BDC11C4D071700F87F50 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F619BDC31C4D071700F87F50 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -184,6 +181,10 @@
 		F640F0E11C63B7A500F65A9B /* FMDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FMDB.framework; path = ../Carthage/Build/iOS/FMDB.framework; sourceTree = "<group>"; };
 		F640F1231C648FCE00F65A9B /* OCHamcrest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OCHamcrest.framework; path = ../Carthage/Build/iOS/OCHamcrest.framework; sourceTree = "<group>"; };
 		F640F1241C648FCE00F65A9B /* OCMockito.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OCMockito.framework; path = ../Carthage/Build/iOS/OCMockito.framework; sourceTree = "<group>"; };
+		F65237441D4FF0C200285713 /* SettingsProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsProvider.swift; sourceTree = "<group>"; };
+		F65237471D4FF15700285713 /* SettingsOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsOutput.swift; sourceTree = "<group>"; };
+		F65237491D4FF17B00285713 /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		F652374B1D4FF1BC00285713 /* SettingsViewEventHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewEventHandler.swift; sourceTree = "<group>"; };
 		F6555A561D340E52009C4324 /* AccountViewControllerHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewControllerHeaderView.swift; sourceTree = "<group>"; };
 		F6555A581D3413AE009C4324 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F65751331D0FF4CE0038AB25 /* ICAccountPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICAccountPickerViewController.h; sourceTree = "<group>"; };
@@ -247,12 +248,9 @@
 		F6A41B781D4BA89E0077321C /* AccountListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountListViewController.swift; sourceTree = "<group>"; };
 		F6A697021CFC348700E0A0D2 /* Fountain.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fountain.framework; path = ../Carthage/Build/iOS/Fountain.framework; sourceTree = "<group>"; };
 		F6A9F98F1D345B7D007D8718 /* SettingsModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsModule.swift; sourceTree = "<group>"; };
-		F6A9F9911D345B8F007D8718 /* SettingsModuleInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsModuleInteractor.swift; sourceTree = "<group>"; };
-		F6A9F9931D345BED007D8718 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
-		F6A9F9961D351DEE007D8718 /* SettingsModuleInteractorImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsModuleInteractorImpl.swift; sourceTree = "<group>"; };
-		F6A9F9991D351E7B007D8718 /* SettingsModuleInteractorImplTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsModuleInteractorImplTests.swift; sourceTree = "<group>"; };
+		F6A9F9961D351DEE007D8718 /* SettingsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsInteractor.swift; sourceTree = "<group>"; };
+		F6A9F9991D351E7B007D8718 /* SettingsInteractorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsInteractorTests.swift; sourceTree = "<group>"; };
 		F6ACB0FC1D23BFB8002F3A66 /* Secrets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Secrets.h; sourceTree = "<group>"; };
-		F6B056761D352F99002D93D9 /* SettingsModulePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsModulePresenter.swift; sourceTree = "<group>"; };
 		F6B26F9D1C6942650099CBC9 /* ICConversationLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICConversationLayout.h; sourceTree = "<group>"; };
 		F6B26F9E1C6942650099CBC9 /* ICConversationLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICConversationLayout.m; sourceTree = "<group>"; };
 		F6B26FA01C6A30790099CBC9 /* ICConversationLayoutAttributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICConversationLayoutAttributes.h; sourceTree = "<group>"; };
@@ -263,10 +261,10 @@
 		F6B3CC651D4B95A900234F9B /* AccountListPresentationDataSourceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AccountListPresentationDataSourceTests.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		F6BA3EE61D36434B00C12E3D /* FromSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FromSection.swift; sourceTree = "<group>"; };
 		F6BA3EE81D36438200C12E3D /* FormItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormItem.swift; sourceTree = "<group>"; };
-		F6C6BD6E1D3645BD00CF3B8B /* SettingsModuleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsModuleViewController.swift; sourceTree = "<group>"; };
+		F6C6BD6E1D3645BD00CF3B8B /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		F6C6BD701D364AFC00CF3B8B /* FormDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormDataSource.swift; sourceTree = "<group>"; };
-		F6C6BD721D3669D500CF3B8B /* SettingsModuleURLCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsModuleURLCell.swift; sourceTree = "<group>"; };
-		F6C6BD731D3669D500CF3B8B /* SettingsModuleURLCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsModuleURLCell.xib; sourceTree = "<group>"; };
+		F6C6BD721D3669D500CF3B8B /* FormItemURLCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormItemURLCell.swift; sourceTree = "<group>"; };
+		F6C6BD731D3669D500CF3B8B /* FormItemURLCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FormItemURLCell.xib; sourceTree = "<group>"; };
 		F6CDE9521CC52DD9009C2D48 /* ICRecentConversationsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICRecentConversationsViewController.h; sourceTree = "<group>"; };
 		F6CDE9531CC52DD9009C2D48 /* ICRecentConversationsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICRecentConversationsViewController.m; sourceTree = "<group>"; };
 		F6D807D41D17D8DE002953AB /* ICConversationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ICConversationCell.xib; sourceTree = "<group>"; };
@@ -478,6 +476,53 @@
 			name = "Account Module";
 			sourceTree = "<group>";
 		};
+		F65237461D4FF0C800285713 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				F65237441D4FF0C200285713 /* SettingsProvider.swift */,
+				F65237471D4FF15700285713 /* SettingsOutput.swift */,
+				F65237491D4FF17B00285713 /* SettingsView.swift */,
+				F652374B1D4FF1BC00285713 /* SettingsViewEventHandler.swift */,
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
+		F652374D1D4FF44600285713 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F6C6BD6E1D3645BD00CF3B8B /* SettingsViewController.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		F652374E1D4FF45000285713 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				F6151BB21D3538CD000551B6 /* SettingsPresenter.swift */,
+			);
+			name = Presenter;
+			sourceTree = "<group>";
+		};
+		F652374F1D4FF45600285713 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				F6A9F9961D351DEE007D8718 /* SettingsInteractor.swift */,
+			);
+			name = Interactor;
+			sourceTree = "<group>";
+		};
+		F65237501D4FF47D00285713 /* Forms */ = {
+			isa = PBXGroup;
+			children = (
+				F6BA3EE81D36438200C12E3D /* FormItem.swift */,
+				F6BA3EE61D36434B00C12E3D /* FromSection.swift */,
+				F6C6BD701D364AFC00CF3B8B /* FormDataSource.swift */,
+				F6C6BD721D3669D500CF3B8B /* FormItemURLCell.swift */,
+				F6C6BD731D3669D500CF3B8B /* FormItemURLCell.xib */,
+			);
+			name = Forms;
+			sourceTree = "<group>";
+		};
 		F6555A5A1D341421009C4324 /* Header */ = {
 			isa = PBXGroup;
 			children = (
@@ -616,10 +661,10 @@
 		F6826A0F1D0EF148007A3934 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				F65237501D4FF47D00285713 /* Forms */,
 				F65F983D1CAD1708009A2FE5 /* Navigation Controller */,
 				F65751371D1004580038AB25 /* Empty */,
 				F65751361D0FF4D30038AB25 /* Account Picker */,
-				F6A2592B1D33EB070005C533 /* Models */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -711,17 +756,6 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
-		F6A2592B1D33EB070005C533 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				F6A9F9931D345BED007D8718 /* Settings.swift */,
-				F6BA3EE61D36434B00C12E3D /* FromSection.swift */,
-				F6BA3EE81D36438200C12E3D /* FormItem.swift */,
-				F6C6BD701D364AFC00CF3B8B /* FormDataSource.swift */,
-			);
-			name = Models;
-			sourceTree = "<group>";
-		};
 		F6A41B721D4B9F2A0077321C /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
@@ -744,32 +778,19 @@
 			isa = PBXGroup;
 			children = (
 				F6A9F98F1D345B7D007D8718 /* SettingsModule.swift */,
-				F6A9F9911D345B8F007D8718 /* SettingsModuleInteractor.swift */,
-				F6B056761D352F99002D93D9 /* SettingsModulePresenter.swift */,
-				F6151BAE1D353263000551B6 /* SettingsModuleUserInterface.swift */,
-				F6151BB41D353A6A000551B6 /* SettingsModuleEventHandler.swift */,
-				F6A9F9951D351DDE007D8718 /* Implementation */,
+				F65237461D4FF0C800285713 /* Protocols */,
+				F652374D1D4FF44600285713 /* View */,
+				F652374E1D4FF45000285713 /* Presenter */,
+				F652374F1D4FF45600285713 /* Interactor */,
 			);
 			name = "Settings Module";
-			sourceTree = "<group>";
-		};
-		F6A9F9951D351DDE007D8718 /* Implementation */ = {
-			isa = PBXGroup;
-			children = (
-				F6A9F9961D351DEE007D8718 /* SettingsModuleInteractorImpl.swift */,
-				F6151BB21D3538CD000551B6 /* SettingsModulePresenterImpl.swift */,
-				F6C6BD6E1D3645BD00CF3B8B /* SettingsModuleViewController.swift */,
-				F6C6BD721D3669D500CF3B8B /* SettingsModuleURLCell.swift */,
-				F6C6BD731D3669D500CF3B8B /* SettingsModuleURLCell.xib */,
-			);
-			name = Implementation;
 			sourceTree = "<group>";
 		};
 		F6A9F9981D351E67007D8718 /* Settings Module */ = {
 			isa = PBXGroup;
 			children = (
-				F6A9F9991D351E7B007D8718 /* SettingsModuleInteractorImplTests.swift */,
-				F6151BB81D353B84000551B6 /* SettingsModulePresenterImplTests.swift */,
+				F6A9F9991D351E7B007D8718 /* SettingsInteractorTests.swift */,
+				F6151BB81D353B84000551B6 /* SettingsPresenterTests.swift */,
 			);
 			name = "Settings Module";
 			sourceTree = "<group>";
@@ -977,7 +998,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F6E2521A1CAACDF50061531E /* Settings.bundle in Resources */,
-				F6C6BD751D3669D500CF3B8B /* SettingsModuleURLCell.xib in Resources */,
+				F6C6BD751D3669D500CF3B8B /* FormItemURLCell.xib in Resources */,
 				F63404281C65F78300464F3E /* ICEmptyViewController.xib in Resources */,
 				F6A259351D33F8FF0005C533 /* AccountViewControllerHeaderView.xib in Resources */,
 				F6555A591D3413AE009C4324 /* Assets.xcassets in Resources */,
@@ -1052,6 +1073,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F65CC93A1CE0AC4B00AE59DF /* ICErrorCell.m in Sources */,
+				F65237481D4FF15700285713 /* SettingsOutput.swift in Sources */,
 				F6CDE9541CC52DD9009C2D48 /* ICRecentConversationsViewController.m in Sources */,
 				F63A666B1D2662DE00FCC82E /* AccountPresentationModel.swift in Sources */,
 				F605909C1D2F97AB0071FC63 /* AccountProvider.swift in Sources */,
@@ -1059,10 +1081,10 @@
 				F63404271C65F78300464F3E /* ICEmptyViewController.m in Sources */,
 				F65CC9341CE07E0D00AE59DF /* ICAvatarCell.m in Sources */,
 				F6C6BD711D364AFC00CF3B8B /* FormDataSource.swift in Sources */,
-				F6A9F9971D351DEE007D8718 /* SettingsModuleInteractorImpl.swift in Sources */,
+				F6A9F9971D351DEE007D8718 /* SettingsInteractor.swift in Sources */,
 				F62E49CB1CC7C870006C071D /* ICConversationViewController.m in Sources */,
 				F6B26FAB1C6B79310099CBC9 /* ICMessageComposeCell.m in Sources */,
-				F6151BB31D3538CD000551B6 /* SettingsModulePresenterImpl.swift in Sources */,
+				F6151BB31D3538CD000551B6 /* SettingsPresenter.swift in Sources */,
 				F676EFA31CDCE03E003047EC /* ICConversationParagraphFragment.m in Sources */,
 				F6BA3EE91D36438200C12E3D /* FormItem.swift in Sources */,
 				F65F983C1CAD16FE009A2FE5 /* ICNavigationController.m in Sources */,
@@ -1072,20 +1094,19 @@
 				F65751351D0FF4CE0038AB25 /* ICAccountPickerViewController.m in Sources */,
 				F62F71B31C66736200656D3C /* ICConversationCell.m in Sources */,
 				F6555A571D340E52009C4324 /* AccountViewControllerHeaderView.swift in Sources */,
-				F6A9F9941D345BED007D8718 /* Settings.swift in Sources */,
 				F68269CF1D0EECE2007A3934 /* ICAppWireframe.m in Sources */,
+				F652374A1D4FF17B00285713 /* SettingsView.swift in Sources */,
 				F676EFA81CDCE699003047EC /* ICConversationChapterFragment.m in Sources */,
 				F63516771D33C076007822F3 /* AccountPresenter.swift in Sources */,
 				F62F71D51C68D84E00656D3C /* ICMessageCell.m in Sources */,
 				F6EF1F441C72066C0083F4BE /* CLToken.m in Sources */,
-				F6151BB51D353A6A000551B6 /* SettingsModuleEventHandler.swift in Sources */,
-				F6B056771D352F99002D93D9 /* SettingsModulePresenter.swift in Sources */,
 				F6A41B741D4B9F400077321C /* AccountListView.swift in Sources */,
-				F6C6BD741D3669D500CF3B8B /* SettingsModuleURLCell.swift in Sources */,
+				F6C6BD741D3669D500CF3B8B /* FormItemURLCell.swift in Sources */,
 				F6B3CC621D4B85A600234F9B /* AccountListPresentationDataSource.swift in Sources */,
 				F68EDFFA1D3D3CE800AFCB9D /* AccountListModule.swift in Sources */,
 				F6EF1F411C72066C0083F4BE /* CLTokenInputView.m in Sources */,
 				F63A66751D26672000FCC82E /* AccountViewModelImpl.swift in Sources */,
+				F652374C1D4FF1BC00285713 /* SettingsViewEventHandler.swift in Sources */,
 				F635166E1D33A52A007822F3 /* AccountView.swift in Sources */,
 				F605909E1D2F97E70071FC63 /* AccountOutput.swift in Sources */,
 				F619BDC51C4D071700F87F50 /* AppDelegate.m in Sources */,
@@ -1101,18 +1122,17 @@
 				F6E252151CAAC8010061531E /* ICAccountShareActivityItemSource.m in Sources */,
 				F676EFB21CDE4570003047EC /* ICConversationTimestampView.m in Sources */,
 				F65F98501CB26132009A2FE5 /* UICollectionView+CellAction.m in Sources */,
+				F65237451D4FF0C200285713 /* SettingsProvider.swift in Sources */,
 				F676EFAE1CDCEE20003047EC /* ICConversationLayoutItem_Message.m in Sources */,
 				F6EF1F421C72066C0083F4BE /* CLTokenView.m in Sources */,
-				F6A9F9921D345B8F007D8718 /* SettingsModuleInteractor.swift in Sources */,
 				F65F98401CAD1725009A2FE5 /* ICNavigationBar.m in Sources */,
 				F6BA3EE71D36434B00C12E3D /* FromSection.swift in Sources */,
 				F63A66731D26669A00FCC82E /* AccountInteractor.swift in Sources */,
 				F6D807DA1D17F53E002953AB /* ICURLHandler.m in Sources */,
 				F68EE0001D3D3EAD00AFCB9D /* AccountListPresentationModel.swift in Sources */,
-				F6151BAF1D353263000551B6 /* SettingsModuleUserInterface.swift in Sources */,
 				F676EF9B1CDCD63F003047EC /* ICConversationMessageFragment.m in Sources */,
 				F6A2592E1D33EC080005C533 /* AccountViewEventHandler.swift in Sources */,
-				F6C6BD6F1D3645BD00CF3B8B /* SettingsModuleViewController.swift in Sources */,
+				F6C6BD6F1D3645BD00CF3B8B /* SettingsViewController.swift in Sources */,
 				F6A259331D33F5CF0005C533 /* AccountViewController.swift in Sources */,
 				F6A9F9901D345B7D007D8718 /* SettingsModule.swift in Sources */,
 				F6A41B791D4BA89E0077321C /* AccountListViewController.swift in Sources */,
@@ -1128,11 +1148,11 @@
 				F6E08EAC1D267CB900241CBE /* AccountViewModelImplTests.swift in Sources */,
 				F6D807E61D1827E3002953AB /* NSURLIntercambioTests.m in Sources */,
 				F676EFAA1CDCE99F003047EC /* ICConversationFragmentTests.m in Sources */,
-				F6A9F99A1D351E7B007D8718 /* SettingsModuleInteractorImplTests.swift in Sources */,
+				F6A9F99A1D351E7B007D8718 /* SettingsInteractorTests.swift in Sources */,
 				F6D807DD1D17F9EE002953AB /* ICURLHandlerTests.m in Sources */,
 				F6A41B761D4BA2140077321C /* AccountListPresenterTests.swift in Sources */,
 				F6A2592A1D33C3FE0005C533 /* AccountPresenterTests.swift in Sources */,
-				F6151BB91D353B84000551B6 /* SettingsModulePresenterImplTests.swift in Sources */,
+				F6151BB91D353B84000551B6 /* SettingsPresenterTests.swift in Sources */,
 				F619BDDB1C4D071700F87F50 /* IntercambioTests.m in Sources */,
 				F63A66781D26685300FCC82E /* AccountInteractorTests.swift in Sources */,
 				F6B3CC661D4B95A900234F9B /* AccountListPresentationDataSourceTests.swift in Sources */,

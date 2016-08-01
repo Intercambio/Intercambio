@@ -1,5 +1,5 @@
 //
-//  SettingsModulePresenterImpl.swift
+//  SettingsPresenter.swift
 //  Intercambio
 //
 //  Created by Tobias Kraentzer on 12.07.16.
@@ -9,14 +9,16 @@
 import Foundation
 import Fountain
 
-public class SettingsModulePresenterImpl : SettingsModulePresenter, SettingsModuleEventHandler {
+class SettingsPresenter : SettingsOutput, SettingsViewEventHandler {
     
-    internal weak var userInterface: SettingsModuleUserInterface? {
+    var completion: ((Bool) -> Void)?
+    
+    weak var userInterface: SettingsView? {
         didSet {
             updateIdentifier()
         }
     }
-    internal var interactor: SettingsModuleInteractor? {
+    var interactor: SettingsProvider? {
         didSet {
             updateIdentifier()
         }
@@ -24,7 +26,7 @@ public class SettingsModulePresenterImpl : SettingsModulePresenter, SettingsModu
     
     private var dataSource: FTDataSource?
     
-    public func loadSettings() {
+    func loadSettings() {
         if let interactor = self.interactor {
             dataSource = dataSource(settings: interactor.settings)
         } else {
@@ -33,10 +35,19 @@ public class SettingsModulePresenterImpl : SettingsModulePresenter, SettingsModu
         userInterface?.dataSource = dataSource
     }
     
-    public func save() throws {
+    func save() throws {
         if let dataSource = self.dataSource {
             let settings = toSettings(dataSource: dataSource)
             try interactor?.update(settings: settings)
+            if let completion = self.completion {
+                completion(true)
+            }
+        }
+    }
+    
+    func cancel() {
+        if let completion = self.completion {
+            completion(false)
         }
     }
     

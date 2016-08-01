@@ -9,41 +9,39 @@
 import UIKit
 import IntercambioCore
 
-@objc public protocol SettingsModuleDelegate : class {
-    @objc optional func settingsControllerDidCancel(_ controller: UIViewController)
-    @objc optional func settingsControllerDidSave(_ controller: UIViewController)
-    @objc optional func settingsController(_ controller: UIViewController, didFail: NSError)
-}
-
 public class SettingsModule : NSObject {
     
     private let service: CommunicationService
     
-    init(service: CommunicationService) {
+    public init(service: CommunicationService) {
         self.service = service
     }
     
-    public func viewController(uri: URL, delegate: SettingsModuleDelegate? = nil) -> (UIViewController?) {
+    public func viewController(uri: URL, completion: ((saved: Bool, controller: UIViewController) -> Void)?) -> (UIViewController?) {
         
-        if let host = uri.host,
-            let jid = JID(user: uri.user, host: host, resource: nil) {
+        if let host = uri.host, let jid = JID(user: uri.user, host: host, resource: nil) {
             
-            let interactor = SettingsModuleInteractorImpl(accountJID: jid,
-                                                         keyChain: service.keyChain)
-            
-            let presenter = SettingsModulePresenterImpl()
-            let viewControler = SettingsModuleViewController()
+            let interactor = SettingsInteractor(accountJID: jid, keyChain: service.keyChain)
+            let presenter = SettingsPresenter()
+            let view = SettingsViewController()
             
             // strong references (view controller -> presenter -> interactor)
-            viewControler.eventHandler = presenter
+            view.eventHandler = presenter
             presenter.interactor = interactor
             
             // weak references
             interactor.presenter = presenter
-            presenter.userInterface = viewControler
+            presenter.userInterface = view
+            if let c = completion {
+                presenter.completion = { [weak view] saved in
+                    if let v = view {
+                        c(saved: saved, controller: v)
+                    }
+                }
+            }
             
-            viewControler.delegate = delegate
-            return viewControler
+            return view
+            
         } else {
             return nil
         }

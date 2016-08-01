@@ -1,5 +1,5 @@
 //
-//  SettingsModuleViewController.swift
+//  SettingsViewController.swift
 //  Intercambio
 //
 //  Created by Tobias Kraentzer on 13.07.16.
@@ -9,11 +9,9 @@
 import UIKit
 import Fountain
 
-class SettingsModuleViewController: UITableViewController, SettingsModuleUserInterface {
+class SettingsViewController: UITableViewController, SettingsView {
     
-    internal var delegate: SettingsModuleDelegate?
-    
-    internal var eventHandler: SettingsModuleEventHandler?
+    var eventHandler: SettingsViewEventHandler?
     
     var identifier: String? {
         didSet {
@@ -42,16 +40,16 @@ class SettingsModuleViewController: UITableViewController, SettingsModuleUserInt
         navigationItem.prompt = identifier
 
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancel(sender:)))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(safe(sender:)))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(save(sender:)))
         
         tableView.allowsSelection = false
-        tableView.register(UINib(nibName: "SettingsModuleURLCell", bundle: nil), forCellReuseIdentifier: "SettingsModuleURLCell")
+        tableView.register(UINib(nibName: "FormItemURLCell", bundle: nil), forCellReuseIdentifier: "FormItemURLCell")
         
         tableViewAdapter = FTTableViewAdapter(tableView: tableView)
         
-        tableViewAdapter?.forRowsMatching(nil, useCellWithReuseIdentifier: "SettingsModuleURLCell") {
+        tableViewAdapter?.forRowsMatching(nil, useCellWithReuseIdentifier: "FormItemURLCell") {
             (view, item, indexPath, dataSource) in
-            if  let cell = view as? SettingsModuleURLCell,
+            if  let cell = view as? FormItemURLCell,
                 let formItem = item as? FormItem<URL> {
                 cell.formItem = formItem
             }
@@ -83,21 +81,14 @@ class SettingsModuleViewController: UITableViewController, SettingsModuleUserInt
     }
     
     func cancel(sender: AnyObject) {
-        if let settingsControllerDidCancel = delegate?.settingsControllerDidCancel {
-            settingsControllerDidCancel(self)
-        }
+        eventHandler?.cancel()
     }
     
-    func safe(sender: AnyObject) {
+    func save(sender: AnyObject) {
         do {
             try eventHandler?.save()
-            if let settingsControllerDidSave = delegate?.settingsControllerDidSave {
-                settingsControllerDidSave(self)
-            }
-        } catch let error as NSError {
-            if let settingsController = delegate?.settingsController {
-                settingsController(self, didFail: error)
-            }
+        } catch {
+            
         }
     }
 }

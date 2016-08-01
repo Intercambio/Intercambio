@@ -1,5 +1,5 @@
 //
-//  SettingsModulePresenterImplTests.swift
+//  SettingsPresenterTests.swift
 //  Intercambio
 //
 //  Created by Tobias Kraentzer on 12.07.16.
@@ -11,9 +11,9 @@ import IntercambioCore
 import CoreXMPP
 @testable import Intercambio
 
-class SettingsModulePresenterImplTests: XCTestCase {
+class SettingsPresenterTests: XCTestCase {
 
-    class Interactor : SettingsModuleInteractor {
+    class Interactor : SettingsProvider {
         var accountURI: URL? { get { return URL(string: "xmpp://romeo@example.com")! } }
         var identifier: String { get { return "romeo@example.com" } }
         var settings: Settings { get { return Settings() }}
@@ -23,7 +23,7 @@ class SettingsModulePresenterImplTests: XCTestCase {
         }
     }
     
-    class UserInterface : SettingsModuleUserInterface {
+    class UserInterface : SettingsView {
         var identifier: String?
         var dataSource: FTDataSource?
     }
@@ -34,7 +34,7 @@ class SettingsModulePresenterImplTests: XCTestCase {
         
         let interactor = Interactor()
         let userInterface = UserInterface()
-        let presenter = SettingsModulePresenterImpl()
+        let presenter = SettingsPresenter()
         presenter.userInterface = userInterface
         presenter.interactor = interactor
         
@@ -64,7 +64,7 @@ class SettingsModulePresenterImplTests: XCTestCase {
 
         let interactor = Interactor()
         let userInterface = UserInterface()
-        let presenter = SettingsModulePresenterImpl()
+        let presenter = SettingsPresenter()
         presenter.userInterface = userInterface
         presenter.interactor = interactor
         

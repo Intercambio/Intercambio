@@ -10,7 +10,7 @@
 #import "ICAccountShareActivityItemSource.h"
 #import "ICEmptyViewController.h"
 
-@interface ICAppWireframe () <UITabBarControllerDelegate, UISplitViewControllerDelegate, SettingsModuleDelegate>
+@interface ICAppWireframe () <UITabBarControllerDelegate, UISplitViewControllerDelegate>
 @property (nonatomic, weak) UISplitViewController *splitViewController;
 @property (nonatomic, weak) UITabBarController *tabBarController;
 
@@ -270,7 +270,9 @@
 
 - (void)presentSettingsUserInterfaceFor:(NSURL *_Nonnull)accountURI
 {
-    UIViewController *viewController = [self.settingsModule viewControllerWithUri:accountURI delegate:self];
+    UIViewController *viewController = [self.settingsModule viewControllerWithUri:accountURI completion:^(BOOL saved, UIViewController * _Nonnull controller) {
+        [controller dismissViewControllerAnimated:YES completion:nil];
+    }];
 
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
     navigationController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
@@ -279,32 +281,6 @@
     [self.splitViewController presentViewController:navigationController
                                            animated:YES
                                          completion:nil];
-}
-
-#pragma mark SettingsModuleDelegate
-
-- (void)settingsControllerDidCancel:(UIViewController *_Nonnull)controller
-{
-    [controller dismissViewControllerAnimated:YES
-                                   completion:^{
-
-                                   }];
-}
-
-- (void)settingsControllerDidSave:(UIViewController *_Nonnull)controller
-{
-    [controller dismissViewControllerAnimated:YES
-                                   completion:^{
-
-                                   }];
-}
-
-- (void)settingsController:(UIViewController *_Nonnull)controller didFail:(NSError *_Nonnull)didFail
-{
-    [controller dismissViewControllerAnimated:YES
-                                   completion:^{
-
-                                   }];
 }
 
 #pragma mark -
