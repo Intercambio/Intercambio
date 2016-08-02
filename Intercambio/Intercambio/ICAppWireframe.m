@@ -13,6 +13,9 @@
 @interface ICAppWireframe () <UITabBarControllerDelegate, UISplitViewControllerDelegate>
 @property (nonatomic, weak) UISplitViewController *splitViewController;
 @property (nonatomic, weak) UITabBarController *tabBarController;
+
+@property (nonatomic, weak) UINavigationController *conversationsNavigationController;
+@property (nonatomic, weak) UINavigationController *accountsNavigationController;
 @end
 
 @implementation ICAppWireframe
@@ -31,7 +34,7 @@
 - (void)presentMainInterface
 {
     UINavigationController *conversationsNavigationController = [self navigationControllerForPrimaryViewController:[self recentConversationsViewController]];
-    UINavigationController *accountsNavigationController = [self navigationControllerForPrimaryViewController:[self accountsViewController]];
+    UINavigationController *accountsNavigationController = [self navigationControllerForPrimaryViewController:[self.accountListModule viewController]];
 
     UITabBarController *tabBar = [[UITabBarController alloc] init];
     tabBar.view.backgroundColor = [UIColor whiteColor];
@@ -51,6 +54,9 @@
 
     self.tabBarController = tabBar;
     self.splitViewController = mainViewController;
+
+    self.conversationsNavigationController = conversationsNavigationController;
+    self.accountsNavigationController = accountsNavigationController;
 
     self.window.rootViewController = mainViewController;
     self.window.backgroundColor = [UIColor whiteColor];
@@ -85,15 +91,7 @@
 - (void)presentUserInterfaceForAccountWithURI:(NSURL *)accountURI
                            fromViewController:(UIViewController *)sender
 {
-    UIViewController *viewController = [self accountSettingsViewControllerWithURI:accountURI];
-
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
-    navigationController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-    navigationController.modalPresentationStyle = UIModalPresentationFormSheet;
-
-    [self.splitViewController presentViewController:navigationController
-                                           animated:YES
-                                         completion:nil];
+    [self presentAccountUserInterfaceFor:accountURI];
 }
 
 - (void)presentUserInterfaceForNewAccountFromViewController:(UIViewController *)viewController
@@ -241,6 +239,50 @@
     }
 }
 
+#pragma mark AccountRouter, AccountListRouter
+
+- (void)presentNewAccountUserInterface
+{
+    UIAlertController *alert = [self alertForNewAccount];
+    if (alert) {
+        [self.splitViewController presentViewController:alert
+                                               animated:YES
+                                             completion:nil];
+    }
+}
+
+- (void)presentAccountUserInterfaceFor:(NSURL *)accountURI
+{
+    BOOL accountsNavigationVisible = self.tabBarController.selectedViewController == self.accountsNavigationController;
+    
+    UIViewController *viewController = [self.accountModule viewControllerWithUri:accountURI];
+    if ([self.accountsNavigationController.viewControllers count] > 1) {
+        [self.accountsNavigationController popToRootViewControllerAnimated:NO];
+        [self.accountsNavigationController pushViewController:viewController animated:NO];
+    } else {
+        [self.accountsNavigationController pushViewController:viewController animated:accountsNavigationVisible];
+    }
+    
+    if (!accountsNavigationVisible) {
+        self.tabBarController.selectedViewController = self.accountsNavigationController;
+    }
+}
+
+- (void)presentSettingsUserInterfaceFor:(NSURL *_Nonnull)accountURI
+{
+    UIViewController *viewController = [self.settingsModule viewControllerWithUri:accountURI completion:^(BOOL saved, UIViewController * _Nonnull controller) {
+        [controller dismissViewControllerAnimated:YES completion:nil];
+    }];
+
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
+    navigationController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    navigationController.modalPresentationStyle = UIModalPresentationFormSheet;
+
+    [self.splitViewController presentViewController:navigationController
+                                           animated:YES
+                                         completion:nil];
+}
+
 #pragma mark -
 
 - (UIViewController *)recentConversationsViewController
@@ -270,28 +312,6 @@
     UIViewController *viewController = nil;
     if ([self.delegate respondsToSelector:@selector(viewControllerForConversationInAppWireframe:)]) {
         viewController = [self.delegate viewControllerForConversationInAppWireframe:self];
-    }
-    [self prepareViewController:viewController];
-    return viewController ?: [[ICEmptyViewController alloc] init];
-}
-
-- (UIViewController *)accountsViewController
-{
-    UIViewController *viewController = nil;
-    if ([self.delegate respondsToSelector:@selector(viewControllerForAccountsInAppWireframe:)]) {
-        viewController = [self.delegate viewControllerForAccountsInAppWireframe:self];
-    }
-    [self prepareViewController:viewController];
-    return viewController ?: [[ICEmptyViewController alloc] init];
-}
-
-- (UIViewController *)accountSettingsViewControllerWithURI:(NSURL *)accountURI;
-{
-    UIViewController *viewController = nil;
-    if ([self.delegate respondsToSelector:@selector(viewControllerForAccountSettingsInAppWireframe:)]) {
-        UIViewController<ICAccountSettingsUserInterface> *accountSettingsViewController = [self.delegate viewControllerForAccountSettingsInAppWireframe:self];
-        accountSettingsViewController.accountURI = accountURI;
-        viewController = accountSettingsViewController;
     }
     [self prepareViewController:viewController];
     return viewController ?: [[ICEmptyViewController alloc] init];

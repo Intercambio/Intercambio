@@ -20,6 +20,7 @@
 #import "ICAppWireframe.h"
 #import "ICURLHandler.h"
 #import "ICUserInterfaceFactory.h"
+#import "Intercambio-Swift.h"
 #import <CocoaLumberjack/CocoaLumberjack.h>
 #import <IntercambioCore/IntercambioCore.h>
 
@@ -54,9 +55,15 @@ static DDLogLevel ddLogLevel = DDLogLevelInfo;
     _communicationService.delegate = self;
 
     _userInterfaceFactory = [[ICUserInterfaceFactory alloc] initWithCommunicationService:_communicationService];
+
     _appWireframe = [[ICAppWireframe alloc] init];
     _appWireframe.delegate = _userInterfaceFactory;
     _appWireframe.window = self.window;
+
+    _appWireframe.accountListModule = [[AccountListModule alloc] initWithService:_communicationService router:_appWireframe];
+    _appWireframe.accountModule = [[AccountModule alloc] initWithService:_communicationService router:_appWireframe];
+    _appWireframe.settingsModule = [[SettingsModule alloc] initWithService:_communicationService];
+
     [_appWireframe presentLaunchScreen];
 
     _URLHandler = [[ICURLHandler alloc] initWithAppWireframe:_appWireframe];

@@ -7,8 +7,6 @@
 //
 
 #import "ICUserInterfaceFactory.h"
-#import "ICAccountSettingsViewController.h"
-#import "ICAccountsViewController.h"
 #import "ICConversationViewController.h"
 #import "ICConversationViewController.h"
 #import "ICNavigationController.h"
@@ -72,27 +70,12 @@
     return recentConversationsViewController;
 }
 
-- (UIViewController *)viewControllerForAccountsInAppWireframe:(ICAppWireframe *)appWireframe
-{
-    ICAccountsViewController *accountsViewController = [[ICAccountsViewController alloc] init];
-    accountsViewController.dataSource = self.communicationService.accountDataSource;
-    return accountsViewController;
-}
-
 - (UIViewController<ICConversationUserInterface> *)viewControllerForConversationInAppWireframe:(ICAppWireframe *)appWireframe
 {
     ICConversationViewController *viewController = [[ICConversationViewController alloc] init];
     viewController.dataSourceProvider = self.communicationService;
     viewController.accountDataSource = self.communicationService.accountDataSource;
     viewController.conversationProvider = self.communicationService;
-    return viewController;
-}
-
-- (UIViewController<ICAccountSettingsUserInterface> *)viewControllerForAccountSettingsInAppWireframe:(ICAppWireframe *)appWireframe
-{
-    UIStoryboard *accountSettings = [UIStoryboard storyboardWithName:@"AccountSettings" bundle:[NSBundle mainBundle]];
-    ICAccountSettingsViewController *viewController = [accountSettings instantiateViewControllerWithIdentifier:@"ICAccountSettings"];
-    viewController.accountProvider = self.communicationService;
     return viewController;
 }
 

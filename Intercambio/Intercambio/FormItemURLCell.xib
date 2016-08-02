@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11173.2" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11143.2"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="FormItemURLCell" rowHeight="69" id="KGk-i7-Jjw" customClass="FormItemURLCell" customModule="Intercambio" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="360" height="69"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <frame key="frameInset" width="360" height="68"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yk5-dM-wAC">
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="URL"/>
+                    </textField>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="yk5-dM-wAC" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="3Xv-zJ-fCr"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="yk5-dM-wAC" secondAttribute="bottom" id="L7X-qE-KOi"/>
+                    <constraint firstItem="yk5-dM-wAC" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="TId-9T-K4V"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="yk5-dM-wAC" secondAttribute="trailing" id="jLj-ra-ngw"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="textField" destination="yk5-dM-wAC" id="aN3-qw-M37"/>
+            </connections>
+            <point key="canvasLocation" x="-283" y="7"/>
+        </tableViewCell>
+    </objects>
+</document>
