@@ -239,7 +239,7 @@
     }
 }
 
-#pragma mark AccountRouter, AccountListRouter
+#pragma mark AccountRouter, AccountListRouter, NavigationControllerRouter
 
 - (void)presentNewAccountUserInterface
 {
@@ -319,11 +319,7 @@
 
 - (UINavigationController *)navigationControllerForPrimaryViewController:(UIViewController *)primaryViewController
 {
-    UINavigationController *navigationController = nil;
-    if ([self.delegate respondsToSelector:@selector(appWireframe:navigationControllerForPrimaryViewController:)]) {
-        navigationController = [self.delegate appWireframe:self navigationControllerForPrimaryViewController:primaryViewController];
-    }
-    [self prepareViewController:navigationController];
+    UINavigationController *navigationController = [self.navigationControllerModule navigationControllerWithRootViewController:primaryViewController];
     return navigationController ?: [[UINavigationController alloc] initWithRootViewController:primaryViewController];
 }
 
