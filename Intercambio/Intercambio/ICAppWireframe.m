@@ -254,7 +254,7 @@
 - (void)presentAccountUserInterfaceFor:(NSURL *)accountURI
 {
     BOOL accountsNavigationVisible = self.tabBarController.selectedViewController == self.accountsNavigationController;
-    
+
     UIViewController *viewController = [self.accountModule viewControllerWithUri:accountURI];
     if ([self.accountsNavigationController.viewControllers count] > 1) {
         [self.accountsNavigationController popToRootViewControllerAnimated:NO];
@@ -262,7 +262,7 @@
     } else {
         [self.accountsNavigationController pushViewController:viewController animated:accountsNavigationVisible];
     }
-    
+
     if (!accountsNavigationVisible) {
         self.tabBarController.selectedViewController = self.accountsNavigationController;
     }
@@ -270,9 +270,10 @@
 
 - (void)presentSettingsUserInterfaceFor:(NSURL *_Nonnull)accountURI
 {
-    UIViewController *viewController = [self.settingsModule viewControllerWithUri:accountURI completion:^(BOOL saved, UIViewController * _Nonnull controller) {
-        [controller dismissViewControllerAnimated:YES completion:nil];
-    }];
+    UIViewController *viewController = [self.settingsModule viewControllerWithUri:accountURI
+                                                                       completion:^(BOOL saved, UIViewController *_Nonnull controller) {
+                                                                           [controller dismissViewControllerAnimated:YES completion:nil];
+                                                                       }];
 
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
     navigationController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;

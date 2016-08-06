@@ -44,7 +44,7 @@ class AccountListPresentationDataSource: NSObject, FTDataSource {
     init(keyChain: KeyChain) {
         self.keyChain = keyChain
         self.proxy = FTObserverProxy()
-        self.backingStore = FTMutableSet(sortDescriptors: [SortDescriptor(key: "identifier", ascending: true)])
+        self.backingStore = FTMutableSet(sortDescriptors: [NSSortDescriptor(key: "identifier", ascending: true)])
         super.init()
         
         proxy.object = self

@@ -18,6 +18,6 @@ protocol AccountPresentationModel {
     var state: AccountPresentationModelConnectionState { get }
     var name: String? { get }
     var options: Dictionary<NSObject, AnyObject> { get }
-    var error: NSError? { get }
+    var error: Error? { get }
     var nextConnectionAttempt: Date? { get }
 }

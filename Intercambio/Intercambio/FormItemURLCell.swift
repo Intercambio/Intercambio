@@ -39,7 +39,7 @@ class FormItemURLCell: UITableViewCell, UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         if let value = textField.text,
            let url = URL(string: value) {
-            if url.scheme != nil && url.resourceSpecifier?.characters.count > 0 {
+            if url.scheme != nil && url.path.characters.count > 0 {
                 formItem?.value = url
             } else {
                 formItem?.value = nil

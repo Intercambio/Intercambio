@@ -58,7 +58,7 @@ class AccountPresentationModelImpl : AccountPresentationModel {
         get { return keyChainItem.options }
     }
     
-    var error: NSError? {
+    var error: Error? {
         get { return info?.recentError }
     }
     
@@ -74,6 +74,6 @@ class AccountViewModelEmptyImpl : AccountPresentationModel {
     let state = AccountPresentationModelConnectionState.disconnected
     let name: String? = nil
     let options: Dictionary<NSObject, AnyObject> = [:]
-    let error: NSError? = nil
+    let error: Error? = nil
     let nextConnectionAttempt: Date? = nil
 }
