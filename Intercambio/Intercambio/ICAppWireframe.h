@@ -20,17 +20,16 @@
 - (UIViewController<ICRecentConversationsUserInterface> *)viewControllerForRecentConversationsInAppWireframe:(ICAppWireframe *)appWireframe;
 - (UIViewController<ICConversationUserInterface> *)viewControllerForConversationInAppWireframe:(ICAppWireframe *)appWireframe;
 
-- (UINavigationController *)appWireframe:(ICAppWireframe *)appWireframe navigationControllerForPrimaryViewController:(UIViewController *)primaryViewController;
-
 - (UIAlertController *)alertForNewAccountInAppWireframe:(ICAppWireframe *)appWireframe;
 - (UIAlertController *)alertForSelectingAccountInAppWireframe:(ICAppWireframe *)appWireframe withCompletion:(void (^)(NSURL *accountURI))completion;
 @end
 
-@interface ICAppWireframe : NSObject <AccountRouter, AccountListRouter>
+@interface ICAppWireframe : NSObject <AccountRouter, AccountListRouter, NavigationControllerRouter>
 
 @property (nonatomic, weak) id<ICAppWireframeDelegate> delegate;
 @property (nonatomic, strong) UIWindow *window;
 
+@property (nonatomic, strong) NavigationControllerModule *navigationControllerModule;
 @property (nonatomic, strong) AccountListModule *accountListModule;
 @property (nonatomic, strong) AccountModule *accountModule;
 @property (nonatomic, strong) SettingsModule *settingsModule;

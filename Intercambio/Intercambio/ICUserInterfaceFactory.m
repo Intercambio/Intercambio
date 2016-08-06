@@ -9,7 +9,6 @@
 #import "ICUserInterfaceFactory.h"
 #import "ICConversationViewController.h"
 #import "ICConversationViewController.h"
-#import "ICNavigationController.h"
 #import "ICRecentConversationsViewController.h"
 
 @interface ICUserInterfaceFactory ()
@@ -77,14 +76,6 @@
     viewController.accountDataSource = self.communicationService.accountDataSource;
     viewController.conversationProvider = self.communicationService;
     return viewController;
-}
-
-- (UINavigationController *)appWireframe:(ICAppWireframe *)appWireframe navigationControllerForPrimaryViewController:(UIViewController *)primaryViewController
-{
-    ICNavigationController *navigationController = [[ICNavigationController alloc] initWithRootViewController:primaryViewController];
-    navigationController.accountDataSource = self.communicationService.accountDataSource;
-    navigationController.showConnectionStatus = YES;
-    return navigationController;
 }
 
 - (UIAlertController *)alertForNewAccountInAppWireframe:(ICAppWireframe *)appWireframe

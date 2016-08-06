@@ -12,6 +12,12 @@
 		F60DFF871C6DE04600764E26 /* ICConversationLayoutInvalidationContext.m in Sources */ = {isa = PBXBuildFile; fileRef = F60DFF861C6DE04600764E26 /* ICConversationLayoutInvalidationContext.m */; };
 		F6151BB31D3538CD000551B6 /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6151BB21D3538CD000551B6 /* SettingsPresenter.swift */; };
 		F6151BB91D353B84000551B6 /* SettingsPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6151BB81D353B84000551B6 /* SettingsPresenterTests.swift */; };
+		F61679F81D5070F20002A1A4 /* NavigationControllerModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61679F71D5070F20002A1A4 /* NavigationControllerModule.swift */; };
+		F61679FC1D50725B0002A1A4 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61679FB1D50725B0002A1A4 /* NavigationController.swift */; };
+		F61679FE1D5072820002A1A4 /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61679FD1D5072820002A1A4 /* NavigationBar.swift */; };
+		F6167A001D5073100002A1A4 /* NavigationControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61679FF1D5073100002A1A4 /* NavigationControllerView.swift */; };
+		F6167A021D50733E0002A1A4 /* NavigationControllerViewEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6167A011D50733E0002A1A4 /* NavigationControllerViewEventHandler.swift */; };
+		F6167A051D5073890002A1A4 /* NavigationControllerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6167A041D5073890002A1A4 /* NavigationControllerPresenter.swift */; };
 		F619BDC21C4D071700F87F50 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F619BDC11C4D071700F87F50 /* main.m */; };
 		F619BDC51C4D071700F87F50 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F619BDC41C4D071700F87F50 /* AppDelegate.m */; };
 		F619BDD01C4D071700F87F50 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F619BDCE1C4D071700F87F50 /* LaunchScreen.storyboard */; };
@@ -41,9 +47,6 @@
 		F657513B1D1011FC0038AB25 /* SASLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F65751391D1011FC0038AB25 /* SASLKit.framework */; };
 		F65CC9341CE07E0D00AE59DF /* ICAvatarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F65CC9331CE07E0D00AE59DF /* ICAvatarCell.m */; };
 		F65CC93A1CE0AC4B00AE59DF /* ICErrorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F65CC9391CE0AC4B00AE59DF /* ICErrorCell.m */; };
-		F65F983C1CAD16FE009A2FE5 /* ICNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F65F983B1CAD16FE009A2FE5 /* ICNavigationController.m */; };
-		F65F98401CAD1725009A2FE5 /* ICNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F65F983F1CAD1725009A2FE5 /* ICNavigationBar.m */; };
-		F65F98451CAD2831009A2FE5 /* ICConnectionStateView.m in Sources */ = {isa = PBXBuildFile; fileRef = F65F98441CAD2831009A2FE5 /* ICConnectionStateView.m */; };
 		F65F98501CB26132009A2FE5 /* UICollectionView+CellAction.m in Sources */ = {isa = PBXBuildFile; fileRef = F65F984F1CB26132009A2FE5 /* UICollectionView+CellAction.m */; };
 		F66B0AEA1C85EC9600C5CBD9 /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F66B0AE71C85EC9600C5CBD9 /* HockeySDK.framework */; };
 		F66B0AEB1C85EC9600C5CBD9 /* HockeySDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F66B0AE91C85EC9600C5CBD9 /* HockeySDKResources.bundle */; };
@@ -79,6 +82,7 @@
 		F6B26FAB1C6B79310099CBC9 /* ICMessageComposeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F6B26FAA1C6B79310099CBC9 /* ICMessageComposeCell.m */; };
 		F6B3CC621D4B85A600234F9B /* AccountListPresentationDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B3CC611D4B85A600234F9B /* AccountListPresentationDataSource.swift */; };
 		F6B3CC661D4B95A900234F9B /* AccountListPresentationDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B3CC651D4B95A900234F9B /* AccountListPresentationDataSourceTests.swift */; };
+		F6B567001D507697004BCDB0 /* NavigationControllerStatusViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B566FF1D507697004BCDB0 /* NavigationControllerStatusViewModel.swift */; };
 		F6BA3EE71D36434B00C12E3D /* FromSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BA3EE61D36434B00C12E3D /* FromSection.swift */; };
 		F6BA3EE91D36438200C12E3D /* FormItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BA3EE81D36438200C12E3D /* FormItem.swift */; };
 		F6C6BD6F1D3645BD00CF3B8B /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C6BD6E1D3645BD00CF3B8B /* SettingsViewController.swift */; };
@@ -103,6 +107,7 @@
 		F6EF1F421C72066C0083F4BE /* CLTokenView.m in Sources */ = {isa = PBXBuildFile; fileRef = F6EF1F3C1C72066C0083F4BE /* CLTokenView.m */; };
 		F6EF1F431C72066C0083F4BE /* CLBackspaceDetectingTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = F6EF1F3E1C72066C0083F4BE /* CLBackspaceDetectingTextField.m */; };
 		F6EF1F441C72066C0083F4BE /* CLToken.m in Sources */ = {isa = PBXBuildFile; fileRef = F6EF1F401C72066C0083F4BE /* CLToken.m */; };
+		F6F375411D55326000F718BC /* NavigationBarStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F375401D55326000F718BC /* NavigationBarStatusView.swift */; };
 		F6F56AF31C51416600C34CC8 /* SocketRocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F684140B1C4D8A7F009B37BE /* SocketRocket.framework */; };
 		F6F56AF41C51416600C34CC8 /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F68413FF1C4D8901009B37BE /* CocoaLumberjack.framework */; };
 		F6F56AF51C51416600C34CC8 /* CoreXMPP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F68414001C4D8901009B37BE /* CoreXMPP.framework */; };
@@ -148,6 +153,12 @@
 		F60DFF861C6DE04600764E26 /* ICConversationLayoutInvalidationContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICConversationLayoutInvalidationContext.m; sourceTree = "<group>"; };
 		F6151BB21D3538CD000551B6 /* SettingsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
 		F6151BB81D353B84000551B6 /* SettingsPresenterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsPresenterTests.swift; sourceTree = "<group>"; };
+		F61679F71D5070F20002A1A4 /* NavigationControllerModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationControllerModule.swift; sourceTree = "<group>"; };
+		F61679FB1D50725B0002A1A4 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		F61679FD1D5072820002A1A4 /* NavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
+		F61679FF1D5073100002A1A4 /* NavigationControllerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationControllerView.swift; sourceTree = "<group>"; };
+		F6167A011D50733E0002A1A4 /* NavigationControllerViewEventHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationControllerViewEventHandler.swift; sourceTree = "<group>"; };
+		F6167A041D5073890002A1A4 /* NavigationControllerPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationControllerPresenter.swift; sourceTree = "<group>"; };
 		F619BDBD1C4D071700F87F50 /* Intercambio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Intercambio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F619BDC11C4D071700F87F50 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F619BDC31C4D071700F87F50 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -195,12 +206,6 @@
 		F65CC9331CE07E0D00AE59DF /* ICAvatarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICAvatarCell.m; sourceTree = "<group>"; };
 		F65CC9381CE0AC4B00AE59DF /* ICErrorCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICErrorCell.h; sourceTree = "<group>"; };
 		F65CC9391CE0AC4B00AE59DF /* ICErrorCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICErrorCell.m; sourceTree = "<group>"; };
-		F65F983A1CAD16FE009A2FE5 /* ICNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = ICNavigationController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		F65F983B1CAD16FE009A2FE5 /* ICNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ICNavigationController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		F65F983E1CAD1725009A2FE5 /* ICNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICNavigationBar.h; sourceTree = "<group>"; };
-		F65F983F1CAD1725009A2FE5 /* ICNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICNavigationBar.m; sourceTree = "<group>"; };
-		F65F98431CAD2831009A2FE5 /* ICConnectionStateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICConnectionStateView.h; sourceTree = "<group>"; };
-		F65F98441CAD2831009A2FE5 /* ICConnectionStateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICConnectionStateView.m; sourceTree = "<group>"; };
 		F65F984E1CB26132009A2FE5 /* UICollectionView+CellAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UICollectionView+CellAction.h"; sourceTree = "<group>"; };
 		F65F984F1CB26132009A2FE5 /* UICollectionView+CellAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UICollectionView+CellAction.m"; sourceTree = "<group>"; };
 		F66B0AE71C85EC9600C5CBD9 /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HockeySDK.framework; sourceTree = "<group>"; };
@@ -259,6 +264,7 @@
 		F6B26FAA1C6B79310099CBC9 /* ICMessageComposeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ICMessageComposeCell.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		F6B3CC611D4B85A600234F9B /* AccountListPresentationDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountListPresentationDataSource.swift; sourceTree = "<group>"; };
 		F6B3CC651D4B95A900234F9B /* AccountListPresentationDataSourceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AccountListPresentationDataSourceTests.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		F6B566FF1D507697004BCDB0 /* NavigationControllerStatusViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationControllerStatusViewModel.swift; sourceTree = "<group>"; };
 		F6BA3EE61D36434B00C12E3D /* FromSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FromSection.swift; sourceTree = "<group>"; };
 		F6BA3EE81D36438200C12E3D /* FormItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormItem.swift; sourceTree = "<group>"; };
 		F6C6BD6E1D3645BD00CF3B8B /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -294,6 +300,7 @@
 		F6EF1F401C72066C0083F4BE /* CLToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLToken.m; sourceTree = "<group>"; };
 		F6EF1F491C737B9A0083F4BE /* CLTokenInputView-LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "CLTokenInputView-LICENSE"; sourceTree = "<group>"; };
 		F6EF1F4A1C737B9A0083F4BE /* CLTokenInputView-README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "CLTokenInputView-README.md"; sourceTree = "<group>"; };
+		F6F375401D55326000F718BC /* NavigationBarStatusView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationBarStatusView.swift; sourceTree = "<group>"; };
 		F6F56AFD1C5395A700C34CC8 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Cartfile; path = ../Cartfile; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -365,6 +372,45 @@
 				F65CC9391CE0AC4B00AE59DF /* ICErrorCell.m */,
 			);
 			name = Cells;
+			sourceTree = "<group>";
+		};
+		F61679F61D5070D70002A1A4 /* Navigation Controller Module */ = {
+			isa = PBXGroup;
+			children = (
+				F61679F71D5070F20002A1A4 /* NavigationControllerModule.swift */,
+				F61679F91D50723E0002A1A4 /* Protocols */,
+				F61679FA1D5072460002A1A4 /* View */,
+				F6167A031D5073760002A1A4 /* Presenter */,
+			);
+			name = "Navigation Controller Module";
+			sourceTree = "<group>";
+		};
+		F61679F91D50723E0002A1A4 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				F61679FF1D5073100002A1A4 /* NavigationControllerView.swift */,
+				F6167A011D50733E0002A1A4 /* NavigationControllerViewEventHandler.swift */,
+				F6B566FF1D507697004BCDB0 /* NavigationControllerStatusViewModel.swift */,
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
+		F61679FA1D5072460002A1A4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F61679FB1D50725B0002A1A4 /* NavigationController.swift */,
+				F61679FD1D5072820002A1A4 /* NavigationBar.swift */,
+				F6F375401D55326000F718BC /* NavigationBarStatusView.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		F6167A031D5073760002A1A4 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				F6167A041D5073890002A1A4 /* NavigationControllerPresenter.swift */,
+			);
+			name = Presenter;
 			sourceTree = "<group>";
 		};
 		F619BDB41C4D071700F87F50 = {
@@ -551,19 +597,6 @@
 			name = Empty;
 			sourceTree = "<group>";
 		};
-		F65F983D1CAD1708009A2FE5 /* Navigation Controller */ = {
-			isa = PBXGroup;
-			children = (
-				F65F983A1CAD16FE009A2FE5 /* ICNavigationController.h */,
-				F65F983B1CAD16FE009A2FE5 /* ICNavigationController.m */,
-				F65F983E1CAD1725009A2FE5 /* ICNavigationBar.h */,
-				F65F983F1CAD1725009A2FE5 /* ICNavigationBar.m */,
-				F65F98431CAD2831009A2FE5 /* ICConnectionStateView.h */,
-				F65F98441CAD2831009A2FE5 /* ICConnectionStateView.m */,
-			);
-			name = "Navigation Controller";
-			sourceTree = "<group>";
-		};
 		F65F98511CB26531009A2FE5 /* Additions */ = {
 			isa = PBXGroup;
 			children = (
@@ -662,7 +695,6 @@
 			isa = PBXGroup;
 			children = (
 				F65237501D4FF47D00285713 /* Forms */,
-				F65F983D1CAD1708009A2FE5 /* Navigation Controller */,
 				F65751371D1004580038AB25 /* Empty */,
 				F65751361D0FF4D30038AB25 /* Account Picker */,
 			);
@@ -672,6 +704,7 @@
 		F6826A101D0EF151007A3934 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				F61679F61D5070D70002A1A4 /* Navigation Controller Module */,
 				F68EDFF81D3D3CD300AFCB9D /* Account List Module */,
 				F6E604FE1C787273000CCDD9 /* Account Module */,
 				F6A9F98E1D345B41007D8718 /* Settings Module */,
@@ -1074,6 +1107,7 @@
 			files = (
 				F65CC93A1CE0AC4B00AE59DF /* ICErrorCell.m in Sources */,
 				F65237481D4FF15700285713 /* SettingsOutput.swift in Sources */,
+				F6167A051D5073890002A1A4 /* NavigationControllerPresenter.swift in Sources */,
 				F6CDE9541CC52DD9009C2D48 /* ICRecentConversationsViewController.m in Sources */,
 				F63A666B1D2662DE00FCC82E /* AccountPresentationModel.swift in Sources */,
 				F605909C1D2F97AB0071FC63 /* AccountProvider.swift in Sources */,
@@ -1082,12 +1116,12 @@
 				F65CC9341CE07E0D00AE59DF /* ICAvatarCell.m in Sources */,
 				F6C6BD711D364AFC00CF3B8B /* FormDataSource.swift in Sources */,
 				F6A9F9971D351DEE007D8718 /* SettingsInteractor.swift in Sources */,
+				F61679F81D5070F20002A1A4 /* NavigationControllerModule.swift in Sources */,
 				F62E49CB1CC7C870006C071D /* ICConversationViewController.m in Sources */,
 				F6B26FAB1C6B79310099CBC9 /* ICMessageComposeCell.m in Sources */,
 				F6151BB31D3538CD000551B6 /* SettingsPresenter.swift in Sources */,
 				F676EFA31CDCE03E003047EC /* ICConversationParagraphFragment.m in Sources */,
 				F6BA3EE91D36438200C12E3D /* FormItem.swift in Sources */,
-				F65F983C1CAD16FE009A2FE5 /* ICNavigationController.m in Sources */,
 				F6EF1F431C72066C0083F4BE /* CLBackspaceDetectingTextField.m in Sources */,
 				F6EF1F371C71D1BC0083F4BE /* ICMessageBackgroundView.m in Sources */,
 				F676EF981CDCD49A003047EC /* ICConversationFragment.m in Sources */,
@@ -1101,7 +1135,9 @@
 				F62F71D51C68D84E00656D3C /* ICMessageCell.m in Sources */,
 				F6EF1F441C72066C0083F4BE /* CLToken.m in Sources */,
 				F6A41B741D4B9F400077321C /* AccountListView.swift in Sources */,
+				F6167A021D50733E0002A1A4 /* NavigationControllerViewEventHandler.swift in Sources */,
 				F6C6BD741D3669D500CF3B8B /* FormItemURLCell.swift in Sources */,
+				F61679FC1D50725B0002A1A4 /* NavigationController.swift in Sources */,
 				F6B3CC621D4B85A600234F9B /* AccountListPresentationDataSource.swift in Sources */,
 				F68EDFFA1D3D3CE800AFCB9D /* AccountListModule.swift in Sources */,
 				F6EF1F411C72066C0083F4BE /* CLTokenInputView.m in Sources */,
@@ -1112,7 +1148,7 @@
 				F619BDC51C4D071700F87F50 /* AppDelegate.m in Sources */,
 				F6826A1D1D0F38BD007A3934 /* UITableView+CellAction.m in Sources */,
 				F60DFF871C6DE04600764E26 /* ICConversationLayoutInvalidationContext.m in Sources */,
-				F65F98451CAD2831009A2FE5 /* ICConnectionStateView.m in Sources */,
+				F6B567001D507697004BCDB0 /* NavigationControllerStatusViewModel.swift in Sources */,
 				F6826A201D0F4476007A3934 /* ICUserInterfaceFactory.m in Sources */,
 				F6D807E41D1826EB002953AB /* NSURL+Intercambio.m in Sources */,
 				F6A41B711D4B9F220077321C /* AccountListViewEventHandler.swift in Sources */,
@@ -1121,11 +1157,11 @@
 				F619BDC21C4D071700F87F50 /* main.m in Sources */,
 				F6E252151CAAC8010061531E /* ICAccountShareActivityItemSource.m in Sources */,
 				F676EFB21CDE4570003047EC /* ICConversationTimestampView.m in Sources */,
+				F61679FE1D5072820002A1A4 /* NavigationBar.swift in Sources */,
 				F65F98501CB26132009A2FE5 /* UICollectionView+CellAction.m in Sources */,
 				F65237451D4FF0C200285713 /* SettingsProvider.swift in Sources */,
 				F676EFAE1CDCEE20003047EC /* ICConversationLayoutItem_Message.m in Sources */,
 				F6EF1F421C72066C0083F4BE /* CLTokenView.m in Sources */,
-				F65F98401CAD1725009A2FE5 /* ICNavigationBar.m in Sources */,
 				F6BA3EE71D36434B00C12E3D /* FromSection.swift in Sources */,
 				F63A66731D26669A00FCC82E /* AccountInteractor.swift in Sources */,
 				F6D807DA1D17F53E002953AB /* ICURLHandler.m in Sources */,
@@ -1133,7 +1169,9 @@
 				F676EF9B1CDCD63F003047EC /* ICConversationMessageFragment.m in Sources */,
 				F6A2592E1D33EC080005C533 /* AccountViewEventHandler.swift in Sources */,
 				F6C6BD6F1D3645BD00CF3B8B /* SettingsViewController.swift in Sources */,
+				F6167A001D5073100002A1A4 /* NavigationControllerView.swift in Sources */,
 				F6A259331D33F5CF0005C533 /* AccountViewController.swift in Sources */,
+				F6F375411D55326000F718BC /* NavigationBarStatusView.swift in Sources */,
 				F6A9F9901D345B7D007D8718 /* SettingsModule.swift in Sources */,
 				F6A41B791D4BA89E0077321C /* AccountListViewController.swift in Sources */,
 				F6B26FA21C6A30790099CBC9 /* ICConversationLayoutAttributes.m in Sources */,
