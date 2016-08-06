@@ -16,7 +16,7 @@ class NavigationBar : UINavigationBar {
         contentView = UIStackView()
         contentView.translatesAutoresizingMaskIntoConstraints = false
         contentView.axis = .vertical
-        contentView.alignment = .fill
+        contentView.alignment = .center
         super.init(frame: frame)
         self.addSubview(contentView)
         
