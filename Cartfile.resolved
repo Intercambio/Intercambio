@@ -8,6 +8,6 @@ git "git@github.com:anagromataf/SocketRocket.git" "c1ec28aafde7c522889f79220511f
 github "anagromataf/fmdb" "8561e3607809c007946c41f651f2be163ed0e893"
 github "anagromataf/iso-8601-date-formatter" "e3cd1805147c2b869eb1b2a659c221556ee6f01b"
 github "jonreid/OCMockito" "v3.0.2"
-github "Internetslum/CoreXMPP" "98aed1420b19db661ae481cbba7442d4ada62e0c"
+github "Internetslum/CoreXMPP" "1.4.1"
 github "Internetslum/XMPPMessageArchive" "1.2"
 github "Internetslum/IntercambioCore" "1.2.2"
