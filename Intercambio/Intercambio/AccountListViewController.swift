@@ -47,6 +47,7 @@ class AccountListViewController: UITableViewController, AccountListView {
             if  let cell = view as? UITableViewCell,
                 let account = item as? AccountListPresentationModel {
                 cell.textLabel?.text = account.identifier
+                cell.accessoryType = .disclosureIndicator
             }
         }
         
