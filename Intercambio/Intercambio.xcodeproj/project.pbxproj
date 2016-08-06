@@ -48,8 +48,6 @@
 		F65CC9341CE07E0D00AE59DF /* ICAvatarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F65CC9331CE07E0D00AE59DF /* ICAvatarCell.m */; };
 		F65CC93A1CE0AC4B00AE59DF /* ICErrorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F65CC9391CE0AC4B00AE59DF /* ICErrorCell.m */; };
 		F65F98501CB26132009A2FE5 /* UICollectionView+CellAction.m in Sources */ = {isa = PBXBuildFile; fileRef = F65F984F1CB26132009A2FE5 /* UICollectionView+CellAction.m */; };
-		F66B0AEA1C85EC9600C5CBD9 /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F66B0AE71C85EC9600C5CBD9 /* HockeySDK.framework */; };
-		F66B0AEB1C85EC9600C5CBD9 /* HockeySDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F66B0AE91C85EC9600C5CBD9 /* HockeySDKResources.bundle */; };
 		F676EF7E1CD264A4003047EC /* ISO8601.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F676EF7C1CD26492003047EC /* ISO8601.framework */; };
 		F676EF981CDCD49A003047EC /* ICConversationFragment.m in Sources */ = {isa = PBXBuildFile; fileRef = F676EF971CDCD49A003047EC /* ICConversationFragment.m */; };
 		F676EF9B1CDCD63F003047EC /* ICConversationMessageFragment.m in Sources */ = {isa = PBXBuildFile; fileRef = F676EF9A1CDCD63F003047EC /* ICConversationMessageFragment.m */; };
@@ -108,6 +106,7 @@
 		F6EF1F431C72066C0083F4BE /* CLBackspaceDetectingTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = F6EF1F3E1C72066C0083F4BE /* CLBackspaceDetectingTextField.m */; };
 		F6EF1F441C72066C0083F4BE /* CLToken.m in Sources */ = {isa = PBXBuildFile; fileRef = F6EF1F401C72066C0083F4BE /* CLToken.m */; };
 		F6F375411D55326000F718BC /* NavigationBarStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F375401D55326000F718BC /* NavigationBarStatusView.swift */; };
+		F6F375431D55EBD100F718BC /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6F375421D55EBD100F718BC /* HockeySDK.framework */; };
 		F6F56AF31C51416600C34CC8 /* SocketRocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F684140B1C4D8A7F009B37BE /* SocketRocket.framework */; };
 		F6F56AF41C51416600C34CC8 /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F68413FF1C4D8901009B37BE /* CocoaLumberjack.framework */; };
 		F6F56AF51C51416600C34CC8 /* CoreXMPP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F68414001C4D8901009B37BE /* CoreXMPP.framework */; };
@@ -208,8 +207,6 @@
 		F65CC9391CE0AC4B00AE59DF /* ICErrorCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICErrorCell.m; sourceTree = "<group>"; };
 		F65F984E1CB26132009A2FE5 /* UICollectionView+CellAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UICollectionView+CellAction.h"; sourceTree = "<group>"; };
 		F65F984F1CB26132009A2FE5 /* UICollectionView+CellAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UICollectionView+CellAction.m"; sourceTree = "<group>"; };
-		F66B0AE71C85EC9600C5CBD9 /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HockeySDK.framework; sourceTree = "<group>"; };
-		F66B0AE91C85EC9600C5CBD9 /* HockeySDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = HockeySDKResources.bundle; sourceTree = "<group>"; };
 		F676EF7C1CD26492003047EC /* ISO8601.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ISO8601.framework; path = ../Carthage/Build/iOS/ISO8601.framework; sourceTree = "<group>"; };
 		F676EF961CDCD49A003047EC /* ICConversationFragment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICConversationFragment.h; sourceTree = "<group>"; };
 		F676EF971CDCD49A003047EC /* ICConversationFragment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICConversationFragment.m; sourceTree = "<group>"; };
@@ -301,6 +298,7 @@
 		F6EF1F491C737B9A0083F4BE /* CLTokenInputView-LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "CLTokenInputView-LICENSE"; sourceTree = "<group>"; };
 		F6EF1F4A1C737B9A0083F4BE /* CLTokenInputView-README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "CLTokenInputView-README.md"; sourceTree = "<group>"; };
 		F6F375401D55326000F718BC /* NavigationBarStatusView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationBarStatusView.swift; sourceTree = "<group>"; };
+		F6F375421D55EBD100F718BC /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HockeySDK.framework; path = ../Carthage/Build/iOS/HockeySDK.framework; sourceTree = "<group>"; };
 		F6F56AFD1C5395A700C34CC8 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Cartfile; path = ../Cartfile; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -309,6 +307,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6F375431D55EBD100F718BC /* HockeySDK.framework in Frameworks */,
 				F657513A1D1011FC0038AB25 /* IntercambioCore.framework in Frameworks */,
 				F657513B1D1011FC0038AB25 /* SASLKit.framework in Frameworks */,
 				F6A697031CFC348700E0A0D2 /* Fountain.framework in Frameworks */,
@@ -317,7 +316,6 @@
 				F6F56AF31C51416600C34CC8 /* SocketRocket.framework in Frameworks */,
 				F6F56AF41C51416600C34CC8 /* CocoaLumberjack.framework in Frameworks */,
 				F6F56AF51C51416600C34CC8 /* CoreXMPP.framework in Frameworks */,
-				F66B0AEA1C85EC9600C5CBD9 /* HockeySDK.framework in Frameworks */,
 				F6F56AF61C51416600C34CC8 /* PureXML.framework in Frameworks */,
 				F676EF7E1CD264A4003047EC /* ISO8601.framework in Frameworks */,
 			);
@@ -610,24 +608,6 @@
 			name = Additions;
 			sourceTree = "<group>";
 		};
-		F66B0AE61C85EC9600C5CBD9 /* HockeySDK.embeddedframework */ = {
-			isa = PBXGroup;
-			children = (
-				F66B0AE71C85EC9600C5CBD9 /* HockeySDK.framework */,
-				F66B0AE81C85EC9600C5CBD9 /* Resources */,
-			);
-			name = HockeySDK.embeddedframework;
-			path = "../Vendor/HockeySDK-iOS/HockeySDK.embeddedframework";
-			sourceTree = "<group>";
-		};
-		F66B0AE81C85EC9600C5CBD9 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				F66B0AE91C85EC9600C5CBD9 /* HockeySDKResources.bundle */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
 		F670FEE41D4BB35E00B6B11C /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -738,12 +718,12 @@
 		F68414091C4D890B009B37BE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F6F375421D55EBD100F718BC /* HockeySDK.framework */,
 				F65751381D1011FC0038AB25 /* IntercambioCore.framework */,
 				F65751391D1011FC0038AB25 /* SASLKit.framework */,
 				F6A697021CFC348700E0A0D2 /* Fountain.framework */,
 				F676EF7C1CD26492003047EC /* ISO8601.framework */,
 				F6E2431A1CC1595600523F46 /* XMPPMessageArchive.framework */,
-				F66B0AE61C85EC9600C5CBD9 /* HockeySDK.embeddedframework */,
 				F6E251EA1CA3ED080061531E /* OHHTTPStubs.framework */,
 				F640F1231C648FCE00F65A9B /* OCHamcrest.framework */,
 				F640F1241C648FCE00F65A9B /* OCMockito.framework */,
@@ -1039,7 +1019,6 @@
 				F619BDD01C4D071700F87F50 /* LaunchScreen.storyboard in Resources */,
 				F6F56AFE1C5395A700C34CC8 /* Cartfile in Resources */,
 				F6D807D51D17D8DE002953AB /* ICConversationCell.xib in Resources */,
-				F66B0AEB1C85EC9600C5CBD9 /* HockeySDKResources.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1076,6 +1055,7 @@
 				"$(SRCROOT)/../Carthage/Build/iOS/ISO8601.framework",
 				"$(SRCROOT)/../Carthage/Build/iOS/IntercambioCore.framework",
 				"$(SRCROOT)/../Carthage/Build/iOS/SASLKit.framework",
+				"$(SRCROOT)/../Carthage/Build/iOS/HockeySDK.framework",
 			);
 			outputPaths = (
 			);
@@ -1323,10 +1303,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Intercambio/Intercambio.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SRCROOT)/../Carthage/Build/iOS/",
-					"$(SRCROOT)/../Vendor/**",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../Carthage/Build/iOS/";
 				INFOPLIST_FILE = Intercambio/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = im.intercambio.develop;
@@ -1344,10 +1321,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Intercambio/Intercambio.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SRCROOT)/../Carthage/Build/iOS/",
-					"$(SRCROOT)/../Vendor/**",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../Carthage/Build/iOS/";
 				INFOPLIST_FILE = Intercambio/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = im.intercambio;
