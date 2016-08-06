@@ -20,8 +20,6 @@
 - (UIViewController<ICRecentConversationsUserInterface> *)viewControllerForRecentConversationsInAppWireframe:(ICAppWireframe *)appWireframe;
 - (UIViewController<ICConversationUserInterface> *)viewControllerForConversationInAppWireframe:(ICAppWireframe *)appWireframe;
 
-- (UINavigationController *)appWireframe:(ICAppWireframe *)appWireframe navigationControllerForPrimaryViewController:(UIViewController *)primaryViewController;
-
 - (UIAlertController *)alertForNewAccountInAppWireframe:(ICAppWireframe *)appWireframe;
 - (UIAlertController *)alertForSelectingAccountInAppWireframe:(ICAppWireframe *)appWireframe withCompletion:(void (^)(NSURL *accountURI))completion;
 @end

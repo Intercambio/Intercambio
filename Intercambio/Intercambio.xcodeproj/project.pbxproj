@@ -47,9 +47,6 @@
 		F657513B1D1011FC0038AB25 /* SASLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F65751391D1011FC0038AB25 /* SASLKit.framework */; };
 		F65CC9341CE07E0D00AE59DF /* ICAvatarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F65CC9331CE07E0D00AE59DF /* ICAvatarCell.m */; };
 		F65CC93A1CE0AC4B00AE59DF /* ICErrorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F65CC9391CE0AC4B00AE59DF /* ICErrorCell.m */; };
-		F65F983C1CAD16FE009A2FE5 /* ICNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F65F983B1CAD16FE009A2FE5 /* ICNavigationController.m */; };
-		F65F98401CAD1725009A2FE5 /* ICNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F65F983F1CAD1725009A2FE5 /* ICNavigationBar.m */; };
-		F65F98451CAD2831009A2FE5 /* ICConnectionStateView.m in Sources */ = {isa = PBXBuildFile; fileRef = F65F98441CAD2831009A2FE5 /* ICConnectionStateView.m */; };
 		F65F98501CB26132009A2FE5 /* UICollectionView+CellAction.m in Sources */ = {isa = PBXBuildFile; fileRef = F65F984F1CB26132009A2FE5 /* UICollectionView+CellAction.m */; };
 		F66B0AEA1C85EC9600C5CBD9 /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F66B0AE71C85EC9600C5CBD9 /* HockeySDK.framework */; };
 		F66B0AEB1C85EC9600C5CBD9 /* HockeySDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F66B0AE91C85EC9600C5CBD9 /* HockeySDKResources.bundle */; };
@@ -209,12 +206,6 @@
 		F65CC9331CE07E0D00AE59DF /* ICAvatarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICAvatarCell.m; sourceTree = "<group>"; };
 		F65CC9381CE0AC4B00AE59DF /* ICErrorCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICErrorCell.h; sourceTree = "<group>"; };
 		F65CC9391CE0AC4B00AE59DF /* ICErrorCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICErrorCell.m; sourceTree = "<group>"; };
-		F65F983A1CAD16FE009A2FE5 /* ICNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = ICNavigationController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		F65F983B1CAD16FE009A2FE5 /* ICNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ICNavigationController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		F65F983E1CAD1725009A2FE5 /* ICNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICNavigationBar.h; sourceTree = "<group>"; };
-		F65F983F1CAD1725009A2FE5 /* ICNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICNavigationBar.m; sourceTree = "<group>"; };
-		F65F98431CAD2831009A2FE5 /* ICConnectionStateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICConnectionStateView.h; sourceTree = "<group>"; };
-		F65F98441CAD2831009A2FE5 /* ICConnectionStateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICConnectionStateView.m; sourceTree = "<group>"; };
 		F65F984E1CB26132009A2FE5 /* UICollectionView+CellAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UICollectionView+CellAction.h"; sourceTree = "<group>"; };
 		F65F984F1CB26132009A2FE5 /* UICollectionView+CellAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UICollectionView+CellAction.m"; sourceTree = "<group>"; };
 		F66B0AE71C85EC9600C5CBD9 /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HockeySDK.framework; sourceTree = "<group>"; };
@@ -606,19 +597,6 @@
 			name = Empty;
 			sourceTree = "<group>";
 		};
-		F65F983D1CAD1708009A2FE5 /* Navigation Controller */ = {
-			isa = PBXGroup;
-			children = (
-				F65F983A1CAD16FE009A2FE5 /* ICNavigationController.h */,
-				F65F983B1CAD16FE009A2FE5 /* ICNavigationController.m */,
-				F65F983E1CAD1725009A2FE5 /* ICNavigationBar.h */,
-				F65F983F1CAD1725009A2FE5 /* ICNavigationBar.m */,
-				F65F98431CAD2831009A2FE5 /* ICConnectionStateView.h */,
-				F65F98441CAD2831009A2FE5 /* ICConnectionStateView.m */,
-			);
-			name = "Navigation Controller";
-			sourceTree = "<group>";
-		};
 		F65F98511CB26531009A2FE5 /* Additions */ = {
 			isa = PBXGroup;
 			children = (
@@ -717,7 +695,6 @@
 			isa = PBXGroup;
 			children = (
 				F65237501D4FF47D00285713 /* Forms */,
-				F65F983D1CAD1708009A2FE5 /* Navigation Controller */,
 				F65751371D1004580038AB25 /* Empty */,
 				F65751361D0FF4D30038AB25 /* Account Picker */,
 			);
@@ -1145,7 +1122,6 @@
 				F6151BB31D3538CD000551B6 /* SettingsPresenter.swift in Sources */,
 				F676EFA31CDCE03E003047EC /* ICConversationParagraphFragment.m in Sources */,
 				F6BA3EE91D36438200C12E3D /* FormItem.swift in Sources */,
-				F65F983C1CAD16FE009A2FE5 /* ICNavigationController.m in Sources */,
 				F6EF1F431C72066C0083F4BE /* CLBackspaceDetectingTextField.m in Sources */,
 				F6EF1F371C71D1BC0083F4BE /* ICMessageBackgroundView.m in Sources */,
 				F676EF981CDCD49A003047EC /* ICConversationFragment.m in Sources */,
@@ -1172,7 +1148,6 @@
 				F619BDC51C4D071700F87F50 /* AppDelegate.m in Sources */,
 				F6826A1D1D0F38BD007A3934 /* UITableView+CellAction.m in Sources */,
 				F60DFF871C6DE04600764E26 /* ICConversationLayoutInvalidationContext.m in Sources */,
-				F65F98451CAD2831009A2FE5 /* ICConnectionStateView.m in Sources */,
 				F6B567001D507697004BCDB0 /* NavigationControllerStatusViewModel.swift in Sources */,
 				F6826A201D0F4476007A3934 /* ICUserInterfaceFactory.m in Sources */,
 				F6D807E41D1826EB002953AB /* NSURL+Intercambio.m in Sources */,
@@ -1187,7 +1162,6 @@
 				F65237451D4FF0C200285713 /* SettingsProvider.swift in Sources */,
 				F676EFAE1CDCEE20003047EC /* ICConversationLayoutItem_Message.m in Sources */,
 				F6EF1F421C72066C0083F4BE /* CLTokenView.m in Sources */,
-				F65F98401CAD1725009A2FE5 /* ICNavigationBar.m in Sources */,
 				F6BA3EE71D36434B00C12E3D /* FromSection.swift in Sources */,
 				F63A66731D26669A00FCC82E /* AccountInteractor.swift in Sources */,
 				F6D807DA1D17F53E002953AB /* ICURLHandler.m in Sources */,
