@@ -16,12 +16,11 @@ import IntercambioCore
 
 public class AccountListModule : NSObject {
     
-    private let service: CommunicationService
-    weak private var router: AccountListRouter?
+    public let service: CommunicationService
+    weak public var router: AccountListRouter?
     
-    public init(service: CommunicationService, router: AccountListRouter) {
+    public init(service: CommunicationService) {
         self.service = service
-        self.router = router
     }
     
     public func viewController() -> (UIViewController?) {

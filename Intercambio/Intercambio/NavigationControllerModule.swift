@@ -15,12 +15,11 @@ import IntercambioCore
 
 public class NavigationControllerModule : NSObject {
     
-    private let service: CommunicationService
-    weak private var router: NavigationControllerRouter?
+    public let service: CommunicationService
+    weak public var router: NavigationControllerRouter?
     
-    public init(service: CommunicationService, router: NavigationControllerRouter) {
+    public init(service: CommunicationService) {
         self.service = service
-        self.router = router
     }
     
     public func navigationController() -> (UINavigationController) {

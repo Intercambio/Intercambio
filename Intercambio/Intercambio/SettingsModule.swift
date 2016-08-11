@@ -11,7 +11,7 @@ import IntercambioCore
 
 public class SettingsModule : NSObject {
     
-    private let service: CommunicationService
+    public let service: CommunicationService
     
     public init(service: CommunicationService) {
         self.service = service

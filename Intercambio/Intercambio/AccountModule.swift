@@ -15,12 +15,11 @@ import IntercambioCore
 
 public class AccountModule : NSObject {
     
-    private let service: CommunicationService
-    private let router: AccountRouter
+    public let service: CommunicationService
+    weak public var router: AccountRouter?
     
-    public init(service: CommunicationService, router: AccountRouter) {
+    public init(service: CommunicationService) {
         self.service = service
-        self.router = router
     }
     
     public func viewController(uri: URL) -> (UIViewController?) {
