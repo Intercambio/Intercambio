@@ -27,7 +27,7 @@ class AccountPresenterTests: XCTestCase {
         var state: AccountPresentationModelConnectionState = AccountPresentationModelConnectionState.disconnected
         var name: String?
         var options: Dictionary<NSObject, AnyObject> = [:]
-        var error: NSError?
+        var error: Error?
         var nextConnectionAttempt: Date?
     }
     

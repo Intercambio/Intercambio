@@ -246,7 +246,7 @@ class AccountInteractorTests : XCTestCase {
     class TestAccountInfo : NSObject, AccountInfo {
         
         internal var connectionState: CoreXMPP.AccountConnectionState
-        internal var recentError: NSError? {
+        internal var recentError: Error? {
             get { return nil }
         }
         internal var nextConnectionAttempt: Date? {
