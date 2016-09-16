@@ -17,7 +17,7 @@ protocol AccountPresentationModel {
     var enabled: Bool { get }
     var state: AccountPresentationModelConnectionState { get }
     var name: String? { get }
-    var options: Dictionary<NSObject, AnyObject> { get }
+    var options: Dictionary<AnyHashable, Any> { get }
     var error: Error? { get }
     var nextConnectionAttempt: Date? { get }
 }

@@ -15,7 +15,7 @@ public class FormSectionDataSource : FTMutableArray, FormSection {
 }
 
 public class FormDataSource : FTCombinedDataSource {
-    public override func sectionItem(forSection section: UInt) -> AnyObject! {
+    public override func sectionItem(forSection section: UInt) -> Any! {
         if let dataSources = self.dataSources as NSArray? {
             return dataSources.object(at: Int(section))
         } else {

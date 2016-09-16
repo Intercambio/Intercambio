@@ -79,11 +79,11 @@ class AccountListPresentationDataSource: NSObject, FTDataSource {
         return backingStore.numberOfItems(inSection: section)
     }
     
-    func sectionItem(forSection section: UInt) -> AnyObject! {
+    func sectionItem(forSection section: UInt) -> Any! {
         return nil
     }
     
-    func item(at indexPath: IndexPath!) -> AnyObject! {
+    func item(at indexPath: IndexPath!) -> Any! {
         if let item = backingStore.item(at: indexPath) as? KeyChainItem {
             return Item(item)
         } else {
@@ -91,7 +91,7 @@ class AccountListPresentationDataSource: NSObject, FTDataSource {
         }
     }
     
-    func observers() -> [AnyObject]! {
+    func observers() -> [Any]! {
         return proxy.observers()
     }
     

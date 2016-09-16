@@ -54,7 +54,7 @@ class AccountPresentationModelImpl : AccountPresentationModel {
         get { return keyChainItem.identifier }
     }
     
-    var options: Dictionary<NSObject, AnyObject> {
+    var options: Dictionary<AnyHashable, Any> {
         get { return keyChainItem.options }
     }
     
@@ -73,7 +73,7 @@ class AccountViewModelEmptyImpl : AccountPresentationModel {
     let enabled: Bool = false
     let state = AccountPresentationModelConnectionState.disconnected
     let name: String? = nil
-    let options: Dictionary<NSObject, AnyObject> = [:]
+    let options: Dictionary<AnyHashable, Any> = [:]
     let error: Error? = nil
     let nextConnectionAttempt: Date? = nil
 }

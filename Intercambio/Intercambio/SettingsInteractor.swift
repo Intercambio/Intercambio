@@ -39,7 +39,7 @@ class SettingsInteractor : SettingsProvider {
         get {
             do {
                 let item = try keyChain.item(jid: accountJID)
-                return settings(item.options)
+                return makeSettings(item.options)
             } catch {
                 return Settings()
             }
@@ -48,21 +48,21 @@ class SettingsInteractor : SettingsProvider {
     
     func update(settings: Settings) throws {
         var item = try keyChain.item(jid: accountJID)
-        item = KeyChainItem(jid: item.jid, invisible: false, options: values(settings))
+        item = KeyChainItem(jid: item.jid, invisible: false, options: makeValues(settings))
         try keyChain.update(item)
         
     }
     
     // Settings <--> Options
     
-    private func settings(_ values: [NSObject : AnyObject]) -> Settings {
+    private func makeSettings(_ values: [AnyHashable : Any]) -> Settings {
         var settings = Settings()
         settings.websocketURL =  values[WebsocketStreamURLKey] as? URL
         return settings
     }
     
-    private func values(_ settings: Settings) -> [NSObject : AnyObject] {
-        var values = [NSObject : AnyObject]()
+    private func makeValues(_ settings: Settings) -> [AnyHashable : Any] {
+        var values = [AnyHashable : Any]()
         values[WebsocketStreamURLKey] = settings.websocketURL
         return values
     }

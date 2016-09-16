@@ -17,7 +17,7 @@ public class SettingsModule : NSObject {
         self.service = service
     }
     
-    public func viewController(uri: URL, completion: ((saved: Bool, controller: UIViewController) -> Void)?) -> (UIViewController?) {
+    public func viewController(uri: URL, completion: ((Bool, UIViewController) -> Void)?) -> (UIViewController?) {
         
         if let host = uri.host, let jid = JID(user: uri.user, host: host, resource: nil) {
             
@@ -35,7 +35,7 @@ public class SettingsModule : NSObject {
             if let c = completion {
                 presenter.completion = { [weak view] saved in
                     if let v = view {
-                        c(saved: saved, controller: v)
+                        c(saved, v)
                     }
                 }
             }
