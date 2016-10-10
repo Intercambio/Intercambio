@@ -288,12 +288,7 @@
 
 - (UIViewController *)recentConversationsViewController
 {
-    UIViewController *viewController = nil;
-    if ([self.delegate respondsToSelector:@selector(viewControllerForRecentConversationsInAppWireframe:)]) {
-        viewController = [self.delegate viewControllerForRecentConversationsInAppWireframe:self];
-    }
-    [self prepareViewController:viewController];
-    return viewController ?: [[ICEmptyViewController alloc] init];
+    return [self.recentConversationsModule viewController];
 }
 
 - (UIViewController *)viewControllerForConversationWithURI:(NSURL *)conversationURI

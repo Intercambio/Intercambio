@@ -71,6 +71,8 @@ static DDLogLevel ddLogLevel = DDLogLevelInfo;
     
     _appWireframe.settingsModule = [[SettingsModule alloc] initWithService:_communicationService];
 
+    _appWireframe.recentConversationsModule = [[RecentConversationsModule alloc] initWithService:_communicationService];
+    
     [_appWireframe presentLaunchScreen];
 
     _URLHandler = [[ICURLHandler alloc] initWithAppWireframe:_appWireframe];

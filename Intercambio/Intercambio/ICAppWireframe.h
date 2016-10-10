@@ -33,6 +33,7 @@
 @property (nonatomic, strong) AccountListModule *accountListModule;
 @property (nonatomic, strong) AccountModule *accountModule;
 @property (nonatomic, strong) SettingsModule *settingsModule;
+@property (nonatomic, strong) RecentConversationsModule *recentConversationsModule;
 
 #pragma mark Main User Interface
 - (void)presentLaunchScreen;
