@@ -9,22 +9,29 @@
 import UIKit
 import IntercambioCore
 
+@objc public protocol RecentConversationsRouter : class {
+    func presentConversationUserInterface(for conversationURI: URL)
+}
+
 public class RecentConversationsModule : NSObject {
     
     public let service: CommunicationService
+    weak public var router: RecentConversationsRouter?
     
     public init(service: CommunicationService) {
         self.service = service
     }
     
     public func viewController() -> (UIViewController?) {
-        
-        let presenter = RecentConversationsPresenter()
+        let presenter = RecentConversationsPresenter(keyChain: service.keyChain, db: service.messageDB)
         let viewController = RecentConversationsViewController()
-        
+    
         viewController.eventHandler = presenter
         presenter.view = viewController
+        presenter.router = router
         
         return viewController
     }
 }
+
+extension XMPPMessageDB : RecentConversationsMessageDB {}

@@ -35,11 +35,20 @@ class RecentConversationsViewController: UITableViewController, RecentConversati
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: "UITableViewCell")
-        
         tableViewAdapter = FTTableViewAdapter(tableView: tableView)
         
-        tableViewAdapter?.forRowsMatching(nil, useCellWithReuseIdentifier: "UITableViewCell") {
+        tableView.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: "conversation")
+        tableViewAdapter?.forRowsMatching(nil, useCellWithReuseIdentifier: "conversation") {
+            (view, item, indexPath, dataSource) in
+            if  let cell = view as? UITableViewCell,
+                let conversation = item as? RecentConversationsViewModel {
+                cell.textLabel?.text = conversation.title
+                cell.detailTextLabel?.text = conversation.subtitle
+            }
+        }
+        
+        tableView.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: "undefined")
+        tableViewAdapter?.forRowsMatching(nil, useCellWithReuseIdentifier: "undefined") {
             (view, item, indexPath, dataSource) in
             if  let cell = view as? UITableViewCell {
                 cell.backgroundColor = #colorLiteral(red: 0.9607843161, green: 0.7058823705, blue: 0.200000003, alpha: 1)

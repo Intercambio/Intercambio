@@ -239,7 +239,12 @@
     }
 }
 
-#pragma mark AccountRouter, AccountListRouter, NavigationControllerRouter
+#pragma mark RecentConversationsRouter, AccountRouter, AccountListRouter, NavigationControllerRouter
+
+- (void)presentConversationUserInterfaceFor:(NSURL * _Nonnull)conversationURI {
+    UIViewController *viewController = [self viewControllerForConversationWithURI:conversationURI];
+    [self.splitViewController showDetailViewController:viewController sender:nil];
+}
 
 - (void)presentNewAccountUserInterface
 {
