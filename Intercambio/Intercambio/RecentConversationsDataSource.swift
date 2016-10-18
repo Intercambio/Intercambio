@@ -31,7 +31,7 @@ class RecentConversationsDataSource: NSObject, FTDataSource {
         self.db = db
         numberOfAccounts = 0
         proxy = FTObserverProxy()
-        backingStore = FTMutableSet(sortDescriptors: [NSSortDescriptor(key: "date", ascending: true)])
+        backingStore = FTMutableSet(sortDescriptors: [NSSortDescriptor(key: "date", ascending: false)])
         super.init()
         proxy.object = self
         backingStore.addObserver(proxy)
