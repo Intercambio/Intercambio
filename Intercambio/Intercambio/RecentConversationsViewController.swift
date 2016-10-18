@@ -35,6 +35,10 @@ class RecentConversationsViewController: UITableViewController, RecentConversati
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .compose,
+                                                            target: self,
+                                                            action: #selector(newConversation))
+        
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 60
         tableViewAdapter = FTTableViewAdapter(tableView: tableView)
@@ -62,5 +66,9 @@ class RecentConversationsViewController: UITableViewController, RecentConversati
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         eventHandler?.view(self, didSelectItemAt: indexPath)
+    }
+    
+    @objc private func newConversation() -> Void {
+        eventHandler?.newConversation()
     }
 }

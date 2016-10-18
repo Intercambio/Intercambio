@@ -246,6 +246,11 @@
     [self.splitViewController showDetailViewController:viewController sender:nil];
 }
 
+- (void)presentNewConversationUserInterface {
+    UIViewController *viewController = [self viewControllerForNewConversation];
+    [self.splitViewController showDetailViewController:viewController sender:nil];
+}
+
 - (void)presentNewAccountUserInterface
 {
     UIAlertController *alert = [self alertForNewAccount];

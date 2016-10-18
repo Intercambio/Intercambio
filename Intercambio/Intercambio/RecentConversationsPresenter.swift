@@ -25,6 +25,10 @@ class RecentConversationsPresenter: NSObject, RecentConversationsViewEventHandle
         self.dataSource = RecentConversationsDataSource(keyChain: keyChain, db: db)
     }
     
+    func newConversation() {
+        router?.presentNewConversationUserInterface()
+    }
+    
     func view(_ view: RecentConversationsView, didSelectItemAt indexPath: IndexPath) {
         if let uri = dataSource.conversationURI(at: indexPath) {
             router?.presentConversationUserInterface(for: uri)

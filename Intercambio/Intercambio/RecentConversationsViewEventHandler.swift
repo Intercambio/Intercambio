@@ -9,5 +9,6 @@
 import Foundation
 
 protocol RecentConversationsViewEventHandler: class {
+    func newConversation() -> Void
     func view(_ view: RecentConversationsView, didSelectItemAt indexPath: IndexPath) -> Void
 }

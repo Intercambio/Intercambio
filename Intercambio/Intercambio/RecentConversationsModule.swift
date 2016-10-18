@@ -11,6 +11,7 @@ import IntercambioCore
 
 @objc public protocol RecentConversationsRouter : class {
     func presentConversationUserInterface(for conversationURI: URL)
+    func presentNewConversationUserInterface()
 }
 
 public class RecentConversationsModule : NSObject {
