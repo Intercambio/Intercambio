@@ -24,10 +24,12 @@ class RecentConversationsDataSource: NSObject, FTDataSource {
     private let db: RecentConversationsMessageDB
     private let backingStore :FTMutableSet
     private let proxy: FTObserverProxy
+    private var numberOfAccounts: Int
     
     init(keyChain: KeyChain, db: RecentConversationsMessageDB) {
         self.keyChain = keyChain
         self.db = db
+        numberOfAccounts = 0
         proxy = FTObserverProxy()
         backingStore = FTMutableSet(sortDescriptors: [NSSortDescriptor(key: "date", ascending: true)])
         super.init()
@@ -44,18 +46,27 @@ class RecentConversationsDataSource: NSObject, FTDataSource {
     // Load Items
     
     private func loadItems() {
+        
+        let currentNumberOfAccounts = numberOfAccounts
+        numberOfAccounts = accountJIDs().count
+        let needsReoad = numberOfAccounts != currentNumberOfAccounts
+        
         backingStore.performBatchUpdate {
             let recentConversations = self.conversations()
             
-            for conversation in recentConversations {
-                if !self.backingStore.contains(conversation) {
-                    self.backingStore.add(conversation)
+            if needsReoad {
+                self.backingStore.removeAllObjects()
+                self.backingStore.addObjects(from: recentConversations)
+            } else {
+                for conversation in recentConversations {
+                    if !self.backingStore.contains(conversation) {
+                        self.backingStore.add(conversation)
+                    }
                 }
-            }
-            
-            for conversation in self.backingStore.allObjects {
-                if !recentConversations.contains(conversation as! RecentConversationsDataSource.Conversation) {
-                    self.backingStore.remove(conversation)
+                for conversation in self.backingStore.allObjects {
+                    if !recentConversations.contains(conversation as! RecentConversationsDataSource.Conversation) {
+                        self.backingStore.remove(conversation)
+                    }
                 }
             }
         }
@@ -144,12 +155,15 @@ class RecentConversationsDataSource: NSObject, FTDataSource {
     
     func item(at indexPath: IndexPath!) -> Any! {
         if let conversation = backingStore.item(at: indexPath) as? Conversation {
+            var viewModel: ViewModel
             do {
                 let document = try db.document(for: conversation.message.messageID)
-                return ViewModel(conversation, document: document)
+                viewModel = ViewModel(conversation, document: document)
             } catch {
-                return ViewModel(conversation, document: nil)
+                viewModel = ViewModel(conversation, document: nil)
             }
+            viewModel.showSubtitle = numberOfAccounts > 1
+            return viewModel
         } else {
             return nil
         }
@@ -273,9 +287,13 @@ extension RecentConversationsDataSource {
 extension RecentConversationsDataSource {
     @objc class ViewModel : NSObject, RecentConversationsViewModel {
         
+        var showSubtitle: Bool
+        
         private let conversation: Conversation
         private let document: PXDocument?
+
         init(_ conversation: Conversation, document: PXDocument?) {
+            showSubtitle = true
             self.conversation = conversation
             self.document = document
         }
@@ -285,7 +303,11 @@ extension RecentConversationsDataSource {
         }
         
         var subtitle: String? {
-            return self.conversation.account.stringValue
+            if showSubtitle {
+                return "via \(self.conversation.account.stringValue)"
+            } else {
+                return nil
+            }
         }
         
         var body: String? {
@@ -303,7 +325,7 @@ extension RecentConversationsDataSource {
             let formatter = DateFormatter()
             formatter.doesRelativeDateFormatting = true
             formatter.dateStyle = .short
-            formatter.timeStyle = .short
+            formatter.timeStyle = .none
             return formatter.string(from: conversation.date)
         }
         
