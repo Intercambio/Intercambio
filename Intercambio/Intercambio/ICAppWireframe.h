@@ -17,14 +17,13 @@
 
 @protocol ICAppWireframeDelegate <NSObject>
 @optional
-- (UIViewController<ICRecentConversationsUserInterface> *)viewControllerForRecentConversationsInAppWireframe:(ICAppWireframe *)appWireframe;
 - (UIViewController<ICConversationUserInterface> *)viewControllerForConversationInAppWireframe:(ICAppWireframe *)appWireframe;
 
 - (UIAlertController *)alertForNewAccountInAppWireframe:(ICAppWireframe *)appWireframe;
 - (UIAlertController *)alertForSelectingAccountInAppWireframe:(ICAppWireframe *)appWireframe withCompletion:(void (^)(NSURL *accountURI))completion;
 @end
 
-@interface ICAppWireframe : NSObject <AccountRouter, AccountListRouter, NavigationControllerRouter>
+@interface ICAppWireframe : NSObject <RecentConversationsRouter, AccountRouter, AccountListRouter, NavigationControllerRouter>
 
 @property (nonatomic, weak) id<ICAppWireframeDelegate> delegate;
 @property (nonatomic, strong) UIWindow *window;
@@ -33,6 +32,7 @@
 @property (nonatomic, strong) AccountListModule *accountListModule;
 @property (nonatomic, strong) AccountModule *accountModule;
 @property (nonatomic, strong) SettingsModule *settingsModule;
+@property (nonatomic, strong) RecentConversationsModule *recentConversationsModule;
 
 #pragma mark Main User Interface
 - (void)presentLaunchScreen;

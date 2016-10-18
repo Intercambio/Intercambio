@@ -239,7 +239,17 @@
     }
 }
 
-#pragma mark AccountRouter, AccountListRouter, NavigationControllerRouter
+#pragma mark RecentConversationsRouter, AccountRouter, AccountListRouter, NavigationControllerRouter
+
+- (void)presentConversationUserInterfaceFor:(NSURL * _Nonnull)conversationURI {
+    UIViewController *viewController = [self viewControllerForConversationWithURI:conversationURI];
+    [self.splitViewController showDetailViewController:viewController sender:nil];
+}
+
+- (void)presentNewConversationUserInterface {
+    UIViewController *viewController = [self viewControllerForNewConversation];
+    [self.splitViewController showDetailViewController:viewController sender:nil];
+}
 
 - (void)presentNewAccountUserInterface
 {
@@ -288,12 +298,7 @@
 
 - (UIViewController *)recentConversationsViewController
 {
-    UIViewController *viewController = nil;
-    if ([self.delegate respondsToSelector:@selector(viewControllerForRecentConversationsInAppWireframe:)]) {
-        viewController = [self.delegate viewControllerForRecentConversationsInAppWireframe:self];
-    }
-    [self prepareViewController:viewController];
-    return viewController ?: [[ICEmptyViewController alloc] init];
+    return [self.recentConversationsModule viewController];
 }
 
 - (UIViewController *)viewControllerForConversationWithURI:(NSURL *)conversationURI
