@@ -200,7 +200,7 @@ class AccountInteractorTests : XCTestCase {
                             return false
         })
         
-        try! interactor.update(options: ["foo":"bar"])
+        try! interactor.update(options: ["foo":"bar" as AnyObject])
         
         self.waitForExpectations(timeout: 1.0, handler: nil)
         
