@@ -56,9 +56,7 @@
                             </label>
                         </subviews>
                     </stackView>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Z7i-y8-4Uc">
-                        <color key="backgroundColor" red="0.76470588240000004" green="0.76470588240000004" blue="0.76470588240000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="tintColor" red="0.94085341690000002" green="0.94103407859999999" blue="0.94082325700000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AvatarView" translatesAutoresizingMaskIntoConstraints="NO" id="Z7i-y8-4Uc" customClass="AvatarView" customModule="Intercambio" customModuleProvider="target">
                         <constraints>
                             <constraint firstAttribute="height" constant="56" id="0WT-Br-8ai"/>
                             <constraint firstAttribute="width" secondItem="Z7i-y8-4Uc" secondAttribute="height" multiplier="1:1" id="EWN-Hd-OUG"/>
@@ -86,4 +84,7 @@
             <point key="canvasLocation" x="9" y="-354"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="AvatarView" width="16" height="16"/>
+    </resources>
 </document>

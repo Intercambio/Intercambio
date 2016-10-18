@@ -38,6 +38,7 @@
 		F640F0E41C63B7A500F65A9B /* FMDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F640F0E11C63B7A500F65A9B /* FMDB.framework */; };
 		F646CA5D1DB6264500C239B1 /* RecentConversationsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F646CA5C1DB6264500C239B1 /* RecentConversationsCell.swift */; };
 		F646CA5F1DB62F8000C239B1 /* RecentConversationsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F646CA5E1DB62F8000C239B1 /* RecentConversationsCell.xib */; };
+		F646CA621DB6410300C239B1 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F646CA611DB6410300C239B1 /* AvatarView.swift */; };
 		F65237451D4FF0C200285713 /* SettingsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65237441D4FF0C200285713 /* SettingsProvider.swift */; };
 		F65237481D4FF15700285713 /* SettingsOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65237471D4FF15700285713 /* SettingsOutput.swift */; };
 		F652374A1D4FF17B00285713 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65237491D4FF17B00285713 /* SettingsView.swift */; };
@@ -201,6 +202,7 @@
 		F640F1241C648FCE00F65A9B /* OCMockito.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OCMockito.framework; path = ../Carthage/Build/iOS/OCMockito.framework; sourceTree = "<group>"; };
 		F646CA5C1DB6264500C239B1 /* RecentConversationsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentConversationsCell.swift; sourceTree = "<group>"; };
 		F646CA5E1DB62F8000C239B1 /* RecentConversationsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecentConversationsCell.xib; sourceTree = "<group>"; };
+		F646CA611DB6410300C239B1 /* AvatarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
 		F65237441D4FF0C200285713 /* SettingsProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsProvider.swift; sourceTree = "<group>"; };
 		F65237471D4FF15700285713 /* SettingsOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsOutput.swift; sourceTree = "<group>"; };
 		F65237491D4FF17B00285713 /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -536,6 +538,14 @@
 			name = "Account Module";
 			sourceTree = "<group>";
 		};
+		F646CA601DB640E900C239B1 /* Avatar */ = {
+			isa = PBXGroup;
+			children = (
+				F646CA611DB6410300C239B1 /* AvatarView.swift */,
+			);
+			name = Avatar;
+			sourceTree = "<group>";
+		};
 		F65237461D4FF0C800285713 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
@@ -690,6 +700,7 @@
 		F6826A0F1D0EF148007A3934 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				F646CA601DB640E900C239B1 /* Avatar */,
 				F65237501D4FF47D00285713 /* Forms */,
 				F65751371D1004580038AB25 /* Empty */,
 				F65751361D0FF4D30038AB25 /* Account Picker */,
@@ -1185,6 +1196,7 @@
 				F68EDFFA1D3D3CE800AFCB9D /* AccountListModule.swift in Sources */,
 				F6EF1F411C72066C0083F4BE /* CLTokenInputView.m in Sources */,
 				F63A66751D26672000FCC82E /* AccountViewModelImpl.swift in Sources */,
+				F646CA621DB6410300C239B1 /* AvatarView.swift in Sources */,
 				F652374C1D4FF1BC00285713 /* SettingsViewEventHandler.swift in Sources */,
 				F635166E1D33A52A007822F3 /* AccountView.swift in Sources */,
 				F605909E1D2F97E70071FC63 /* AccountOutput.swift in Sources */,

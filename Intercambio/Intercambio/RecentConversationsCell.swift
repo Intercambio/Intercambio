@@ -23,7 +23,6 @@ class RecentConversationsCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        avatarImageView.layer.cornerRadius = self.avatarImageView.bounds.height / 2.0
         chevronLabel.font = UIFont(name: chevronLabel.font.fontName, size: timestampLabel.font.pointSize * 1.3)
     }
     
@@ -39,11 +38,6 @@ class RecentConversationsCell: UITableViewCell {
         subtitleLabel.isHidden = viewModel?.subtitle == nil
         timestampLabel.text = viewModel?.dateString
         bodyLabel.text = viewModel?.body
-        
-        if let image = viewModel?.avatarImage {
-            avatarImageView.image = image
-        } else {
-            avatarImageView.image = UIImage(named: "avatar-normal")
-        }
+        avatarImageView.image = viewModel?.avatarImage
     }
 }
