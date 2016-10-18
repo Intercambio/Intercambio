@@ -36,6 +36,8 @@
 		F63A66751D26672000FCC82E /* AccountViewModelImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63A66741D26672000FCC82E /* AccountViewModelImpl.swift */; };
 		F63A66781D26685300FCC82E /* AccountInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63A66771D26685300FCC82E /* AccountInteractorTests.swift */; };
 		F640F0E41C63B7A500F65A9B /* FMDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F640F0E11C63B7A500F65A9B /* FMDB.framework */; };
+		F646CA5B1DB6261A00C239B1 /* RecentConversationsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F646CA5A1DB6261A00C239B1 /* RecentConversationsCell.xib */; };
+		F646CA5D1DB6264500C239B1 /* RecentConversationsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F646CA5C1DB6264500C239B1 /* RecentConversationsCell.swift */; };
 		F65237451D4FF0C200285713 /* SettingsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65237441D4FF0C200285713 /* SettingsProvider.swift */; };
 		F65237481D4FF15700285713 /* SettingsOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65237471D4FF15700285713 /* SettingsOutput.swift */; };
 		F652374A1D4FF17B00285713 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65237491D4FF17B00285713 /* SettingsView.swift */; };
@@ -197,6 +199,8 @@
 		F640F0E11C63B7A500F65A9B /* FMDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FMDB.framework; path = ../Carthage/Build/iOS/FMDB.framework; sourceTree = "<group>"; };
 		F640F1231C648FCE00F65A9B /* OCHamcrest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OCHamcrest.framework; path = ../Carthage/Build/iOS/OCHamcrest.framework; sourceTree = "<group>"; };
 		F640F1241C648FCE00F65A9B /* OCMockito.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OCMockito.framework; path = ../Carthage/Build/iOS/OCMockito.framework; sourceTree = "<group>"; };
+		F646CA5A1DB6261A00C239B1 /* RecentConversationsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecentConversationsCell.xib; sourceTree = "<group>"; };
+		F646CA5C1DB6264500C239B1 /* RecentConversationsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentConversationsCell.swift; sourceTree = "<group>"; };
 		F65237441D4FF0C200285713 /* SettingsProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsProvider.swift; sourceTree = "<group>"; };
 		F65237471D4FF15700285713 /* SettingsOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsOutput.swift; sourceTree = "<group>"; };
 		F65237491D4FF17B00285713 /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -875,6 +879,8 @@
 			isa = PBXGroup;
 			children = (
 				F6CE94981DABF0B70044356A /* RecentConversationsViewController.swift */,
+				F646CA5C1DB6264500C239B1 /* RecentConversationsCell.swift */,
+				F646CA5A1DB6261A00C239B1 /* RecentConversationsCell.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -1067,6 +1073,7 @@
 				F6555A591D3413AE009C4324 /* Assets.xcassets in Resources */,
 				F6D807D71D17DD95002953AB /* fontawesome-webfont.ttf in Resources */,
 				F619BDD01C4D071700F87F50 /* LaunchScreen.storyboard in Resources */,
+				F646CA5B1DB6261A00C239B1 /* RecentConversationsCell.xib in Resources */,
 				F6F56AFE1C5395A700C34CC8 /* Cartfile in Resources */,
 				F6D807D51D17D8DE002953AB /* ICConversationCell.xib in Resources */,
 			);
@@ -1184,6 +1191,7 @@
 				F619BDC51C4D071700F87F50 /* AppDelegate.m in Sources */,
 				F6826A1D1D0F38BD007A3934 /* UITableView+CellAction.m in Sources */,
 				F60DFF871C6DE04600764E26 /* ICConversationLayoutInvalidationContext.m in Sources */,
+				F646CA5D1DB6264500C239B1 /* RecentConversationsCell.swift in Sources */,
 				F6B567001D507697004BCDB0 /* NavigationControllerStatusViewModel.swift in Sources */,
 				F6826A201D0F4476007A3934 /* ICUserInterfaceFactory.m in Sources */,
 				F6D807E41D1826EB002953AB /* NSURL+Intercambio.m in Sources */,

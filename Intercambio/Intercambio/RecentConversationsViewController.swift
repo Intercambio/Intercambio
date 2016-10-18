@@ -35,15 +35,16 @@ class RecentConversationsViewController: UITableViewController, RecentConversati
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 60
         tableViewAdapter = FTTableViewAdapter(tableView: tableView)
         
-        tableView.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: "conversation")
+        tableView.register(UINib(nibName: "RecentConversationsCell", bundle: nil), forCellReuseIdentifier: "conversation")
         tableViewAdapter?.forRowsMatching(nil, useCellWithReuseIdentifier: "conversation") {
             (view, item, indexPath, dataSource) in
-            if  let cell = view as? UITableViewCell,
-                let conversation = item as? RecentConversationsViewModel {
-                cell.textLabel?.text = conversation.title
-                cell.detailTextLabel?.text = conversation.subtitle
+            if  let cell = view as? RecentConversationsCell,
+                let viewModel = item as? RecentConversationsViewModel {
+                cell.viewModel = viewModel
             }
         }
         

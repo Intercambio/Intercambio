@@ -10,9 +10,12 @@ import Foundation
 import Fountain
 import IntercambioCore
 import XMPPMessageArchive
+import PureXML
+import Dispatch
 
 protocol RecentConversationsMessageDB {
     func recentMessagesIncludeTrashed(_ includeTrashed: Bool) throws -> [Any]
+    func document(for messageID: XMPPMessageID) throws -> PXDocument
 }
 
 class RecentConversationsDataSource: NSObject, FTDataSource {
@@ -141,8 +144,12 @@ class RecentConversationsDataSource: NSObject, FTDataSource {
     
     func item(at indexPath: IndexPath!) -> Any! {
         if let conversation = backingStore.item(at: indexPath) as? Conversation {
-            let viewModel = ViewModel(conversation)
-            return viewModel
+            do {
+                let document = try db.document(for: conversation.message.messageID)
+                return ViewModel(conversation, document: document)
+            } catch {
+                return ViewModel(conversation, document: nil)
+            }
         } else {
             return nil
         }
@@ -267,9 +274,10 @@ extension RecentConversationsDataSource {
     @objc class ViewModel : NSObject, RecentConversationsViewModel {
         
         private let conversation: Conversation
-        
-        init(_ conversation: Conversation) {
+        private let document: PXDocument?
+        init(_ conversation: Conversation, document: PXDocument?) {
             self.conversation = conversation
+            self.document = document
         }
         
         var title: String? {
@@ -277,15 +285,26 @@ extension RecentConversationsDataSource {
         }
         
         var subtitle: String? {
-            return nil
+            return self.conversation.account.stringValue
         }
         
         var body: String? {
+            if let document = self.document {
+                let elements = document.root.nodes(forXPath: "x:body",
+                                                   usingNamespaces: ["x":"jabber:client"])
+                if let body = elements?.first as? PXElement {
+                    return body.stringValue
+                }
+            }
             return nil
         }
         
         var dateString: String? {
-            return nil
+            let formatter = DateFormatter()
+            formatter.doesRelativeDateFormatting = true
+            formatter.dateStyle = .short
+            formatter.timeStyle = .short
+            return formatter.string(from: conversation.date)
         }
         
         var avatarImage: UIImage? {
@@ -293,7 +312,7 @@ extension RecentConversationsDataSource {
         }
         
         var unread: Bool {
-            return false
+            return conversation.message.metadata.read == nil
         }
     }
 }
