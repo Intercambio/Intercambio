@@ -9,7 +9,6 @@
 #import "ICUserInterfaceFactory.h"
 #import "ICConversationViewController.h"
 #import "ICConversationViewController.h"
-#import "ICRecentConversationsViewController.h"
 
 @interface ICUserInterfaceFactory ()
 
@@ -61,13 +60,6 @@
 }
 
 #pragma mark ICAppWireframeDelegate
-
-- (UIViewController *)viewControllerForRecentConversationsInAppWireframe:(ICAppWireframe *)appWireframe
-{
-    ICRecentConversationsViewController *recentConversationsViewController = [[ICRecentConversationsViewController alloc] init];
-    recentConversationsViewController.dataSource = self.communicationService.conversationDataSource;
-    return recentConversationsViewController;
-}
 
 - (UIViewController<ICConversationUserInterface> *)viewControllerForConversationInAppWireframe:(ICAppWireframe *)appWireframe
 {

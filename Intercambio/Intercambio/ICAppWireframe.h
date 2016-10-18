@@ -17,7 +17,6 @@
 
 @protocol ICAppWireframeDelegate <NSObject>
 @optional
-- (UIViewController<ICRecentConversationsUserInterface> *)viewControllerForRecentConversationsInAppWireframe:(ICAppWireframe *)appWireframe;
 - (UIViewController<ICConversationUserInterface> *)viewControllerForConversationInAppWireframe:(ICAppWireframe *)appWireframe;
 
 - (UIAlertController *)alertForNewAccountInAppWireframe:(ICAppWireframe *)appWireframe;

@@ -24,7 +24,6 @@
 		F619BDDB1C4D071700F87F50 /* IntercambioTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F619BDDA1C4D071700F87F50 /* IntercambioTests.m */; };
 		F619BDE61C4D071700F87F50 /* IntercambioUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = F619BDE51C4D071700F87F50 /* IntercambioUITests.m */; };
 		F62E49CB1CC7C870006C071D /* ICConversationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F62E49CA1CC7C870006C071D /* ICConversationViewController.m */; };
-		F62F71B31C66736200656D3C /* ICConversationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F62F71B21C66736200656D3C /* ICConversationCell.m */; };
 		F62F71D51C68D84E00656D3C /* ICMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F62F71D41C68D84E00656D3C /* ICMessageCell.m */; };
 		F63404271C65F78300464F3E /* ICEmptyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F63404251C65F78300464F3E /* ICEmptyViewController.m */; };
 		F63404281C65F78300464F3E /* ICEmptyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F63404261C65F78300464F3E /* ICEmptyViewController.xib */; };
@@ -91,13 +90,11 @@
 		F6C6BD711D364AFC00CF3B8B /* FormDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C6BD701D364AFC00CF3B8B /* FormDataSource.swift */; };
 		F6C6BD741D3669D500CF3B8B /* FormItemURLCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C6BD721D3669D500CF3B8B /* FormItemURLCell.swift */; };
 		F6C6BD751D3669D500CF3B8B /* FormItemURLCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6C6BD731D3669D500CF3B8B /* FormItemURLCell.xib */; };
-		F6CDE9541CC52DD9009C2D48 /* ICRecentConversationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F6CDE9531CC52DD9009C2D48 /* ICRecentConversationsViewController.m */; };
 		F6CE94991DABF0B70044356A /* RecentConversationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6CE94981DABF0B70044356A /* RecentConversationsViewController.swift */; };
 		F6CE949B1DABF0DA0044356A /* RecentConversationsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6CE949A1DABF0DA0044356A /* RecentConversationsPresenter.swift */; };
 		F6CE94A01DABF10A0044356A /* RecentConversationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6CE949F1DABF10A0044356A /* RecentConversationsView.swift */; };
 		F6CE94A21DABF1570044356A /* RecentConversationsViewEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6CE94A11DABF1570044356A /* RecentConversationsViewEventHandler.swift */; };
 		F6CE94A41DAC04BD0044356A /* RecentConversationsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6CE94A31DAC04BD0044356A /* RecentConversationsDataSource.swift */; };
-		F6D807D51D17D8DE002953AB /* ICConversationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6D807D41D17D8DE002953AB /* ICConversationCell.xib */; };
 		F6D807D71D17DD95002953AB /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F6D807D61D17DD95002953AB /* fontawesome-webfont.ttf */; };
 		F6D807DA1D17F53E002953AB /* ICURLHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = F6D807D91D17F53E002953AB /* ICURLHandler.m */; };
 		F6D807DD1D17F9EE002953AB /* ICURLHandlerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F6D807DC1D17F9EE002953AB /* ICURLHandlerTests.m */; };
@@ -181,8 +178,6 @@
 		F619BDE71C4D071700F87F50 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F62E49C91CC7C870006C071D /* ICConversationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICConversationViewController.h; sourceTree = "<group>"; };
 		F62E49CA1CC7C870006C071D /* ICConversationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICConversationViewController.m; sourceTree = "<group>"; };
-		F62F71B11C66736200656D3C /* ICConversationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICConversationCell.h; sourceTree = "<group>"; };
-		F62F71B21C66736200656D3C /* ICConversationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICConversationCell.m; sourceTree = "<group>"; };
 		F62F71D31C68D84E00656D3C /* ICMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICMessageCell.h; sourceTree = "<group>"; };
 		F62F71D41C68D84E00656D3C /* ICMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ICMessageCell.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		F63404241C65F78300464F3E /* ICEmptyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICEmptyViewController.h; sourceTree = "<group>"; };
@@ -281,14 +276,11 @@
 		F6C6BD701D364AFC00CF3B8B /* FormDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormDataSource.swift; sourceTree = "<group>"; };
 		F6C6BD721D3669D500CF3B8B /* FormItemURLCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormItemURLCell.swift; sourceTree = "<group>"; };
 		F6C6BD731D3669D500CF3B8B /* FormItemURLCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FormItemURLCell.xib; sourceTree = "<group>"; };
-		F6CDE9521CC52DD9009C2D48 /* ICRecentConversationsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICRecentConversationsViewController.h; sourceTree = "<group>"; };
-		F6CDE9531CC52DD9009C2D48 /* ICRecentConversationsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICRecentConversationsViewController.m; sourceTree = "<group>"; };
 		F6CE94981DABF0B70044356A /* RecentConversationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentConversationsViewController.swift; sourceTree = "<group>"; };
 		F6CE949A1DABF0DA0044356A /* RecentConversationsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentConversationsPresenter.swift; sourceTree = "<group>"; };
 		F6CE949F1DABF10A0044356A /* RecentConversationsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentConversationsView.swift; sourceTree = "<group>"; };
 		F6CE94A11DABF1570044356A /* RecentConversationsViewEventHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentConversationsViewEventHandler.swift; sourceTree = "<group>"; };
 		F6CE94A31DAC04BD0044356A /* RecentConversationsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentConversationsDataSource.swift; sourceTree = "<group>"; };
-		F6D807D41D17D8DE002953AB /* ICConversationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ICConversationCell.xib; sourceTree = "<group>"; };
 		F6D807D61D17DD95002953AB /* fontawesome-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fontawesome-webfont.ttf"; sourceTree = "<group>"; };
 		F6D807D81D17F53E002953AB /* ICURLHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICURLHandler.h; sourceTree = "<group>"; };
 		F6D807D91D17F53E002953AB /* ICURLHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICURLHandler.m; sourceTree = "<group>"; };
@@ -716,7 +708,6 @@
 				F68EDFF81D3D3CD300AFCB9D /* Account List Module */,
 				F6E604FE1C787273000CCDD9 /* Account Module */,
 				F6A9F98E1D345B41007D8718 /* Settings Module */,
-				F6CDE9511CC52DAC009C2D48 /* Recent Conversations */,
 				F62F71C91C68CFE900656D3C /* Conversation */,
 			);
 			name = Modules;
@@ -863,18 +854,6 @@
 				F6CE949D1DABF0E40044356A /* View */,
 			);
 			name = "Recent Conversations Module";
-			sourceTree = "<group>";
-		};
-		F6CDE9511CC52DAC009C2D48 /* Recent Conversations */ = {
-			isa = PBXGroup;
-			children = (
-				F62F71B11C66736200656D3C /* ICConversationCell.h */,
-				F62F71B21C66736200656D3C /* ICConversationCell.m */,
-				F6D807D41D17D8DE002953AB /* ICConversationCell.xib */,
-				F6CDE9521CC52DD9009C2D48 /* ICRecentConversationsViewController.h */,
-				F6CDE9531CC52DD9009C2D48 /* ICRecentConversationsViewController.m */,
-			);
-			name = "Recent Conversations";
 			sourceTree = "<group>";
 		};
 		F6CE949C1DABF0DF0044356A /* Presenter */ = {
@@ -1086,7 +1065,6 @@
 				F619BDD01C4D071700F87F50 /* LaunchScreen.storyboard in Resources */,
 				F6F56AFE1C5395A700C34CC8 /* Cartfile in Resources */,
 				F646CA5F1DB62F8000C239B1 /* RecentConversationsCell.xib in Resources */,
-				F6D807D51D17D8DE002953AB /* ICConversationCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1157,7 +1135,6 @@
 				F65CC93A1CE0AC4B00AE59DF /* ICErrorCell.m in Sources */,
 				F65237481D4FF15700285713 /* SettingsOutput.swift in Sources */,
 				F6167A051D5073890002A1A4 /* NavigationControllerPresenter.swift in Sources */,
-				F6CDE9541CC52DD9009C2D48 /* ICRecentConversationsViewController.m in Sources */,
 				F6CE949B1DABF0DA0044356A /* RecentConversationsPresenter.swift in Sources */,
 				F63A666B1D2662DE00FCC82E /* AccountPresentationModel.swift in Sources */,
 				F605909C1D2F97AB0071FC63 /* AccountProvider.swift in Sources */,
@@ -1179,7 +1156,6 @@
 				F6EF1F371C71D1BC0083F4BE /* ICMessageBackgroundView.m in Sources */,
 				F676EF981CDCD49A003047EC /* ICConversationFragment.m in Sources */,
 				F65751351D0FF4CE0038AB25 /* ICAccountPickerViewController.m in Sources */,
-				F62F71B31C66736200656D3C /* ICConversationCell.m in Sources */,
 				F6555A571D340E52009C4324 /* AccountViewControllerHeaderView.swift in Sources */,
 				F68269CF1D0EECE2007A3934 /* ICAppWireframe.m in Sources */,
 				F652374A1D4FF17B00285713 /* SettingsView.swift in Sources */,
