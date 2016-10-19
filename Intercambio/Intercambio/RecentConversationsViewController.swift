@@ -42,6 +42,7 @@ class RecentConversationsViewController: UITableViewController, RecentConversati
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 60
         tableViewAdapter = FTTableViewAdapter(tableView: tableView)
+        tableViewAdapter?.rowAnimation = .fade
         
         tableView.register(UINib(nibName: "RecentConversationsCell", bundle: nil), forCellReuseIdentifier: "conversation")
         tableViewAdapter?.forRowsMatching(nil, useCellWithReuseIdentifier: "conversation") {
