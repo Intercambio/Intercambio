@@ -605,9 +605,11 @@
 {
     NSArray *URIs = [_endpointSearchBar.allTokens valueForKey:@"context"];
     if (_selectedAccount && [URIs count] == 1) {
-        NSURLComponents *components = [NSURLComponents componentsWithURL:[_selectedAccount accountURI] resolvingAgainstBaseURL:NO];
-        components.path = [NSString stringWithFormat:@"/%@", [[URIs firstObject] path]];
-        self.conversationURI = [components URL];
+        
+        NSURLComponents *counterpartURLComponents = [NSURLComponents componentsWithURL:[URIs firstObject] resolvingAgainstBaseURL:YES];
+        NSURLComponents *conversationURLComponents = [NSURLComponents componentsWithURL:[_selectedAccount accountURI] resolvingAgainstBaseURL:NO];
+        conversationURLComponents.path = [NSString stringWithFormat:@"/%@", [counterpartURLComponents path]];
+        self.conversationURI = [conversationURLComponents URL];
     } else {
         self.conversationURI = nil;
     }
