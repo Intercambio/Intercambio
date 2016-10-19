@@ -19,7 +19,7 @@
             <rect key="frame" x="0.0" y="0.0" width="454" height="256"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" tableViewCell="jSi-5X-kBH" id="6zh-M4-LWG">
-                <frame key="frameInset" width="454" height="255"/>
+                <frame key="frameInset" width="454" height="255.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="anD-sT-Dga">
@@ -56,7 +56,7 @@
                             </label>
                         </subviews>
                     </stackView>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AvatarView" translatesAutoresizingMaskIntoConstraints="NO" id="Z7i-y8-4Uc" customClass="AvatarView" customModule="Intercambio" customModuleProvider="target">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Z7i-y8-4Uc" customClass="AvatarView" customModule="Intercambio" customModuleProvider="target">
                         <constraints>
                             <constraint firstAttribute="height" constant="56" id="0WT-Br-8ai"/>
                             <constraint firstAttribute="width" secondItem="Z7i-y8-4Uc" secondAttribute="height" multiplier="1:1" id="EWN-Hd-OUG"/>
@@ -84,7 +84,4 @@
             <point key="canvasLocation" x="9" y="-354"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="AvatarView" width="16" height="16"/>
-    </resources>
 </document>
