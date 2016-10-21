@@ -61,15 +61,6 @@
 
 #pragma mark ICAppWireframeDelegate
 
-- (UIViewController<ICConversationUserInterface> *)viewControllerForConversationInAppWireframe:(ICAppWireframe *)appWireframe
-{
-    ICConversationViewController *viewController = [[ICConversationViewController alloc] init];
-    viewController.dataSourceProvider = self.communicationService;
-    viewController.accountDataSource = self.communicationService.accountDataSource;
-    viewController.conversationProvider = self.communicationService;
-    return viewController;
-}
-
 - (UIAlertController *)alertForNewAccountInAppWireframe:(ICAppWireframe *)appWireframe
 {
     id<FTMutableDataSource> accountDataSource = self.communicationService.accountDataSource;

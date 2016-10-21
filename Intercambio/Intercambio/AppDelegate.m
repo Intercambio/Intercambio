@@ -62,18 +62,20 @@ static DDLogLevel ddLogLevel = DDLogLevelInfo;
 
     _appWireframe.navigationControllerModule = [[NavigationControllerModule alloc] initWithService:_communicationService];
     _appWireframe.navigationControllerModule.router = _appWireframe;
-    
+
     _appWireframe.accountListModule = [[AccountListModule alloc] initWithService:_communicationService];
     _appWireframe.accountListModule.router = _appWireframe;
-    
+
     _appWireframe.accountModule = [[AccountModule alloc] initWithService:_communicationService];
     _appWireframe.accountModule.router = _appWireframe;
-    
+
     _appWireframe.settingsModule = [[SettingsModule alloc] initWithService:_communicationService];
 
     _appWireframe.recentConversationsModule = [[RecentConversationsModule alloc] initWithService:_communicationService];
     _appWireframe.recentConversationsModule.router = _appWireframe;
-    
+
+    _appWireframe.conversationModule = [[ConversationModule alloc] initWithService:_communicationService];
+
     [_appWireframe presentLaunchScreen];
 
     _URLHandler = [[ICURLHandler alloc] initWithAppWireframe:_appWireframe];

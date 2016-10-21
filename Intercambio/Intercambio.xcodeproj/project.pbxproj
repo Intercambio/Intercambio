@@ -59,6 +59,11 @@
 		F676EFAA1CDCE99F003047EC /* ICConversationFragmentTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F676EFA91CDCE99F003047EC /* ICConversationFragmentTests.m */; };
 		F676EFAE1CDCEE20003047EC /* ICConversationLayoutItem_Message.m in Sources */ = {isa = PBXBuildFile; fileRef = F676EFAD1CDCEE20003047EC /* ICConversationLayoutItem_Message.m */; };
 		F676EFB21CDE4570003047EC /* ICConversationTimestampView.m in Sources */ = {isa = PBXBuildFile; fileRef = F676EFB11CDE4570003047EC /* ICConversationTimestampView.m */; };
+		F678B6D81DBA24DE004EF7EE /* ConversationModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = F678B6D71DBA24DE004EF7EE /* ConversationModule.swift */; };
+		F678B6DD1DBA257D004EF7EE /* ConversationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F678B6DC1DBA257D004EF7EE /* ConversationView.swift */; };
+		F678B6DF1DBA25C0004EF7EE /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F678B6DE1DBA25C0004EF7EE /* ConversationViewController.swift */; };
+		F678B6E11DBA25D0004EF7EE /* ConversationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F678B6E01DBA25D0004EF7EE /* ConversationPresenter.swift */; };
+		F678B6E31DBA28FC004EF7EE /* ConversationViewEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F678B6E21DBA28FC004EF7EE /* ConversationViewEventHandler.swift */; };
 		F68269CF1D0EECE2007A3934 /* ICAppWireframe.m in Sources */ = {isa = PBXBuildFile; fileRef = F68269CE1D0EECE2007A3934 /* ICAppWireframe.m */; };
 		F6826A1D1D0F38BD007A3934 /* UITableView+CellAction.m in Sources */ = {isa = PBXBuildFile; fileRef = F6826A1C1D0F38BD007A3934 /* UITableView+CellAction.m */; };
 		F6826A201D0F4476007A3934 /* ICUserInterfaceFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = F6826A1F1D0F4476007A3934 /* ICUserInterfaceFactory.m */; };
@@ -229,6 +234,11 @@
 		F676EFAD1CDCEE20003047EC /* ICConversationLayoutItem_Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICConversationLayoutItem_Message.m; sourceTree = "<group>"; };
 		F676EFB01CDE4570003047EC /* ICConversationTimestampView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICConversationTimestampView.h; sourceTree = "<group>"; };
 		F676EFB11CDE4570003047EC /* ICConversationTimestampView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICConversationTimestampView.m; sourceTree = "<group>"; };
+		F678B6D71DBA24DE004EF7EE /* ConversationModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationModule.swift; sourceTree = "<group>"; };
+		F678B6DC1DBA257D004EF7EE /* ConversationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationView.swift; sourceTree = "<group>"; };
+		F678B6DE1DBA25C0004EF7EE /* ConversationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
+		F678B6E01DBA25D0004EF7EE /* ConversationPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationPresenter.swift; sourceTree = "<group>"; };
+		F678B6E21DBA28FC004EF7EE /* ConversationViewEventHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewEventHandler.swift; sourceTree = "<group>"; };
 		F68269CD1D0EECE2007A3934 /* ICAppWireframe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICAppWireframe.h; sourceTree = "<group>"; };
 		F68269CE1D0EECE2007A3934 /* ICAppWireframe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ICAppWireframe.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		F6826A111D0F0CF6007A3934 /* ICConversationUserInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICConversationUserInterface.h; sourceTree = "<group>"; };
@@ -679,6 +689,42 @@
 			name = "Decoration Views";
 			sourceTree = "<group>";
 		};
+		F678B6D61DBA2406004EF7EE /* Conversation Module */ = {
+			isa = PBXGroup;
+			children = (
+				F678B6D71DBA24DE004EF7EE /* ConversationModule.swift */,
+				F678B6D91DBA253E004EF7EE /* Protocols */,
+				F678B6DA1DBA254A004EF7EE /* View */,
+				F678B6DB1DBA255F004EF7EE /* Presenter */,
+			);
+			name = "Conversation Module";
+			sourceTree = "<group>";
+		};
+		F678B6D91DBA253E004EF7EE /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				F678B6DC1DBA257D004EF7EE /* ConversationView.swift */,
+				F678B6E21DBA28FC004EF7EE /* ConversationViewEventHandler.swift */,
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
+		F678B6DA1DBA254A004EF7EE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F678B6DE1DBA25C0004EF7EE /* ConversationViewController.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		F678B6DB1DBA255F004EF7EE /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				F678B6E01DBA25D0004EF7EE /* ConversationPresenter.swift */,
+			);
+			name = Presenter;
+			sourceTree = "<group>";
+		};
 		F68269CC1D0EECCB007A3934 /* App Wireframe */ = {
 			isa = PBXGroup;
 			children = (
@@ -705,6 +751,7 @@
 			children = (
 				F61679F61D5070D70002A1A4 /* Navigation Controller Module */,
 				F6B9E33A1D8C743400510F01 /* Recent Conversations Module */,
+				F678B6D61DBA2406004EF7EE /* Conversation Module */,
 				F68EDFF81D3D3CD300AFCB9D /* Account List Module */,
 				F6E604FE1C787273000CCDD9 /* Account Module */,
 				F6A9F98E1D345B41007D8718 /* Settings Module */,
@@ -1148,6 +1195,7 @@
 				F62E49CB1CC7C870006C071D /* ICConversationViewController.m in Sources */,
 				F6B26FAB1C6B79310099CBC9 /* ICMessageComposeCell.m in Sources */,
 				F6151BB31D3538CD000551B6 /* SettingsPresenter.swift in Sources */,
+				F678B6DD1DBA257D004EF7EE /* ConversationView.swift in Sources */,
 				F6CE94A21DABF1570044356A /* RecentConversationsViewEventHandler.swift in Sources */,
 				F676EFA31CDCE03E003047EC /* ICConversationParagraphFragment.m in Sources */,
 				F6CE94A41DAC04BD0044356A /* RecentConversationsDataSource.swift in Sources */,
@@ -1169,7 +1217,9 @@
 				F6C6BD741D3669D500CF3B8B /* FormItemURLCell.swift in Sources */,
 				F61679FC1D50725B0002A1A4 /* NavigationController.swift in Sources */,
 				F6B3CC621D4B85A600234F9B /* AccountListPresentationDataSource.swift in Sources */,
+				F678B6D81DBA24DE004EF7EE /* ConversationModule.swift in Sources */,
 				F68EDFFA1D3D3CE800AFCB9D /* AccountListModule.swift in Sources */,
+				F678B6E11DBA25D0004EF7EE /* ConversationPresenter.swift in Sources */,
 				F6EF1F411C72066C0083F4BE /* CLTokenInputView.m in Sources */,
 				F63A66751D26672000FCC82E /* AccountViewModelImpl.swift in Sources */,
 				F646CA621DB6410300C239B1 /* AvatarView.swift in Sources */,
@@ -1201,7 +1251,9 @@
 				F676EF9B1CDCD63F003047EC /* ICConversationMessageFragment.m in Sources */,
 				F6A2592E1D33EC080005C533 /* AccountViewEventHandler.swift in Sources */,
 				F6C6BD6F1D3645BD00CF3B8B /* SettingsViewController.swift in Sources */,
+				F678B6DF1DBA25C0004EF7EE /* ConversationViewController.swift in Sources */,
 				F6167A001D5073100002A1A4 /* NavigationControllerView.swift in Sources */,
+				F678B6E31DBA28FC004EF7EE /* ConversationViewEventHandler.swift in Sources */,
 				F6A259331D33F5CF0005C533 /* AccountViewController.swift in Sources */,
 				F6F375411D55326000F718BC /* NavigationBarStatusView.swift in Sources */,
 				F6A9F9901D345B7D007D8718 /* SettingsModule.swift in Sources */,
