@@ -64,6 +64,7 @@
 		F678B6DF1DBA25C0004EF7EE /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F678B6DE1DBA25C0004EF7EE /* ConversationViewController.swift */; };
 		F678B6E11DBA25D0004EF7EE /* ConversationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F678B6E01DBA25D0004EF7EE /* ConversationPresenter.swift */; };
 		F678B6E31DBA28FC004EF7EE /* ConversationViewEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F678B6E21DBA28FC004EF7EE /* ConversationViewEventHandler.swift */; };
+		F678B6E51DBA3273004EF7EE /* ConversationDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F678B6E41DBA3273004EF7EE /* ConversationDataSource.swift */; };
 		F68269CF1D0EECE2007A3934 /* ICAppWireframe.m in Sources */ = {isa = PBXBuildFile; fileRef = F68269CE1D0EECE2007A3934 /* ICAppWireframe.m */; };
 		F6826A1D1D0F38BD007A3934 /* UITableView+CellAction.m in Sources */ = {isa = PBXBuildFile; fileRef = F6826A1C1D0F38BD007A3934 /* UITableView+CellAction.m */; };
 		F6826A201D0F4476007A3934 /* ICUserInterfaceFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = F6826A1F1D0F4476007A3934 /* ICUserInterfaceFactory.m */; };
@@ -239,6 +240,7 @@
 		F678B6DE1DBA25C0004EF7EE /* ConversationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
 		F678B6E01DBA25D0004EF7EE /* ConversationPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationPresenter.swift; sourceTree = "<group>"; };
 		F678B6E21DBA28FC004EF7EE /* ConversationViewEventHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewEventHandler.swift; sourceTree = "<group>"; };
+		F678B6E41DBA3273004EF7EE /* ConversationDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationDataSource.swift; sourceTree = "<group>"; };
 		F68269CD1D0EECE2007A3934 /* ICAppWireframe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICAppWireframe.h; sourceTree = "<group>"; };
 		F68269CE1D0EECE2007A3934 /* ICAppWireframe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ICAppWireframe.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		F6826A111D0F0CF6007A3934 /* ICConversationUserInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICConversationUserInterface.h; sourceTree = "<group>"; };
@@ -721,6 +723,7 @@
 			isa = PBXGroup;
 			children = (
 				F678B6E01DBA25D0004EF7EE /* ConversationPresenter.swift */,
+				F678B6E41DBA3273004EF7EE /* ConversationDataSource.swift */,
 			);
 			name = Presenter;
 			sourceTree = "<group>";
@@ -1203,6 +1206,7 @@
 				F6EF1F431C72066C0083F4BE /* CLBackspaceDetectingTextField.m in Sources */,
 				F6EF1F371C71D1BC0083F4BE /* ICMessageBackgroundView.m in Sources */,
 				F676EF981CDCD49A003047EC /* ICConversationFragment.m in Sources */,
+				F678B6E51DBA3273004EF7EE /* ConversationDataSource.swift in Sources */,
 				F65751351D0FF4CE0038AB25 /* ICAccountPickerViewController.m in Sources */,
 				F6555A571D340E52009C4324 /* AccountViewControllerHeaderView.swift in Sources */,
 				F68269CF1D0EECE2007A3934 /* ICAppWireframe.m in Sources */,

@@ -9,7 +9,19 @@
 import UIKit
 import Fountain
 
+enum ConversationViewModelDirection {
+    case undefined
+    case inbound
+    case outbound
+}
+
 protocol ConversationViewModel {
+    var direction: ConversationViewModelDirection { get }
+    var origin: URL? { get }
+    var editable: Bool { get }
+    var temporary: Bool { get }
+    var timestamp: Date { get }
+    var body: NSTextStorage? { get }
 }
 
 protocol ConversationView : class {

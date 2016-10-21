@@ -8,6 +8,7 @@
 
 import UIKit
 import IntercambioCore
+import XMPPMessageArchive
 
 public class ConversationModule : NSObject {
     
@@ -18,12 +19,16 @@ public class ConversationModule : NSObject {
     }
     
     public func viewController(uri: URL?) -> UIViewController? {
-        let presenter = ConversationPresenter()
+        let presenter = ConversationPresenter(db: service.messageDB)
         let viewController = ConversationViewController()
         
         viewController.eventHandler = presenter
         presenter.view = viewController
         
+        presenter.conversation = uri
+        
         return viewController
     }
 }
+
+extension XMPPMessageDB : ConversationMessageDB {}
