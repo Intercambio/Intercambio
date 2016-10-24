@@ -9,7 +9,7 @@
 import UIKit
 import Fountain
 
-class ConversationViewController: UICollectionViewController, ConversationView {
+class ConversationViewController: UICollectionViewController, ConversationView, UICollectionViewDelegateConversationViewLayout {
 
     var eventHandler: ConversationViewEventHandler?
     var dataSource: FTDataSource? {
@@ -19,8 +19,7 @@ class ConversationViewController: UICollectionViewController, ConversationView {
     }
     
     init() {
-        let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: 100, height: 100)
+        let layout = ConversationViewLayout()
         super.init(collectionViewLayout: layout)
     }
     
@@ -37,14 +36,74 @@ class ConversationViewController: UICollectionViewController, ConversationView {
         
         collectionViewAdapter = FTCollectionViewAdapter(collectionView: collectionView)
         
+        collectionView?.register(UICollectionReusableView.classForCoder(),
+                                 forSupplementaryViewOfKind: ConversationViewLayoutElementKindAvatar,
+                                 withReuseIdentifier: ConversationViewLayoutElementKindAvatar)
+        collectionViewAdapter?.forSupplementaryViews(ofKind: ConversationViewLayoutElementKindAvatar,
+                                                     matching: nil,
+                                                     useViewWithReuseIdentifier: ConversationViewLayoutElementKindAvatar) {
+                                                        (view, item, indexPath, dataSource) in
+                                                        if  let supplementaryView = view as? UICollectionReusableView {
+                                                            supplementaryView.backgroundColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
+                                                        }
+        }
+        
         collectionView?.register(UICollectionViewCell.classForCoder(), forCellWithReuseIdentifier: "undefined")
-        collectionViewAdapter?.forItemsMatching(nil, useCellWithReuseIdentifier: "undefined", prepare: { (view, item, indexPath, dataSource) in
+        collectionViewAdapter?.forItemsMatching(nil, useCellWithReuseIdentifier: "undefined") {
+            (view, item, indexPath, dataSource) in
             if  let cell = view as? UICollectionViewCell {
                 cell.backgroundColor = #colorLiteral(red: 0.9607843161, green: 0.7058823705, blue: 0.200000003, alpha: 1)
             }
-        })
+        }
         
         collectionViewAdapter?.delegate = self
         collectionViewAdapter?.dataSource = dataSource
+    }
+    
+    // UICollectionViewDelegateConversationViewLayout
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath,
+                        maxWidth: CGFloat,
+                        layoutMargins: UIEdgeInsets) -> CGSize{
+        return CGSize(width: maxWidth, height: 30)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        layoutItemOfItemAt indexPath: IndexPath) -> ConversationViewLayoutItem {
+
+        var direction = ConversationViewLayoutDirection.undefined
+        var origin = NSUUID().uuidString
+        var temporary = false
+        
+        if let message = dataSource?.item(at: indexPath) as? ConversationViewModel {
+            switch message.direction {
+            case .undefined:
+                direction = .undefined
+            case .inbound:
+                direction = .inbound
+            case .outbound:
+                direction = .outbound
+            }
+            
+            if let url = message.origin {
+                origin = url.absoluteString
+            }
+            
+            temporary = message.temporary
+        }
+        return ConversationViewLayoutItem(direction: direction, origin: origin, temporary: temporary)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        timestampOfItemAt indexPath: IndexPath) -> Date {
+        if let message = dataSource?.item(at: indexPath) as? ConversationViewModel {
+            return message.timestamp
+        } else {
+            return Date.distantFuture
+        }
     }
 }
