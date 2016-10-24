@@ -15,7 +15,6 @@ class ConversationViewLayoutParagraphFragment: ConversationViewLayoutAbstractFra
     init(showAvatar: Bool) {
         self.showAvatar = showAvatar
         super.init()
-        self.fragmentSpacing = 4
     }
     
     // Generate Layout
@@ -31,10 +30,11 @@ class ConversationViewLayoutParagraphFragment: ConversationViewLayoutAbstractFra
     override func layout(offset: CGPoint,
                          width: CGFloat,
                          position: ConversationViewLayoutFragmentPosition,
+                         options: [String:Any],
                          sizeCallback: (IndexPath, CGFloat, UIEdgeInsets) -> CGSize) {
 
-        let avatarPadding: CGFloat = 8
-        let avatarSize = CGSize(width: 38, height: 38)
+        let avatarPadding = options["avatar_padding"] as? CGFloat ?? CGFloat(4)
+        let avatarSize = options["avatar_size"] as? CGSize ?? CGSize(width: 28, height: 28)
         
         if showAvatar {
             
@@ -56,6 +56,7 @@ class ConversationViewLayoutParagraphFragment: ConversationViewLayoutAbstractFra
             super.layout(offset: newOffset,
                          width: newWidth,
                          position: position,
+                         options: options,
                          sizeCallback: sizeCallback)
             
             if let fragment = childFragments.last {
@@ -96,9 +97,18 @@ class ConversationViewLayoutParagraphFragment: ConversationViewLayoutAbstractFra
             super.layout(offset: offset,
                          width: width,
                          position: position,
+                         options: options,
                          sizeCallback: sizeCallback)
             
             layoutAttributes = nil
+        }
+    }
+    
+    override func fragmentSpacing(_ options: [String:Any]) -> CGFloat {
+        if let spacing = options["message_spacing"] as? CGFloat {
+            return spacing
+        } else {
+            return 0
         }
     }
     

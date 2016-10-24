@@ -33,7 +33,11 @@ protocol ConversationViewLayoutFragment : class {
     var rect: CGRect { get }
     
     typealias SizeCallback = (IndexPath, CGFloat, UIEdgeInsets) -> CGSize
-    func layout(offset: CGPoint, width: CGFloat, position: ConversationViewLayoutFragmentPosition, sizeCallback: SizeCallback) -> Void
+    func layout(offset: CGPoint,
+                width: CGFloat,
+                position: ConversationViewLayoutFragmentPosition,
+                options: [String:Any],
+                sizeCallback: SizeCallback) -> Void
     
     func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]
     func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes?
@@ -43,12 +47,7 @@ protocol ConversationViewLayoutFragment : class {
 
 class ConversationViewLayoutAbstractFragment: ConversationViewLayoutFragment {
     
-    var contentInset: UIEdgeInsets
-    var fragmentSpacing = CGFloat(0.0)
-    
     init() {
-        contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        fragmentSpacing = CGFloat(0.0)
         childFragments = []
         rect = CGRect()
     }
@@ -78,30 +77,41 @@ class ConversationViewLayoutAbstractFragment: ConversationViewLayoutFragment {
     func layout(offset: CGPoint,
                 width: CGFloat,
                 position: ConversationViewLayoutFragmentPosition,
+                options: [String:Any],
                 sizeCallback: (IndexPath, CGFloat, UIEdgeInsets) -> CGSize) {
         
-        let contentWidth = width - (contentInset.left + contentInset.right)
+        let insets = contentInsets(options)
+        let contentWidth = width - (insets.left + insets.right)
         
         var currentOffset = offset
-        currentOffset.y = currentOffset.y + contentInset.top
-        currentOffset.x = currentOffset.x + contentInset.left
+        currentOffset.y = currentOffset.y + insets.top
+        currentOffset.x = currentOffset.x + insets.left
         
         for fragment in childFragments {
             fragment.layout(offset: currentOffset,
                             width: contentWidth,
                             position: fragmentPosition(of: fragment),
+                            options: options,
                             sizeCallback: sizeCallback)
             
             currentOffset.y = fragment.rect.maxY
             
             if childFragments.last !== fragment  {
-                currentOffset.y = currentOffset.y + fragmentSpacing
+                currentOffset.y = currentOffset.y + fragmentSpacing(options)
             }
         }
         
-        currentOffset.y = currentOffset.y + contentInset.bottom
+        currentOffset.y = currentOffset.y + insets.bottom
         
         rect = CGRect(origin: offset, size: CGSize(width: width, height: currentOffset.y - offset.y))
+    }
+    
+    func fragmentSpacing(_ options: [String:Any]) -> CGFloat {
+        return 0
+    }
+    
+    func contentInsets(_ options: [String:Any]) ->  UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
     
     private func fragmentPosition(of fragment: ConversationViewLayoutFragment) -> ConversationViewLayoutFragmentPosition {

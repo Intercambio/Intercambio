@@ -16,7 +16,6 @@ class ConversationViewLayoutMessageFragment: ConversationViewLayoutAbstractFragm
     init(indexPath: IndexPath, alignment: ConversationViewLayoutFragmentAlignment) {
         self.indexPath = indexPath
         self.alignment = alignment
-        maxWidth = 0
         super.init()
     }
 
@@ -27,20 +26,19 @@ class ConversationViewLayoutMessageFragment: ConversationViewLayoutAbstractFragm
     
     // Generate Layout
     
-    var maxWidth: CGFloat
-    
     override func layout(offset: CGPoint,
                 width: CGFloat,
                 position: ConversationViewLayoutFragmentPosition,
+                options: [String:Any],
                 sizeCallback: (IndexPath, CGFloat, UIEdgeInsets) -> CGSize) {
         
-        let minPadding = CGFloat(56.0)
-        let maxReadableWidth = CGFloat(480)
-        let layoutMargins = UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)
+        let minPadding = options["min_readable_padding"] as? CGFloat ?? CGFloat(56.0)
+        let maxReadableWidth = options["max_readable_width"] as? CGFloat ?? CGFloat(480)
+        let layoutMargins = options["layout_margins"] as? UIEdgeInsets ?? UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)
         
         // Size
         
-        maxWidth = fmin(maxReadableWidth, width - minPadding)
+        let maxWidth = fmin(maxReadableWidth, width - minPadding)
         
         var size = sizeCallback(indexPath, maxWidth, layoutMargins)
         size.width = fmin(size.width, width)

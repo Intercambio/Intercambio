@@ -48,6 +48,16 @@ enum ConversationViewLayoutDirection {
 
 class ConversationViewLayout: UICollectionViewLayout {
     
+    var paragraphSpacing: CGFloat = CGFloat(5)
+    var messageSpacing: CGFloat = CGFloat(4)
+    var contentInsets: UIEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+    var headerHeight: CGFloat = CGFloat(34)
+    var avatarSize: CGSize = CGSize(width: 38, height: 38)
+    var avatarPadding: CGFloat = CGFloat(8)
+    var maxReadableWidth: CGFloat = CGFloat(480)
+    var minReadablePadding: CGFloat = CGFloat(48)
+    var layoutMargins: UIEdgeInsets = UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)
+    
     private var dataSourceCountsAreValid: Bool
     private var layoutMetricsAreValid: Bool
     
@@ -85,7 +95,7 @@ class ConversationViewLayout: UICollectionViewLayout {
             let offset = CGPoint(x: 0, y: 0)
             let width = collectionView != nil ? (collectionView?.bounds.width)! : 0
             
-            mainFragment?.layout(offset: offset, width: width, position: [.first, .last]) {
+            mainFragment?.layout(offset: offset, width: width, position: [.first, .last], options: options()) {
                 (indexPath, width, layoutMargins) in
                 return CGSize(width: width, height: lineHeight)
             }
@@ -94,6 +104,20 @@ class ConversationViewLayout: UICollectionViewLayout {
         }
         
         super.prepare()
+    }
+    
+    private func options() -> [String:Any] {
+        var options: [String:Any] = [:]
+        options["paragraph_spacing"] = paragraphSpacing
+        options["message_spacing"] = messageSpacing
+        options["content_insets"] = contentInsets
+        options["header_height"] = headerHeight
+        options["avatar_size"] = avatarSize
+        options["avatar_padding"] = avatarPadding
+        options["max_readable_width"] = maxReadableWidth
+        options["min_readable_padding"] = minReadablePadding
+        options["layout_margins"] = layoutMargins
+        return options
     }
     
     override var collectionViewContentSize: CGSize {
@@ -125,7 +149,6 @@ class ConversationViewLayout: UICollectionViewLayout {
     private func generateMainFragment() -> ConversationViewLayoutFragment {
         
         let conversation = ConversationViewLayoutConversationFragment()
-        conversation.contentInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
         
         var previousTimestamp : Date? = nil
         var previousLayoutItem: ConversationViewLayoutItem? = nil

@@ -15,7 +15,6 @@ class ConversationViewLayoutChapterFragment: ConversationViewLayoutAbstractFragm
     init(timestamp: Date) {
         self.timestamp = timestamp
         super.init()
-        self.fragmentSpacing = 5
     }
 
     // Generate Layout
@@ -23,13 +22,15 @@ class ConversationViewLayoutChapterFragment: ConversationViewLayoutAbstractFragm
     override func layout(offset: CGPoint,
                          width: CGFloat,
                          position: ConversationViewLayoutFragmentPosition,
+                         options: [String:Any],
                          sizeCallback: (IndexPath, CGFloat, UIEdgeInsets) -> CGSize) {
         
-        let headerHeight: CGFloat = 34.0
+        let headerHeight = options["header_height"] as? CGFloat ?? 0
         
         super.layout(offset: CGPoint(x: offset.x, y: offset.y + headerHeight),
                      width: width,
                      position: position,
+                     options: options,
                      sizeCallback: sizeCallback)
         
         rect.origin = offset
@@ -43,6 +44,14 @@ class ConversationViewLayoutChapterFragment: ConversationViewLayoutAbstractFragm
             layoutAttributes = attributes
         } else {
             layoutAttributes = nil
+        }
+    }
+    
+    override func fragmentSpacing(_ options: [String:Any]) -> CGFloat {
+        if let spacing = options["paragraph_spacing"] as? CGFloat {
+            return spacing
+        } else {
+            return 0
         }
     }
     

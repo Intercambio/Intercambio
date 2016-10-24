@@ -46,4 +46,14 @@ class ConversationViewLayoutConversationFragment: ConversationViewLayoutAbstract
         let message = ConversationViewLayoutMessageFragment(indexPath: indexPath, alignment: alignment)
         paragraph.append(message)
     }
+    
+    // Layout
+    
+    override func contentInsets(_ options: [String:Any]) ->  UIEdgeInsets {
+        if let spacing = options["content_insets"] as? UIEdgeInsets {
+            return spacing
+        } else {
+            return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        }
+    }
 }
