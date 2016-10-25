@@ -49,7 +49,7 @@ enum ConversationViewLayoutDirection {
 class ConversationViewLayout: UICollectionViewLayout {
     
     var paragraphSpacing: CGFloat = CGFloat(5)
-    var messageSpacing: CGFloat = CGFloat(4)
+    var messageSpacing: CGFloat = CGFloat(0)
     var contentInsets: UIEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
     var headerHeight: CGFloat = CGFloat(34)
     var avatarSize: CGSize = CGSize(width: 38, height: 38)
@@ -97,7 +97,7 @@ class ConversationViewLayout: UICollectionViewLayout {
             
             mainFragment?.layout(offset: offset, width: width, position: [.first, .last], options: options()) {
                 (indexPath, width, layoutMargins) in
-                return CGSize(width: width, height: lineHeight)
+                return CGSize(width: width, height: lineHeight * 2)
             }
             
             layoutMetricsAreValid = true

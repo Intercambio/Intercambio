@@ -48,6 +48,15 @@ class ConversationViewController: UICollectionViewController, ConversationView, 
                                                         }
         }
         
+        collectionView?.register(ConversationViewMessageCell.classForCoder(), forCellWithReuseIdentifier: "message")
+        collectionViewAdapter?.forItemsMatching(nil, useCellWithReuseIdentifier: "message") {
+            (view, item, indexPath, dataSource) in
+            if  let cell = view as? ConversationViewMessageCell,
+                let viewModel = item as? ConversationViewModel {
+                cell.viewModel = viewModel
+            }
+        }
+        
         collectionView?.register(UICollectionViewCell.classForCoder(), forCellWithReuseIdentifier: "undefined")
         collectionViewAdapter?.forItemsMatching(nil, useCellWithReuseIdentifier: "undefined") {
             (view, item, indexPath, dataSource) in
