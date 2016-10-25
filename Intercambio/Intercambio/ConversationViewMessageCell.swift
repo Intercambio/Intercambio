@@ -9,7 +9,33 @@
 import UIKit
 
 class ConversationViewMessageCell: ConversationViewCell {
-
+    
+    override class func preferredSize(for viewModel: ConversationViewModel,
+                                      width: CGFloat,
+                                      layoutMargins: UIEdgeInsets) -> CGSize {
+        
+        if let body = viewModel.body {
+            
+            let lableWidth = width - (layoutMargins.left + layoutMargins.right)
+            let maxHeight = CGFloat(500)
+            
+            let messageLabel = UILabel()
+            messageLabel.numberOfLines = 0
+            messageLabel.font = UIFont.preferredFont(forTextStyle: .body)
+            messageLabel.preferredMaxLayoutWidth = lableWidth
+            messageLabel.attributedText = body
+            
+            var size = messageLabel.sizeThatFits(CGSize(width: lableWidth, height: maxHeight))
+            size.width = layoutMargins.left + size.width + layoutMargins.right
+            size.height = layoutMargins.top + size.height + layoutMargins.bottom
+            
+            return size
+            
+        } else {
+            return super.preferredSize(for: viewModel, width: width, layoutMargins: layoutMargins)
+        }
+    }
+    
     override var viewModel: ConversationViewModel? {
         didSet {
             messageLabel.attributedText = viewModel?.body

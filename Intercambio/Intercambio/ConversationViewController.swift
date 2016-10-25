@@ -76,7 +76,13 @@ class ConversationViewController: UICollectionViewController, ConversationView, 
                         sizeForItemAt indexPath: IndexPath,
                         maxWidth: CGFloat,
                         layoutMargins: UIEdgeInsets) -> CGSize{
-        return CGSize(width: maxWidth, height: 30)
+        if let viewModel = dataSource?.item(at: indexPath) as? ConversationViewModel {
+            return ConversationViewMessageCell.preferredSize(for: viewModel,
+                                                             width: maxWidth,
+                                                             layoutMargins: layoutMargins)
+        } else {
+            return CGSize()
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView,

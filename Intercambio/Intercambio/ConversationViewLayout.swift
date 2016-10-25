@@ -56,7 +56,7 @@ class ConversationViewLayout: UICollectionViewLayout {
     var avatarPadding: CGFloat = CGFloat(8)
     var maxReadableWidth: CGFloat = CGFloat(480)
     var minReadablePadding: CGFloat = CGFloat(48)
-    var layoutMargins: UIEdgeInsets = UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)
+    var layoutMargins: UIEdgeInsets = UIEdgeInsets(top: 6, left: 8, bottom: 6, right: 8)
     
     private var dataSourceCountsAreValid: Bool
     private var layoutMetricsAreValid: Bool
@@ -97,7 +97,11 @@ class ConversationViewLayout: UICollectionViewLayout {
             
             mainFragment?.layout(offset: offset, width: width, position: [.first, .last], options: options()) {
                 (indexPath, width, layoutMargins) in
-                return CGSize(width: width, height: lineHeight * 2)
+                if let collectionView = self.collectionView, let delegate = collectionView.delegate as? UICollectionViewDelegateConversationViewLayout {
+                    return delegate.collectionView(collectionView, layout: self, sizeForItemAt: indexPath, maxWidth: width, layoutMargins: layoutMargins)
+                } else {
+                    return CGSize(width: width, height: lineHeight)
+                }
             }
             
             layoutMetricsAreValid = true

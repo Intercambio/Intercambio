@@ -10,6 +10,14 @@ import UIKit
 
 class ConversationViewCell: UICollectionViewCell {
     
+    class func preferredSize(for viewModel: ConversationViewModel,
+                             width: CGFloat,
+                             layoutMargins: UIEdgeInsets) -> CGSize {
+        var size = CGSize(width: width, height: UIFont.preferredFont(forTextStyle: .body).lineHeight)
+        size.height = layoutMargins.top + size.height + layoutMargins.bottom
+        return size
+    }
+    
     var viewModel: ConversationViewModel? {
         didSet {
             setNeedsLayout()
@@ -191,7 +199,7 @@ class ConversationViewCell: UICollectionViewCell {
     override func apply(_ layoutAttributes: UICollectionViewLayoutAttributes) {
         if let attributes = layoutAttributes as? ConversationViewLayoutAttributes {
             position = attributes.position ?? [.first, .last]
-            layoutMargins = attributes.layoutMargins ?? UIEdgeInsets()
+            contentView.layoutMargins = attributes.layoutMargins ?? UIEdgeInsets()
         }
         super.apply(layoutAttributes)
     }
