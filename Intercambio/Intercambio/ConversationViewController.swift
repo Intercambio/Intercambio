@@ -35,6 +35,7 @@ class ConversationViewController: UICollectionViewController, ConversationView, 
         collectionView?.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         
         collectionViewAdapter = FTCollectionViewAdapter(collectionView: collectionView)
+        collectionViewAdapter?.isEditing = true
         
         collectionView?.register(CoversationViewAvatarView.classForCoder(),
                                  forSupplementaryViewOfKind: ConversationViewLayoutElementKindAvatar,
@@ -70,6 +71,27 @@ class ConversationViewController: UICollectionViewController, ConversationView, 
         collectionViewAdapter?.dataSource = dataSource
     }
     
+    // View Model
+    
+    func viewModel(at indexPath: IndexPath) -> ConversationViewModel? {
+        
+        guard let dataSource = self.dataSource else {
+            return nil
+        }
+        
+        let numberOfItems = Int(dataSource.numberOfItems(inSection: UInt(indexPath.section)))
+        if indexPath.item < numberOfItems {
+            return dataSource.item(at: indexPath) as? ConversationViewModel
+        } else {
+            if let futureItemDataSource = dataSource as? FTFutureItemsDataSource {
+                return futureItemDataSource.futureItem(at: IndexPath(item: indexPath.item - numberOfItems,
+                                                                     section: indexPath.section)) as? ConversationViewModel
+            } else {
+                return nil
+            }
+        }
+    }
+    
     // UICollectionViewDelegateConversationViewLayout
     
     func collectionView(_ collectionView: UICollectionView,
@@ -77,8 +99,8 @@ class ConversationViewController: UICollectionViewController, ConversationView, 
                         sizeForItemAt indexPath: IndexPath,
                         maxWidth: CGFloat,
                         layoutMargins: UIEdgeInsets) -> CGSize{
-        if let viewModel = dataSource?.item(at: indexPath) as? ConversationViewModel {
-            return ConversationViewMessageCell.preferredSize(for: viewModel,
+        if let model = viewModel(at: indexPath) {
+            return ConversationViewMessageCell.preferredSize(for: model,
                                                              width: maxWidth,
                                                              layoutMargins: layoutMargins)
         } else {
@@ -94,8 +116,8 @@ class ConversationViewController: UICollectionViewController, ConversationView, 
         var origin = NSUUID().uuidString
         var temporary = false
         
-        if let message = dataSource?.item(at: indexPath) as? ConversationViewModel {
-            switch message.direction {
+        if let model = viewModel(at: indexPath) {
+            switch model.direction {
             case .undefined:
                 direction = .undefined
             case .inbound:
@@ -104,11 +126,11 @@ class ConversationViewController: UICollectionViewController, ConversationView, 
                 direction = .outbound
             }
             
-            if let url = message.origin {
+            if let url = model.origin {
                 origin = url.absoluteString
             }
             
-            temporary = message.temporary
+            temporary = model.temporary
         }
         return ConversationViewLayoutItem(direction: direction, origin: origin, temporary: temporary)
     }
@@ -116,8 +138,8 @@ class ConversationViewController: UICollectionViewController, ConversationView, 
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         timestampOfItemAt indexPath: IndexPath) -> Date {
-        if let message = dataSource?.item(at: indexPath) as? ConversationViewModel {
-            return message.timestamp
+        if let model = viewModel(at: indexPath) {
+            return model.timestamp
         } else {
             return Date.distantFuture
         }

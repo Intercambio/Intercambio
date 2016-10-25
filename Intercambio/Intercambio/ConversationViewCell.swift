@@ -69,12 +69,14 @@ class ConversationViewCell: UICollectionViewCell {
             background.backgroundColor = color()
             background.borderColor = borderColor()
             background.roundedCorners = roundedCorners()
+            background.borderStyle = borderStyle()
         }
         
         if let background = selectedBackgroundView as? ConversationViewCellBackgroundView {
             background.backgroundColor = selectedColor()
             background.borderColor = borderColor()
             background.roundedCorners = roundedCorners()
+            background.borderStyle = borderStyle()
         }
     }
     
@@ -190,6 +192,15 @@ class ConversationViewCell: UICollectionViewCell {
     
     func isLast() -> Bool {
         return position.contains(.last)
+    }
+    
+    // Border Style
+    
+    func borderStyle() -> ConversationViewCellBackgroundView.BorderStyle {
+        guard let viewModel = self.viewModel else {
+            return .none
+        }
+        return viewModel.temporary == true ? .dashed : .none
     }
     
     // Layout Attributes 

@@ -18,11 +18,13 @@ protocol ConversationMessageDB {
     func message(with messageID: XMPPMessageID) throws -> XMPPMessage
 }
 
-class ConversationDataSource: NSObject, FTDataSource {
+class ConversationDataSource: NSObject, FTDataSource, FTFutureItemsDataSource {
 
     let db: ConversationMessageDB
     let account: JID
     let counterpart: JID
+    
+    var pendingMessageText: NSTextStorage?
     
     private let backingStore :FTMutableSet
     private let proxy: FTObserverProxy
@@ -100,6 +102,10 @@ class ConversationDataSource: NSObject, FTDataSource {
         return [self.account, self.counterpart]
     }
     
+    // Pending Message Text
+    
+    
+    
     // FTDataSource
     
     func numberOfSections() -> UInt {
@@ -143,6 +149,24 @@ class ConversationDataSource: NSObject, FTDataSource {
     
     func removeObserver(_ observer: FTDataSourceObserver!) {
         proxy.removeObserver(observer)
+    }
+    
+    // FTFutureItemsDataSource
+    
+    func numberOfFutureItems(inSection section: UInt) -> UInt {
+        switch section {
+        case 0:
+            return 1
+        default:
+            return 0
+        }
+    }
+    
+    public func futureItem(at indexPath: IndexPath!) -> Any! {
+        if pendingMessageText == nil {
+            pendingMessageText = NSTextStorage()
+        }
+        return ComposeViewModel(account: account, textStorage: pendingMessageText!)
     }
     
     // Direction
@@ -279,6 +303,32 @@ extension ConversationDataSource {
                 }
             }
             return NSTextStorage()
+        }
+    }
+}
+
+extension ConversationDataSource {
+    class ComposeViewModel: NSObject, ConversationViewModel {
+        
+        var direction: ConversationViewModelDirection = .outbound
+        var editable: Bool = true
+        var temporary: Bool = true
+        var timestamp: Date = Date.distantFuture
+        
+        var origin: URL? {
+            let components = NSURLComponents()
+            components.scheme = "xmpp"
+            components.path = "/\(account.bare().stringValue)"
+            return components.url
+        }
+        
+        var body: NSTextStorage? = NSTextStorage()
+        
+        let account: JID
+        
+        init(account: JID, textStorage: NSTextStorage) {
+            self.account = account
+            self.body = textStorage
         }
     }
 }
