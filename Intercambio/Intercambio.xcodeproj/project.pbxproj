@@ -18,6 +18,7 @@
 		F6167A001D5073100002A1A4 /* NavigationControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61679FF1D5073100002A1A4 /* NavigationControllerView.swift */; };
 		F6167A021D50733E0002A1A4 /* NavigationControllerViewEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6167A011D50733E0002A1A4 /* NavigationControllerViewEventHandler.swift */; };
 		F6167A051D5073890002A1A4 /* NavigationControllerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6167A041D5073890002A1A4 /* NavigationControllerPresenter.swift */; };
+		F619AC9A1DBF9D2600960632 /* CoversationViewAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F619AC991DBF9D2600960632 /* CoversationViewAvatarView.swift */; };
 		F619BDC21C4D071700F87F50 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F619BDC11C4D071700F87F50 /* main.m */; };
 		F619BDC51C4D071700F87F50 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F619BDC41C4D071700F87F50 /* AppDelegate.m */; };
 		F619BDD01C4D071700F87F50 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F619BDCE1C4D071700F87F50 /* LaunchScreen.storyboard */; };
@@ -182,6 +183,7 @@
 		F61679FF1D5073100002A1A4 /* NavigationControllerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationControllerView.swift; sourceTree = "<group>"; };
 		F6167A011D50733E0002A1A4 /* NavigationControllerViewEventHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationControllerViewEventHandler.swift; sourceTree = "<group>"; };
 		F6167A041D5073890002A1A4 /* NavigationControllerPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationControllerPresenter.swift; sourceTree = "<group>"; };
+		F619AC991DBF9D2600960632 /* CoversationViewAvatarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoversationViewAvatarView.swift; sourceTree = "<group>"; };
 		F619BDBD1C4D071700F87F50 /* Intercambio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Intercambio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F619BDC11C4D071700F87F50 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F619BDC31C4D071700F87F50 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -455,6 +457,14 @@
 				F6167A041D5073890002A1A4 /* NavigationControllerPresenter.swift */,
 			);
 			name = Presenter;
+			sourceTree = "<group>";
+		};
+		F619AC981DBF9CF200960632 /* Supplementary Views */ = {
+			isa = PBXGroup;
+			children = (
+				F619AC991DBF9D2600960632 /* CoversationViewAvatarView.swift */,
+			);
+			name = "Supplementary Views";
 			sourceTree = "<group>";
 		};
 		F619BDB41C4D071700F87F50 = {
@@ -741,6 +751,7 @@
 				F678B6DE1DBA25C0004EF7EE /* ConversationViewController.swift */,
 				F6D7407B1DBF5AE200506C8B /* Layout */,
 				F6B7C36E1DBF66D100F977BF /* Cells */,
+				F619AC981DBF9CF200960632 /* Supplementary Views */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -1289,6 +1300,7 @@
 				F6B9E33C1D8C745700510F01 /* RecentConversationsModule.swift in Sources */,
 				F676EFA81CDCE699003047EC /* ICConversationChapterFragment.m in Sources */,
 				F678B6EF1DBE4435004EF7EE /* ConversationViewLayoutParagraphFragment.swift in Sources */,
+				F619AC9A1DBF9D2600960632 /* CoversationViewAvatarView.swift in Sources */,
 				F63516771D33C076007822F3 /* AccountPresenter.swift in Sources */,
 				F62F71D51C68D84E00656D3C /* ICMessageCell.m in Sources */,
 				F6EF1F441C72066C0083F4BE /* CLToken.m in Sources */,

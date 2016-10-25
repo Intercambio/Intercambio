@@ -36,15 +36,16 @@ class ConversationViewController: UICollectionViewController, ConversationView, 
         
         collectionViewAdapter = FTCollectionViewAdapter(collectionView: collectionView)
         
-        collectionView?.register(UICollectionReusableView.classForCoder(),
+        collectionView?.register(CoversationViewAvatarView.classForCoder(),
                                  forSupplementaryViewOfKind: ConversationViewLayoutElementKindAvatar,
                                  withReuseIdentifier: ConversationViewLayoutElementKindAvatar)
         collectionViewAdapter?.forSupplementaryViews(ofKind: ConversationViewLayoutElementKindAvatar,
                                                      matching: nil,
                                                      useViewWithReuseIdentifier: ConversationViewLayoutElementKindAvatar) {
                                                         (view, item, indexPath, dataSource) in
-                                                        if  let supplementaryView = view as? UICollectionReusableView {
-                                                            supplementaryView.backgroundColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
+                                                        if let avatar = view as? CoversationViewAvatarView,
+                                                            let viewModel = item as? ConversationViewModel{
+                                                            avatar.viewModel = viewModel
                                                         }
         }
         
