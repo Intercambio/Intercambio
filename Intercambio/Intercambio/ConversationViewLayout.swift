@@ -61,7 +61,7 @@ class ConversationViewLayout: UICollectionViewLayout {
     private var dataSourceCountsAreValid: Bool
     private var layoutMetricsAreValid: Bool
     
-    private var invalidated: [NSIndexPath]
+    private var invalidated: [IndexPath]
     
     private var mainFragment: ConversationViewLayoutFragment?
     private var previourMainFragment: ConversationViewLayoutFragment?
@@ -106,6 +106,11 @@ class ConversationViewLayout: UICollectionViewLayout {
         super.prepare()
     }
     
+    override func finalizeCollectionViewUpdates() {
+        invalidated.removeAll()
+        super.finalizeCollectionViewUpdates()
+    }
+    
     private func options() -> [String:Any] {
         var options: [String:Any] = [:]
         options["paragraph_spacing"] = paragraphSpacing
@@ -120,6 +125,8 @@ class ConversationViewLayout: UICollectionViewLayout {
         return options
     }
     
+    // Content Size
+    
     override var collectionViewContentSize: CGSize {
         if let fragment = mainFragment {
             return fragment.rect.size
@@ -128,20 +135,11 @@ class ConversationViewLayout: UICollectionViewLayout {
         }
     }
     
-    override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-        return mainFragment?.layoutAttributesForElements(in: rect)
-    }
-    
-    override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
-        return mainFragment?.layoutAttributesForItem(at: indexPath)
-    }
-    
-    override func layoutAttributesForSupplementaryView(ofKind elementKind: String, at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
-        return mainFragment?.layoutAttributesForSupplementaryView(ofKind: elementKind, at: indexPath)
-    }
-    
-    override func layoutAttributesForDecorationView(ofKind elementKind: String, at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
-        return mainFragment?.layoutAttributesForDecorationView(ofKind: elementKind, at: indexPath)
+    override func targetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint) -> CGPoint {
+        var contentOffset = collectionView?.contentOffset ?? CGPoint()
+        let offset = (mainFragment?.rect.height ?? CGFloat(0)) - (previourMainFragment?.rect.height ?? CGFloat(0))
+        contentOffset.y = contentOffset.y + offset
+        return contentOffset
     }
     
     // Generate Fragments
@@ -183,6 +181,40 @@ class ConversationViewLayout: UICollectionViewLayout {
         return conversation
     }
     
+    // Invalidating the Layout
+    
+    override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
+        if let collectionView = self.collectionView {
+            return !collectionView.bounds.equalTo(newBounds)
+        } else {
+            return false
+        }
+    }
+    
+    override func invalidationContext(forBoundsChange newBounds: CGRect) -> UICollectionViewLayoutInvalidationContext {
+        if let context = super.invalidationContext(forBoundsChange: newBounds) as? ConversationViewLayoutInvalidationContext {
+            context.invalidateLayoutMetrics = true
+            return context
+        } else {
+            return super.invalidationContext(forBoundsChange: newBounds)
+        }
+    }
+    
+    override func invalidateLayout(with ctx: UICollectionViewLayoutInvalidationContext) {
+        if let context = ctx as? ConversationViewLayoutInvalidationContext {
+            if context.invalidateEverything == true || context.invalidateDataSourceCounts {
+                dataSourceCountsAreValid = false
+            } else if context.invalidateLayoutMetrics {
+                layoutMetricsAreValid = false
+            } else if let invalidatedItemIndexPaths = context.invalidatedItemIndexPaths {
+                for indexPath in invalidatedItemIndexPaths {
+                    invalidated.append(indexPath)
+                }
+            }
+        }
+        super.invalidateLayout(with: ctx)
+    }
+
     // Enumerate Items
     
     private func enumerateItems(_ block: (ConversationViewLayoutItem, Date, IndexPath) -> Void) {
@@ -219,5 +251,49 @@ class ConversationViewLayout: UICollectionViewLayout {
         } else {
             return Date.distantFuture
         }
+    }
+    
+    // Layout Attributes
+    
+    override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+        return mainFragment?.layoutAttributesForElements(in: rect)
+    }
+    
+    // Items
+    
+    override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+        return mainFragment?.layoutAttributesForItem(at: indexPath)
+    }
+    
+    // Supplementary View
+    
+    override func layoutAttributesForSupplementaryView(ofKind elementKind: String, at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+        return mainFragment?.layoutAttributesForSupplementaryView(ofKind: elementKind, at: indexPath)
+    }
+    
+    override func initialLayoutAttributesForAppearingSupplementaryElement(ofKind elementKind: String, at elementIndexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+        return mainFragment?.layoutAttributesForSupplementaryView(ofKind: elementKind, at: elementIndexPath)
+    }
+    
+    override func indexPathsToInsertForSupplementaryView(ofKind elementKind: String) -> [IndexPath] {
+        return mainFragment?.indexPathsOfSupplementaryView(ofKind: elementKind) ?? []
+    }
+    
+    override func indexPathsToDeleteForSupplementaryView(ofKind elementKind: String) -> [IndexPath] {
+        return previourMainFragment?.indexPathsOfSupplementaryView(ofKind: elementKind) ?? []
+    }
+    
+    // Decoration View
+    
+    override func layoutAttributesForDecorationView(ofKind elementKind: String, at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+        return mainFragment?.layoutAttributesForDecorationView(ofKind: elementKind, at: indexPath)
+    }
+    
+    override func indexPathsToInsertForDecorationView(ofKind elementKind: String) -> [IndexPath] {
+        return mainFragment?.indexPathsOfDecorationView(ofKind: elementKind) ?? []
+    }
+
+    override func indexPathsToDeleteForDecorationView(ofKind elementKind: String) -> [IndexPath] {
+        return previourMainFragment?.indexPathsOfDecorationView(ofKind: elementKind) ?? []
     }
 }

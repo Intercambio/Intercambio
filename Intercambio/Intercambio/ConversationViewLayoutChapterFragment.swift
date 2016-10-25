@@ -77,4 +77,17 @@ class ConversationViewLayoutChapterFragment: ConversationViewLayoutAbstractFragm
         }
         return super.layoutAttributesForDecorationView(ofKind: elementKind, at: indexPath)
     }
+    
+    override func indexPathsOfDecorationView(ofKind elementKind: String) -> [IndexPath] {
+        var result: [IndexPath] = []
+        for fragment in childFragments {
+            result.append(contentsOf: fragment.indexPathsOfDecorationView(ofKind: elementKind))
+        }
+        if let attributes = layoutAttributes {
+            if elementKind == attributes.representedElementKind {
+                result.append(attributes.indexPath)
+            }
+        }
+        return result
+    }
 }

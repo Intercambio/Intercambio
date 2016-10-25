@@ -43,6 +43,9 @@ protocol ConversationViewLayoutFragment : class {
     func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes?
     func layoutAttributesForSupplementaryView(ofKind elementKind: String, at indexPath: IndexPath) -> UICollectionViewLayoutAttributes?
     func layoutAttributesForDecorationView(ofKind elementKind: String, at indexPath: IndexPath) -> UICollectionViewLayoutAttributes?
+    
+    func indexPathsOfSupplementaryView(ofKind elementKind: String) -> [IndexPath]
+    func indexPathsOfDecorationView(ofKind elementKind: String) -> [IndexPath]
 }
 
 class ConversationViewLayoutAbstractFragment: ConversationViewLayoutFragment {
@@ -163,5 +166,21 @@ class ConversationViewLayoutAbstractFragment: ConversationViewLayoutFragment {
             }
         }
         return nil
+    }
+    
+    func indexPathsOfSupplementaryView(ofKind elementKind: String) -> [IndexPath] {
+        var result: [IndexPath] = []
+        for fragment in childFragments {
+            result.append(contentsOf: fragment.indexPathsOfSupplementaryView(ofKind: elementKind))
+        }
+        return result
+    }
+
+    func indexPathsOfDecorationView(ofKind elementKind: String) -> [IndexPath] {
+        var result: [IndexPath] = []
+        for fragment in childFragments {
+            result.append(contentsOf: fragment.indexPathsOfDecorationView(ofKind: elementKind))
+        }
+        return result
     }
 }

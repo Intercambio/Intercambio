@@ -109,6 +109,7 @@
 		F6CE94A01DABF10A0044356A /* RecentConversationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6CE949F1DABF10A0044356A /* RecentConversationsView.swift */; };
 		F6CE94A21DABF1570044356A /* RecentConversationsViewEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6CE94A11DABF1570044356A /* RecentConversationsViewEventHandler.swift */; };
 		F6CE94A41DAC04BD0044356A /* RecentConversationsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6CE94A31DAC04BD0044356A /* RecentConversationsDataSource.swift */; };
+		F6D740791DBF53E300506C8B /* ConversationViewLayoutInvalidationContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D740781DBF53E300506C8B /* ConversationViewLayoutInvalidationContext.swift */; };
 		F6D807D71D17DD95002953AB /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F6D807D61D17DD95002953AB /* fontawesome-webfont.ttf */; };
 		F6D807DA1D17F53E002953AB /* ICURLHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = F6D807D91D17F53E002953AB /* ICURLHandler.m */; };
 		F6D807DD1D17F9EE002953AB /* ICURLHandlerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F6D807DC1D17F9EE002953AB /* ICURLHandlerTests.m */; };
@@ -309,6 +310,7 @@
 		F6CE949F1DABF10A0044356A /* RecentConversationsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentConversationsView.swift; sourceTree = "<group>"; };
 		F6CE94A11DABF1570044356A /* RecentConversationsViewEventHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentConversationsViewEventHandler.swift; sourceTree = "<group>"; };
 		F6CE94A31DAC04BD0044356A /* RecentConversationsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentConversationsDataSource.swift; sourceTree = "<group>"; };
+		F6D740781DBF53E300506C8B /* ConversationViewLayoutInvalidationContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewLayoutInvalidationContext.swift; sourceTree = "<group>"; };
 		F6D807D61D17DD95002953AB /* fontawesome-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fontawesome-webfont.ttf"; sourceTree = "<group>"; };
 		F6D807D81D17F53E002953AB /* ICURLHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICURLHandler.h; sourceTree = "<group>"; };
 		F6D807D91D17F53E002953AB /* ICURLHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICURLHandler.m; sourceTree = "<group>"; };
@@ -739,6 +741,7 @@
 				F678B6EE1DBE4435004EF7EE /* ConversationViewLayoutParagraphFragment.swift */,
 				F678B6F01DBE4DD8004EF7EE /* ConversationViewLayoutChapterFragment.swift */,
 				F678B6F21DBE5176004EF7EE /* ConversationViewLayoutConversationFragment.swift */,
+				F6D740781DBF53E300506C8B /* ConversationViewLayoutInvalidationContext.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -1238,6 +1241,7 @@
 				F678B6E71DBE02E8004EF7EE /* ConversationViewLayout.swift in Sources */,
 				F6555A571D340E52009C4324 /* AccountViewControllerHeaderView.swift in Sources */,
 				F68269CF1D0EECE2007A3934 /* ICAppWireframe.m in Sources */,
+				F6D740791DBF53E300506C8B /* ConversationViewLayoutInvalidationContext.swift in Sources */,
 				F652374A1D4FF17B00285713 /* SettingsView.swift in Sources */,
 				F6B9E33C1D8C745700510F01 /* RecentConversationsModule.swift in Sources */,
 				F676EFA81CDCE699003047EC /* ICConversationChapterFragment.m in Sources */,
