@@ -15,6 +15,7 @@ protocol ConversationMessageDB {
     func pendingMessages(withParticipants participants: [Any], includeTrashed: Bool) throws -> [Any]
     func messages(withParticipants participants: [Any], includeTrashed: Bool, before: Date?, limit: UInt) throws -> [Any]
     func document(for messageID: XMPPMessageID) throws -> PXDocument
+    func message(with messageID: XMPPMessageID) throws -> XMPPMessage
 }
 
 class ConversationDataSource: NSObject, FTDataSource {
@@ -161,7 +162,13 @@ class ConversationDataSource: NSObject, FTDataSource {
     private lazy var notificationObservers = [NSObjectProtocol]()
     
     private func registerNotificationObservers() {
-        let _ = NotificationCenter.default
+        let center = NotificationCenter.default
+        
+        notificationObservers.append(center.addObserver(forName: NSNotification.Name(rawValue: XMPPMessageDBDidChange),
+                                                        object: self.db,
+                                                        queue: OperationQueue.main) { [weak self] (notification) in
+                                                            self?.handleMessageDBDidChange(notification: notification)
+        })
     }
     
     private func unregisterNotificationObservers() {
@@ -170,6 +177,62 @@ class ConversationDataSource: NSObject, FTDataSource {
             center.removeObserver(observer)
         }
         notificationObservers.removeAll()
+    }
+    
+    private func handleMessageDBDidChange(notification: Notification) {
+        let insertedOrUpdated = Set(insertedOrUpdatedMessages(in: notification))
+        let removed = Set(removedMessages(in: notification))
+        backingStore.performBatchUpdate {
+            self.backingStore.union(insertedOrUpdated)
+            self.backingStore.minus(removed)
+        }
+    }
+    
+    private func insertedOrUpdatedMessages(in notification: Notification) -> [XMPPMessage] {
+        if let messageIDs = notification.userInfo?[XMPPInsertedOrUpdatedMessageIDsKey] as? [XMPPMessageID] {
+            do {
+                return try messageIDs.filter({ (messageID) -> Bool in
+                    return isConversationMessage(messageID)
+                }).map({ (messageID) -> XMPPMessage in
+                    return try db.message(with: messageID)
+                })
+            } catch {
+                return []
+            }
+        } else {
+            return []
+        }
+    }
+    
+    private func removedMessages(in notification: Notification) -> [XMPPMessage] {
+        if let messageIDs = notification.userInfo?[XMPPDeletedMessageIDsKey] as? [XMPPMessageID] {
+            do {
+                return try messageIDs.filter({ (messageID) -> Bool in
+                    return isConversationMessage(messageID)
+                }).map({ (messageID) -> XMPPMessage in
+                    return try db.message(with: messageID)
+                })
+            } catch {
+                return []
+            }
+        } else {
+            return []
+        }
+    }
+    
+    private func isConversationMessage(_ messageID: XMPPMessageID) -> Bool {
+        let participants = Set(self.participants())
+        switch participants.count {
+        case 1:
+            return messageID.from.bare() == messageID.to.bare()
+                && participants.contains(messageID.to.bare())
+        case 2:
+            return messageID.from.bare() != messageID.to.bare()
+                && participants.contains(messageID.from.bare())
+                && participants.contains(messageID.to.bare())
+        default:
+            return false
+        }
     }
 }
 

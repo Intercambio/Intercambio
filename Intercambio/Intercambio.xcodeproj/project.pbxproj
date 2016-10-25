@@ -733,15 +733,7 @@
 			isa = PBXGroup;
 			children = (
 				F678B6DE1DBA25C0004EF7EE /* ConversationViewController.swift */,
-				F678B6F41DBE91AF004EF7EE /* ConversationViewGroupHeaderView.swift */,
-				F678B6E61DBE02E8004EF7EE /* ConversationViewLayout.swift */,
-				F678B6EC1DBE42C4004EF7EE /* ConversationViewLayoutAttributes.swift */,
-				F678B6E81DBE2A7A004EF7EE /* ConversationViewLayoutFragment.swift */,
-				F678B6EA1DBE3E45004EF7EE /* ConversationViewLayoutMessageFragment.swift */,
-				F678B6EE1DBE4435004EF7EE /* ConversationViewLayoutParagraphFragment.swift */,
-				F678B6F01DBE4DD8004EF7EE /* ConversationViewLayoutChapterFragment.swift */,
-				F678B6F21DBE5176004EF7EE /* ConversationViewLayoutConversationFragment.swift */,
-				F6D740781DBF53E300506C8B /* ConversationViewLayoutInvalidationContext.swift */,
+				F6D7407B1DBF5AE200506C8B /* Layout */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -959,6 +951,38 @@
 				F6CE94A11DABF1570044356A /* RecentConversationsViewEventHandler.swift */,
 			);
 			name = Protocols;
+			sourceTree = "<group>";
+		};
+		F6D7407A1DBF5AD600506C8B /* Fragment */ = {
+			isa = PBXGroup;
+			children = (
+				F678B6E81DBE2A7A004EF7EE /* ConversationViewLayoutFragment.swift */,
+				F678B6EA1DBE3E45004EF7EE /* ConversationViewLayoutMessageFragment.swift */,
+				F678B6EE1DBE4435004EF7EE /* ConversationViewLayoutParagraphFragment.swift */,
+				F678B6F01DBE4DD8004EF7EE /* ConversationViewLayoutChapterFragment.swift */,
+				F678B6F21DBE5176004EF7EE /* ConversationViewLayoutConversationFragment.swift */,
+			);
+			name = Fragment;
+			sourceTree = "<group>";
+		};
+		F6D7407B1DBF5AE200506C8B /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				F678B6E61DBE02E8004EF7EE /* ConversationViewLayout.swift */,
+				F678B6EC1DBE42C4004EF7EE /* ConversationViewLayoutAttributes.swift */,
+				F6D740781DBF53E300506C8B /* ConversationViewLayoutInvalidationContext.swift */,
+				F6D7407A1DBF5AD600506C8B /* Fragment */,
+				F6D7407C1DBF5AEF00506C8B /* Decoration View */,
+			);
+			name = Layout;
+			sourceTree = "<group>";
+		};
+		F6D7407C1DBF5AEF00506C8B /* Decoration View */ = {
+			isa = PBXGroup;
+			children = (
+				F678B6F41DBE91AF004EF7EE /* ConversationViewGroupHeaderView.swift */,
+			);
+			name = "Decoration View";
 			sourceTree = "<group>";
 		};
 		F6D807DB1D17F5EB002953AB /* URL Handling */ = {
