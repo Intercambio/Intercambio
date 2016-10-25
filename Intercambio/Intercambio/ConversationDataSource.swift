@@ -275,7 +275,7 @@ extension ConversationDataSource {
                 let elements = document.root.nodes(forXPath: "x:body",
                                                    usingNamespaces: ["x":"jabber:client"])
                 if let body = elements?.first as? PXElement {
-                    return NSTextStorage(string: body.stringValue)
+                    return NSTextStorage(string: body.stringValue, attributes: [NSFontAttributeName: UIFont.preferredFont(forTextStyle: .body)])
                 }
             }
             return NSTextStorage()

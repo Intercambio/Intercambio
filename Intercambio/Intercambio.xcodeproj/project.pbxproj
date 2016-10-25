@@ -98,7 +98,8 @@
 		F6B3CC661D4B95A900234F9B /* AccountListPresentationDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B3CC651D4B95A900234F9B /* AccountListPresentationDataSourceTests.swift */; };
 		F6B567001D507697004BCDB0 /* NavigationControllerStatusViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B566FF1D507697004BCDB0 /* NavigationControllerStatusViewModel.swift */; };
 		F6B7C36D1DBF66CA00F977BF /* ConversationViewCellBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B7C36C1DBF66CA00F977BF /* ConversationViewCellBackgroundView.swift */; };
-		F6B7C3701DBF6B7400F977BF /* ConversationViewMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B7C36F1DBF6B7400F977BF /* ConversationViewMessageCell.swift */; };
+		F6B7C3701DBF6B7400F977BF /* ConversationViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B7C36F1DBF6B7400F977BF /* ConversationViewCell.swift */; };
+		F6B7C3721DBF8B5D00F977BF /* ConversationViewMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B7C3711DBF8B5D00F977BF /* ConversationViewMessageCell.swift */; };
 		F6B9E33C1D8C745700510F01 /* RecentConversationsModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B9E33B1D8C745700510F01 /* RecentConversationsModule.swift */; };
 		F6BA3EE71D36434B00C12E3D /* FromSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BA3EE61D36434B00C12E3D /* FromSection.swift */; };
 		F6BA3EE91D36438200C12E3D /* FormItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BA3EE81D36438200C12E3D /* FormItem.swift */; };
@@ -301,7 +302,8 @@
 		F6B3CC651D4B95A900234F9B /* AccountListPresentationDataSourceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AccountListPresentationDataSourceTests.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		F6B566FF1D507697004BCDB0 /* NavigationControllerStatusViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationControllerStatusViewModel.swift; sourceTree = "<group>"; };
 		F6B7C36C1DBF66CA00F977BF /* ConversationViewCellBackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewCellBackgroundView.swift; sourceTree = "<group>"; };
-		F6B7C36F1DBF6B7400F977BF /* ConversationViewMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewMessageCell.swift; sourceTree = "<group>"; };
+		F6B7C36F1DBF6B7400F977BF /* ConversationViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewCell.swift; sourceTree = "<group>"; };
+		F6B7C3711DBF8B5D00F977BF /* ConversationViewMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewMessageCell.swift; sourceTree = "<group>"; };
 		F6B9E33B1D8C745700510F01 /* RecentConversationsModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentConversationsModule.swift; sourceTree = "<group>"; };
 		F6BA3EE61D36434B00C12E3D /* FromSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FromSection.swift; sourceTree = "<group>"; };
 		F6BA3EE81D36438200C12E3D /* FormItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormItem.swift; sourceTree = "<group>"; };
@@ -923,7 +925,8 @@
 			isa = PBXGroup;
 			children = (
 				F6B7C36C1DBF66CA00F977BF /* ConversationViewCellBackgroundView.swift */,
-				F6B7C36F1DBF6B7400F977BF /* ConversationViewMessageCell.swift */,
+				F6B7C36F1DBF6B7400F977BF /* ConversationViewCell.swift */,
+				F6B7C3711DBF8B5D00F977BF /* ConversationViewMessageCell.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -1275,6 +1278,7 @@
 				F6EF1F431C72066C0083F4BE /* CLBackspaceDetectingTextField.m in Sources */,
 				F6EF1F371C71D1BC0083F4BE /* ICMessageBackgroundView.m in Sources */,
 				F676EF981CDCD49A003047EC /* ICConversationFragment.m in Sources */,
+				F6B7C3721DBF8B5D00F977BF /* ConversationViewMessageCell.swift in Sources */,
 				F678B6E51DBA3273004EF7EE /* ConversationDataSource.swift in Sources */,
 				F65751351D0FF4CE0038AB25 /* ICAccountPickerViewController.m in Sources */,
 				F678B6E71DBE02E8004EF7EE /* ConversationViewLayout.swift in Sources */,
@@ -1332,7 +1336,7 @@
 				F6C6BD6F1D3645BD00CF3B8B /* SettingsViewController.swift in Sources */,
 				F678B6DF1DBA25C0004EF7EE /* ConversationViewController.swift in Sources */,
 				F6167A001D5073100002A1A4 /* NavigationControllerView.swift in Sources */,
-				F6B7C3701DBF6B7400F977BF /* ConversationViewMessageCell.swift in Sources */,
+				F6B7C3701DBF6B7400F977BF /* ConversationViewCell.swift in Sources */,
 				F678B6E31DBA28FC004EF7EE /* ConversationViewEventHandler.swift in Sources */,
 				F6A259331D33F5CF0005C533 /* AccountViewController.swift in Sources */,
 				F6F375411D55326000F718BC /* NavigationBarStatusView.swift in Sources */,
