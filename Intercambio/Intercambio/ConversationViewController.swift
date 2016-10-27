@@ -27,6 +27,8 @@ class ConversationViewController: UICollectionViewController, ConversationView, 
         }
     }
     
+    var dummyTextView: UITextView?
+    
     init() {
         let layout = ConversationViewLayout()
         super.init(collectionViewLayout: layout)
@@ -43,9 +45,13 @@ class ConversationViewController: UICollectionViewController, ConversationView, 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let collectionView = self.collectionView {
+        dummyTextView = UITextView()
+        
+        if let collectionView = self.collectionView,
+           let dummyTextView = self.dummyTextView {
             self.collectionView = CollectionView(frame: collectionView.frame,
                                                  collectionViewLayout: collectionView.collectionViewLayout)
+            view.insertSubview(dummyTextView, belowSubview: collectionView)
         }
         
         collectionView?.keyboardDismissMode = .interactive
@@ -199,6 +205,18 @@ class ConversationViewController: UICollectionViewController, ConversationView, 
     // UICollectionViewDelegate
     
     override func collectionView(_ collectionView: UICollectionView,
+                        willDisplay cell: UICollectionViewCell,
+                        forItemAt indexPath: IndexPath) {
+        if (dummyTextView?.isFirstResponder ?? false) {
+            if let model = viewModel(at: indexPath) {
+                if model.editable == true {
+                    cell.becomeFirstResponder()
+                }
+            }
+        }
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView,
                                  didEndDisplaying cell: UICollectionViewCell,
                                  forItemAt indexPath: IndexPath) {
         cell.resignFirstResponder()
@@ -207,6 +225,11 @@ class ConversationViewController: UICollectionViewController, ConversationView, 
     // UICollectionViewDelegateAction
     
     override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
+        if let responder = sender as? UIResponder {
+            if responder.isFirstResponder {
+                dummyTextView?.becomeFirstResponder()
+            }
+        }
         self.eventHandler?.performAction(action, forItemAt: indexPath)
     }
     

@@ -108,6 +108,18 @@ class ConversationViewComposeCell: ConversationViewCell, UITextViewDelegate {
         }
     }
     
+    override var canBecomeFirstResponder: Bool {
+        return messageTextView.canBecomeFirstResponder
+    }
+    
+    override var isFirstResponder: Bool {
+        return messageTextView.isFirstResponder
+    }
+    
+    override func becomeFirstResponder() -> Bool {
+        return messageTextView.becomeFirstResponder()
+    }
+    
     override func resignFirstResponder() -> Bool {
         return messageTextView.resignFirstResponder()
     }
