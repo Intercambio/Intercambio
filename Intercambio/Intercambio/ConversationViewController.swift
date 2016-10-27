@@ -21,6 +21,7 @@ class ConversationViewController: UICollectionViewController, ConversationView, 
     init() {
         let layout = ConversationViewLayout()
         super.init(collectionViewLayout: layout)
+        self.hidesBottomBarWhenPushed = true
     }
     
     required init?(coder aDecoder: NSCoder) {
