@@ -25,7 +25,7 @@ class ConversationDataSource: NSObject, FTDataSource {
     let account: JID
     let counterpart: JID
     
-    var pendingMessageText: NSTextStorage?
+    var pendingMessage: NSAttributedString?
     
     private let backingStore :FTMutableSet
     private let proxy: FTObserverProxy
@@ -126,7 +126,7 @@ class ConversationDataSource: NSObject, FTDataSource {
     
     private func messageDocument() -> PXDocument? {
         let doc = PXDocument(elementName: "message", namespace: "jabber:client", prefix: nil)
-        let _ = doc?.root.add(withName: "body", namespace: "jabber:client", content: pendingMessageText?.string ?? "")
+        let _ = doc?.root.add(withName: "body", namespace: "jabber:client", content: pendingMessage?.string ?? "")
         doc?.root.setValue(self.account.stringValue, forAttribute: "from")
         doc?.root.setValue(self.counterpart.stringValue, forAttribute: "to")
         doc?.root.setValue(self.counterpart.stringValue, forAttribute: "type")
@@ -136,7 +136,7 @@ class ConversationDataSource: NSObject, FTDataSource {
     
     private func resetPendingMessageText() {
         proxy.dataSourceWillChange(self)
-        pendingMessageText = nil
+        pendingMessage = nil
         let indexPath = IndexPath(item: backingStore.count, section: 0)
         proxy.dataSource(self, didChangeItemsAtIndexPaths: [indexPath])
         proxy.dataSourceDidChange(self)
@@ -146,11 +146,7 @@ class ConversationDataSource: NSObject, FTDataSource {
     
     func setValue(_ value: Any?, forItemAt indexPath: IndexPath) {
         if indexPath.section == 0 && indexPath.item == backingStore.count {
-            if let text = value as? NSAttributedString {
-                pendingMessageText = NSTextStorage(attributedString: text)
-            } else {
-                pendingMessageText = nil
-            }
+            pendingMessage = value as? NSAttributedString
         }
     }
     
@@ -175,10 +171,10 @@ class ConversationDataSource: NSObject, FTDataSource {
     func item(at indexPath: IndexPath!) -> Any! {
         if indexPath.section == 0 {
             if indexPath.item == backingStore.count {
-                if let body = pendingMessageText {
-                    return ComposeViewModel(account: account, textStorage: body)
+                if let body = pendingMessage {
+                    return ComposeViewModel(account: account, attributedString: body)
                 } else {
-                    return ComposeViewModel(account: account, textStorage: NSTextStorage())
+                    return ComposeViewModel(account: account, attributedString: NSAttributedString())
                 }
             } else {
                 if let message = backingStore.item(at: indexPath) as? XMPPMessage {
@@ -340,15 +336,15 @@ extension ConversationDataSource {
             }
         }
         
-        var body: NSTextStorage? {
+        var body: NSAttributedString? {
             if let document = self.document {
                 let elements = document.root.nodes(forXPath: "x:body",
                                                    usingNamespaces: ["x":"jabber:client"])
                 if let body = elements?.first as? PXElement {
-                    return NSTextStorage(string: body.stringValue, attributes: [NSFontAttributeName: UIFont.preferredFont(forTextStyle: .body)])
+                    return NSAttributedString(string: body.stringValue, attributes: [NSFontAttributeName: UIFont.preferredFont(forTextStyle: .body)])
                 }
             }
-            return NSTextStorage()
+            return NSAttributedString()
         }
     }
 }
@@ -368,13 +364,13 @@ extension ConversationDataSource {
             return components.url
         }
         
-        var body: NSTextStorage? = NSTextStorage()
+        var body: NSAttributedString?
         
         let account: JID
         
-        init(account: JID, textStorage: NSTextStorage) {
+        init(account: JID, attributedString: NSAttributedString) {
             self.account = account
-            self.body = textStorage
+            self.body = attributedString
         }
     }
 }

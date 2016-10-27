@@ -21,7 +21,7 @@ protocol ConversationViewModel {
     var editable: Bool { get }
     var temporary: Bool { get }
     var timestamp: Date { get }
-    var body: NSTextStorage? { get }
+    var body: NSAttributedString? { get }
 }
 
 protocol ConversationView : class {
