@@ -11,6 +11,14 @@ import Fountain
 
 class ConversationViewController: UICollectionViewController, ConversationView, UICollectionViewDelegateConversationViewLayout, UICollectionViewDelegateAction {
 
+    class CollectionView : UICollectionView {
+        // Override to fix a missbehaviour that appears when the
+        // compose cell becomes the first responde and the keyboard appears.
+        override func scrollToItem(at indexPath: IndexPath, at scrollPosition: UICollectionViewScrollPosition, animated: Bool) {
+            super.scrollToItem(at: indexPath, at: .bottom, animated: animated)
+        }
+    }
+    
     var eventHandler: ConversationViewEventHandler?
     var dataSource: FTDataSource? {
         didSet {
@@ -32,6 +40,11 @@ class ConversationViewController: UICollectionViewController, ConversationView, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let collectionView = self.collectionView {
+            self.collectionView = CollectionView(frame: collectionView.frame,
+                                                 collectionViewLayout: collectionView.collectionViewLayout)
+        }
         
         collectionView?.keyboardDismissMode = .interactive
         collectionView?.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
