@@ -23,6 +23,7 @@ class ConversationViewController: UICollectionViewController, ConversationView, 
     var dataSource: FTDataSource? {
         didSet {
             collectionViewAdapter?.dataSource = dataSource
+            shouldScrollToBottom = true
         }
     }
     
@@ -37,6 +38,7 @@ class ConversationViewController: UICollectionViewController, ConversationView, 
     }
     
     private var collectionViewAdapter: FTCollectionViewAdapter?
+    private var shouldScrollToBottom: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -92,6 +94,35 @@ class ConversationViewController: UICollectionViewController, ConversationView, 
         
         collectionViewAdapter?.delegate = self
         collectionViewAdapter?.dataSource = dataSource
+        
+        shouldScrollToBottom = true
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        if shouldScrollToBottom {
+            scrollToBottom(animated: false)
+            shouldScrollToBottom = false
+        }
+    }
+    
+    // Actions
+    
+    func scrollToBottom() {
+        scrollToBottom(animated: true)
+    }
+    
+    func scrollToBottom(animated: Bool) {
+        if let collectionView = self.collectionView {
+            var contentOffset = CGPoint()
+            let collectionViewRect = UIEdgeInsetsInsetRect(collectionView.bounds, collectionView.contentInset)
+            if collectionView.contentSize.height > collectionViewRect.height {
+                contentOffset.y = collectionView.contentSize.height - (collectionView.bounds.height - collectionView.contentInset.bottom)
+            } else {
+                contentOffset.y = -1 * collectionView.contentInset.top
+            }
+            collectionView.setContentOffset(contentOffset, animated: animated)
+        }
     }
     
     // View Model
