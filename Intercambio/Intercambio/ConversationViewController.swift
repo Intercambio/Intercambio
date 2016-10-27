@@ -33,6 +33,7 @@ class ConversationViewController: UICollectionViewController, ConversationView, 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        collectionView?.keyboardDismissMode = .interactive
         collectionView?.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         
         collectionViewAdapter = FTCollectionViewAdapter(collectionView: collectionView)
