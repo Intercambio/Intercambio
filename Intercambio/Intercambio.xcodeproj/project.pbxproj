@@ -19,6 +19,7 @@
 		F6167A021D50733E0002A1A4 /* NavigationControllerViewEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6167A011D50733E0002A1A4 /* NavigationControllerViewEventHandler.swift */; };
 		F6167A051D5073890002A1A4 /* NavigationControllerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6167A041D5073890002A1A4 /* NavigationControllerPresenter.swift */; };
 		F619AC9A1DBF9D2600960632 /* CoversationViewAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F619AC991DBF9D2600960632 /* CoversationViewAvatarView.swift */; };
+		F619AC9C1DBFAA3F00960632 /* ConversationViewComposeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F619AC9B1DBFAA3F00960632 /* ConversationViewComposeCell.swift */; };
 		F619BDC21C4D071700F87F50 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F619BDC11C4D071700F87F50 /* main.m */; };
 		F619BDC51C4D071700F87F50 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F619BDC41C4D071700F87F50 /* AppDelegate.m */; };
 		F619BDD01C4D071700F87F50 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F619BDCE1C4D071700F87F50 /* LaunchScreen.storyboard */; };
@@ -184,6 +185,7 @@
 		F6167A011D50733E0002A1A4 /* NavigationControllerViewEventHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationControllerViewEventHandler.swift; sourceTree = "<group>"; };
 		F6167A041D5073890002A1A4 /* NavigationControllerPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationControllerPresenter.swift; sourceTree = "<group>"; };
 		F619AC991DBF9D2600960632 /* CoversationViewAvatarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoversationViewAvatarView.swift; sourceTree = "<group>"; };
+		F619AC9B1DBFAA3F00960632 /* ConversationViewComposeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewComposeCell.swift; sourceTree = "<group>"; };
 		F619BDBD1C4D071700F87F50 /* Intercambio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Intercambio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F619BDC11C4D071700F87F50 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F619BDC31C4D071700F87F50 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -938,6 +940,7 @@
 				F6B7C36C1DBF66CA00F977BF /* ConversationViewCellBackgroundView.swift */,
 				F6B7C36F1DBF6B7400F977BF /* ConversationViewCell.swift */,
 				F6B7C3711DBF8B5D00F977BF /* ConversationViewMessageCell.swift */,
+				F619AC9B1DBFAA3F00960632 /* ConversationViewComposeCell.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -1284,6 +1287,7 @@
 				F6CE94A21DABF1570044356A /* RecentConversationsViewEventHandler.swift in Sources */,
 				F678B6F51DBE91AF004EF7EE /* ConversationViewGroupHeaderView.swift in Sources */,
 				F676EFA31CDCE03E003047EC /* ICConversationParagraphFragment.m in Sources */,
+				F619AC9C1DBFAA3F00960632 /* ConversationViewComposeCell.swift in Sources */,
 				F6CE94A41DAC04BD0044356A /* RecentConversationsDataSource.swift in Sources */,
 				F6BA3EE91D36438200C12E3D /* FormItem.swift in Sources */,
 				F6EF1F431C72066C0083F4BE /* CLBackspaceDetectingTextField.m in Sources */,

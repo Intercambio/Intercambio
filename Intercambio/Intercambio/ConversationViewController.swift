@@ -49,6 +49,15 @@ class ConversationViewController: UICollectionViewController, ConversationView, 
                                                             avatar.viewModel = viewModel
                                                         }
         }
+
+        collectionView?.register(ConversationViewComposeCell.classForCoder(), forCellWithReuseIdentifier: "compose")
+        collectionViewAdapter?.forItemsMatching(NSPredicate(format: "editable == YES"), useCellWithReuseIdentifier: "compose") {
+            (view, item, indexPath, dataSource) in
+            if  let cell = view as? ConversationViewComposeCell,
+                let viewModel = item as? ConversationViewModel {
+                cell.viewModel = viewModel
+            }
+        }
         
         collectionView?.register(ConversationViewMessageCell.classForCoder(), forCellWithReuseIdentifier: "message")
         collectionViewAdapter?.forItemsMatching(nil, useCellWithReuseIdentifier: "message") {
@@ -100,9 +109,15 @@ class ConversationViewController: UICollectionViewController, ConversationView, 
                         maxWidth: CGFloat,
                         layoutMargins: UIEdgeInsets) -> CGSize{
         if let model = viewModel(at: indexPath) {
-            return ConversationViewMessageCell.preferredSize(for: model,
-                                                             width: maxWidth,
-                                                             layoutMargins: layoutMargins)
+            if model.editable == true {
+                return ConversationViewComposeCell.preferredSize(for: model,
+                                                                 width: maxWidth,
+                                                                 layoutMargins: layoutMargins)
+            } else {
+                return ConversationViewMessageCell.preferredSize(for: model,
+                                                                 width: maxWidth,
+                                                                 layoutMargins: layoutMargins)
+            }
         } else {
             return CGSize()
         }
