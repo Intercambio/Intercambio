@@ -47,11 +47,13 @@ class ConversationViewComposeCell: ConversationViewCell, UITextViewDelegate {
     
     let containerView: ContainerView
     let messageTextView: UITextView
+    let sendButton: UIButton
     
     override init(frame: CGRect) {
         
         containerView = ContainerView()
         messageTextView = UITextView(frame: frame)
+        sendButton = UIButton(type: .system)
         
         super.init(frame: frame)
         
@@ -77,6 +79,15 @@ class ConversationViewComposeCell: ConversationViewCell, UITextViewDelegate {
         
         contentView.addConstraint(NSLayoutConstraint(item: contentView, attribute: .leftMargin, relatedBy: .equal, toItem: messageTextView, attribute: .left, multiplier: 1, constant: 0))
         contentView.addConstraint(NSLayoutConstraint(item: contentView, attribute: .rightMargin, relatedBy: .equal, toItem: messageTextView, attribute: .right, multiplier: 1, constant: 0))
+        
+        sendButton.translatesAutoresizingMaskIntoConstraints = false
+        sendButton.titleLabel?.font = UIFont(name: "FontAwesome", size: 22)
+        sendButton.setTitle("", for: .normal)
+        sendButton.addTarget(self, action: #selector(send), for: .touchUpInside)
+        contentView.addSubview(sendButton)
+        
+        contentView.addConstraint(NSLayoutConstraint(item: contentView, attribute: .left, relatedBy: .equal, toItem: sendButton, attribute: .right, multiplier: 1, constant: 4))
+        contentView.addConstraint(NSLayoutConstraint(item: contentView, attribute: .bottom, relatedBy: .equal, toItem: sendButton, attribute: .bottom, multiplier: 1, constant: 0))
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -88,15 +99,32 @@ class ConversationViewComposeCell: ConversationViewCell, UITextViewDelegate {
         messageTextView.selectedRange = NSRange(location: 0, length: 0)
     }
     
-    override var viewModel: ConversationViewModel? {
-        didSet {
-            messageTextView.attributedText = viewModel?.body
+    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+        if let view = super.hitTest(point, with: event) {
+            return view
+        } else {
+            let convertedPoint = sendButton.convert(point, from: self)
+            return sendButton.hitTest(convertedPoint, with: event)
         }
     }
     
     override func apply(_ layoutAttributes: UICollectionViewLayoutAttributes) {
         containerView.contentSize = layoutAttributes.size
         super.apply(layoutAttributes)
+    }
+    
+    // View Model
+    
+    override var viewModel: ConversationViewModel? {
+        didSet {
+            messageTextView.attributedText = viewModel?.body
+        }
+    }
+    
+    // Action
+    
+    @objc func send() {
+        performAction(#selector(send), sender: self)
     }
     
     // UITextViewDelegate
