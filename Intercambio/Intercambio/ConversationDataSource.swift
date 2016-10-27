@@ -16,6 +16,7 @@ protocol ConversationMessageDB {
     func messages(withParticipants participants: [Any], includeTrashed: Bool, before: Date?, limit: UInt) throws -> [Any]
     func document(for messageID: XMPPMessageID) throws -> PXDocument
     func message(with messageID: XMPPMessageID) throws -> XMPPMessage
+    func insert(_ document: PXDocument) throws -> XMPPMessage
 }
 
 class ConversationDataSource: NSObject, FTDataSource {
@@ -100,6 +101,45 @@ class ConversationDataSource: NSObject, FTDataSource {
     
     private func participants() -> [JID] {
         return [self.account, self.counterpart]
+    }
+    
+    // Performing actions
+    
+    func performAction(_ action: Selector, forItemAt indexPath: IndexPath) {
+        if indexPath.section == 0 && indexPath.item == backingStore.count {
+            if action == #selector(send) {
+                send()
+            }
+        }
+    }
+    
+    func send() {
+        if let doc = messageDocument() {
+            do {
+                let _ = try db.insert(doc)
+                resetPendingMessageText()
+            } catch {
+                
+            }
+        }
+    }
+    
+    private func messageDocument() -> PXDocument? {
+        let doc = PXDocument(elementName: "message", namespace: "jabber:client", prefix: nil)
+        let _ = doc?.root.add(withName: "body", namespace: "jabber:client", content: pendingMessageText?.string ?? "")
+        doc?.root.setValue(self.account.stringValue, forAttribute: "from")
+        doc?.root.setValue(self.counterpart.stringValue, forAttribute: "to")
+        doc?.root.setValue(self.counterpart.stringValue, forAttribute: "type")
+        doc?.root.setValue(NSUUID().uuidString, forAttribute: "id")
+        return doc
+    }
+    
+    private func resetPendingMessageText() {
+        proxy.dataSourceWillChange(self)
+        pendingMessageText = nil
+        let indexPath = IndexPath(item: backingStore.count, section: 0)
+        proxy.dataSource(self, didChangeItemsAtIndexPaths: [indexPath])
+        proxy.dataSourceDidChange(self)
     }
     
     // Modifying Content

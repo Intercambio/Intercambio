@@ -154,6 +154,10 @@ class ConversationViewController: UICollectionViewController, ConversationView, 
     
     // UICollectionViewDelegateAction
     
+    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
+        self.eventHandler?.performAction(action, forItemAt: indexPath)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, handle controlEvents: UIControlEvents, forItemAt indexPath: IndexPath, sender: Any?) {
         if let textView = sender as? UITextView {
             if controlEvents.contains(.editingChanged) {

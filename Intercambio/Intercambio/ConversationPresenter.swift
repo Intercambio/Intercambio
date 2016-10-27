@@ -34,6 +34,10 @@ class ConversationPresenter: NSObject, ConversationViewEventHandler {
         }
     }
     
+    func performAction(_ action: Selector, forItemAt indexPath: IndexPath) {
+        dataSource?.performAction(action, forItemAt: indexPath)
+    }
+    
     func setValue(_ value: Any, forItemAt indexPath: IndexPath) {
         dataSource?.setValue(value, forItemAt: indexPath)
     }
