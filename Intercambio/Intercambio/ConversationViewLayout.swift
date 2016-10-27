@@ -189,7 +189,7 @@ class ConversationViewLayout: UICollectionViewLayout {
     
     override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
         if let collectionView = self.collectionView {
-            return !collectionView.bounds.equalTo(newBounds)
+            return collectionView.bounds.width != newBounds.width
         } else {
             return false
         }
