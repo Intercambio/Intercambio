@@ -18,7 +18,7 @@ protocol ConversationMessageDB {
     func message(with messageID: XMPPMessageID) throws -> XMPPMessage
 }
 
-class ConversationDataSource: NSObject, FTDataSource, FTFutureItemsDataSource {
+class ConversationDataSource: NSObject, FTDataSource {
 
     let db: ConversationMessageDB
     let account: JID
@@ -105,19 +105,27 @@ class ConversationDataSource: NSObject, FTDataSource, FTFutureItemsDataSource {
     // Modifying Content
     
     func setValue(_ value: Any?, forItemAt indexPath: IndexPath) {
-        if indexPath.section == 0 && indexPath.item == Int(backingStore.numberOfItems(inSection: UInt(indexPath.section))) {
-            pendingMessageText = NSTextStorage(attributedString: value as? NSAttributedString ?? NSAttributedString(string: ""))
+        if indexPath.section == 0 && indexPath.item == backingStore.count {
+            if let text = value as? NSAttributedString {
+                pendingMessageText = NSTextStorage(attributedString: text)
+            } else {
+                pendingMessageText = nil
+            }
         }
     }
     
     // FTDataSource
     
     func numberOfSections() -> UInt {
-        return backingStore.numberOfSections()
+        return 1
     }
     
     func numberOfItems(inSection section: UInt) -> UInt {
-        return backingStore.numberOfItems(inSection: section)
+        if section == 0 {
+            return UInt(backingStore.count) + UInt(1)
+        } else {
+            return 0
+        }
     }
     
     func sectionItem(forSection section: UInt) -> Any! {
@@ -125,18 +133,30 @@ class ConversationDataSource: NSObject, FTDataSource, FTFutureItemsDataSource {
     }
     
     func item(at indexPath: IndexPath!) -> Any! {
-        if let message = backingStore.item(at: indexPath) as? XMPPMessage {
-            do {
-                let document = try db.document(for: message.messageID)
-                return ViewModel(message: message,
-                                 document: document,
-                                 direction: direction(for: message),
-                                 editable: false)
-            } catch {
-                return ViewModel(message: message,
-                                 document: nil,
-                                 direction: direction(for: message),
-                                 editable: false)
+        if indexPath.section == 0 {
+            if indexPath.item == backingStore.count {
+                if let body = pendingMessageText {
+                    return ComposeViewModel(account: account, textStorage: body)
+                } else {
+                    return ComposeViewModel(account: account, textStorage: NSTextStorage())
+                }
+            } else {
+                if let message = backingStore.item(at: indexPath) as? XMPPMessage {
+                    do {
+                        let document = try db.document(for: message.messageID)
+                        return ViewModel(message: message,
+                                         document: document,
+                                         direction: direction(for: message),
+                                         editable: false)
+                    } catch {
+                        return ViewModel(message: message,
+                                         document: nil,
+                                         direction: direction(for: message),
+                                         editable: false)
+                    }
+                } else {
+                    return nil
+                }
             }
         } else {
             return nil
@@ -154,25 +174,7 @@ class ConversationDataSource: NSObject, FTDataSource, FTFutureItemsDataSource {
     func removeObserver(_ observer: FTDataSourceObserver!) {
         proxy.removeObserver(observer)
     }
-    
-    // FTFutureItemsDataSource
-    
-    func numberOfFutureItems(inSection section: UInt) -> UInt {
-        switch section {
-        case 0:
-            return 1
-        default:
-            return 0
-        }
-    }
-    
-    public func futureItem(at indexPath: IndexPath!) -> Any! {
-        if pendingMessageText == nil {
-            pendingMessageText = NSTextStorage()
-        }
-        return ComposeViewModel(account: account, textStorage: pendingMessageText!)
-    }
-    
+
     // Direction
     
     private func direction(for message: XMPPMessage) -> ConversationViewModelDirection {

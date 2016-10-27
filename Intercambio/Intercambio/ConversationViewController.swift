@@ -37,7 +37,6 @@ class ConversationViewController: UICollectionViewController, ConversationView, 
         collectionView?.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         
         collectionViewAdapter = FTCollectionViewAdapter(collectionView: collectionView)
-        collectionViewAdapter?.isEditing = true
         
         collectionView?.register(CoversationViewAvatarView.classForCoder(),
                                  forSupplementaryViewOfKind: ConversationViewLayoutElementKindAvatar,
@@ -85,22 +84,7 @@ class ConversationViewController: UICollectionViewController, ConversationView, 
     // View Model
     
     func viewModel(at indexPath: IndexPath) -> ConversationViewModel? {
-        
-        guard let dataSource = self.dataSource else {
-            return nil
-        }
-        
-        let numberOfItems = Int(dataSource.numberOfItems(inSection: UInt(indexPath.section)))
-        if indexPath.item < numberOfItems {
-            return dataSource.item(at: indexPath) as? ConversationViewModel
-        } else {
-            if let futureItemDataSource = dataSource as? FTFutureItemsDataSource {
-                return futureItemDataSource.futureItem(at: IndexPath(item: indexPath.item - numberOfItems,
-                                                                     section: indexPath.section)) as? ConversationViewModel
-            } else {
-                return nil
-            }
-        }
+        return dataSource?.item(at: indexPath) as? ConversationViewModel
     }
     
     // UICollectionViewDelegateConversationViewLayout
