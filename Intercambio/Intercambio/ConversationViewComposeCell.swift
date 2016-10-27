@@ -122,6 +122,7 @@ class ConversationViewComposeCell: ConversationViewCell, UITextViewDelegate {
     override var viewModel: ConversationViewModel? {
         didSet {
             messageTextView.attributedText = viewModel?.body
+            updateButtonState()
         }
     }
     
@@ -139,9 +140,21 @@ class ConversationViewComposeCell: ConversationViewCell, UITextViewDelegate {
     
     func textViewDidChange(_ textView: UITextView) {
         handle([.editingChanged], sender: textView)
+        updateButtonState()
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
         handle([.editingDidEnd], sender: textView)
+    }
+    
+    // Button
+    
+    private func updateButtonState() {
+        sendButton.isEnabled = hasContent()
+        sendButton.isHidden = !hasContent()
+    }
+    
+    private func hasContent() -> Bool {
+        return messageTextView.text.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).characters.count > 0
     }
 }
