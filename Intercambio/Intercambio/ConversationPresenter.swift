@@ -28,10 +28,14 @@ class ConversationPresenter: NSObject, ConversationViewEventHandler {
         }
     }
     
-    var dataSource: FTDataSource? {
+    var dataSource: ConversationDataSource? {
         didSet {
             view?.dataSource = dataSource
         }
+    }
+    
+    func setValue(_ value: Any, forItemAt indexPath: IndexPath) {
+        dataSource?.setValue(value, forItemAt: indexPath)
     }
     
     private func updateDataSource() {

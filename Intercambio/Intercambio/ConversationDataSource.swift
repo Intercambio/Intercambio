@@ -102,9 +102,13 @@ class ConversationDataSource: NSObject, FTDataSource, FTFutureItemsDataSource {
         return [self.account, self.counterpart]
     }
     
-    // Pending Message Text
+    // Modifying Content
     
-    
+    func setValue(_ value: Any?, forItemAt indexPath: IndexPath) {
+        if indexPath.section == 0 && indexPath.item == Int(backingStore.numberOfItems(inSection: UInt(indexPath.section))) {
+            pendingMessageText = NSTextStorage(attributedString: value as? NSAttributedString ?? NSAttributedString(string: ""))
+        }
+    }
     
     // FTDataSource
     

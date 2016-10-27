@@ -9,5 +9,5 @@
 import Foundation
 
 protocol ConversationViewEventHandler: class {
-
+    func setValue(_ value: Any, forItemAt indexPath: IndexPath)
 }

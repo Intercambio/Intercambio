@@ -9,7 +9,7 @@
 import UIKit
 import Fountain
 
-class ConversationViewController: UICollectionViewController, ConversationView, UICollectionViewDelegateConversationViewLayout {
+class ConversationViewController: UICollectionViewController, ConversationView, UICollectionViewDelegateConversationViewLayout, UICollectionViewDelegateAction {
 
     var eventHandler: ConversationViewEventHandler?
     var dataSource: FTDataSource? {
@@ -110,19 +110,7 @@ class ConversationViewController: UICollectionViewController, ConversationView, 
                         sizeForItemAt indexPath: IndexPath,
                         maxWidth: CGFloat,
                         layoutMargins: UIEdgeInsets) -> CGSize{
-        if let model = viewModel(at: indexPath) {
-            if model.editable == true {
-                return ConversationViewComposeCell.preferredSize(for: model,
-                                                                 width: maxWidth,
-                                                                 layoutMargins: layoutMargins)
-            } else {
-                return ConversationViewMessageCell.preferredSize(for: model,
-                                                                 width: maxWidth,
-                                                                 layoutMargins: layoutMargins)
-            }
-        } else {
-            return CGSize()
-        }
+        return preferredSize(forItemAt: indexPath, maxWidth: maxWidth, layoutMargins: layoutMargins)
     }
     
     func collectionView(_ collectionView: UICollectionView,
@@ -152,6 +140,24 @@ class ConversationViewController: UICollectionViewController, ConversationView, 
         return ConversationViewLayoutItem(direction: direction, origin: origin, temporary: temporary)
     }
     
+    private func preferredSize(forItemAt indexPath: IndexPath,
+                               maxWidth: CGFloat,
+                               layoutMargins: UIEdgeInsets) -> CGSize {
+        if let model = viewModel(at: indexPath) {
+            if model.editable == true {
+                return ConversationViewComposeCell.preferredSize(for: model,
+                                                                 width: maxWidth,
+                                                                 layoutMargins: layoutMargins)
+            } else {
+                return ConversationViewMessageCell.preferredSize(for: model,
+                                                                 width: maxWidth,
+                                                                 layoutMargins: layoutMargins)
+            }
+        } else {
+            return CGSize()
+        }
+    }
+    
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         timestampOfItemAt indexPath: IndexPath) -> Date {
@@ -159,6 +165,44 @@ class ConversationViewController: UICollectionViewController, ConversationView, 
             return model.timestamp
         } else {
             return Date.distantFuture
+        }
+    }
+    
+    // UICollectionViewDelegateAction
+    
+    func collectionView(_ collectionView: UICollectionView, handle controlEvents: UIControlEvents, forItemAt indexPath: IndexPath, sender: Any?) {
+        if let textView = sender as? UITextView {
+            if controlEvents.contains(.editingChanged) {
+                collectionViewAdapter?.performUserDrivenChange({ 
+                    self.eventHandler?.setValue(textView.attributedText, forItemAt: indexPath)
+                    self.invalidateSize(forItemAt: indexPath)
+                })
+            }
+        }
+    }
+    
+    // Invalidate Layout
+    
+    private func invalidateSize(forItemAt indexPath: IndexPath) {
+        if let attributes = self.collectionView?.layoutAttributesForItem(at: indexPath) as? ConversationViewLayoutAttributes {
+            
+            let currentSize = attributes.size
+            let size = preferredSize(forItemAt: indexPath,
+                                     maxWidth: attributes.maxWidth ?? CGFloat(0),
+                                     layoutMargins: attributes.layoutMargins ?? UIEdgeInsets())
+            
+            if !size.equalTo(currentSize) {
+                let context = ConversationViewLayoutInvalidationContext()
+                context.invalidateItems(at: [indexPath])
+                
+                let heightAdjustment = size.height - currentSize.height;
+                if (heightAdjustment != 0) {
+                    context.contentSizeAdjustment = CGSize(width: 0, height: heightAdjustment);
+                    context.contentOffsetAdjustment = CGPoint(x: 0, y: heightAdjustment);
+                }
+                
+                collectionViewLayout.invalidateLayout(with: context)
+            }
         }
     }
 }
