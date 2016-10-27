@@ -10,9 +10,9 @@ import UIKit
 
 class ConversationViewLayoutChapterFragment: ConversationViewLayoutAbstractFragment {
     
-    let timestamp: Date
+    let timestamp: Date?
     
-    init(timestamp: Date) {
+    init(timestamp: Date?) {
         self.timestamp = timestamp
         super.init()
     }

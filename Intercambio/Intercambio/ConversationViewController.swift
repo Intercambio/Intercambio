@@ -194,11 +194,11 @@ class ConversationViewController: UICollectionViewController, ConversationView, 
     
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
-                        timestampOfItemAt indexPath: IndexPath) -> Date {
+                        timestampOfItemAt indexPath: IndexPath) -> Date? {
         if let model = viewModel(at: indexPath) {
             return model.timestamp
         } else {
-            return Date.distantFuture
+            return nil
         }
     }
     

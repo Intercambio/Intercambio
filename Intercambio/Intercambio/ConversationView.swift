@@ -20,7 +20,7 @@ protocol ConversationViewModel {
     var origin: URL? { get }
     var editable: Bool { get }
     var temporary: Bool { get }
-    var timestamp: Date { get }
+    var timestamp: Date? { get }
     var body: NSAttributedString? { get }
 }
 

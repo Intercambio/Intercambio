@@ -43,7 +43,7 @@ enum ConversationViewLayoutDirection {
     
     @objc func collectionView(_ collectionView: UICollectionView,
                               layout collectionViewLayout: UICollectionViewLayout,
-                              timestampOfItemAt indexPath: IndexPath) -> Date
+                              timestampOfItemAt indexPath: IndexPath) -> Date?
 }
 
 class ConversationViewLayout: UICollectionViewLayout {
@@ -163,7 +163,7 @@ class ConversationViewLayout: UICollectionViewLayout {
             
             let showAvatar = (layoutItem.direction == .inbound)
             
-            if previousTimestamp == nil || fabs(previousTimestamp!.timeIntervalSince(timestamp)) > 60 * 15 {
+            if timestamp == nil || previousTimestamp == nil || fabs(previousTimestamp!.timeIntervalSince(timestamp!)) > 60 * 15 {
                 // Start a new chapter if the gap between the messages exceeded a certain threshold
                 conversation.addChapter(timestamp: timestamp, showAvatar: showAvatar)
             } else if previousLayoutItem == nil || previousLayoutItem!.origin != layoutItem.origin {
@@ -225,7 +225,7 @@ class ConversationViewLayout: UICollectionViewLayout {
 
     // Enumerate Items
     
-    private func enumerateItems(_ block: (ConversationViewLayoutItem, Date, IndexPath) -> Void) {
+    private func enumerateItems(_ block: (ConversationViewLayoutItem, Date?, IndexPath) -> Void) {
         
         if let collectionView = self.collectionView {
             
@@ -253,11 +253,11 @@ class ConversationViewLayout: UICollectionViewLayout {
         }
     }
     
-    private func timestamp(at indexPath: IndexPath) -> Date {
+    private func timestamp(at indexPath: IndexPath) -> Date? {
         if let collectionView = self.collectionView, let delegate = collectionView.delegate as? UICollectionViewDelegateConversationViewLayout {
             return delegate.collectionView(collectionView, layout: self, timestampOfItemAt: indexPath)
         } else {
-            return Date.distantFuture
+            return nil
         }
     }
     

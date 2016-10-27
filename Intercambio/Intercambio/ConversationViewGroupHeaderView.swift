@@ -43,7 +43,7 @@ class ConversationViewGroupHeaderView: UICollectionReusableView {
                 let formatter = ConversationViewGroupHeaderView.dateFormatter
                 label.text = formatter.string(for: timestamp)
             } else {
-                label.text = nil
+                label.text = "Now"
             }
         }
         super.apply(layoutAttributes)

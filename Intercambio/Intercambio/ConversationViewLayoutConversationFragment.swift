@@ -17,7 +17,7 @@ class ConversationViewLayoutConversationFragment: ConversationViewLayoutAbstract
     
     // Child Fragments
     
-    func addChapter(timestamp: Date, showAvatar: Bool) {
+    func addChapter(timestamp: Date?, showAvatar: Bool) {
         let chapter = ConversationViewLayoutChapterFragment(timestamp: timestamp)
         let paragraph = ConversationViewLayoutParagraphFragment(showAvatar: showAvatar)
         chapter.append(paragraph)

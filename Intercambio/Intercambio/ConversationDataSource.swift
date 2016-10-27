@@ -328,11 +328,11 @@ extension ConversationDataSource {
             return message.metadata.transmitted == nil
         }
         
-        var timestamp: Date {
+        var timestamp: Date? {
             if let date = message.metadata.transmitted != nil ? message.metadata.transmitted : message.metadata.created {
                 return date
             } else {
-                return Date()
+                return Date.distantPast
             }
         }
         
@@ -355,7 +355,7 @@ extension ConversationDataSource {
         var direction: ConversationViewModelDirection = .outbound
         var editable: Bool = true
         var temporary: Bool = true
-        var timestamp: Date = Date.distantFuture
+        var timestamp: Date?
         
         var origin: URL? {
             let components = NSURLComponents()
