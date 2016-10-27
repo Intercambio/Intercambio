@@ -108,6 +108,10 @@ class ConversationViewComposeCell: ConversationViewCell, UITextViewDelegate {
         }
     }
     
+    override func resignFirstResponder() -> Bool {
+        return messageTextView.resignFirstResponder()
+    }
+    
     override func apply(_ layoutAttributes: UICollectionViewLayoutAttributes) {
         containerView.contentSize = layoutAttributes.size
         super.apply(layoutAttributes)

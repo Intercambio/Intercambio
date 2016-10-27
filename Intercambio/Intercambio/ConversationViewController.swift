@@ -152,6 +152,14 @@ class ConversationViewController: UICollectionViewController, ConversationView, 
         }
     }
     
+    // UICollectionViewDelegate
+    
+    override func collectionView(_ collectionView: UICollectionView,
+                                 didEndDisplaying cell: UICollectionViewCell,
+                                 forItemAt indexPath: IndexPath) {
+        cell.resignFirstResponder()
+    }
+    
     // UICollectionViewDelegateAction
     
     override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
