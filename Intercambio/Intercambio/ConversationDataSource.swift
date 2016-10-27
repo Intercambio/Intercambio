@@ -259,7 +259,7 @@ class ConversationDataSource: NSObject, FTDataSource {
     }
     
     private func insertedOrUpdatedMessages(in notification: Notification) -> [XMPPMessage] {
-        if let messageIDs = notification.userInfo?[XMPPInsertedOrUpdatedMessageIDsKey] as? [XMPPMessageID] {
+        if let messageIDs = notification.userInfo?[XMPPInsertedOrUpdatedMessageIDsKey] as? Set<XMPPMessageID> {
             do {
                 return try messageIDs.filter({ (messageID) -> Bool in
                     return isConversationMessage(messageID)
@@ -275,7 +275,7 @@ class ConversationDataSource: NSObject, FTDataSource {
     }
     
     private func removedMessages(in notification: Notification) -> [XMPPMessage] {
-        if let messageIDs = notification.userInfo?[XMPPDeletedMessageIDsKey] as? [XMPPMessageID] {
+        if let messageIDs = notification.userInfo?[XMPPDeletedMessageIDsKey] as? Set<XMPPMessageID> {
             do {
                 return try messageIDs.filter({ (messageID) -> Bool in
                     return isConversationMessage(messageID)
