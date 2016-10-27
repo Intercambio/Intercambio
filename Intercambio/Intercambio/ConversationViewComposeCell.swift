@@ -8,7 +8,36 @@
 
 import UIKit
 
-class ConversationViewComposeCell: ConversationViewCell {
+class ConversationViewComposeCell: ConversationViewCell, UITextViewDelegate {
+    
+    override class func preferredSize(for viewModel: ConversationViewModel,
+                                      width: CGFloat,
+                                      layoutMargins: UIEdgeInsets) -> CGSize {
+        
+        if let body = viewModel.body {
+            
+            let lableWidth = width - (layoutMargins.left + layoutMargins.right)
+            let maxHeight = CGFloat.greatestFiniteMagnitude
+            let lineHeight = UIFont.preferredFont(forTextStyle: .body).lineHeight
+            
+            let messageLabel = UILabel()
+            messageLabel.numberOfLines = 0
+            messageLabel.font = UIFont.preferredFont(forTextStyle: .body)
+            messageLabel.preferredMaxLayoutWidth = lableWidth
+            messageLabel.attributedText = body
+            
+            var size = messageLabel.sizeThatFits(CGSize(width: lableWidth, height: maxHeight))
+            size.width = width
+            size.height = layoutMargins.top + fmax(size.height, lineHeight) + layoutMargins.bottom
+            
+            size.height = size.height + 5 // UITextView needs some more points
+            
+            return size
+            
+        } else {
+            return super.preferredSize(for: viewModel, width: width, layoutMargins: layoutMargins)
+        }
+    }
     
     class ContainerView : UIScrollView {
         override func scrollRectToVisible(_ rect: CGRect, animated: Bool) {
