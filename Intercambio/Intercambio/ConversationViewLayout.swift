@@ -65,6 +65,10 @@ class ConversationViewLayout: UICollectionViewLayout {
     
     private var mainFragment: ConversationViewLayoutFragment?
     private var previourMainFragment: ConversationViewLayoutFragment?
+
+    override class var invalidationContextClass: Swift.AnyClass {
+        return ConversationViewLayoutInvalidationContext.self
+    }
     
     override init() {
         dataSourceCountsAreValid = false
