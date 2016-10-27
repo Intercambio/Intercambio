@@ -9,7 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface UITableView (CellAction)
-
-- (void)performAction:(SEL)action forCell:(UITableViewCell *)cell sender:(id)sender;
-
+- (void)performAction:(nonnull SEL)action forCell:(nonnull UITableViewCell *)cell sender:(nullable id)sender;
 @end
