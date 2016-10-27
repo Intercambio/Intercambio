@@ -63,6 +63,7 @@ class ConversationViewComposeCell: ConversationViewCell, UITextViewDelegate {
         contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[container]|", options: [], metrics: [:], views: ["container": containerView]))
         contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[container]|", options: [], metrics: [:], views: ["container": containerView]))
         
+        messageTextView.delegate = self
         messageTextView.translatesAutoresizingMaskIntoConstraints = false
         messageTextView.isScrollEnabled = false
         messageTextView.textContainer.lineFragmentPadding = 0
@@ -96,5 +97,19 @@ class ConversationViewComposeCell: ConversationViewCell, UITextViewDelegate {
     override func apply(_ layoutAttributes: UICollectionViewLayoutAttributes) {
         containerView.contentSize = layoutAttributes.size
         super.apply(layoutAttributes)
+    }
+    
+    // UITextViewDelegate
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        handle([.editingDidBegin], sender: textView)
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        handle([.editingChanged], sender: textView)
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        handle([.editingDidEnd], sender: textView)
     }
 }
