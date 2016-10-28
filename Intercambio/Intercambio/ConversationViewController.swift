@@ -29,6 +29,9 @@ class ConversationViewController: UICollectionViewController, ConversationView, 
     
     var dummyTextView: UITextView?
     
+    private var collectionViewAdapter: FTCollectionViewAdapter?
+    private var shouldScrollToBottom: Bool = false
+    
     init() {
         let layout = ConversationViewLayout()
         super.init(collectionViewLayout: layout)
@@ -38,9 +41,6 @@ class ConversationViewController: UICollectionViewController, ConversationView, 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    private var collectionViewAdapter: FTCollectionViewAdapter?
-    private var shouldScrollToBottom: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -131,13 +131,7 @@ class ConversationViewController: UICollectionViewController, ConversationView, 
         }
     }
     
-    // View Model
-    
-    func viewModel(at indexPath: IndexPath) -> ConversationViewModel? {
-        return dataSource?.item(at: indexPath) as? ConversationViewModel
-    }
-    
-    // UICollectionViewDelegateConversationViewLayout
+    // MARK: UICollectionViewDelegateConversationViewLayout
     
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
@@ -155,7 +149,7 @@ class ConversationViewController: UICollectionViewController, ConversationView, 
         var origin = NSUUID().uuidString
         var temporary = false
         
-        if let model = viewModel(at: indexPath) {
+        if let model = dataSource?.item(at: indexPath) as? ConversationViewModel {
             switch model.direction {
             case .undefined:
                 direction = .undefined
@@ -174,41 +168,23 @@ class ConversationViewController: UICollectionViewController, ConversationView, 
         return ConversationViewLayoutItem(direction: direction, origin: origin, temporary: temporary)
     }
     
-    private func preferredSize(forItemAt indexPath: IndexPath,
-                               maxWidth: CGFloat,
-                               layoutMargins: UIEdgeInsets) -> CGSize {
-        if let model = viewModel(at: indexPath) {
-            if model.editable == true {
-                return ConversationViewComposeCell.preferredSize(for: model,
-                                                                 width: maxWidth,
-                                                                 layoutMargins: layoutMargins)
-            } else {
-                return ConversationViewMessageCell.preferredSize(for: model,
-                                                                 width: maxWidth,
-                                                                 layoutMargins: layoutMargins)
-            }
-        } else {
-            return CGSize()
-        }
-    }
-    
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         timestampOfItemAt indexPath: IndexPath) -> Date? {
-        if let model = viewModel(at: indexPath) {
+        if let model = dataSource?.item(at: indexPath) as? ConversationViewModel {
             return model.timestamp
         } else {
             return nil
         }
     }
     
-    // UICollectionViewDelegate
+    // MARK: UICollectionViewDelegate
     
     override func collectionView(_ collectionView: UICollectionView,
                         willDisplay cell: UICollectionViewCell,
                         forItemAt indexPath: IndexPath) {
         if (dummyTextView?.isFirstResponder ?? false) {
-            if let model = viewModel(at: indexPath) {
+            if let model = dataSource?.item(at: indexPath) as? ConversationViewModel {
                 if model.editable == true {
                     cell.becomeFirstResponder()
                 }
@@ -222,8 +198,6 @@ class ConversationViewController: UICollectionViewController, ConversationView, 
         cell.resignFirstResponder()
     }
     
-    // UICollectionViewDelegateAction
-    
     override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
         if let responder = sender as? UIResponder {
             if responder.isFirstResponder {
@@ -233,20 +207,22 @@ class ConversationViewController: UICollectionViewController, ConversationView, 
         self.eventHandler?.performAction(action, forItemAt: indexPath)
     }
     
+    // MARK: UICollectionViewDelegateAction
+    
     func collectionView(_ collectionView: UICollectionView, handle controlEvents: UIControlEvents, forItemAt indexPath: IndexPath, sender: Any?) {
         if let textView = sender as? UITextView {
             if controlEvents.contains(.editingChanged) {
                 collectionViewAdapter?.performUserDrivenChange({ 
                     self.eventHandler?.setValue(textView.attributedText, forItemAt: indexPath)
-                    self.invalidateSize(forItemAt: indexPath)
+                    self.invalidateLayout(ofItemAt: indexPath)
                 })
             }
         }
     }
     
-    // Invalidate Layout
+    // MARK: Layout
     
-    private func invalidateSize(forItemAt indexPath: IndexPath) {
+    private func invalidateLayout(ofItemAt indexPath: IndexPath) {
         if let attributes = self.collectionView?.layoutAttributesForItem(at: indexPath) as? ConversationViewLayoutAttributes {
             
             let currentSize = attributes.size
@@ -266,6 +242,24 @@ class ConversationViewController: UICollectionViewController, ConversationView, 
                 
                 collectionViewLayout.invalidateLayout(with: context)
             }
+        }
+    }
+    
+    private func preferredSize(forItemAt indexPath: IndexPath,
+                               maxWidth: CGFloat,
+                               layoutMargins: UIEdgeInsets) -> CGSize {
+        if let model = dataSource?.item(at: indexPath) as? ConversationViewModel {
+            if model.editable == true {
+                return ConversationViewComposeCell.preferredSize(for: model,
+                                                                 width: maxWidth,
+                                                                 layoutMargins: layoutMargins)
+            } else {
+                return ConversationViewMessageCell.preferredSize(for: model,
+                                                                 width: maxWidth,
+                                                                 layoutMargins: layoutMargins)
+            }
+        } else {
+            return CGSize()
         }
     }
 }
