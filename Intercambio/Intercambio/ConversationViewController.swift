@@ -27,8 +27,7 @@ class ConversationViewController: UICollectionViewController, ConversationView, 
         }
     }
     
-    var dummyTextView: UITextView?
-    
+    private var dummyTextView: UITextView?
     private var collectionViewAdapter: FTCollectionViewAdapter?
     private var shouldScrollToBottom: Bool = false
     
