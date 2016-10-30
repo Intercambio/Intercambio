@@ -26,4 +26,5 @@ protocol ConversationViewModel {
 
 protocol ConversationView : class {
     var dataSource: FTDataSource? { get set }
+    var title: String? { get set }
 }

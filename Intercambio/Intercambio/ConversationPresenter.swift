@@ -18,19 +18,26 @@ class ConversationPresenter: NSObject, ConversationViewEventHandler {
     
     weak var view: ConversationView? {
         didSet {
-            view?.dataSource = dataSource
+            updateView()
         }
     }
     
     var conversation: URL? {
         didSet {
             updateDataSource()
+            updateTitle()
         }
     }
     
     var dataSource: ConversationDataSource? {
         didSet {
-            view?.dataSource = dataSource
+            updateView()
+        }
+    }
+    
+    var title: String? {
+        didSet {
+            updateView()
         }
     }
     
@@ -40,6 +47,19 @@ class ConversationPresenter: NSObject, ConversationViewEventHandler {
     
     func setValue(_ value: Any, forItemAt indexPath: IndexPath) {
         dataSource?.setValue(value, forItemAt: indexPath)
+    }
+    
+    private func updateView() {
+        view?.dataSource = dataSource
+        view?.title = title
+    }
+    
+    private func updateTitle() {
+        if let jid = counterpart() {
+            title = jid.bare().stringValue
+        } else {
+            title = nil
+        }
     }
     
     private func updateDataSource() {
