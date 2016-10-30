@@ -4,3 +4,4 @@
 
 #import "UICollectionView+CellAction.h"
 #import "UITableView+CellAction.h"
+#import "CLTokenInputView.h"
