@@ -148,6 +148,17 @@ class ConversationViewController: UICollectionViewController, ConversationView, 
             scrollToBottom(animated: false)
             shouldScrollToBottom = false
         }
+        
+        var insets = collectionView?.contentInset ?? UIEdgeInsets()
+        insets.top = topLayoutGuide.length
+        if isContactPickerVisible {
+            if let viewController = contactPickerViewController as? ContentView, let contentView = viewController.contentView {
+                let rect = view.convert(contentView.bounds, from: contentView)
+                insets.top = rect.maxY
+            }
+        }
+        collectionView?.scrollIndicatorInsets = insets
+        collectionView?.contentInset = insets
     }
     
     // Actions

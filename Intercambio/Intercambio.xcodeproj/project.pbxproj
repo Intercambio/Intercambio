@@ -14,6 +14,7 @@
 		F6052ABF1DC89B6B005D79EA /* ContactPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6052ABE1DC89B6B005D79EA /* ContactPickerView.swift */; };
 		F6052AC11DC89B9D005D79EA /* ContectPickerViewEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6052AC01DC89B9D005D79EA /* ContectPickerViewEventHandler.swift */; };
 		F6052AC41DC8A2D6005D79EA /* ContactPickerAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6052AC31DC8A2D6005D79EA /* ContactPickerAddress.swift */; };
+		F6052AC61DC8BB1A005D79EA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6052AC51DC8BB1A005D79EA /* ContentView.swift */; };
 		F605909C1D2F97AB0071FC63 /* AccountProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F605909B1D2F97AB0071FC63 /* AccountProvider.swift */; };
 		F605909E1D2F97E70071FC63 /* AccountOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F605909D1D2F97E70071FC63 /* AccountOutput.swift */; };
 		F60DFF871C6DE04600764E26 /* ICConversationLayoutInvalidationContext.m in Sources */ = {isa = PBXBuildFile; fileRef = F60DFF861C6DE04600764E26 /* ICConversationLayoutInvalidationContext.m */; };
@@ -185,6 +186,7 @@
 		F6052ABE1DC89B6B005D79EA /* ContactPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactPickerView.swift; sourceTree = "<group>"; };
 		F6052AC01DC89B9D005D79EA /* ContectPickerViewEventHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContectPickerViewEventHandler.swift; sourceTree = "<group>"; };
 		F6052AC31DC8A2D6005D79EA /* ContactPickerAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactPickerAddress.swift; sourceTree = "<group>"; };
+		F6052AC51DC8BB1A005D79EA /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F605909B1D2F97AB0071FC63 /* AccountProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AccountProvider.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		F605909D1D2F97E70071FC63 /* AccountOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AccountOutput.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		F60881A41D3777340028FDEB /* Intercambio.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Intercambio.entitlements; sourceTree = "<group>"; };
@@ -844,6 +846,7 @@
 				F65751371D1004580038AB25 /* Empty */,
 				F65751361D0FF4D30038AB25 /* Account Picker */,
 				F6052AA71DC64506005D79EA /* OptionPicker.swift */,
+				F6052AC51DC8BB1A005D79EA /* ContentView.swift */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -1340,6 +1343,7 @@
 				F6CE94A01DABF10A0044356A /* RecentConversationsView.swift in Sources */,
 				F65CC9341CE07E0D00AE59DF /* ICAvatarCell.m in Sources */,
 				F6C6BD711D364AFC00CF3B8B /* FormDataSource.swift in Sources */,
+				F6052AC61DC8BB1A005D79EA /* ContentView.swift in Sources */,
 				F6A9F9971D351DEE007D8718 /* SettingsInteractor.swift in Sources */,
 				F61679F81D5070F20002A1A4 /* NavigationControllerModule.swift in Sources */,
 				F62E49CB1CC7C870006C071D /* ICConversationViewController.m in Sources */,

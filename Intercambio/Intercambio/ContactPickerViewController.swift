@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ContactPickerViewController: UIViewController, CLTokenInputViewDelegate, ContactPickerView {
+class ContactPickerViewController: UIViewController, CLTokenInputViewDelegate, ContactPickerView, ContentView {
 
     private class View : UIView {
         let contentView: UIView
@@ -46,7 +46,7 @@ class ContactPickerViewController: UIViewController, CLTokenInputViewDelegate, C
         }
     }
     
-    private var contentView: UIView? {
+    var contentView: UIView? {
         if let view = self.view as? View {
             return view.contentView
         } else {
