@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		F6052A9A1DC5FBF5005D79EA /* ContactPickerModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6052A991DC5FBF5005D79EA /* ContactPickerModule.swift */; };
 		F6052AA51DC5FD20005D79EA /* ContactPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6052AA31DC5FD20005D79EA /* ContactPickerViewController.swift */; };
+		F6052AA81DC64506005D79EA /* OptionPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6052AA71DC64506005D79EA /* OptionPicker.swift */; };
 		F605909C1D2F97AB0071FC63 /* AccountProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F605909B1D2F97AB0071FC63 /* AccountProvider.swift */; };
 		F605909E1D2F97E70071FC63 /* AccountOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F605909D1D2F97E70071FC63 /* AccountOutput.swift */; };
 		F60DFF871C6DE04600764E26 /* ICConversationLayoutInvalidationContext.m in Sources */ = {isa = PBXBuildFile; fileRef = F60DFF861C6DE04600764E26 /* ICConversationLayoutInvalidationContext.m */; };
@@ -175,6 +176,7 @@
 /* Begin PBXFileReference section */
 		F6052A991DC5FBF5005D79EA /* ContactPickerModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactPickerModule.swift; sourceTree = "<group>"; };
 		F6052AA31DC5FD20005D79EA /* ContactPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactPickerViewController.swift; sourceTree = "<group>"; };
+		F6052AA71DC64506005D79EA /* OptionPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionPicker.swift; sourceTree = "<group>"; };
 		F605909B1D2F97AB0071FC63 /* AccountProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AccountProvider.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		F605909D1D2F97E70071FC63 /* AccountOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AccountOutput.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		F60881A41D3777340028FDEB /* Intercambio.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Intercambio.entitlements; sourceTree = "<group>"; };
@@ -821,6 +823,7 @@
 				F65237501D4FF47D00285713 /* Forms */,
 				F65751371D1004580038AB25 /* Empty */,
 				F65751361D0FF4D30038AB25 /* Account Picker */,
+				F6052AA71DC64506005D79EA /* OptionPicker.swift */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -1340,6 +1343,7 @@
 				F6D740791DBF53E300506C8B /* ConversationViewLayoutInvalidationContext.swift in Sources */,
 				F652374A1D4FF17B00285713 /* SettingsView.swift in Sources */,
 				F6B9E33C1D8C745700510F01 /* RecentConversationsModule.swift in Sources */,
+				F6052AA81DC64506005D79EA /* OptionPicker.swift in Sources */,
 				F676EFA81CDCE699003047EC /* ICConversationChapterFragment.m in Sources */,
 				F678B6EF1DBE4435004EF7EE /* ConversationViewLayoutParagraphFragment.swift in Sources */,
 				F619AC9A1DBF9D2600960632 /* CoversationViewAvatarView.swift in Sources */,
