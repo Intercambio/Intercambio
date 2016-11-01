@@ -40,12 +40,14 @@ class ConversationPresenter: NSObject, ConversationViewEventHandler {
             updateView()
         }
     }
-    
+
     func performAction(_ action: Selector, forItemAt indexPath: IndexPath) {
+        view?.isContactPickerVisible = false
         dataSource?.performAction(action, forItemAt: indexPath)
     }
     
     func setValue(_ value: Any, forItemAt indexPath: IndexPath) {
+        view?.isContactPickerVisible = false
         dataSource?.setValue(value, forItemAt: indexPath)
     }
     

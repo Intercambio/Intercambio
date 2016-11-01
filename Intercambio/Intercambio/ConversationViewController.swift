@@ -27,7 +27,13 @@ class ConversationViewController: UICollectionViewController, ConversationView, 
         }
     }
     
-    var isContactPickerVisible: Bool = false
+    var isContactPickerVisible: Bool = false {
+        didSet {
+            if let view = contactPickerViewController?.viewIfLoaded {
+                view.isHidden = !isContactPickerVisible
+            }
+        }
+    }
     
     var contactPickerViewController: UIViewController? {
         willSet {
