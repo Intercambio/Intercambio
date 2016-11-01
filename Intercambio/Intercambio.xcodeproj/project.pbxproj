@@ -55,8 +55,6 @@
 		F657513B1D1011FC0038AB25 /* SASLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F65751391D1011FC0038AB25 /* SASLKit.framework */; };
 		F65F98501CB26132009A2FE5 /* UICollectionView+CellAction.m in Sources */ = {isa = PBXBuildFile; fileRef = F65F984F1CB26132009A2FE5 /* UICollectionView+CellAction.m */; };
 		F676EF7E1CD264A4003047EC /* ISO8601.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F676EF7C1CD26492003047EC /* ISO8601.framework */; };
-		F676EF9D1CDCD8CE003047EC /* ICConversationMessageFragmentTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F676EF9C1CDCD8CE003047EC /* ICConversationMessageFragmentTests.m */; };
-		F676EFAA1CDCE99F003047EC /* ICConversationFragmentTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F676EFA91CDCE99F003047EC /* ICConversationFragmentTests.m */; };
 		F678B6D81DBA24DE004EF7EE /* ConversationModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = F678B6D71DBA24DE004EF7EE /* ConversationModule.swift */; };
 		F678B6DD1DBA257D004EF7EE /* ConversationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F678B6DC1DBA257D004EF7EE /* ConversationView.swift */; };
 		F678B6DF1DBA25C0004EF7EE /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F678B6DE1DBA25C0004EF7EE /* ConversationViewController.swift */; };
@@ -225,8 +223,6 @@
 		F65F984E1CB26132009A2FE5 /* UICollectionView+CellAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UICollectionView+CellAction.h"; sourceTree = "<group>"; };
 		F65F984F1CB26132009A2FE5 /* UICollectionView+CellAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UICollectionView+CellAction.m"; sourceTree = "<group>"; };
 		F676EF7C1CD26492003047EC /* ISO8601.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ISO8601.framework; path = ../Carthage/Build/iOS/ISO8601.framework; sourceTree = "<group>"; };
-		F676EF9C1CDCD8CE003047EC /* ICConversationMessageFragmentTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICConversationMessageFragmentTests.m; sourceTree = "<group>"; };
-		F676EFA91CDCE99F003047EC /* ICConversationFragmentTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICConversationFragmentTests.m; sourceTree = "<group>"; };
 		F678B6D71DBA24DE004EF7EE /* ConversationModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationModule.swift; sourceTree = "<group>"; };
 		F678B6DC1DBA257D004EF7EE /* ConversationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationView.swift; sourceTree = "<group>"; };
 		F678B6DE1DBA25C0004EF7EE /* ConversationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
@@ -508,8 +504,6 @@
 				F63A66791D26685C00FCC82E /* Account Module */,
 				F6A9F9981D351E67007D8718 /* Settings Module */,
 				F619BDDA1C4D071700F87F50 /* IntercambioTests.m */,
-				F676EF9C1CDCD8CE003047EC /* ICConversationMessageFragmentTests.m */,
-				F676EFA91CDCE99F003047EC /* ICConversationFragmentTests.m */,
 				F6D807DC1D17F9EE002953AB /* ICURLHandlerTests.m */,
 				F6D807E51D1827E3002953AB /* NSURLIntercambioTests.m */,
 				F619BDDC1C4D071700F87F50 /* Info.plist */,
@@ -1294,10 +1288,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F676EF9D1CDCD8CE003047EC /* ICConversationMessageFragmentTests.m in Sources */,
 				F6E08EAC1D267CB900241CBE /* AccountViewModelImplTests.swift in Sources */,
 				F6D807E61D1827E3002953AB /* NSURLIntercambioTests.m in Sources */,
-				F676EFAA1CDCE99F003047EC /* ICConversationFragmentTests.m in Sources */,
 				F6A9F99A1D351E7B007D8718 /* SettingsInteractorTests.swift in Sources */,
 				F6D807DD1D17F9EE002953AB /* ICURLHandlerTests.m in Sources */,
 				F6A41B761D4BA2140077321C /* AccountListPresenterTests.swift in Sources */,
