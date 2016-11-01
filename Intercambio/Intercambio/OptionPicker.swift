@@ -22,7 +22,6 @@ class OptionPicker<I : OptionPickerItem> : UIControl, UIKeyInput, UIPickerViewDa
     
     var options: [I]? {
         didSet {
-            indexOfSelectedOption = nil
             optionsPickerView.reloadAllComponents()
             updateLabels()
         }
@@ -32,9 +31,6 @@ class OptionPicker<I : OptionPickerItem> : UIControl, UIKeyInput, UIPickerViewDa
         didSet {
             if let row = indexOfSelectedOption {
                 optionsPickerView.selectRow(row, inComponent: 0, animated: false)
-
-            } else {
-                optionsPickerView.selectRow(-1, inComponent: 0, animated: false)
             }
             updateLabels()
         }
