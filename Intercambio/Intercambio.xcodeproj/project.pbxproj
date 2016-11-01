@@ -10,6 +10,10 @@
 		F6052A9A1DC5FBF5005D79EA /* ContactPickerModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6052A991DC5FBF5005D79EA /* ContactPickerModule.swift */; };
 		F6052AA51DC5FD20005D79EA /* ContactPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6052AA31DC5FD20005D79EA /* ContactPickerViewController.swift */; };
 		F6052AA81DC64506005D79EA /* OptionPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6052AA71DC64506005D79EA /* OptionPicker.swift */; };
+		F6052ABB1DC89B27005D79EA /* ContactPickerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6052ABA1DC89B27005D79EA /* ContactPickerPresenter.swift */; };
+		F6052ABF1DC89B6B005D79EA /* ContactPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6052ABE1DC89B6B005D79EA /* ContactPickerView.swift */; };
+		F6052AC11DC89B9D005D79EA /* ContectPickerViewEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6052AC01DC89B9D005D79EA /* ContectPickerViewEventHandler.swift */; };
+		F6052AC41DC8A2D6005D79EA /* ContactPickerAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6052AC31DC8A2D6005D79EA /* ContactPickerAddress.swift */; };
 		F605909C1D2F97AB0071FC63 /* AccountProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F605909B1D2F97AB0071FC63 /* AccountProvider.swift */; };
 		F605909E1D2F97E70071FC63 /* AccountOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F605909D1D2F97E70071FC63 /* AccountOutput.swift */; };
 		F60DFF871C6DE04600764E26 /* ICConversationLayoutInvalidationContext.m in Sources */ = {isa = PBXBuildFile; fileRef = F60DFF861C6DE04600764E26 /* ICConversationLayoutInvalidationContext.m */; };
@@ -177,6 +181,10 @@
 		F6052A991DC5FBF5005D79EA /* ContactPickerModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactPickerModule.swift; sourceTree = "<group>"; };
 		F6052AA31DC5FD20005D79EA /* ContactPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactPickerViewController.swift; sourceTree = "<group>"; };
 		F6052AA71DC64506005D79EA /* OptionPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionPicker.swift; sourceTree = "<group>"; };
+		F6052ABA1DC89B27005D79EA /* ContactPickerPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactPickerPresenter.swift; sourceTree = "<group>"; };
+		F6052ABE1DC89B6B005D79EA /* ContactPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactPickerView.swift; sourceTree = "<group>"; };
+		F6052AC01DC89B9D005D79EA /* ContectPickerViewEventHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContectPickerViewEventHandler.swift; sourceTree = "<group>"; };
+		F6052AC31DC8A2D6005D79EA /* ContactPickerAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactPickerAddress.swift; sourceTree = "<group>"; };
 		F605909B1D2F97AB0071FC63 /* AccountProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AccountProvider.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		F605909D1D2F97E70071FC63 /* AccountOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AccountOutput.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		F60881A41D3777340028FDEB /* Intercambio.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Intercambio.entitlements; sourceTree = "<group>"; };
@@ -403,6 +411,7 @@
 				F6052A9B1DC5FCC1005D79EA /* Protocols */,
 				F6052A9C1DC5FCCA005D79EA /* View */,
 				F6052A9D1DC5FCD4005D79EA /* Presenter */,
+				F6052AC21DC8A2C0005D79EA /* Model */,
 			);
 			name = "Contact Picker Module";
 			sourceTree = "<group>";
@@ -410,6 +419,8 @@
 		F6052A9B1DC5FCC1005D79EA /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				F6052ABE1DC89B6B005D79EA /* ContactPickerView.swift */,
+				F6052AC01DC89B9D005D79EA /* ContectPickerViewEventHandler.swift */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -425,8 +436,17 @@
 		F6052A9D1DC5FCD4005D79EA /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				F6052ABA1DC89B27005D79EA /* ContactPickerPresenter.swift */,
 			);
 			name = Presenter;
+			sourceTree = "<group>";
+		};
+		F6052AC21DC8A2C0005D79EA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F6052AC31DC8A2D6005D79EA /* ContactPickerAddress.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 		F60DFF881C6DEE5400764E26 /* Layout */ = {
@@ -1309,6 +1329,7 @@
 				F678B6ED1DBE42C4004EF7EE /* ConversationViewLayoutAttributes.swift in Sources */,
 				F65237481D4FF15700285713 /* SettingsOutput.swift in Sources */,
 				F6167A051D5073890002A1A4 /* NavigationControllerPresenter.swift in Sources */,
+				F6052ABB1DC89B27005D79EA /* ContactPickerPresenter.swift in Sources */,
 				F6CE949B1DABF0DA0044356A /* RecentConversationsPresenter.swift in Sources */,
 				F63A666B1D2662DE00FCC82E /* AccountPresentationModel.swift in Sources */,
 				F605909C1D2F97AB0071FC63 /* AccountProvider.swift in Sources */,
@@ -1333,6 +1354,7 @@
 				F6BA3EE91D36438200C12E3D /* FormItem.swift in Sources */,
 				F6EF1F431C72066C0083F4BE /* CLBackspaceDetectingTextField.m in Sources */,
 				F6EF1F371C71D1BC0083F4BE /* ICMessageBackgroundView.m in Sources */,
+				F6052ABF1DC89B6B005D79EA /* ContactPickerView.swift in Sources */,
 				F676EF981CDCD49A003047EC /* ICConversationFragment.m in Sources */,
 				F6B7C3721DBF8B5D00F977BF /* ConversationViewMessageCell.swift in Sources */,
 				F678B6E51DBA3273004EF7EE /* ConversationDataSource.swift in Sources */,
@@ -1360,6 +1382,7 @@
 				F678B6E11DBA25D0004EF7EE /* ConversationPresenter.swift in Sources */,
 				F6EF1F411C72066C0083F4BE /* CLTokenInputView.m in Sources */,
 				F63A66751D26672000FCC82E /* AccountViewModelImpl.swift in Sources */,
+				F6052AC41DC8A2D6005D79EA /* ContactPickerAddress.swift in Sources */,
 				F646CA621DB6410300C239B1 /* AvatarView.swift in Sources */,
 				F678B6E91DBE2A7A004EF7EE /* ConversationViewLayoutFragment.swift in Sources */,
 				F652374C1D4FF1BC00285713 /* SettingsViewEventHandler.swift in Sources */,
@@ -1394,6 +1417,7 @@
 				F6A2592E1D33EC080005C533 /* AccountViewEventHandler.swift in Sources */,
 				F6C6BD6F1D3645BD00CF3B8B /* SettingsViewController.swift in Sources */,
 				F678B6DF1DBA25C0004EF7EE /* ConversationViewController.swift in Sources */,
+				F6052AC11DC89B9D005D79EA /* ContectPickerViewEventHandler.swift in Sources */,
 				F6052A9A1DC5FBF5005D79EA /* ContactPickerModule.swift in Sources */,
 				F6167A001D5073100002A1A4 /* NavigationControllerView.swift in Sources */,
 				F6B7C3701DBF6B7400F977BF /* ConversationViewCell.swift in Sources */,

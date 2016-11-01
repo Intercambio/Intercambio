@@ -8,9 +8,9 @@
 
 import UIKit
 
-class ContactPickerViewController: UIViewController, CLTokenInputViewDelegate {
-    
-    class View : UIView {
+class ContactPickerViewController: UIViewController, CLTokenInputViewDelegate, ContactPickerView {
+
+    private class View : UIView {
         let contentView: UIView
         override init(frame: CGRect) {
             contentView = UIView()
@@ -32,7 +32,21 @@ class ContactPickerViewController: UIViewController, CLTokenInputViewDelegate {
         }
     }
     
-    var contentView: UIView? {
+    var eventHandler: ContectPickerViewEventHandler?
+    
+    var selectedAccount: ContactPickerAddress? {
+        didSet {
+            updateAccounts()
+        }
+    }
+    
+    var accounts: [ContactPickerAddress]? {
+        didSet {
+            updateAccounts()
+        }
+    }
+    
+    private var contentView: UIView? {
         if let view = self.view as? View {
             return view.contentView
         } else {
@@ -40,8 +54,9 @@ class ContactPickerViewController: UIViewController, CLTokenInputViewDelegate {
         }
     }
     
-    var backgroundView: UIVisualEffectView?
-    var searchBar: CLTokenInputView?
+    private var backgroundView: UIVisualEffectView?
+    private var searchBar: CLTokenInputView?
+    private var accountPicker: OptionPicker<ContactPickerAddress>?
     
     override func loadView() {
         let view = View()
@@ -63,34 +78,57 @@ class ContactPickerViewController: UIViewController, CLTokenInputViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupBackgroundView()
-        setupSearchBar()
-    }
-    
-    private func setupSearchBar() {
         if let contentView = self.contentView {
             
-            let searchBar = CLTokenInputView()
-            searchBar.translatesAutoresizingMaskIntoConstraints = false
-            searchBar.backgroundColor = UIColor.clear
-            searchBar.keyboardType = .emailAddress
-            searchBar.placeholderText = "Enter Address"
-            searchBar.drawBottomBorder = true
-            searchBar.delegate = self
+            let searchBar = setupSearchBar()
+            let accountPicker = setupAccountPicker()
             
-            contentView.addSubview(searchBar)
-            contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[searchBar]|",
+            let stackView = UIStackView(arrangedSubviews: [searchBar, accountPicker])
+            stackView.translatesAutoresizingMaskIntoConstraints = false
+            stackView.axis = .vertical
+            stackView.alignment = .fill
+            
+            contentView.addSubview(stackView)
+            contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[stackView]|",
                                                                       options: [],
                                                                       metrics: [:],
-                                                                      views: ["searchBar":searchBar]))
-            contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[searchBar]|",
+                                                                      views: ["stackView":stackView]))
+            contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[stackView]|",
                                                                       options: [],
                                                                       metrics: [:],
-                                                                      views: ["searchBar":searchBar]))
-            
-            
-            self.searchBar = searchBar
+                                                                      views: ["stackView":stackView]))
         }
+        
+        setupBackgroundView()
+        
+        updateAccounts()
+    }
+    
+    private func setupSearchBar() -> UIView {
+        let searchBar = CLTokenInputView()
+        searchBar.translatesAutoresizingMaskIntoConstraints = false
+        searchBar.backgroundColor = UIColor.clear
+        searchBar.keyboardType = .emailAddress
+        searchBar.placeholderText = "Enter Address"
+        searchBar.drawBottomBorder = true
+        searchBar.delegate = self
+        
+        self.searchBar = searchBar
+        
+        return searchBar
+    }
+    
+    private func setupAccountPicker() -> UIView {
+        let accountPicker = OptionPicker<ContactPickerAddress>()
+        accountPicker.preservesSuperviewLayoutMargins = false
+        accountPicker.layoutMargins = UIEdgeInsets(top: 6, left: 12, bottom: 6, right: 12)
+        accountPicker.name = "via"
+        
+        accountPicker.addTarget(self, action: #selector(accountDidChange(_:)), for: [.valueChanged])
+        
+        self.accountPicker = accountPicker
+        
+        return accountPicker
     }
     
     private func setupBackgroundView() {
@@ -126,13 +164,44 @@ class ContactPickerViewController: UIViewController, CLTokenInputViewDelegate {
         }
     }
     
+    private func updateAccounts() {
+        accountPicker?.options = accounts
+        accountPicker?.indexOfSelectedOption = selectedAccount != nil ? accounts?.index(of: selectedAccount!) : nil
+    }
+    
+    @objc private func accountDidChange(_ sender: Any?) {
+        if let index = accountPicker?.indexOfSelectedOption,
+           let options = accountPicker?.options {
+            let account = options[index]
+            selectedAccount = account
+            eventHandler?.didSelectAccount(account)
+        } else {
+            selectedAccount = nil
+            eventHandler?.didSelectAccount(nil)
+        }
+    }
+    
     // CLTokenInputViewDelegate
     
-    func tokenInputView(_ view: CLTokenInputView, didChangeHeightTo height: CGFloat) {
-        
+    func tokenInputView(_ view: CLTokenInputView, tokenForText text: String) -> CLToken? {
+        if let address = eventHandler?.addressFor(text) {
+            return CLToken(displayText: address.title, context: address)
+        } else {
+            return nil
+        }
     }
     
-    func tokenInputView(_ view: CLTokenInputView, tokenForText text: String) -> CLToken? {
-        return nil
+    func tokenInputView(_ view: CLTokenInputView, didAdd token: CLToken) {
+        if let address = token.context as? ContactPickerAddress {
+            eventHandler?.didAdd(address)
+        }
+    }
+    
+    func tokenInputView(_ view: CLTokenInputView, didRemove token: CLToken) {
+        if let address = token.context as? ContactPickerAddress {
+            eventHandler?.didRemove(address)
+        }
     }
 }
+
+extension ContactPickerAddress : OptionPickerItem {}

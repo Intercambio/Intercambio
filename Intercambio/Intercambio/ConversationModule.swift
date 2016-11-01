@@ -29,7 +29,9 @@ public class ConversationModule : NSObject {
         
         viewController.eventHandler = presenter
         if uri == nil {
-            viewController.contactPickerViewController = contactPicker?.viewController()
+            viewController.contactPickerViewController = contactPicker?.viewController { url in
+                presenter.conversation = url
+            }
             viewController.isContactPickerVisible = true
         }
         
