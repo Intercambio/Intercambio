@@ -51,7 +51,6 @@
 		F652374C1D4FF1BC00285713 /* SettingsViewEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F652374B1D4FF1BC00285713 /* SettingsViewEventHandler.swift */; };
 		F6555A571D340E52009C4324 /* AccountViewControllerHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6555A561D340E52009C4324 /* AccountViewControllerHeaderView.swift */; };
 		F6555A591D3413AE009C4324 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F6555A581D3413AE009C4324 /* Assets.xcassets */; };
-		F65751351D0FF4CE0038AB25 /* ICAccountPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F65751341D0FF4CE0038AB25 /* ICAccountPickerViewController.m */; };
 		F657513A1D1011FC0038AB25 /* IntercambioCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F65751381D1011FC0038AB25 /* IntercambioCore.framework */; };
 		F657513B1D1011FC0038AB25 /* SASLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F65751391D1011FC0038AB25 /* SASLKit.framework */; };
 		F65F98501CB26132009A2FE5 /* UICollectionView+CellAction.m in Sources */ = {isa = PBXBuildFile; fileRef = F65F984F1CB26132009A2FE5 /* UICollectionView+CellAction.m */; };
@@ -221,8 +220,6 @@
 		F652374B1D4FF1BC00285713 /* SettingsViewEventHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewEventHandler.swift; sourceTree = "<group>"; };
 		F6555A561D340E52009C4324 /* AccountViewControllerHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewControllerHeaderView.swift; sourceTree = "<group>"; };
 		F6555A581D3413AE009C4324 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		F65751331D0FF4CE0038AB25 /* ICAccountPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICAccountPickerViewController.h; sourceTree = "<group>"; };
-		F65751341D0FF4CE0038AB25 /* ICAccountPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICAccountPickerViewController.m; sourceTree = "<group>"; };
 		F65751381D1011FC0038AB25 /* IntercambioCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IntercambioCore.framework; path = ../Carthage/Build/iOS/IntercambioCore.framework; sourceTree = "<group>"; };
 		F65751391D1011FC0038AB25 /* SASLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SASLKit.framework; path = ../Carthage/Build/iOS/SASLKit.framework; sourceTree = "<group>"; };
 		F65F984E1CB26132009A2FE5 /* UICollectionView+CellAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UICollectionView+CellAction.h"; sourceTree = "<group>"; };
@@ -613,15 +610,6 @@
 			name = Header;
 			sourceTree = "<group>";
 		};
-		F65751361D0FF4D30038AB25 /* Account Picker */ = {
-			isa = PBXGroup;
-			children = (
-				F65751331D0FF4CE0038AB25 /* ICAccountPickerViewController.h */,
-				F65751341D0FF4CE0038AB25 /* ICAccountPickerViewController.m */,
-			);
-			name = "Account Picker";
-			sourceTree = "<group>";
-		};
 		F65751371D1004580038AB25 /* Empty */ = {
 			isa = PBXGroup;
 			children = (
@@ -730,7 +718,6 @@
 				F646CA601DB640E900C239B1 /* Avatar */,
 				F65237501D4FF47D00285713 /* Forms */,
 				F65751371D1004580038AB25 /* Empty */,
-				F65751361D0FF4D30038AB25 /* Account Picker */,
 				F6052AA71DC64506005D79EA /* OptionPicker.swift */,
 				F6052AC51DC8BB1A005D79EA /* ContentView.swift */,
 			);
@@ -1240,7 +1227,6 @@
 				F6052ABF1DC89B6B005D79EA /* ContactPickerView.swift in Sources */,
 				F6B7C3721DBF8B5D00F977BF /* ConversationViewMessageCell.swift in Sources */,
 				F678B6E51DBA3273004EF7EE /* ConversationDataSource.swift in Sources */,
-				F65751351D0FF4CE0038AB25 /* ICAccountPickerViewController.m in Sources */,
 				F678B6E71DBE02E8004EF7EE /* ConversationViewLayout.swift in Sources */,
 				F6555A571D340E52009C4324 /* AccountViewControllerHeaderView.swift in Sources */,
 				F68269CF1D0EECE2007A3934 /* ICAppWireframe.m in Sources */,
