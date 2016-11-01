@@ -18,14 +18,20 @@ public class ConversationModule : NSObject {
         self.service = service
     }
     
+    public var contactPicker: ContactPickerModule?
+    
     public func viewController(uri: URL?) -> UIViewController? {
         let presenter = ConversationPresenter(db: service.messageDB)
         let viewController = ConversationViewController()
         
-        viewController.eventHandler = presenter
         presenter.view = viewController
-        
         presenter.conversation = uri
+        
+        viewController.eventHandler = presenter
+        if uri == nil {
+            viewController.contactPickerViewController = contactPicker?.viewController()
+            viewController.isContactPickerVisible = true
+        }
         
         return viewController
     }

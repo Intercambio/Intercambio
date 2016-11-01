@@ -27,6 +27,22 @@ class ConversationViewController: UICollectionViewController, ConversationView, 
         }
     }
     
+    var isContactPickerVisible: Bool = false
+    
+    var contactPickerViewController: UIViewController? {
+        willSet {
+            if let viewController = contactPickerViewController {
+                viewController.view.removeFromSuperview()
+                viewController.removeFromParentViewController()
+            }
+        }
+        didSet {
+            if let viewController = contactPickerViewController {
+                addChildViewController(viewController)
+            }
+        }
+    }
+    
     private var dummyTextView: UITextView?
     private var collectionViewAdapter: FTCollectionViewAdapter?
     private var shouldScrollToBottom: Bool = false
@@ -55,6 +71,7 @@ class ConversationViewController: UICollectionViewController, ConversationView, 
         
         collectionView?.keyboardDismissMode = .interactive
         collectionView?.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        collectionView?.alwaysBounceVertical = true
         
         collectionViewAdapter = FTCollectionViewAdapter(collectionView: collectionView)
         
@@ -99,6 +116,22 @@ class ConversationViewController: UICollectionViewController, ConversationView, 
         
         collectionViewAdapter?.delegate = self
         collectionViewAdapter?.dataSource = dataSource
+        
+        if let viewController = contactPickerViewController {
+            view.addSubview(viewController.view)
+            view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[view]|",
+                                                               options: [],
+                                                               metrics: [:],
+                                                               views: ["view":viewController.view]))
+
+            view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[view]|",
+                                                               options: [],
+                                                               metrics: [:],
+                                                               views: ["view": viewController.view,
+                                                                       "top": topLayoutGuide,
+                                                                       "bottom": bottomLayoutGuide]))
+            viewController.view.isHidden = !isContactPickerVisible
+        }
         
         shouldScrollToBottom = true
     }
