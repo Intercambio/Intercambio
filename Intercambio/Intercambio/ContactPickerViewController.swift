@@ -167,6 +167,7 @@ class ContactPickerViewController: UIViewController, CLTokenInputViewDelegate, C
     private func updateAccounts() {
         accountPicker?.options = accounts
         accountPicker?.indexOfSelectedOption = selectedAccount != nil ? accounts?.index(of: selectedAccount!) : nil
+        accountPicker?.isHidden = accounts?.count ?? 0 < 2
     }
     
     @objc private func accountDidChange(_ sender: Any?) {
