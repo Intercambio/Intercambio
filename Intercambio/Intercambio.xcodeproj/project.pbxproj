@@ -17,7 +17,6 @@
 		F6052AC61DC8BB1A005D79EA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6052AC51DC8BB1A005D79EA /* ContentView.swift */; };
 		F605909C1D2F97AB0071FC63 /* AccountProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F605909B1D2F97AB0071FC63 /* AccountProvider.swift */; };
 		F605909E1D2F97E70071FC63 /* AccountOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F605909D1D2F97E70071FC63 /* AccountOutput.swift */; };
-		F60DFF871C6DE04600764E26 /* ICConversationLayoutInvalidationContext.m in Sources */ = {isa = PBXBuildFile; fileRef = F60DFF861C6DE04600764E26 /* ICConversationLayoutInvalidationContext.m */; };
 		F6151BB31D3538CD000551B6 /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6151BB21D3538CD000551B6 /* SettingsPresenter.swift */; };
 		F6151BB91D353B84000551B6 /* SettingsPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6151BB81D353B84000551B6 /* SettingsPresenterTests.swift */; };
 		F61679F81D5070F20002A1A4 /* NavigationControllerModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61679F71D5070F20002A1A4 /* NavigationControllerModule.swift */; };
@@ -33,8 +32,6 @@
 		F619BDD01C4D071700F87F50 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F619BDCE1C4D071700F87F50 /* LaunchScreen.storyboard */; };
 		F619BDDB1C4D071700F87F50 /* IntercambioTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F619BDDA1C4D071700F87F50 /* IntercambioTests.m */; };
 		F619BDE61C4D071700F87F50 /* IntercambioUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = F619BDE51C4D071700F87F50 /* IntercambioUITests.m */; };
-		F62E49CB1CC7C870006C071D /* ICConversationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F62E49CA1CC7C870006C071D /* ICConversationViewController.m */; };
-		F62F71D51C68D84E00656D3C /* ICMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F62F71D41C68D84E00656D3C /* ICMessageCell.m */; };
 		F63404271C65F78300464F3E /* ICEmptyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F63404251C65F78300464F3E /* ICEmptyViewController.m */; };
 		F63404281C65F78300464F3E /* ICEmptyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F63404261C65F78300464F3E /* ICEmptyViewController.xib */; };
 		F635166E1D33A52A007822F3 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F635166D1D33A52A007822F3 /* AccountView.swift */; };
@@ -57,18 +54,10 @@
 		F65751351D0FF4CE0038AB25 /* ICAccountPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F65751341D0FF4CE0038AB25 /* ICAccountPickerViewController.m */; };
 		F657513A1D1011FC0038AB25 /* IntercambioCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F65751381D1011FC0038AB25 /* IntercambioCore.framework */; };
 		F657513B1D1011FC0038AB25 /* SASLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F65751391D1011FC0038AB25 /* SASLKit.framework */; };
-		F65CC9341CE07E0D00AE59DF /* ICAvatarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F65CC9331CE07E0D00AE59DF /* ICAvatarCell.m */; };
-		F65CC93A1CE0AC4B00AE59DF /* ICErrorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F65CC9391CE0AC4B00AE59DF /* ICErrorCell.m */; };
 		F65F98501CB26132009A2FE5 /* UICollectionView+CellAction.m in Sources */ = {isa = PBXBuildFile; fileRef = F65F984F1CB26132009A2FE5 /* UICollectionView+CellAction.m */; };
 		F676EF7E1CD264A4003047EC /* ISO8601.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F676EF7C1CD26492003047EC /* ISO8601.framework */; };
-		F676EF981CDCD49A003047EC /* ICConversationFragment.m in Sources */ = {isa = PBXBuildFile; fileRef = F676EF971CDCD49A003047EC /* ICConversationFragment.m */; };
-		F676EF9B1CDCD63F003047EC /* ICConversationMessageFragment.m in Sources */ = {isa = PBXBuildFile; fileRef = F676EF9A1CDCD63F003047EC /* ICConversationMessageFragment.m */; };
 		F676EF9D1CDCD8CE003047EC /* ICConversationMessageFragmentTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F676EF9C1CDCD8CE003047EC /* ICConversationMessageFragmentTests.m */; };
-		F676EFA31CDCE03E003047EC /* ICConversationParagraphFragment.m in Sources */ = {isa = PBXBuildFile; fileRef = F676EFA21CDCE03E003047EC /* ICConversationParagraphFragment.m */; };
-		F676EFA81CDCE699003047EC /* ICConversationChapterFragment.m in Sources */ = {isa = PBXBuildFile; fileRef = F676EFA71CDCE699003047EC /* ICConversationChapterFragment.m */; };
 		F676EFAA1CDCE99F003047EC /* ICConversationFragmentTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F676EFA91CDCE99F003047EC /* ICConversationFragmentTests.m */; };
-		F676EFAE1CDCEE20003047EC /* ICConversationLayoutItem_Message.m in Sources */ = {isa = PBXBuildFile; fileRef = F676EFAD1CDCEE20003047EC /* ICConversationLayoutItem_Message.m */; };
-		F676EFB21CDE4570003047EC /* ICConversationTimestampView.m in Sources */ = {isa = PBXBuildFile; fileRef = F676EFB11CDE4570003047EC /* ICConversationTimestampView.m */; };
 		F678B6D81DBA24DE004EF7EE /* ConversationModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = F678B6D71DBA24DE004EF7EE /* ConversationModule.swift */; };
 		F678B6DD1DBA257D004EF7EE /* ConversationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F678B6DC1DBA257D004EF7EE /* ConversationView.swift */; };
 		F678B6DF1DBA25C0004EF7EE /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F678B6DE1DBA25C0004EF7EE /* ConversationViewController.swift */; };
@@ -101,9 +90,6 @@
 		F6A9F9901D345B7D007D8718 /* SettingsModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A9F98F1D345B7D007D8718 /* SettingsModule.swift */; };
 		F6A9F9971D351DEE007D8718 /* SettingsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A9F9961D351DEE007D8718 /* SettingsInteractor.swift */; };
 		F6A9F99A1D351E7B007D8718 /* SettingsInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A9F9991D351E7B007D8718 /* SettingsInteractorTests.swift */; };
-		F6B26F9F1C6942650099CBC9 /* ICConversationLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = F6B26F9E1C6942650099CBC9 /* ICConversationLayout.m */; };
-		F6B26FA21C6A30790099CBC9 /* ICConversationLayoutAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = F6B26FA11C6A30790099CBC9 /* ICConversationLayoutAttributes.m */; };
-		F6B26FAB1C6B79310099CBC9 /* ICMessageComposeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F6B26FAA1C6B79310099CBC9 /* ICMessageComposeCell.m */; };
 		F6B3CC621D4B85A600234F9B /* AccountListPresentationDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B3CC611D4B85A600234F9B /* AccountListPresentationDataSource.swift */; };
 		F6B3CC661D4B95A900234F9B /* AccountListPresentationDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B3CC651D4B95A900234F9B /* AccountListPresentationDataSourceTests.swift */; };
 		F6B567001D507697004BCDB0 /* NavigationControllerStatusViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B566FF1D507697004BCDB0 /* NavigationControllerStatusViewModel.swift */; };
@@ -134,7 +120,6 @@
 		F6E2431B1CC1595600523F46 /* XMPPMessageArchive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6E2431A1CC1595600523F46 /* XMPPMessageArchive.framework */; };
 		F6E252151CAAC8010061531E /* ICAccountShareActivityItemSource.m in Sources */ = {isa = PBXBuildFile; fileRef = F6E252141CAAC8010061531E /* ICAccountShareActivityItemSource.m */; };
 		F6E2521A1CAACDF50061531E /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F6E252191CAACDF50061531E /* Settings.bundle */; };
-		F6EF1F371C71D1BC0083F4BE /* ICMessageBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = F6EF1F361C71D1BC0083F4BE /* ICMessageBackgroundView.m */; };
 		F6EF1F411C72066C0083F4BE /* CLTokenInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = F6EF1F3A1C72066C0083F4BE /* CLTokenInputView.m */; };
 		F6EF1F421C72066C0083F4BE /* CLTokenView.m in Sources */ = {isa = PBXBuildFile; fileRef = F6EF1F3C1C72066C0083F4BE /* CLTokenView.m */; };
 		F6EF1F431C72066C0083F4BE /* CLBackspaceDetectingTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = F6EF1F3E1C72066C0083F4BE /* CLBackspaceDetectingTextField.m */; };
@@ -190,8 +175,6 @@
 		F605909B1D2F97AB0071FC63 /* AccountProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AccountProvider.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		F605909D1D2F97E70071FC63 /* AccountOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AccountOutput.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		F60881A41D3777340028FDEB /* Intercambio.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Intercambio.entitlements; sourceTree = "<group>"; };
-		F60DFF851C6DE04600764E26 /* ICConversationLayoutInvalidationContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICConversationLayoutInvalidationContext.h; sourceTree = "<group>"; };
-		F60DFF861C6DE04600764E26 /* ICConversationLayoutInvalidationContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICConversationLayoutInvalidationContext.m; sourceTree = "<group>"; };
 		F6151BB21D3538CD000551B6 /* SettingsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
 		F6151BB81D353B84000551B6 /* SettingsPresenterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsPresenterTests.swift; sourceTree = "<group>"; };
 		F61679F71D5070F20002A1A4 /* NavigationControllerModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationControllerModule.swift; sourceTree = "<group>"; };
@@ -214,10 +197,6 @@
 		F619BDE11C4D071700F87F50 /* IntercambioUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IntercambioUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F619BDE51C4D071700F87F50 /* IntercambioUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntercambioUITests.m; sourceTree = "<group>"; };
 		F619BDE71C4D071700F87F50 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F62E49C91CC7C870006C071D /* ICConversationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICConversationViewController.h; sourceTree = "<group>"; };
-		F62E49CA1CC7C870006C071D /* ICConversationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICConversationViewController.m; sourceTree = "<group>"; };
-		F62F71D31C68D84E00656D3C /* ICMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICMessageCell.h; sourceTree = "<group>"; };
-		F62F71D41C68D84E00656D3C /* ICMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ICMessageCell.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		F63404241C65F78300464F3E /* ICEmptyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICEmptyViewController.h; sourceTree = "<group>"; };
 		F63404251C65F78300464F3E /* ICEmptyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICEmptyViewController.m; sourceTree = "<group>"; };
 		F63404261C65F78300464F3E /* ICEmptyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ICEmptyViewController.xib; sourceTree = "<group>"; };
@@ -246,27 +225,11 @@
 		F65751341D0FF4CE0038AB25 /* ICAccountPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICAccountPickerViewController.m; sourceTree = "<group>"; };
 		F65751381D1011FC0038AB25 /* IntercambioCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IntercambioCore.framework; path = ../Carthage/Build/iOS/IntercambioCore.framework; sourceTree = "<group>"; };
 		F65751391D1011FC0038AB25 /* SASLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SASLKit.framework; path = ../Carthage/Build/iOS/SASLKit.framework; sourceTree = "<group>"; };
-		F65CC9321CE07E0D00AE59DF /* ICAvatarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICAvatarCell.h; sourceTree = "<group>"; };
-		F65CC9331CE07E0D00AE59DF /* ICAvatarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICAvatarCell.m; sourceTree = "<group>"; };
-		F65CC9381CE0AC4B00AE59DF /* ICErrorCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICErrorCell.h; sourceTree = "<group>"; };
-		F65CC9391CE0AC4B00AE59DF /* ICErrorCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICErrorCell.m; sourceTree = "<group>"; };
 		F65F984E1CB26132009A2FE5 /* UICollectionView+CellAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UICollectionView+CellAction.h"; sourceTree = "<group>"; };
 		F65F984F1CB26132009A2FE5 /* UICollectionView+CellAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UICollectionView+CellAction.m"; sourceTree = "<group>"; };
 		F676EF7C1CD26492003047EC /* ISO8601.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ISO8601.framework; path = ../Carthage/Build/iOS/ISO8601.framework; sourceTree = "<group>"; };
-		F676EF961CDCD49A003047EC /* ICConversationFragment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICConversationFragment.h; sourceTree = "<group>"; };
-		F676EF971CDCD49A003047EC /* ICConversationFragment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICConversationFragment.m; sourceTree = "<group>"; };
-		F676EF991CDCD63F003047EC /* ICConversationMessageFragment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICConversationMessageFragment.h; sourceTree = "<group>"; };
-		F676EF9A1CDCD63F003047EC /* ICConversationMessageFragment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICConversationMessageFragment.m; sourceTree = "<group>"; };
 		F676EF9C1CDCD8CE003047EC /* ICConversationMessageFragmentTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICConversationMessageFragmentTests.m; sourceTree = "<group>"; };
-		F676EFA11CDCE03E003047EC /* ICConversationParagraphFragment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICConversationParagraphFragment.h; sourceTree = "<group>"; };
-		F676EFA21CDCE03E003047EC /* ICConversationParagraphFragment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICConversationParagraphFragment.m; sourceTree = "<group>"; };
-		F676EFA61CDCE699003047EC /* ICConversationChapterFragment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICConversationChapterFragment.h; sourceTree = "<group>"; };
-		F676EFA71CDCE699003047EC /* ICConversationChapterFragment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICConversationChapterFragment.m; sourceTree = "<group>"; };
 		F676EFA91CDCE99F003047EC /* ICConversationFragmentTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICConversationFragmentTests.m; sourceTree = "<group>"; };
-		F676EFAC1CDCEE20003047EC /* ICConversationLayoutItem_Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICConversationLayoutItem_Message.h; sourceTree = "<group>"; };
-		F676EFAD1CDCEE20003047EC /* ICConversationLayoutItem_Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICConversationLayoutItem_Message.m; sourceTree = "<group>"; };
-		F676EFB01CDE4570003047EC /* ICConversationTimestampView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICConversationTimestampView.h; sourceTree = "<group>"; };
-		F676EFB11CDE4570003047EC /* ICConversationTimestampView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICConversationTimestampView.m; sourceTree = "<group>"; };
 		F678B6D71DBA24DE004EF7EE /* ConversationModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationModule.swift; sourceTree = "<group>"; };
 		F678B6DC1DBA257D004EF7EE /* ConversationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationView.swift; sourceTree = "<group>"; };
 		F678B6DE1DBA25C0004EF7EE /* ConversationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
@@ -312,12 +275,6 @@
 		F6A9F9961D351DEE007D8718 /* SettingsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsInteractor.swift; sourceTree = "<group>"; };
 		F6A9F9991D351E7B007D8718 /* SettingsInteractorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsInteractorTests.swift; sourceTree = "<group>"; };
 		F6ACB0FC1D23BFB8002F3A66 /* Secrets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Secrets.h; sourceTree = "<group>"; };
-		F6B26F9D1C6942650099CBC9 /* ICConversationLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICConversationLayout.h; sourceTree = "<group>"; };
-		F6B26F9E1C6942650099CBC9 /* ICConversationLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICConversationLayout.m; sourceTree = "<group>"; };
-		F6B26FA01C6A30790099CBC9 /* ICConversationLayoutAttributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICConversationLayoutAttributes.h; sourceTree = "<group>"; };
-		F6B26FA11C6A30790099CBC9 /* ICConversationLayoutAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICConversationLayoutAttributes.m; sourceTree = "<group>"; };
-		F6B26FA91C6B79310099CBC9 /* ICMessageComposeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICMessageComposeCell.h; sourceTree = "<group>"; };
-		F6B26FAA1C6B79310099CBC9 /* ICMessageComposeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ICMessageComposeCell.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		F6B3CC611D4B85A600234F9B /* AccountListPresentationDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountListPresentationDataSource.swift; sourceTree = "<group>"; };
 		F6B3CC651D4B95A900234F9B /* AccountListPresentationDataSourceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AccountListPresentationDataSourceTests.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		F6B566FF1D507697004BCDB0 /* NavigationControllerStatusViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationControllerStatusViewModel.swift; sourceTree = "<group>"; };
@@ -351,8 +308,6 @@
 		F6E252131CAAC8010061531E /* ICAccountShareActivityItemSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICAccountShareActivityItemSource.h; sourceTree = "<group>"; };
 		F6E252141CAAC8010061531E /* ICAccountShareActivityItemSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICAccountShareActivityItemSource.m; sourceTree = "<group>"; };
 		F6E252191CAACDF50061531E /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
-		F6EF1F351C71D1BC0083F4BE /* ICMessageBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICMessageBackgroundView.h; sourceTree = "<group>"; };
-		F6EF1F361C71D1BC0083F4BE /* ICMessageBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICMessageBackgroundView.m; sourceTree = "<group>"; };
 		F6EF1F391C72066C0083F4BE /* CLTokenInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLTokenInputView.h; sourceTree = "<group>"; };
 		F6EF1F3A1C72066C0083F4BE /* CLTokenInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLTokenInputView.m; sourceTree = "<group>"; };
 		F6EF1F3B1C72066C0083F4BE /* CLTokenView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLTokenView.h; sourceTree = "<group>"; };
@@ -449,38 +404,6 @@
 				F6052AC31DC8A2D6005D79EA /* ContactPickerAddress.swift */,
 			);
 			name = Model;
-			sourceTree = "<group>";
-		};
-		F60DFF881C6DEE5400764E26 /* Layout */ = {
-			isa = PBXGroup;
-			children = (
-				F6B26F9D1C6942650099CBC9 /* ICConversationLayout.h */,
-				F6B26F9E1C6942650099CBC9 /* ICConversationLayout.m */,
-				F6B26FA01C6A30790099CBC9 /* ICConversationLayoutAttributes.h */,
-				F6B26FA11C6A30790099CBC9 /* ICConversationLayoutAttributes.m */,
-				F60DFF851C6DE04600764E26 /* ICConversationLayoutInvalidationContext.h */,
-				F60DFF861C6DE04600764E26 /* ICConversationLayoutInvalidationContext.m */,
-				F676EFAF1CDE4526003047EC /* Decoration Views */,
-				F676EFAB1CDCEA0C003047EC /* Fragments */,
-			);
-			name = Layout;
-			sourceTree = "<group>";
-		};
-		F60DFF891C6DEE5E00764E26 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				F62F71D31C68D84E00656D3C /* ICMessageCell.h */,
-				F62F71D41C68D84E00656D3C /* ICMessageCell.m */,
-				F6B26FA91C6B79310099CBC9 /* ICMessageComposeCell.h */,
-				F6B26FAA1C6B79310099CBC9 /* ICMessageComposeCell.m */,
-				F6EF1F351C71D1BC0083F4BE /* ICMessageBackgroundView.h */,
-				F6EF1F361C71D1BC0083F4BE /* ICMessageBackgroundView.m */,
-				F65CC9321CE07E0D00AE59DF /* ICAvatarCell.h */,
-				F65CC9331CE07E0D00AE59DF /* ICAvatarCell.m */,
-				F65CC9381CE0AC4B00AE59DF /* ICErrorCell.h */,
-				F65CC9391CE0AC4B00AE59DF /* ICErrorCell.m */,
-			);
-			name = Cells;
 			sourceTree = "<group>";
 		};
 		F61679F61D5070D70002A1A4 /* Navigation Controller Module */ = {
@@ -605,19 +528,6 @@
 				F619BDE71C4D071700F87F50 /* Info.plist */,
 			);
 			path = IntercambioUITests;
-			sourceTree = "<group>";
-		};
-		F62F71C91C68CFE900656D3C /* Conversation */ = {
-			isa = PBXGroup;
-			children = (
-				F62E49C91CC7C870006C071D /* ICConversationViewController.h */,
-				F62E49CA1CC7C870006C071D /* ICConversationViewController.m */,
-				F676EFAC1CDCEE20003047EC /* ICConversationLayoutItem_Message.h */,
-				F676EFAD1CDCEE20003047EC /* ICConversationLayoutItem_Message.m */,
-				F60DFF891C6DEE5E00764E26 /* Cells */,
-				F60DFF881C6DEE5400764E26 /* Layout */,
-			);
-			name = Conversation;
 			sourceTree = "<group>";
 		};
 		F63A66631D265BCA00FCC82E /* Presenter */ = {
@@ -764,30 +674,6 @@
 			name = Interactor;
 			sourceTree = "<group>";
 		};
-		F676EFAB1CDCEA0C003047EC /* Fragments */ = {
-			isa = PBXGroup;
-			children = (
-				F676EF961CDCD49A003047EC /* ICConversationFragment.h */,
-				F676EF971CDCD49A003047EC /* ICConversationFragment.m */,
-				F676EF991CDCD63F003047EC /* ICConversationMessageFragment.h */,
-				F676EF9A1CDCD63F003047EC /* ICConversationMessageFragment.m */,
-				F676EFA11CDCE03E003047EC /* ICConversationParagraphFragment.h */,
-				F676EFA21CDCE03E003047EC /* ICConversationParagraphFragment.m */,
-				F676EFA61CDCE699003047EC /* ICConversationChapterFragment.h */,
-				F676EFA71CDCE699003047EC /* ICConversationChapterFragment.m */,
-			);
-			name = Fragments;
-			sourceTree = "<group>";
-		};
-		F676EFAF1CDE4526003047EC /* Decoration Views */ = {
-			isa = PBXGroup;
-			children = (
-				F676EFB01CDE4570003047EC /* ICConversationTimestampView.h */,
-				F676EFB11CDE4570003047EC /* ICConversationTimestampView.m */,
-			);
-			name = "Decoration Views";
-			sourceTree = "<group>";
-		};
 		F678B6D61DBA2406004EF7EE /* Conversation Module */ = {
 			isa = PBXGroup;
 			children = (
@@ -857,7 +743,6 @@
 				F68EDFF81D3D3CD300AFCB9D /* Account List Module */,
 				F6E604FE1C787273000CCDD9 /* Account Module */,
 				F6052A981DC5FBBD005D79EA /* Contact Picker Module */,
-				F62F71C91C68CFE900656D3C /* Conversation */,
 				F678B6D61DBA2406004EF7EE /* Conversation Module */,
 				F61679F61D5070D70002A1A4 /* Navigation Controller Module */,
 				F6B9E33A1D8C743400510F01 /* Recent Conversations Module */,
@@ -1328,7 +1213,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F6CE94991DABF0B70044356A /* RecentConversationsViewController.swift in Sources */,
-				F65CC93A1CE0AC4B00AE59DF /* ICErrorCell.m in Sources */,
 				F678B6ED1DBE42C4004EF7EE /* ConversationViewLayoutAttributes.swift in Sources */,
 				F65237481D4FF15700285713 /* SettingsOutput.swift in Sources */,
 				F6167A051D5073890002A1A4 /* NavigationControllerPresenter.swift in Sources */,
@@ -1341,25 +1225,19 @@
 				F63A66711D26647700FCC82E /* AccountModule.swift in Sources */,
 				F63404271C65F78300464F3E /* ICEmptyViewController.m in Sources */,
 				F6CE94A01DABF10A0044356A /* RecentConversationsView.swift in Sources */,
-				F65CC9341CE07E0D00AE59DF /* ICAvatarCell.m in Sources */,
 				F6C6BD711D364AFC00CF3B8B /* FormDataSource.swift in Sources */,
 				F6052AC61DC8BB1A005D79EA /* ContentView.swift in Sources */,
 				F6A9F9971D351DEE007D8718 /* SettingsInteractor.swift in Sources */,
 				F61679F81D5070F20002A1A4 /* NavigationControllerModule.swift in Sources */,
-				F62E49CB1CC7C870006C071D /* ICConversationViewController.m in Sources */,
-				F6B26FAB1C6B79310099CBC9 /* ICMessageComposeCell.m in Sources */,
 				F6151BB31D3538CD000551B6 /* SettingsPresenter.swift in Sources */,
 				F678B6DD1DBA257D004EF7EE /* ConversationView.swift in Sources */,
 				F6CE94A21DABF1570044356A /* RecentConversationsViewEventHandler.swift in Sources */,
 				F678B6F51DBE91AF004EF7EE /* ConversationViewGroupHeaderView.swift in Sources */,
-				F676EFA31CDCE03E003047EC /* ICConversationParagraphFragment.m in Sources */,
 				F619AC9C1DBFAA3F00960632 /* ConversationViewComposeCell.swift in Sources */,
 				F6CE94A41DAC04BD0044356A /* RecentConversationsDataSource.swift in Sources */,
 				F6BA3EE91D36438200C12E3D /* FormItem.swift in Sources */,
 				F6EF1F431C72066C0083F4BE /* CLBackspaceDetectingTextField.m in Sources */,
-				F6EF1F371C71D1BC0083F4BE /* ICMessageBackgroundView.m in Sources */,
 				F6052ABF1DC89B6B005D79EA /* ContactPickerView.swift in Sources */,
-				F676EF981CDCD49A003047EC /* ICConversationFragment.m in Sources */,
 				F6B7C3721DBF8B5D00F977BF /* ConversationViewMessageCell.swift in Sources */,
 				F678B6E51DBA3273004EF7EE /* ConversationDataSource.swift in Sources */,
 				F65751351D0FF4CE0038AB25 /* ICAccountPickerViewController.m in Sources */,
@@ -1370,11 +1248,9 @@
 				F652374A1D4FF17B00285713 /* SettingsView.swift in Sources */,
 				F6B9E33C1D8C745700510F01 /* RecentConversationsModule.swift in Sources */,
 				F6052AA81DC64506005D79EA /* OptionPicker.swift in Sources */,
-				F676EFA81CDCE699003047EC /* ICConversationChapterFragment.m in Sources */,
 				F678B6EF1DBE4435004EF7EE /* ConversationViewLayoutParagraphFragment.swift in Sources */,
 				F619AC9A1DBF9D2600960632 /* CoversationViewAvatarView.swift in Sources */,
 				F63516771D33C076007822F3 /* AccountPresenter.swift in Sources */,
-				F62F71D51C68D84E00656D3C /* ICMessageCell.m in Sources */,
 				F6EF1F441C72066C0083F4BE /* CLToken.m in Sources */,
 				F6A41B741D4B9F400077321C /* AccountListView.swift in Sources */,
 				F6167A021D50733E0002A1A4 /* NavigationControllerViewEventHandler.swift in Sources */,
@@ -1394,7 +1270,6 @@
 				F605909E1D2F97E70071FC63 /* AccountOutput.swift in Sources */,
 				F619BDC51C4D071700F87F50 /* AppDelegate.m in Sources */,
 				F6826A1D1D0F38BD007A3934 /* UITableView+CellAction.m in Sources */,
-				F60DFF871C6DE04600764E26 /* ICConversationLayoutInvalidationContext.m in Sources */,
 				F646CA5D1DB6264500C239B1 /* RecentConversationsCell.swift in Sources */,
 				F6B567001D507697004BCDB0 /* NavigationControllerStatusViewModel.swift in Sources */,
 				F6826A201D0F4476007A3934 /* ICUserInterfaceFactory.m in Sources */,
@@ -1403,20 +1278,16 @@
 				F678B6F31DBE5176004EF7EE /* ConversationViewLayoutConversationFragment.swift in Sources */,
 				F6A41B711D4B9F220077321C /* AccountListViewEventHandler.swift in Sources */,
 				F68EE0021D3D457C00AFCB9D /* AccountListPresenter.swift in Sources */,
-				F6B26F9F1C6942650099CBC9 /* ICConversationLayout.m in Sources */,
 				F619BDC21C4D071700F87F50 /* main.m in Sources */,
 				F6E252151CAAC8010061531E /* ICAccountShareActivityItemSource.m in Sources */,
-				F676EFB21CDE4570003047EC /* ICConversationTimestampView.m in Sources */,
 				F61679FE1D5072820002A1A4 /* NavigationBar.swift in Sources */,
 				F65F98501CB26132009A2FE5 /* UICollectionView+CellAction.m in Sources */,
 				F65237451D4FF0C200285713 /* SettingsProvider.swift in Sources */,
-				F676EFAE1CDCEE20003047EC /* ICConversationLayoutItem_Message.m in Sources */,
 				F6EF1F421C72066C0083F4BE /* CLTokenView.m in Sources */,
 				F6BA3EE71D36434B00C12E3D /* FromSection.swift in Sources */,
 				F63A66731D26669A00FCC82E /* AccountInteractor.swift in Sources */,
 				F6D807DA1D17F53E002953AB /* ICURLHandler.m in Sources */,
 				F68EE0001D3D3EAD00AFCB9D /* AccountListPresentationModel.swift in Sources */,
-				F676EF9B1CDCD63F003047EC /* ICConversationMessageFragment.m in Sources */,
 				F678B6F11DBE4DD8004EF7EE /* ConversationViewLayoutChapterFragment.swift in Sources */,
 				F6A2592E1D33EC080005C533 /* AccountViewEventHandler.swift in Sources */,
 				F6C6BD6F1D3645BD00CF3B8B /* SettingsViewController.swift in Sources */,
@@ -1430,7 +1301,6 @@
 				F6F375411D55326000F718BC /* NavigationBarStatusView.swift in Sources */,
 				F6A9F9901D345B7D007D8718 /* SettingsModule.swift in Sources */,
 				F6A41B791D4BA89E0077321C /* AccountListViewController.swift in Sources */,
-				F6B26FA21C6A30790099CBC9 /* ICConversationLayoutAttributes.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,8 +7,6 @@
 //
 
 #import "ICUserInterfaceFactory.h"
-#import "ICConversationViewController.h"
-#import "ICConversationViewController.h"
 
 @interface ICUserInterfaceFactory ()
 
