@@ -17,8 +17,6 @@
 
 @protocol ICAppWireframeDelegate <NSObject>
 @optional
-- (UIViewController<ICConversationUserInterface> *)viewControllerForConversationInAppWireframe:(ICAppWireframe *)appWireframe;
-
 - (UIAlertController *)alertForNewAccountInAppWireframe:(ICAppWireframe *)appWireframe;
 - (UIAlertController *)alertForSelectingAccountInAppWireframe:(ICAppWireframe *)appWireframe withCompletion:(void (^)(NSURL *accountURI))completion;
 @end
@@ -33,6 +31,8 @@
 @property (nonatomic, strong) AccountModule *accountModule;
 @property (nonatomic, strong) SettingsModule *settingsModule;
 @property (nonatomic, strong) RecentConversationsModule *recentConversationsModule;
+@property (nonatomic, strong) ConversationModule *conversationModule;
+@property (nonatomic, strong) ContactPickerModule *contactPickerModule;
 
 #pragma mark Main User Interface
 - (void)presentLaunchScreen;

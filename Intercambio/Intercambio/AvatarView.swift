@@ -15,12 +15,15 @@ class AvatarView: UIImageView {
     override func layoutSubviews() {
         if defaultImage == nil {
             defaultImage = UIImageView(image: UIImage(named: "avatar-normal"))
+            defaultImage?.translatesAutoresizingMaskIntoConstraints = false
             defaultImage?.backgroundColor = #colorLiteral(red: 0.6666666667, green: 0.6666666667, blue: 0.6666666667, alpha: 1)
             defaultImage?.tintColor = #colorLiteral(red: 0.9344148174, green: 0.9412353635, blue: 0.9412353635, alpha: 1)
+            defaultImage?.contentMode = .scaleAspectFit
             addSubview(defaultImage!)
             addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[view]|", options: [], metrics: [:], views: ["view":defaultImage!]))
             addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[view]|", options: [], metrics: [:], views: ["view":defaultImage!]))
         }
+        clipsToBounds = true
         super.layoutSubviews()
         layer.cornerRadius = bounds.height / 2.0
         defaultImage?.layer.cornerRadius = layer.cornerRadius

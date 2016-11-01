@@ -76,13 +76,13 @@
 - (void)presentUserInterfaceForConversationWithURI:(NSURL *)conversationURI
                                 fromViewController:(UIViewController *)sender
 {
-    UIViewController *viewController = [self viewControllerForConversationWithURI:conversationURI];
+    UIViewController *viewController = [self.conversationModule viewControllerWithUri:conversationURI];
     [self.splitViewController showDetailViewController:viewController sender:sender];
 }
 
 - (void)presentUserInterfaceForNewConversationFromViewController:(UIViewController *)sender
 {
-    UIViewController *viewController = [self viewControllerForNewConversation];
+    UIViewController *viewController = [self.conversationModule viewControllerWithUri:nil];
     [self.splitViewController showDetailViewController:viewController sender:sender];
 }
 
@@ -241,13 +241,15 @@
 
 #pragma mark RecentConversationsRouter, AccountRouter, AccountListRouter, NavigationControllerRouter
 
-- (void)presentConversationUserInterfaceFor:(NSURL * _Nonnull)conversationURI {
-    UIViewController *viewController = [self viewControllerForConversationWithURI:conversationURI];
+- (void)presentConversationUserInterfaceFor:(NSURL *_Nonnull)conversationURI
+{
+    UIViewController *viewController = [self.conversationModule viewControllerWithUri:conversationURI];
     [self.splitViewController showDetailViewController:viewController sender:nil];
 }
 
-- (void)presentNewConversationUserInterface {
-    UIViewController *viewController = [self viewControllerForNewConversation];
+- (void)presentNewConversationUserInterface
+{
+    UIViewController *viewController = [self.conversationModule viewControllerWithUri:nil];
     [self.splitViewController showDetailViewController:viewController sender:nil];
 }
 
@@ -299,28 +301,6 @@
 - (UIViewController *)recentConversationsViewController
 {
     return [self.recentConversationsModule viewController];
-}
-
-- (UIViewController *)viewControllerForConversationWithURI:(NSURL *)conversationURI
-{
-    UIViewController *viewController = nil;
-    if ([self.delegate respondsToSelector:@selector(viewControllerForConversationInAppWireframe:)]) {
-        UIViewController<ICConversationUserInterface> *conversationViewController = [self.delegate viewControllerForConversationInAppWireframe:self];
-        conversationViewController.conversationURI = conversationURI;
-        viewController = conversationViewController;
-    }
-    [self prepareViewController:viewController];
-    return viewController ?: [[ICEmptyViewController alloc] init];
-}
-
-- (UIViewController *)viewControllerForNewConversation
-{
-    UIViewController *viewController = nil;
-    if ([self.delegate respondsToSelector:@selector(viewControllerForConversationInAppWireframe:)]) {
-        viewController = [self.delegate viewControllerForConversationInAppWireframe:self];
-    }
-    [self prepareViewController:viewController];
-    return viewController ?: [[ICEmptyViewController alloc] init];
 }
 
 - (UINavigationController *)navigationControllerForPrimaryViewController:(UIViewController *)primaryViewController
