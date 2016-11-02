@@ -29,7 +29,7 @@ class AccountListPresentationDataSourceTests: XCTestCase {
     
     func test() {
         let keyChain = KeyChain(named: "AccountListPresentationDataSourceTests")
-        let dataSource = AccountListPresentationDataSource(keyChain: keyChain)
+        let dataSource = AccountListDataSource(keyChain: keyChain)
         
         XCTAssertEqual(dataSource.numberOfSections(), 1)
         XCTAssertEqual(dataSource.numberOfItems(inSection: 0), 0)

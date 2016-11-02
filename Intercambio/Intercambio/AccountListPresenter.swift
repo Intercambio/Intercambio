@@ -13,7 +13,7 @@ class AccountListPresenter : AccountListViewEventHandler {
     
     let keyChain: KeyChain
     let router: AccountListRouter?
-    let dataSource: AccountListPresentationDataSource
+    let dataSource: AccountListDataSource
     
     weak var view: AccountListView? {
         didSet {
@@ -24,7 +24,7 @@ class AccountListPresenter : AccountListViewEventHandler {
     init(keyChain: KeyChain, router: AccountListRouter) {
         self.keyChain = keyChain
         self.router = router
-        self.dataSource = AccountListPresentationDataSource(keyChain: self.keyChain)
+        self.dataSource = AccountListDataSource(keyChain: self.keyChain)
     }
     
     // AccountListViewEventHandler

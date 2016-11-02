@@ -1,5 +1,5 @@
 //
-//  AccountListPresentationDataSource.swift
+//  AccountListDataSource.swift
 //  Intercambio
 //
 //  Created by Tobias Kraentzer on 29.07.16.
@@ -10,7 +10,7 @@ import Foundation
 import Fountain
 import IntercambioCore
 
-class AccountListPresentationDataSource: NSObject, FTDataSource {
+class AccountListDataSource: NSObject, FTDataSource {
 
     class Model: AccountListViewModel {
         
