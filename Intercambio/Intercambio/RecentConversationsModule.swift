@@ -23,7 +23,7 @@ public class RecentConversationsModule : NSObject {
         self.service = service
     }
     
-    public func viewController() -> (UIViewController?) {
+    public func viewController() -> RecentConversationsViewController {
         let presenter = RecentConversationsPresenter(keyChain: service.keyChain, db: service.messageDB)
         let viewController = RecentConversationsViewController()
     
