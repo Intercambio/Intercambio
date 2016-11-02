@@ -17,7 +17,7 @@ public class ContactPickerModule : NSObject {
         self.service = service
     }
 
-    public func viewController() -> ContactPickerViewController {
+    public func makeContactPickerViewController() -> ContactPickerViewController {
         let controller = ContactPickerViewController(service: service)
         return controller
     }
