@@ -36,7 +36,6 @@ public class AccountListViewController: UITableViewController, AccountListView {
         super.viewDidLoad()
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addAccount(sender:)))
-
         
         tableViewAdapter = FTTableViewAdapter(tableView: tableView)
         
@@ -58,7 +57,7 @@ public class AccountListViewController: UITableViewController, AccountListView {
         presenter?.view(self, didSelectItemAt: indexPath)
     }
     
-    func addAccount(sender: AnyObject) {
+    @objc private func addAccount(sender: AnyObject) {
         presenter?.addAccount()
     }
 }
