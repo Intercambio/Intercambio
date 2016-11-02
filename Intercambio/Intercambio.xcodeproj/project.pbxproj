@@ -73,7 +73,6 @@
 		F6826A1D1D0F38BD007A3934 /* UITableView+CellAction.m in Sources */ = {isa = PBXBuildFile; fileRef = F6826A1C1D0F38BD007A3934 /* UITableView+CellAction.m */; };
 		F6826A201D0F4476007A3934 /* ICUserInterfaceFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = F6826A1F1D0F4476007A3934 /* ICUserInterfaceFactory.m */; };
 		F68EDFFA1D3D3CE800AFCB9D /* AccountListModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68EDFF91D3D3CE800AFCB9D /* AccountListModule.swift */; };
-		F68EE0001D3D3EAD00AFCB9D /* AccountListPresentationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68EDFFF1D3D3EAD00AFCB9D /* AccountListPresentationModel.swift */; };
 		F68EE0021D3D457C00AFCB9D /* AccountListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68EE0011D3D457C00AFCB9D /* AccountListPresenter.swift */; };
 		F6A2592A1D33C3FE0005C533 /* AccountPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A259291D33C3FE0005C533 /* AccountPresenterTests.swift */; };
 		F6A2592E1D33EC080005C533 /* AccountViewEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A2592D1D33EC080005C533 /* AccountViewEventHandler.swift */; };
@@ -87,7 +86,7 @@
 		F6A9F9901D345B7D007D8718 /* SettingsModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A9F98F1D345B7D007D8718 /* SettingsModule.swift */; };
 		F6A9F9971D351DEE007D8718 /* SettingsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A9F9961D351DEE007D8718 /* SettingsInteractor.swift */; };
 		F6A9F99A1D351E7B007D8718 /* SettingsInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A9F9991D351E7B007D8718 /* SettingsInteractorTests.swift */; };
-		F6B3CC621D4B85A600234F9B /* AccountListPresentationDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B3CC611D4B85A600234F9B /* AccountListPresentationDataSource.swift */; };
+		F6B3CC621D4B85A600234F9B /* AccountListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B3CC611D4B85A600234F9B /* AccountListDataSource.swift */; };
 		F6B3CC661D4B95A900234F9B /* AccountListPresentationDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B3CC651D4B95A900234F9B /* AccountListPresentationDataSourceTests.swift */; };
 		F6B567001D507697004BCDB0 /* NavigationControllerStatusViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B566FF1D507697004BCDB0 /* NavigationControllerStatusViewModel.swift */; };
 		F6B7C36D1DBF66CA00F977BF /* ConversationViewCellBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B7C36C1DBF66CA00F977BF /* ConversationViewCellBackgroundView.swift */; };
@@ -253,8 +252,7 @@
 		F68414011C4D8901009B37BE /* PureXML.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PureXML.framework; path = ../Carthage/Build/iOS/PureXML.framework; sourceTree = "<group>"; };
 		F684140B1C4D8A7F009B37BE /* SocketRocket.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SocketRocket.framework; path = ../Carthage/Build/iOS/SocketRocket.framework; sourceTree = "<group>"; };
 		F68EDFF91D3D3CE800AFCB9D /* AccountListModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountListModule.swift; sourceTree = "<group>"; };
-		F68EDFFF1D3D3EAD00AFCB9D /* AccountListPresentationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountListPresentationModel.swift; sourceTree = "<group>"; };
-		F68EE0011D3D457C00AFCB9D /* AccountListPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountListPresenter.swift; sourceTree = "<group>"; };
+		F68EE0011D3D457C00AFCB9D /* AccountListPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AccountListPresenter.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		F6A259291D33C3FE0005C533 /* AccountPresenterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AccountPresenterTests.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		F6A2592D1D33EC080005C533 /* AccountViewEventHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewEventHandler.swift; sourceTree = "<group>"; };
 		F6A259321D33F5CF0005C533 /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
@@ -268,7 +266,7 @@
 		F6A9F9961D351DEE007D8718 /* SettingsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsInteractor.swift; sourceTree = "<group>"; };
 		F6A9F9991D351E7B007D8718 /* SettingsInteractorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsInteractorTests.swift; sourceTree = "<group>"; };
 		F6ACB0FC1D23BFB8002F3A66 /* Secrets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Secrets.h; sourceTree = "<group>"; };
-		F6B3CC611D4B85A600234F9B /* AccountListPresentationDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountListPresentationDataSource.swift; sourceTree = "<group>"; };
+		F6B3CC611D4B85A600234F9B /* AccountListDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AccountListDataSource.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		F6B3CC651D4B95A900234F9B /* AccountListPresentationDataSourceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AccountListPresentationDataSourceTests.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		F6B566FF1D507697004BCDB0 /* NavigationControllerStatusViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationControllerStatusViewModel.swift; sourceTree = "<group>"; };
 		F6B7C36C1DBF66CA00F977BF /* ConversationViewCellBackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewCellBackgroundView.swift; sourceTree = "<group>"; };
@@ -812,7 +810,6 @@
 			children = (
 				F6A41B731D4B9F400077321C /* AccountListView.swift */,
 				F6A41B701D4B9F220077321C /* AccountListViewEventHandler.swift */,
-				F68EDFFF1D3D3EAD00AFCB9D /* AccountListPresentationModel.swift */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -850,7 +847,7 @@
 			isa = PBXGroup;
 			children = (
 				F68EE0011D3D457C00AFCB9D /* AccountListPresenter.swift */,
-				F6B3CC611D4B85A600234F9B /* AccountListPresentationDataSource.swift */,
+				F6B3CC611D4B85A600234F9B /* AccountListDataSource.swift */,
 			);
 			name = Presenter;
 			sourceTree = "<group>";
@@ -1236,7 +1233,7 @@
 				F6167A021D50733E0002A1A4 /* NavigationControllerViewEventHandler.swift in Sources */,
 				F6C6BD741D3669D500CF3B8B /* FormItemURLCell.swift in Sources */,
 				F61679FC1D50725B0002A1A4 /* NavigationController.swift in Sources */,
-				F6B3CC621D4B85A600234F9B /* AccountListPresentationDataSource.swift in Sources */,
+				F6B3CC621D4B85A600234F9B /* AccountListDataSource.swift in Sources */,
 				F678B6D81DBA24DE004EF7EE /* ConversationModule.swift in Sources */,
 				F68EDFFA1D3D3CE800AFCB9D /* AccountListModule.swift in Sources */,
 				F678B6E11DBA25D0004EF7EE /* ConversationPresenter.swift in Sources */,
@@ -1267,7 +1264,6 @@
 				F6BA3EE71D36434B00C12E3D /* FromSection.swift in Sources */,
 				F63A66731D26669A00FCC82E /* AccountInteractor.swift in Sources */,
 				F6D807DA1D17F53E002953AB /* ICURLHandler.m in Sources */,
-				F68EE0001D3D3EAD00AFCB9D /* AccountListPresentationModel.swift in Sources */,
 				F678B6F11DBE4DD8004EF7EE /* ConversationViewLayoutChapterFragment.swift in Sources */,
 				F6A2592E1D33EC080005C533 /* AccountViewEventHandler.swift in Sources */,
 				F6C6BD6F1D3645BD00CF3B8B /* SettingsViewController.swift in Sources */,

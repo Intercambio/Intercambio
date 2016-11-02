@@ -9,9 +9,9 @@
 import UIKit
 import Fountain
 
-class AccountListViewController: UITableViewController, AccountListView {
+public class AccountListViewController: UITableViewController, AccountListView {
 
-    var eventHandler: AccountListViewEventHandler?
+    var presenter: AccountListViewEventHandler?
     var dataSource: FTDataSource? {
         didSet {
             tableViewAdapter?.dataSource = dataSource
@@ -20,7 +20,7 @@ class AccountListViewController: UITableViewController, AccountListView {
     
     private var tableViewAdapter: FTTableViewAdapter?
     
-    init() {
+    public init() {
         super.init(style: .plain)
         title = NSLocalizedString("Accounts", comment: "")
         tabBarItem = UITabBarItem(title: title,
@@ -28,25 +28,23 @@ class AccountListViewController: UITableViewController, AccountListView {
                                   selectedImage: UIImage(named: "779-users-selected"))
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(add(sender:)))
-
-        
-        tableView.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: "UITableViewCell")
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addAccount(sender:)))
         
         tableViewAdapter = FTTableViewAdapter(tableView: tableView)
         
+        tableView.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: "UITableViewCell")
         tableViewAdapter?.forRowsMatching(nil, useCellWithReuseIdentifier: "UITableViewCell") {
             (view, item, indexPath, dataSource) in
             if  let cell = view as? UITableViewCell,
-                let account = item as? AccountListPresentationModel {
-                cell.textLabel?.text = account.identifier
+                let account = item as? AccountListViewModel {
+                cell.textLabel?.text = account.name
                 cell.accessoryType = .disclosureIndicator
             }
         }
@@ -55,13 +53,11 @@ class AccountListViewController: UITableViewController, AccountListView {
         tableViewAdapter?.dataSource = dataSource
     }
 
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let account = dataSource?.item(at: indexPath) as? AccountListPresentationModel {
-            eventHandler?.didSelect(account)
-        }
+    public override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presenter?.view(self, didSelectItemAt: indexPath)
     }
     
-    func add(sender: AnyObject) {
-        eventHandler?.didTapNewAccount()
+    @objc private func addAccount(sender: AnyObject) {
+        presenter?.addAccount()
     }
 }

@@ -11,9 +11,7 @@ import IntercambioCore
 
 class AccountListPresenter : AccountListViewEventHandler {
     
-    let keyChain: KeyChain
-    let router: AccountListRouter?
-    let dataSource: FTDataSource
+    var router: AccountListRouter?
     
     weak var view: AccountListView? {
         didSet {
@@ -21,21 +19,23 @@ class AccountListPresenter : AccountListViewEventHandler {
         }
     }
     
-    init(keyChain: KeyChain, router: AccountListRouter) {
+    let keyChain: KeyChain
+    let dataSource: AccountListDataSource
+    
+    init(keyChain: KeyChain) {
         self.keyChain = keyChain
-        self.router = router
-        self.dataSource = AccountListPresentationDataSource(keyChain: self.keyChain)
+        self.dataSource = AccountListDataSource(keyChain: self.keyChain)
     }
     
     // AccountListViewEventHandler
     
-    func didTapNewAccount() {
+    func addAccount() {
         router?.presentNewAccountUserInterface()
     }
     
-    func didSelect(_ account: AccountListPresentationModel) {
-        if let accountURI = account.accountURI {
-            router?.presentAccountUserInterface(for: accountURI)
+    func view(_ view: AccountListView, didSelectItemAt indexPath: IndexPath) {
+        if let uri = dataSource.accountURI(forItemAt: indexPath) {
+            router?.presentAccountUserInterface(for: uri)
         }
     }
 }

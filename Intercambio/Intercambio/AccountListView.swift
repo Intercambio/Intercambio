@@ -9,6 +9,10 @@
 import Foundation
 import Fountain
 
+protocol AccountListViewModel : class {
+    var name: String { get }
+}
+
 protocol AccountListView : class {
     var dataSource: FTDataSource? { get set }
 }

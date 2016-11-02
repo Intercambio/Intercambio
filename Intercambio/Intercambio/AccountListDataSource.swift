@@ -1,5 +1,5 @@
 //
-//  AccountListPresentationDataSource.swift
+//  AccountListDataSource.swift
 //  Intercambio
 //
 //  Created by Tobias Kraentzer on 29.07.16.
@@ -10,24 +10,12 @@ import Foundation
 import Fountain
 import IntercambioCore
 
-class AccountListPresentationDataSource: NSObject, FTDataSource {
+class AccountListDataSource: NSObject, FTDataSource {
 
-    class Item: AccountListPresentationModel {
+    class Model: AccountListViewModel {
         
-        var identifier: String {
+        var name: String {
             return item.jid.stringValue
-        }
-        
-        var accountURI: URL? {
-            var components = URLComponents()
-            components.scheme = "xmpp"
-            components.host = item.jid.host
-            components.user = item.jid.user
-            return components.url
-        }
-        
-        var name: String? {
-            return identifier
         }
         
         private let item: KeyChainItem
@@ -69,6 +57,18 @@ class AccountListPresentationDataSource: NSObject, FTDataSource {
         }
     }
     
+    func accountURI(forItemAt indexPath: IndexPath) -> URL? {
+        if let item = backingStore.item(at: indexPath) as? KeyChainItem {
+            var components = URLComponents()
+            components.scheme = "xmpp"
+            components.host = item.jid.host
+            components.user = item.jid.user
+            return components.url
+        } else {
+            return nil
+        }
+    }
+    
     // FTDataSource
     
     func numberOfSections() -> UInt {
@@ -85,7 +85,7 @@ class AccountListPresentationDataSource: NSObject, FTDataSource {
     
     func item(at indexPath: IndexPath!) -> Any! {
         if let item = backingStore.item(at: indexPath) as? KeyChainItem {
-            return Item(item)
+            return Model(item)
         } else {
             return nil
         }

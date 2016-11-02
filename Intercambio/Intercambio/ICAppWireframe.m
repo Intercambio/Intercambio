@@ -34,7 +34,7 @@
 - (void)presentMainInterface
 {
     UINavigationController *conversationsNavigationController = [self navigationControllerForPrimaryViewController:[self recentConversationsViewController]];
-    UINavigationController *accountsNavigationController = [self navigationControllerForPrimaryViewController:[self.accountListModule viewController]];
+    UINavigationController *accountsNavigationController = [self navigationControllerForPrimaryViewController:[self.accountListModule makeAccountListViewController]];
 
     UITabBarController *tabBar = [[UITabBarController alloc] init];
     tabBar.view.backgroundColor = [UIColor whiteColor];
