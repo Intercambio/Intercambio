@@ -9,7 +9,7 @@
 import UIKit
 import Fountain
 
-class ConversationViewController: UICollectionViewController, ConversationView, UICollectionViewDelegateConversationViewLayout, UICollectionViewDelegateAction {
+public class ConversationViewController: UICollectionViewController, ConversationView, UICollectionViewDelegateConversationViewLayout, UICollectionViewDelegateAction {
 
     class CollectionView : UICollectionView {
         // Override to fix a missbehaviour that appears when the
@@ -53,17 +53,17 @@ class ConversationViewController: UICollectionViewController, ConversationView, 
     private var collectionViewAdapter: FTCollectionViewAdapter?
     private var shouldScrollToBottom: Bool = false
     
-    init() {
+    public init() {
         let layout = ConversationViewLayout()
         super.init(collectionViewLayout: layout)
         self.hidesBottomBarWhenPushed = true
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         
         dummyTextView = UITextView()
@@ -142,7 +142,7 @@ class ConversationViewController: UICollectionViewController, ConversationView, 
         shouldScrollToBottom = true
     }
     
-    override func viewDidLayoutSubviews() {
+    public override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         if shouldScrollToBottom {
             scrollToBottom(animated: false)
@@ -229,7 +229,7 @@ class ConversationViewController: UICollectionViewController, ConversationView, 
     
     // MARK: UICollectionViewDelegate
     
-    override func collectionView(_ collectionView: UICollectionView,
+    public override func collectionView(_ collectionView: UICollectionView,
                         willDisplay cell: UICollectionViewCell,
                         forItemAt indexPath: IndexPath) {
         if (dummyTextView?.isFirstResponder ?? false) {
@@ -241,13 +241,13 @@ class ConversationViewController: UICollectionViewController, ConversationView, 
         }
     }
     
-    override func collectionView(_ collectionView: UICollectionView,
+    public override func collectionView(_ collectionView: UICollectionView,
                                  didEndDisplaying cell: UICollectionViewCell,
                                  forItemAt indexPath: IndexPath) {
         cell.resignFirstResponder()
     }
     
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
+    public override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
         if let responder = sender as? UIResponder {
             if responder.isFirstResponder {
                 dummyTextView?.becomeFirstResponder()
@@ -258,7 +258,7 @@ class ConversationViewController: UICollectionViewController, ConversationView, 
     
     // MARK: UICollectionViewDelegateAction
     
-    func collectionView(_ collectionView: UICollectionView, handle controlEvents: UIControlEvents, forItemAt indexPath: IndexPath, sender: Any?) {
+    public func collectionView(_ collectionView: UICollectionView, handle controlEvents: UIControlEvents, forItemAt indexPath: IndexPath, sender: Any?) {
         if let textView = sender as? UITextView {
             if controlEvents.contains(.editingChanged) {
                 collectionViewAdapter?.performUserDrivenChange({ 

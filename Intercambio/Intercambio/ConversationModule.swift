@@ -20,7 +20,7 @@ public class ConversationModule : NSObject {
     
     public var contactPickerModule: ContactPickerModule?
     
-    public func viewController(uri: URL?) -> UIViewController? {
+    public func viewController(uri: URL?) -> ConversationViewController {
         let presenter = ConversationPresenter(db: service.messageDB)
         let viewController = ConversationViewController()
         
