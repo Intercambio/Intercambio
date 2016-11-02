@@ -23,15 +23,35 @@ public class RecentConversationsModule : NSObject {
         self.service = service
     }
     
-    public func viewController() -> (UIViewController?) {
-        let presenter = RecentConversationsPresenter(keyChain: service.keyChain, db: service.messageDB)
-        let viewController = RecentConversationsViewController()
+    public func makeRecentConversationsViewController() -> RecentConversationsViewController {
+        let controller = RecentConversationsViewController(service: service)
+        controller.router = router
+        return controller
+    }
+}
+
+public extension RecentConversationsViewController {
     
-        viewController.eventHandler = presenter
-        presenter.view = viewController
-        presenter.router = router
-        
-        return viewController
+    public convenience init(service: CommunicationService) {
+        self.init()
+        let presenter = RecentConversationsPresenter(keyChain: service.keyChain, db: service.messageDB)
+        presenter.view = self
+        self.presenter = presenter
+    }
+    
+    public var router: RecentConversationsRouter? {
+        set {
+            if let presenter = self.presenter as? RecentConversationsPresenter {
+                presenter.router = newValue
+            }
+        }
+        get {
+            if let presenter = self.presenter as? RecentConversationsPresenter {
+                return presenter.router
+            } else {
+                return nil
+            }
+        }
     }
 }
 

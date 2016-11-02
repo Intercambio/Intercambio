@@ -9,9 +9,9 @@
 import UIKit
 import Fountain
 
-class RecentConversationsViewController: UITableViewController, RecentConversationsView {
+public class RecentConversationsViewController: UITableViewController, RecentConversationsView {
 
-    var eventHandler: RecentConversationsViewEventHandler?
+    var presenter: RecentConversationsViewEventHandler?
     var dataSource: FTDataSource? {
         didSet {
             tableViewAdapter?.dataSource = dataSource
@@ -20,7 +20,7 @@ class RecentConversationsViewController: UITableViewController, RecentConversati
     
     private var tableViewAdapter: FTTableViewAdapter?
     
-    init() {
+    public init() {
         super.init(style: .plain)
         title = NSLocalizedString("Conversations", comment: "")
         tabBarItem = UITabBarItem(title: NSLocalizedString("Conversations", comment: ""),
@@ -28,11 +28,11 @@ class RecentConversationsViewController: UITableViewController, RecentConversati
                                   selectedImage: #imageLiteral(resourceName: "906-chat-3-selected"))
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .compose,
@@ -65,11 +65,11 @@ class RecentConversationsViewController: UITableViewController, RecentConversati
         tableViewAdapter?.dataSource = dataSource
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        eventHandler?.view(self, didSelectItemAt: indexPath)
+    public override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presenter?.view(self, didSelectItemAt: indexPath)
     }
     
     @objc private func newConversation() -> Void {
-        eventHandler?.newConversation()
+        presenter?.newConversation()
     }
 }

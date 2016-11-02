@@ -300,7 +300,7 @@
 
 - (UIViewController *)recentConversationsViewController
 {
-    return [self.recentConversationsModule viewController];
+    return [self.recentConversationsModule makeRecentConversationsViewController];
 }
 
 - (UINavigationController *)navigationControllerForPrimaryViewController:(UIViewController *)primaryViewController

@@ -11,15 +11,14 @@ import IntercambioCore
 
 class RecentConversationsPresenter: NSObject, RecentConversationsViewEventHandler {
     
-    weak public var router: RecentConversationsRouter?
-    
-    let dataSource: RecentConversationsDataSource
-    
+    var router: RecentConversationsRouter?
     weak var view: RecentConversationsView? {
         didSet {
             view?.dataSource = dataSource
         }
     }
+    
+    let dataSource: RecentConversationsDataSource
     
     init(keyChain: KeyChain, db: RecentConversationsMessageDB) {
         self.dataSource = RecentConversationsDataSource(keyChain: keyChain, db: db)
@@ -30,7 +29,7 @@ class RecentConversationsPresenter: NSObject, RecentConversationsViewEventHandle
     }
     
     func view(_ view: RecentConversationsView, didSelectItemAt indexPath: IndexPath) {
-        if let uri = dataSource.conversationURI(at: indexPath) {
+        if let uri = dataSource.conversationURI(forItemAt: indexPath) {
             router?.presentConversationUserInterface(for: uri)
         }
     }
