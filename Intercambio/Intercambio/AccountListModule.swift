@@ -23,14 +23,34 @@ public class AccountListModule : NSObject {
         self.service = service
     }
     
-    public func viewController() -> AccountListViewController {
-        
-        let presenter = AccountListPresenter(keyChain: service.keyChain, router: router!)
-        let viewController = AccountListViewController()
-        
-        viewController.presenter = presenter
-        presenter.view = viewController
-        
-        return viewController
+    public func makeAccountListViewController() -> AccountListViewController {
+        let controller = AccountListViewController(service: service)
+        controller.router = router
+        return controller
+    }
+}
+
+public extension AccountListViewController {
+    
+    public convenience init(service: CommunicationService) {
+        self.init()
+        let presenter = AccountListPresenter(keyChain: service.keyChain)
+        presenter.view = self
+        self.presenter = presenter
+    }
+    
+    weak public var router: AccountListRouter? {
+        set {
+            if let presenter = self.presenter as? AccountListPresenter {
+                presenter.router = newValue
+            }
+        }
+        get {
+            if let presenter = self.presenter as? AccountListPresenter {
+                return presenter.router
+            } else {
+                return nil
+            }
+        }
     }
 }
