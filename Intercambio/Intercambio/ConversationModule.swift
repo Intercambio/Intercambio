@@ -46,16 +46,17 @@ public extension ConversationViewController {
     public convenience init(service: CommunicationService, factory: ConversationModuleFactory, conversation uri: URL?) {
         self.init()
         let presenter = ConversationPresenter(db: service.messageDB)
-        presenter.conversation = uri
         presenter.view = self
+        presenter.conversation = uri
+        self.presenter = presenter
+        
         if uri == nil {
             if let contactPicker = factory.makeContactPickerViewController() {
+                contactPickerViewController = contactPicker
                 contactPicker.delegate = self
                 isContactPickerVisible = true
-                contactPickerViewController = contactPicker
             }
         }
-        self.presenter = presenter
     }
 }
 

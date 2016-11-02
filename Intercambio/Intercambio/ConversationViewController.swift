@@ -44,7 +44,9 @@ public class ConversationViewController: UICollectionViewController, Conversatio
         }
         didSet {
             if let viewController = contactPickerViewController {
-                addChildViewController(viewController)
+                if isViewLoaded {
+                    addChildViewController(viewController)
+                }
             }
         }
     }
@@ -124,6 +126,7 @@ public class ConversationViewController: UICollectionViewController, Conversatio
         collectionViewAdapter?.dataSource = dataSource
         
         if let viewController = contactPickerViewController {
+            addChildViewController(viewController)
             view.addSubview(viewController.view)
             view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[view]|",
                                                                options: [],
