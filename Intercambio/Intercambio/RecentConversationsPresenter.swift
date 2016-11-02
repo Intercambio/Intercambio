@@ -11,15 +11,14 @@ import IntercambioCore
 
 class RecentConversationsPresenter: NSObject, RecentConversationsViewEventHandler {
     
-    weak public var router: RecentConversationsRouter?
-    
-    let dataSource: RecentConversationsDataSource
-    
+    var router: RecentConversationsRouter?
     weak var view: RecentConversationsView? {
         didSet {
             view?.dataSource = dataSource
         }
     }
+    
+    let dataSource: RecentConversationsDataSource
     
     init(keyChain: KeyChain, db: RecentConversationsMessageDB) {
         self.dataSource = RecentConversationsDataSource(keyChain: keyChain, db: db)
