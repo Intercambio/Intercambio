@@ -22,18 +22,41 @@ public class NavigationControllerModule : NSObject {
         self.service = service
     }
     
-    public func navigationController() -> (UINavigationController) {
-        let view = NavigationController(navigationBarClass: NavigationBar.self, toolbarClass: nil)
-        let presenter = NavigationControllerPresenter(accountManager: service.accountManager)
-        presenter.view = view
-        presenter.router = router
-        view.presenter = presenter
-        return view
+    public func makeNavigationController() -> NavigationController {
+        let controller = NavigationController(service: service)
+        controller.router = router
+        return controller
     }
     
-    public func navigationController(rootViewController: UIViewController) -> (UINavigationController) {
-        let controller = navigationController()
+    public func makeNavigationController(rootViewController: UIViewController) -> NavigationController {
+        let controller = NavigationController(service: service)
+        controller.router = router
         controller.viewControllers = [rootViewController]
         return controller
+    }
+}
+
+public extension NavigationController {
+    
+    public convenience init(service: CommunicationService) {
+        self.init(navigationBarClass: NavigationBar.self, toolbarClass: nil)
+        let presenter = NavigationControllerPresenter(accountManager: service.accountManager)
+        presenter.view = self
+        self.presenter = presenter
+    }
+    
+    weak public var router: NavigationControllerRouter? {
+        set {
+            if let presenter = self.presenter as? NavigationControllerPresenter {
+                presenter.router = newValue
+            }
+        }
+        get {
+            if let presenter = self.presenter as? NavigationControllerPresenter {
+                return presenter.router
+            } else {
+                return nil
+            }
+        }
     }
 }

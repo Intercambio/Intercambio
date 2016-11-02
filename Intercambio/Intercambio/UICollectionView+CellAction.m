@@ -20,7 +20,8 @@
     }
 }
 
-- (void)handleControlEvents:(UIControlEvents)controlEvents forCell:(nonnull UICollectionViewCell *)cell sender:(nullable id)sender {
+- (void)handleControlEvents:(UIControlEvents)controlEvents forCell:(nonnull UICollectionViewCell *)cell sender:(nullable id)sender
+{
     NSIndexPath *indexPath = [self indexPathForCell:cell];
     if (indexPath) {
         if ([self.delegate conformsToProtocol:@protocol(UICollectionViewDelegateAction)]) {
@@ -36,14 +37,16 @@
 
 @implementation UICollectionViewCell (CellAction)
 
-- (void)performAction:(nonnull SEL)action sender:(nullable id)sender {
+- (void)performAction:(nonnull SEL)action sender:(nullable id)sender
+{
     id target = [self targetForAction:@selector(performAction:forCell:sender:) withSender:self];
     if (target) {
         [target performAction:action forCell:self sender:sender];
     }
 }
 
-- (void)handleControlEvents:(UIControlEvents)controlEvents sender:(id)sender {
+- (void)handleControlEvents:(UIControlEvents)controlEvents sender:(id)sender
+{
     id target = [self targetForAction:@selector(handleControlEvents:forCell:sender:) withSender:self];
     if (target) {
         [target handleControlEvents:controlEvents forCell:self sender:sender];

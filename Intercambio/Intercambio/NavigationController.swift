@@ -8,13 +8,18 @@
 
 import UIKit
 
-class NavigationController: UINavigationController, NavigationControllerView {
+public class NavigationController: UINavigationController, NavigationControllerView {
     
     var presenter: NavigationControllerViewEventHandler?
-    
     var status: [NavigationControllerStatusViewModel]? {
         didSet {
             updateStatus()
+        }
+    }
+    
+    func didTapStatus(sender: NavigationBarStatusView) {
+        if let status = sender.status {
+            presenter?.didTap(status: status)
         }
     }
     
@@ -33,12 +38,6 @@ class NavigationController: UINavigationController, NavigationControllerView {
                 }
             }
             bar.triggerLayoutUpdate()
-        }
-    }
-    
-    func didTapStatus(sender: NavigationBarStatusView) {
-        if let status = sender.status {
-            presenter?.didTap(status: status)
         }
     }
 }

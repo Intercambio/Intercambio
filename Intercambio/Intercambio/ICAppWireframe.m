@@ -305,7 +305,7 @@
 
 - (UINavigationController *)navigationControllerForPrimaryViewController:(UIViewController *)primaryViewController
 {
-    UINavigationController *navigationController = [self.navigationControllerModule navigationControllerWithRootViewController:primaryViewController];
+    UINavigationController *navigationController = [self.navigationControllerModule makeNavigationControllerWithRootViewController:primaryViewController];
     return navigationController ?: [[UINavigationController alloc] initWithRootViewController:primaryViewController];
 }
 

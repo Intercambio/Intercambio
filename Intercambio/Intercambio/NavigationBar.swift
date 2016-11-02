@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NavigationBar : UINavigationBar {
+public class NavigationBar : UINavigationBar {
     
     let contentView: UIStackView
     
@@ -30,8 +30,23 @@ class NavigationBar : UINavigationBar {
         addConstraints(constraints)
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override public func sizeThatFits(_ size: CGSize) -> CGSize {
+        var navigationBarSize = super.sizeThatFits(size)
+        let contentViewSize = contentView.sizeThatFits(CGSize(width: size.width, height: 0))
+        navigationBarSize.height += contentViewSize.height
+        return navigationBarSize
+    }
+    
+    override public func layoutSubviews() {
+        super.layoutSubviews()
+        let contentViewSize = contentView.sizeThatFits(CGSize(width: self.bounds.size.width, height: 0))
+        contentView.frame = CGRect(origin: self.bounds.origin,
+                                   size: CGSize(width: self.bounds.size.width,
+                                                height: contentViewSize.height))
     }
     
     func triggerLayoutUpdate() {
@@ -42,19 +57,10 @@ class NavigationBar : UINavigationBar {
             }
         }
     }
-    
-    override func sizeThatFits(_ size: CGSize) -> CGSize {
-        var navigationBarSize = super.sizeThatFits(size)
-        let contentViewSize = contentView.sizeThatFits(CGSize(width: size.width, height: 0))
-        navigationBarSize.height += contentViewSize.height
-        return navigationBarSize
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        let contentViewSize = contentView.sizeThatFits(CGSize(width: self.bounds.size.width, height: 0))
-        contentView.frame = CGRect(origin: self.bounds.origin,
-                                   size: CGSize(width: self.bounds.size.width,
-                                                height: contentViewSize.height))
+}
+
+public extension NavigationBar {
+    public func make() -> NavigationBar {
+        return NavigationBar()
     }
 }
