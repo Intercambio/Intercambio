@@ -9,7 +9,7 @@
 import UIKit
 import IntercambioCore
 
-class ConversationPresenter: NSObject, ConversationViewEventHandler {
+class ConversationPresenter: NSObject, ConversationViewEventHandler, ContactPickerViewControllerDelegate {
 
     let db: ConversationMessageDB
     init(db: ConversationMessageDB) {
@@ -101,5 +101,11 @@ class ConversationPresenter: NSObject, ConversationViewEventHandler {
             }
         }
         return nil
+    }
+    
+    // ContactPickerViewControllerDelegate
+    
+    func contactPicker(_ picker: ContactPickerViewController, didSelect uri: URL?) {
+        conversation = uri
     }
 }

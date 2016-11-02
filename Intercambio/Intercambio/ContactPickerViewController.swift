@@ -31,7 +31,7 @@ public class ContactPickerViewController: UIViewController, CLTokenInputViewDele
             }
         }
     }
-    
+        
     var presenter: ContectPickerViewEventHandler?
     
     var selectedAccount: ContactPickerAddress? {

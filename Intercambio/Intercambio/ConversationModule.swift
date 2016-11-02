@@ -18,7 +18,7 @@ public class ConversationModule : NSObject {
         self.service = service
     }
     
-    public var contactPicker: ContactPickerModule?
+    public var contactPickerModule: ContactPickerModule?
     
     public func viewController(uri: URL?) -> UIViewController? {
         let presenter = ConversationPresenter(db: service.messageDB)
@@ -29,8 +29,9 @@ public class ConversationModule : NSObject {
         
         viewController.eventHandler = presenter
         if uri == nil {
-            viewController.contactPickerViewController = contactPicker?.viewController { url in
-                presenter.conversation = url
+            if let contactPicker = contactPickerModule?.viewController() {
+                viewController.contactPickerViewController = contactPicker
+                contactPicker.delegate = presenter
             }
             viewController.isContactPickerVisible = true
         }

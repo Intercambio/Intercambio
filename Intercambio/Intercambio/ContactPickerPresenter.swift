@@ -10,6 +10,10 @@ import UIKit
 import IntercambioCore
 import  CoreXMPP
 
+protocol ContactPickerPresenterEventHandler {
+    func didChange(conversation uri: URL?) -> Void
+}
+
 class ContactPickerPresenter : NSObject, ContectPickerViewEventHandler {
 
     let accountManager: AccountManager
@@ -30,8 +34,8 @@ class ContactPickerPresenter : NSObject, ContectPickerViewEventHandler {
         }
     }
     
-    var callback: ((URL?) -> Void)?
-
+    var eventHandler: ContactPickerPresenterEventHandler?
+    
     var account: JID?
     var accounts: [JID]?
     var counterparts: NSMutableOrderedSet = NSMutableOrderedSet()
@@ -85,7 +89,7 @@ class ContactPickerPresenter : NSObject, ContectPickerViewEventHandler {
     }
     
     private func postContactDidChangeNotification() {
-        callback?(conversationURI)
+        eventHandler?.didChange(conversation: conversationURI)
     }
     
     private func updateAccounts() {
