@@ -10,7 +10,11 @@ import UIKit
 import IntercambioCore
 import XMPPMessageArchive
 
-public class ConversationModule : NSObject {
+public protocol ConversationModuleFactory {
+    func makeContactPickerViewController() -> ContactPickerViewController?
+}
+
+public class ConversationModule : NSObject, ConversationModuleFactory {
     
     public let service: CommunicationService
     
@@ -20,23 +24,39 @@ public class ConversationModule : NSObject {
     
     public var contactPickerModule: ContactPickerModule?
     
-    public func viewController(uri: URL?) -> UIViewController? {
-        let presenter = ConversationPresenter(db: service.messageDB)
-        let viewController = ConversationViewController()
-        
-        presenter.view = viewController
-        presenter.conversation = uri
-        
-        viewController.eventHandler = presenter
-        if uri == nil {
-            if let contactPicker = contactPickerModule?.makeContactPickerViewController() {
-                viewController.contactPickerViewController = contactPicker
-                contactPicker.delegate = presenter
-            }
-            viewController.isContactPickerVisible = true
+    public func viewController(uri: URL?) -> ConversationViewController {
+        let controller =  ConversationViewController(service: service, factory: self, conversation: uri)
+        return controller
+    }
+    
+    public func makeContactPickerViewController() -> ContactPickerViewController? {
+        return contactPickerModule?.makeContactPickerViewController()
+    }
+}
+
+extension ConversationViewController : ContactPickerViewControllerDelegate {
+    public func contactPicker(_ picker: ContactPickerViewController, didSelect conversationURI: URL?) {
+        if let presenter = self.presenter as? ConversationPresenter {
+            presenter.conversation = conversationURI
         }
+    }
+}
+
+public extension ConversationViewController {
+    public convenience init(service: CommunicationService, factory: ConversationModuleFactory, conversation uri: URL?) {
+        self.init()
+        let presenter = ConversationPresenter(db: service.messageDB)
+        presenter.view = self
+        presenter.conversation = uri
+        self.presenter = presenter
         
-        return viewController
+        if uri == nil {
+            if let contactPicker = factory.makeContactPickerViewController() {
+                contactPickerViewController = contactPicker
+                contactPicker.delegate = self
+                isContactPickerVisible = true
+            }
+        }
     }
 }
 
