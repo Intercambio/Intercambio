@@ -27,7 +27,7 @@ public class ConversationModule : NSObject {
         presenter.view = viewController
         presenter.conversation = uri
         
-        viewController.eventHandler = presenter
+        viewController.presenter = presenter
         if uri == nil {
             if let contactPicker = contactPickerModule?.makeContactPickerViewController() {
                 viewController.contactPickerViewController = contactPicker

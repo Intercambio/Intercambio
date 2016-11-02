@@ -19,7 +19,7 @@ public class ConversationViewController: UICollectionViewController, Conversatio
         }
     }
     
-    var eventHandler: ConversationViewEventHandler?
+    var presenter: ConversationViewEventHandler?
     var dataSource: FTDataSource? {
         didSet {
             collectionViewAdapter?.dataSource = dataSource
@@ -253,7 +253,7 @@ public class ConversationViewController: UICollectionViewController, Conversatio
                 dummyTextView?.becomeFirstResponder()
             }
         }
-        self.eventHandler?.performAction(action, forItemAt: indexPath)
+        self.presenter?.performAction(action, forItemAt: indexPath)
     }
     
     // MARK: UICollectionViewDelegateAction
@@ -262,7 +262,7 @@ public class ConversationViewController: UICollectionViewController, Conversatio
         if let textView = sender as? UITextView {
             if controlEvents.contains(.editingChanged) {
                 collectionViewAdapter?.performUserDrivenChange({ 
-                    self.eventHandler?.setValue(textView.attributedText, forItemAt: indexPath)
+                    self.presenter?.setValue(textView.attributedText, forItemAt: indexPath)
                     self.invalidateLayout(ofItemAt: indexPath)
                 })
             }
