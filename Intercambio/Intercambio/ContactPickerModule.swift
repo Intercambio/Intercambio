@@ -17,14 +17,62 @@ public class ContactPickerModule : NSObject {
         self.service = service
     }
 
-    public func viewController(callback: @escaping (URL?) -> ()) -> UIViewController? {
+    public func makeContactPickerViewController() -> ContactPickerViewController {
+        let controller = ContactPickerViewController(service: service)
+        return controller
+    }
+}
+
+public protocol ContactPickerViewControllerDelegate : class {
+    func contactPicker(_ picker: ContactPickerViewController, didSelect conversationURI: URL?)
+}
+
+public extension ContactPickerViewController {
+    
+    private class DelegateProxy : ContactPickerPresenterEventHandler {
+        weak var delegate: ContactPickerViewControllerDelegate?
+        weak var viewController: ContactPickerViewController?
+        
+        func didChange(conversation uri: URL?) {
+            if let delegate = self.delegate,
+                let viewController = self.viewController {
+                delegate.contactPicker(viewController, didSelect: uri)
+            }
+        }
+    }
+    
+    public convenience init(service: CommunicationService) {
+        self.init()
         let presenter = ContactPickerPresenter(accountManager: service.accountManager)
-        let view = ContactPickerViewController()
+        presenter.view = self
         
-        view.eventHandler = presenter
-        presenter.view = view
-        presenter.callback = callback
+        let proxy = DelegateProxy()
+        proxy.viewController = self
+        presenter.eventHandler = proxy
         
-        return view
+        self.presenter = presenter
+    }
+    
+    public weak var delegate: ContactPickerViewControllerDelegate? {
+        set {
+            if let proxy = delegateProxy {
+                proxy.delegate = newValue
+            }
+        }
+        get {
+            if let proxy = delegateProxy {
+                return proxy.delegate
+            } else {
+                return nil
+            }
+        }
+    }
+    
+    private var delegateProxy: DelegateProxy? {
+        if let presenter = self.presenter as? ContactPickerPresenter,
+           let proxy = presenter.eventHandler as? DelegateProxy{
+            return proxy
+        }
+        return nil
     }
 }

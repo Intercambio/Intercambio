@@ -77,7 +77,7 @@ static DDLogLevel ddLogLevel = DDLogLevelInfo;
     _appWireframe.recentConversationsModule.router = _appWireframe;
 
     _appWireframe.conversationModule = [[ConversationModule alloc] initWithService:_communicationService];
-    _appWireframe.conversationModule.contactPicker = _appWireframe.contactPickerModule;
+    _appWireframe.conversationModule.contactPickerModule = _appWireframe.contactPickerModule;
 
     [_appWireframe presentLaunchScreen];
 
