@@ -23,7 +23,7 @@ public class AccountListModule : NSObject {
         self.service = service
     }
     
-    public func viewController() -> (UIViewController?) {
+    public func viewController() -> AccountListViewController {
         
         let presenter = AccountListPresenter(keyChain: service.keyChain, router: router!)
         let viewController = AccountListViewController()

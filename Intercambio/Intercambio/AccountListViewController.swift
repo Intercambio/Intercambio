@@ -9,7 +9,7 @@
 import UIKit
 import Fountain
 
-class AccountListViewController: UITableViewController, AccountListView {
+public class AccountListViewController: UITableViewController, AccountListView {
 
     var eventHandler: AccountListViewEventHandler?
     var dataSource: FTDataSource? {
@@ -20,7 +20,7 @@ class AccountListViewController: UITableViewController, AccountListView {
     
     private var tableViewAdapter: FTTableViewAdapter?
     
-    init() {
+    public init() {
         super.init(style: .plain)
         title = NSLocalizedString("Accounts", comment: "")
         tabBarItem = UITabBarItem(title: title,
@@ -28,11 +28,11 @@ class AccountListViewController: UITableViewController, AccountListView {
                                   selectedImage: UIImage(named: "779-users-selected"))
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(add(sender:)))
@@ -55,7 +55,7 @@ class AccountListViewController: UITableViewController, AccountListView {
         tableViewAdapter?.dataSource = dataSource
     }
 
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    public override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let account = dataSource?.item(at: indexPath) as? AccountListPresentationModel {
             eventHandler?.didSelect(account)
         }
