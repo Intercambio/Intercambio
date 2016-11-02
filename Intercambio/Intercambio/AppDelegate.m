@@ -26,14 +26,15 @@
 
 static DDLogLevel ddLogLevel = DDLogLevelInfo;
 
-@interface AppDelegate () <ICCommunicationServiceDelegate,
-                           BITHockeyManagerDelegate> {
+@interface AppDelegate () <ICCommunicationServiceDelegate, BITHockeyManagerDelegate> {
     ICCommunicationService *_communicationService;
+    Wireframe *_wireframe;
+    
     ICUserInterfaceFactory *_userInterfaceFactory;
-    ICAppWireframe *_appWireframe;
-    ICURLHandler *_URLHandler;
-    NSURL *_pendingURLToHandle;
-    BOOL _isSetup;
+//    ICAppWireframe *_appWireframe;
+//    ICURLHandler *_URLHandler;
+//    NSURL *_pendingURLToHandle;
+//    BOOL _isSetup;
 }
 
 @end
@@ -54,35 +55,11 @@ static DDLogLevel ddLogLevel = DDLogLevelInfo;
     _communicationService = [[ICCommunicationService alloc] initWithOptions:options];
     _communicationService.delegate = self;
 
-    _userInterfaceFactory = [[ICUserInterfaceFactory alloc] initWithCommunicationService:_communicationService];
+    _wireframe = [[Wireframe alloc] initWithWindow:self.window service:_communicationService];
+    [_wireframe presentLaunchScreen];
 
-    _appWireframe = [[ICAppWireframe alloc] init];
-    _appWireframe.delegate = _userInterfaceFactory;
-    _appWireframe.window = self.window;
-
-    _appWireframe.navigationControllerModule = [[NavigationControllerModule alloc] initWithService:_communicationService];
-    _appWireframe.navigationControllerModule.router = _appWireframe;
-
-    _appWireframe.contactPickerModule = [[ContactPickerModule alloc] initWithService:_communicationService];
-
-    _appWireframe.accountListModule = [[AccountListModule alloc] initWithService:_communicationService];
-    _appWireframe.accountListModule.router = _appWireframe;
-
-    _appWireframe.accountModule = [[AccountModule alloc] initWithService:_communicationService];
-    _appWireframe.accountModule.router = _appWireframe;
-
-    _appWireframe.settingsModule = [[SettingsModule alloc] initWithService:_communicationService];
-
-    _appWireframe.recentConversationsModule = [[RecentConversationsModule alloc] initWithService:_communicationService];
-    _appWireframe.recentConversationsModule.router = _appWireframe;
-
-    _appWireframe.conversationModule = [[ConversationModule alloc] initWithService:_communicationService];
-    _appWireframe.conversationModule.contactPickerModule = _appWireframe.contactPickerModule;
-
-    [_appWireframe presentLaunchScreen];
-
-    _URLHandler = [[ICURLHandler alloc] initWithAppWireframe:_appWireframe];
-    _URLHandler.accountProvider = _communicationService;
+//    _URLHandler = [[ICURLHandler alloc] initWithAppWireframe:_appWireframe];
+//    _URLHandler.accountProvider = _communicationService;
 
     [self setupLogging];
 
@@ -95,37 +72,37 @@ static DDLogLevel ddLogLevel = DDLogLevelInfo;
     return YES;
 }
 
-- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *, id> *)options
-{
-    if (_isSetup) {
-        return [_URLHandler handleURL:url];
-    } else {
-        _pendingURLToHandle = url;
-        return YES;
-    }
-}
+//- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *, id> *)options
+//{
+//    if (_isSetup) {
+//        return [_URLHandler handleURL:url];
+//    } else {
+//        _pendingURLToHandle = url;
+//        return YES;
+//    }
+//}
 
 #pragma mark Application Setup
 
 - (void)setupApplicationWithCompletion:(void (^)(BOOL success, NSError *error))completion
 {
-    __weak typeof(self) _self = self;
+//    __weak typeof(self) _self = self;
     [_communicationService setUpWithCompletion:^(BOOL success, NSError *error) {
-        _isSetup = success;
+//        _isSetup = success;
         if (completion) {
             completion(success, error);
         }
-        [_self handlePendingOpenURL];
+//        [_self handlePendingOpenURL];
     }];
 }
 
-- (void)handlePendingOpenURL
-{
-    if (_pendingURLToHandle) {
-        [_URLHandler handleURL:_pendingURLToHandle];
-        _pendingURLToHandle = nil;
-    }
-}
+//- (void)handlePendingOpenURL
+//{
+//    if (_pendingURLToHandle) {
+//        [_URLHandler handleURL:_pendingURLToHandle];
+//        _pendingURLToHandle = nil;
+//    }
+//}
 
 - (void)setupLogging
 {
@@ -142,13 +119,13 @@ static DDLogLevel ddLogLevel = DDLogLevelInfo;
 - (void)setupUserInterfaceWithError:(NSError *)error
 {
     if (error) {
-        [_appWireframe presentUnrecoverableError:error];
+        [_wireframe present:error unrecoverable:YES];
     } else {
-        [_appWireframe presentMainInterface];
+        [_wireframe presentMainScreen];
         BOOL hasAccount = [[_communicationService accountDataSource] numberOfSections] > 0 &&
                           [[_communicationService accountDataSource] numberOfItemsInSection:0] > 0;
         if (hasAccount == NO) {
-            [_appWireframe presentUserInterfaceForNewAccountFromViewController:nil];
+            [_wireframe presentNewAccount];
         }
     }
 }

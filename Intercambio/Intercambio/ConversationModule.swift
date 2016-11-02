@@ -24,7 +24,7 @@ public class ConversationModule : NSObject, ConversationModuleFactory {
     
     public var contactPickerModule: ContactPickerModule?
     
-    public func viewController(uri: URL?) -> ConversationViewController {
+    public func makeConversationViewController(for uri: URL?) -> ConversationViewController {
         let controller =  ConversationViewController(service: service, factory: self, conversation: uri)
         return controller
     }

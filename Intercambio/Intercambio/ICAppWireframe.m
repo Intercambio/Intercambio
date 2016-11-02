@@ -76,13 +76,13 @@
 - (void)presentUserInterfaceForConversationWithURI:(NSURL *)conversationURI
                                 fromViewController:(UIViewController *)sender
 {
-    UIViewController *viewController = [self.conversationModule viewControllerWithUri:conversationURI];
+    UIViewController *viewController = [self.conversationModule makeConversationViewControllerFor:conversationURI];
     [self.splitViewController showDetailViewController:viewController sender:sender];
 }
 
 - (void)presentUserInterfaceForNewConversationFromViewController:(UIViewController *)sender
 {
-    UIViewController *viewController = [self.conversationModule viewControllerWithUri:nil];
+    UIViewController *viewController = [self.conversationModule makeConversationViewControllerFor:nil];
     [self.splitViewController showDetailViewController:viewController sender:sender];
 }
 
@@ -253,13 +253,13 @@
 
 - (void)presentConversationUserInterfaceFor:(NSURL *_Nonnull)conversationURI
 {
-    UIViewController *viewController = [self.conversationModule viewControllerWithUri:conversationURI];
+    UIViewController *viewController = [self.conversationModule makeConversationViewControllerFor:conversationURI];
     [self.splitViewController showDetailViewController:viewController sender:nil];
 }
 
 - (void)presentNewConversationUserInterface
 {
-    UIViewController *viewController = [self.conversationModule viewControllerWithUri:nil];
+    UIViewController *viewController = [self.conversationModule makeConversationViewControllerFor:nil];
     [self.splitViewController showDetailViewController:viewController sender:nil];
 }
 
