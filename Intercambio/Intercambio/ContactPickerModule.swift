@@ -17,7 +17,7 @@ public class ContactPickerModule : NSObject {
         self.service = service
     }
 
-    public func viewController(callback: @escaping (URL?) -> ()) -> UIViewController? {
+    public func viewController(callback: @escaping (URL?) -> ()) -> ContactPickerViewController {
         let presenter = ContactPickerPresenter(accountManager: service.accountManager)
         let view = ContactPickerViewController()
         

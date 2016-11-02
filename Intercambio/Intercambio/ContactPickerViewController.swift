@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ContactPickerViewController: UIViewController, CLTokenInputViewDelegate, ContactPickerView, ContentView {
+public class ContactPickerViewController: UIViewController, CLTokenInputViewDelegate, ContactPickerView, ContentView {
 
     private class View : UIView {
         let contentView: UIView
@@ -58,7 +58,7 @@ class ContactPickerViewController: UIViewController, CLTokenInputViewDelegate, C
     private var searchBar: CLTokenInputView?
     private var accountPicker: OptionPicker<ContactPickerAddress>?
     
-    override func loadView() {
+    public override func loadView() {
         let view = View()
         view.translatesAutoresizingMaskIntoConstraints = false
         self.view = view
@@ -75,7 +75,7 @@ class ContactPickerViewController: UIViewController, CLTokenInputViewDelegate, C
                                                                    "top": topLayoutGuide]))
     }
     
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         
         if let contentView = self.contentView {
@@ -184,7 +184,7 @@ class ContactPickerViewController: UIViewController, CLTokenInputViewDelegate, C
     
     // CLTokenInputViewDelegate
     
-    func tokenInputView(_ view: CLTokenInputView, tokenForText text: String) -> CLToken? {
+    public func tokenInputView(_ view: CLTokenInputView, tokenForText text: String) -> CLToken? {
         if let address = eventHandler?.addressFor(text) {
             return CLToken(displayText: address.title, context: address)
         } else {
@@ -192,13 +192,13 @@ class ContactPickerViewController: UIViewController, CLTokenInputViewDelegate, C
         }
     }
     
-    func tokenInputView(_ view: CLTokenInputView, didAdd token: CLToken) {
+    public func tokenInputView(_ view: CLTokenInputView, didAdd token: CLToken) {
         if let address = token.context as? ContactPickerAddress {
             eventHandler?.didAdd(address)
         }
     }
     
-    func tokenInputView(_ view: CLTokenInputView, didRemove token: CLToken) {
+    public func tokenInputView(_ view: CLTokenInputView, didRemove token: CLToken) {
         if let address = token.context as? ContactPickerAddress {
             eventHandler?.didRemove(address)
         }
