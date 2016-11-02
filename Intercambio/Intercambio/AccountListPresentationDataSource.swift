@@ -69,6 +69,18 @@ class AccountListPresentationDataSource: NSObject, FTDataSource {
         }
     }
     
+    func accountURI(forItemAt indexPath: IndexPath) -> URL? {
+        if let item = backingStore.item(at: indexPath) as? KeyChainItem {
+            var components = URLComponents()
+            components.scheme = "xmpp"
+            components.host = item.jid.host
+            components.user = item.jid.user
+            return components.url
+        } else {
+            return nil
+        }
+    }
+    
     // FTDataSource
     
     func numberOfSections() -> UInt {

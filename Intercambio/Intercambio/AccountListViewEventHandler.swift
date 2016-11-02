@@ -9,6 +9,6 @@
 import Foundation
 
 protocol AccountListViewEventHandler: class {
-    func didTapNewAccount()
-    func didSelect(_ account: AccountListPresentationModel)
+    func addAccount()
+    func view(_ view: AccountListView, didSelectItemAt indexPath: IndexPath) -> Void
 }

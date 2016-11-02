@@ -35,7 +35,7 @@ public class AccountListViewController: UITableViewController, AccountListView {
     public override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(add(sender:)))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addAccount(sender:)))
 
         
         tableView.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: "UITableViewCell")
@@ -56,12 +56,10 @@ public class AccountListViewController: UITableViewController, AccountListView {
     }
 
     public override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let account = dataSource?.item(at: indexPath) as? AccountListPresentationModel {
-            presenter?.didSelect(account)
-        }
+        presenter?.view(self, didSelectItemAt: indexPath)
     }
     
-    func add(sender: AnyObject) {
-        presenter?.didTapNewAccount()
+    func addAccount(sender: AnyObject) {
+        presenter?.addAccount()
     }
 }

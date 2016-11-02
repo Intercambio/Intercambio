@@ -13,7 +13,7 @@ class AccountListPresenter : AccountListViewEventHandler {
     
     let keyChain: KeyChain
     let router: AccountListRouter?
-    let dataSource: FTDataSource
+    let dataSource: AccountListPresentationDataSource
     
     weak var view: AccountListView? {
         didSet {
@@ -29,13 +29,13 @@ class AccountListPresenter : AccountListViewEventHandler {
     
     // AccountListViewEventHandler
     
-    func didTapNewAccount() {
+    func addAccount() {
         router?.presentNewAccountUserInterface()
     }
     
-    func didSelect(_ account: AccountListPresentationModel) {
-        if let accountURI = account.accountURI {
-            router?.presentAccountUserInterface(for: accountURI)
+    func view(_ view: AccountListView, didSelectItemAt indexPath: IndexPath) {
+        if let uri = dataSource.accountURI(forItemAt: indexPath) {
+            router?.presentAccountUserInterface(for: uri)
         }
     }
 }
