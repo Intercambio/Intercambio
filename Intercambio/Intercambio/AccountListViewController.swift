@@ -11,7 +11,7 @@ import Fountain
 
 public class AccountListViewController: UITableViewController, AccountListView {
 
-    var eventHandler: AccountListViewEventHandler?
+    var presenter: AccountListViewEventHandler?
     var dataSource: FTDataSource? {
         didSet {
             tableViewAdapter?.dataSource = dataSource
@@ -57,11 +57,11 @@ public class AccountListViewController: UITableViewController, AccountListView {
 
     public override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let account = dataSource?.item(at: indexPath) as? AccountListPresentationModel {
-            eventHandler?.didSelect(account)
+            presenter?.didSelect(account)
         }
     }
     
     func add(sender: AnyObject) {
-        eventHandler?.didTapNewAccount()
+        presenter?.didTapNewAccount()
     }
 }

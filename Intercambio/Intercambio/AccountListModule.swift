@@ -28,7 +28,7 @@ public class AccountListModule : NSObject {
         let presenter = AccountListPresenter(keyChain: service.keyChain, router: router!)
         let viewController = AccountListViewController()
         
-        viewController.eventHandler = presenter
+        viewController.presenter = presenter
         presenter.view = viewController
         
         return viewController
