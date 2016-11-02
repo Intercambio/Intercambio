@@ -38,15 +38,14 @@ public class AccountListViewController: UITableViewController, AccountListView {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addAccount(sender:)))
 
         
-        tableView.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: "UITableViewCell")
-        
         tableViewAdapter = FTTableViewAdapter(tableView: tableView)
         
+        tableView.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: "UITableViewCell")
         tableViewAdapter?.forRowsMatching(nil, useCellWithReuseIdentifier: "UITableViewCell") {
             (view, item, indexPath, dataSource) in
             if  let cell = view as? UITableViewCell,
-                let account = item as? AccountListPresentationModel {
-                cell.textLabel?.text = account.identifier
+                let account = item as? AccountListViewModel {
+                cell.textLabel?.text = account.name
                 cell.accessoryType = .disclosureIndicator
             }
         }
