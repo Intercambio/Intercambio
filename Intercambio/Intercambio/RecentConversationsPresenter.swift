@@ -30,7 +30,7 @@ class RecentConversationsPresenter: NSObject, RecentConversationsViewEventHandle
     }
     
     func view(_ view: RecentConversationsView, didSelectItemAt indexPath: IndexPath) {
-        if let uri = dataSource.conversationURI(at: indexPath) {
+        if let uri = dataSource.conversationURI(forItemAt: indexPath) {
             router?.presentConversationUserInterface(for: uri)
         }
     }

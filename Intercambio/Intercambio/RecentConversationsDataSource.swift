@@ -119,7 +119,7 @@ class RecentConversationsDataSource: NSObject, FTDataSource {
     
     // Conversation URL
     
-    func conversationURI(at indexPtah: IndexPath) -> URL? {
+    func conversationURI(forItemAt indexPtah: IndexPath) -> URL? {
         if let conversation = backingStore.item(at: indexPtah) as? Conversation {
             let accountJID = conversation.account
             let counterpartJID = conversation.counterpart
