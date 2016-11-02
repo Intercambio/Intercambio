@@ -11,7 +11,7 @@ import Fountain
 
 public class RecentConversationsViewController: UITableViewController, RecentConversationsView {
 
-    var eventHandler: RecentConversationsViewEventHandler?
+    var presenter: RecentConversationsViewEventHandler?
     var dataSource: FTDataSource? {
         didSet {
             tableViewAdapter?.dataSource = dataSource
@@ -66,10 +66,10 @@ public class RecentConversationsViewController: UITableViewController, RecentCon
     }
     
     public override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        eventHandler?.view(self, didSelectItemAt: indexPath)
+        presenter?.view(self, didSelectItemAt: indexPath)
     }
     
     @objc private func newConversation() -> Void {
-        eventHandler?.newConversation()
+        presenter?.newConversation()
     }
 }

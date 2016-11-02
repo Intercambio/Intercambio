@@ -27,7 +27,7 @@ public class RecentConversationsModule : NSObject {
         let presenter = RecentConversationsPresenter(keyChain: service.keyChain, db: service.messageDB)
         let viewController = RecentConversationsViewController()
     
-        viewController.eventHandler = presenter
+        viewController.presenter = presenter
         presenter.view = viewController
         presenter.router = router
         
