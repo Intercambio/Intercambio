@@ -21,7 +21,7 @@ public class ContactPickerModule : NSObject {
         let presenter = ContactPickerPresenter(accountManager: service.accountManager)
         let view = ContactPickerViewController()
         
-        view.eventHandler = presenter
+        view.presenter = presenter
         presenter.view = view
         presenter.callback = callback
         

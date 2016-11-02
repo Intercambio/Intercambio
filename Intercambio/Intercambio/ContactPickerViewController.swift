@@ -32,7 +32,7 @@ public class ContactPickerViewController: UIViewController, CLTokenInputViewDele
         }
     }
     
-    var eventHandler: ContectPickerViewEventHandler?
+    var presenter: ContectPickerViewEventHandler?
     
     var selectedAccount: ContactPickerAddress? {
         didSet {
@@ -175,17 +175,17 @@ public class ContactPickerViewController: UIViewController, CLTokenInputViewDele
            let options = accountPicker?.options {
             let account = options[index]
             selectedAccount = account
-            eventHandler?.didSelectAccount(account)
+            presenter?.didSelectAccount(account)
         } else {
             selectedAccount = nil
-            eventHandler?.didSelectAccount(nil)
+            presenter?.didSelectAccount(nil)
         }
     }
     
     // CLTokenInputViewDelegate
     
     public func tokenInputView(_ view: CLTokenInputView, tokenForText text: String) -> CLToken? {
-        if let address = eventHandler?.addressFor(text) {
+        if let address = presenter?.addressFor(text) {
             return CLToken(displayText: address.title, context: address)
         } else {
             return nil
@@ -194,13 +194,13 @@ public class ContactPickerViewController: UIViewController, CLTokenInputViewDele
     
     public func tokenInputView(_ view: CLTokenInputView, didAdd token: CLToken) {
         if let address = token.context as? ContactPickerAddress {
-            eventHandler?.didAdd(address)
+            presenter?.didAdd(address)
         }
     }
     
     public func tokenInputView(_ view: CLTokenInputView, didRemove token: CLToken) {
         if let address = token.context as? ContactPickerAddress {
-            eventHandler?.didRemove(address)
+            presenter?.didRemove(address)
         }
     }
 }
