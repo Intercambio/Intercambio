@@ -22,27 +22,48 @@ public class AccountModule : NSObject {
         self.service = service
     }
     
-    public func viewController(uri: URL) -> AccountViewController? {
-        
-        if let host = uri.host,
-            let jid = JID(user: uri.user, host: host, resource: nil) {
+    public func makeAccountViewController(uri: URL) -> AccountViewController? {
+        if let controller = AccountViewController(service: service, account: uri) {
+            controller.router = router
+            return controller
+        } else {
+            return nil
+        }
+    }
+}
+
+public extension AccountViewController {
+    public convenience init?(service: CommunicationService, account uri: URL) {
+        if let host = uri.host, let jid = JID(user: uri.user, host: host, resource: nil) {
+            self.init()
             
             let interactor = AccountInteractor(accountJID: jid, keyChain: service.keyChain, accountManager: service.accountManager)
             let presenter = AccountPresenter()
-            let viewControler = AccountViewController()
             
             // strong references (view controller -> presenter -> interactor)
-            viewControler.eventHandler = presenter
+            self.eventHandler = presenter
             presenter.interactor = interactor
             
             // weak references
             interactor.output = presenter
-            presenter.view = viewControler
-            presenter.router = router
-            
-            return viewControler
+            presenter.view = self
         } else {
             return nil
+        }
+    }
+    
+    public var router: AccountRouter? {
+        set {
+            if let presenter = self.eventHandler as? AccountPresenter {
+                presenter.router = router
+            }
+        }
+        get {
+            if let presenter = self.eventHandler as? AccountPresenter {
+                return presenter.router
+            } else {
+                return nil
+            }
         }
     }
 }
