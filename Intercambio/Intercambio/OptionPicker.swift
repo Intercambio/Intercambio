@@ -83,7 +83,11 @@ class OptionPicker<I : OptionPickerItem> : UIControl, UIKeyInput, UIPickerViewDa
         addSubview(stackView)
         
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-[stack]-|", options: [], metrics: [:], views: ["stack":stackView]))
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-[stack]-|", options: [], metrics: [:], views: ["stack":stackView]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-[stack]", options: [], metrics: [:], views: ["stack":stackView]))
+        
+        let bottomConstraint = NSLayoutConstraint(item: stackView, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottomMargin, multiplier: 1, constant: 0)
+        bottomConstraint.priority = 999
+        addConstraint(bottomConstraint)
         
         addSubview(borderView)
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[border]|", options: [], metrics: [:], views: ["border":borderView]))
