@@ -13,7 +13,7 @@ public class MainModule : NSObject, UISplitViewControllerDelegate {
     class EmptyViewController : UIViewController {
         override func viewDidLoad() {
             super.viewDidLoad()
-            view.backgroundColor = UIColor.white
+            view.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         }
     }
     
@@ -33,7 +33,7 @@ public class MainModule : NSObject, UISplitViewControllerDelegate {
         splitViewController.preferredDisplayMode = .allVisible
         splitViewController.viewControllers = [
             tabBarController,
-            EmptyViewController()
+            UINavigationController(rootViewController: EmptyViewController())
         ]
         
         window.rootViewController = splitViewController
@@ -171,10 +171,12 @@ public class MainModule : NSObject, UISplitViewControllerDelegate {
     public func splitViewController(_ splitViewController: UISplitViewController,
                                     collapseSecondary secondaryViewController: UIViewController,
                                     onto primaryViewController: UIViewController) -> Bool {
-
-        if secondaryViewController is EmptyViewController {
-            // just "drop" an empty view controller
-            return true
+        
+        if let navigationController = secondaryViewController as? UINavigationController {
+            if navigationController.viewControllers.first is EmptyViewController {
+                // just "drop" an empty view controller
+                return true
+            }
         }
         
         if let navigationController = secondaryViewController as? UINavigationController,
@@ -203,7 +205,7 @@ public class MainModule : NSObject, UISplitViewControllerDelegate {
                 }
             }
         }
-        return EmptyViewController()
+        return UINavigationController(rootViewController: EmptyViewController())
     }
     
     private func collapse(viewControllers: [UIViewController], onto tabBarController: UITabBarController) -> Bool {
