@@ -48,6 +48,10 @@ public class SignupModule : NSObject {
         alert.addAction(addAction)
         alert.addAction(cancelAction)
         
-        window.rootViewController?.present(alert, animated: true, completion: nil)
+        if let viewControler = window.rootViewController?.presentedViewController {
+            viewControler.present(alert, animated: true, completion: nil)
+        } else {
+            window.rootViewController?.present(alert, animated: true, completion: nil)
+        }
     }
 }

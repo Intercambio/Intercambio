@@ -22,6 +22,7 @@ public class Wireframe : NSObject, NavigationControllerRouter, RecentConversatio
     let accountModule: AccountModule
     let settingsModule: SettingsModule
     let signupModule: SignupModule
+    let authenticationModule: AuthenticationModule
     
     public required init(window: UIWindow, service: CommunicationService) {
         self.window = window
@@ -35,6 +36,7 @@ public class Wireframe : NSObject, NavigationControllerRouter, RecentConversatio
         accountModule = AccountModule(service: service)
         settingsModule = SettingsModule(service: service)
         signupModule = SignupModule(service: service)
+        authenticationModule = AuthenticationModule()
 
         conversationModule.contactPickerModule = contactPickerModule
         
@@ -81,6 +83,10 @@ public class Wireframe : NSObject, NavigationControllerRouter, RecentConversatio
     
     public func presentSettings(for uri: URL) {
         settingsModule.presentSettings(for: uri, in: window)
+    }
+    
+    public func presentLogin(for uri: URL, completion: ((String?) -> Void)?) {
+        authenticationModule.presentLogin(for: uri, in: window, completion: completion)
     }
     
     public func present(_ error: Error, unrecoverable: Bool = false) {

@@ -136,38 +136,7 @@ static DDLogLevel ddLogLevel = DDLogLevelInfo;
      needsPasswordForAccount:(NSURL *)accountURI
                   completion:(void (^)(NSString *))completion
 {
-    UIAlertController *passwordController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Login", nil)
-                                                                                message:[NSString stringWithFormat:NSLocalizedString(@"Please enter the password for '%@'.", nil), [accountURI absoluteString]]
-                                                                         preferredStyle:UIAlertControllerStyleAlert];
-
-    [passwordController addTextFieldWithConfigurationHandler:^(UITextField *_Nonnull textField) {
-        textField.placeholder = NSLocalizedString(@"Password", nil);
-        textField.secureTextEntry = YES;
-        textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
-        textField.autocorrectionType = UITextAutocorrectionTypeNo;
-    }];
-
-    UIAlertAction *authenticate = [UIAlertAction actionWithTitle:NSLocalizedString(@"Login", nil)
-                                                           style:UIAlertActionStyleDefault
-                                                         handler:^(UIAlertAction *_Nonnull action) {
-                                                             NSString *password = [[passwordController.textFields firstObject] text];
-                                                             completion(password);
-                                                         }];
-
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Cancel", nil)
-                                                           style:UIAlertActionStyleCancel
-                                                         handler:^(UIAlertAction *action) {
-                                                             completion(nil);
-                                                         }];
-
-    [passwordController addAction:authenticate];
-    [passwordController addAction:cancelAction];
-
-    if (self.window.rootViewController.presentedViewController != nil) {
-        [self.window.rootViewController.presentedViewController presentViewController:passwordController animated:YES completion:nil];
-    } else {
-        [self.window.rootViewController presentViewController:passwordController animated:YES completion:nil];
-    }
+    [_wireframe presentLoginFor:accountURI completion:completion];
 }
 
 #pragma mark BITCrashManagerDelegate

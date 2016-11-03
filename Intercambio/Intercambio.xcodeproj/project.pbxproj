@@ -131,6 +131,7 @@
 		F6F56AFE1C5395A700C34CC8 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = F6F56AFD1C5395A700C34CC8 /* Cartfile */; };
 		F6FEF5FA1DCB42EC008D4369 /* SignupModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FEF5F91DCB42EC008D4369 /* SignupModule.swift */; };
 		F6FEF5FC1DCB4671008D4369 /* SignupInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FEF5FB1DCB4671008D4369 /* SignupInteractor.swift */; };
+		F6FEF5FF1DCB4CF5008D4369 /* AuthenticationModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FEF5FE1DCB4CF5008D4369 /* AuthenticationModule.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -320,6 +321,7 @@
 		F6F56AFD1C5395A700C34CC8 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Cartfile; path = ../Cartfile; sourceTree = "<group>"; };
 		F6FEF5F91DCB42EC008D4369 /* SignupModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupModule.swift; sourceTree = "<group>"; };
 		F6FEF5FB1DCB4671008D4369 /* SignupInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupInteractor.swift; sourceTree = "<group>"; };
+		F6FEF5FE1DCB4CF5008D4369 /* AuthenticationModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationModule.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -730,6 +732,7 @@
 			children = (
 				F68EDFF81D3D3CD300AFCB9D /* Account List Module */,
 				F6E604FE1C787273000CCDD9 /* Account Module */,
+				F6FEF6001DCB4D09008D4369 /* Authentication Module */,
 				F6052A981DC5FBBD005D79EA /* Contact Picker Module */,
 				F678B6D61DBA2406004EF7EE /* Conversation Module */,
 				F6C74CDA1DC8E170002FA530 /* Main Module */,
@@ -1026,6 +1029,14 @@
 			name = Interactor;
 			sourceTree = "<group>";
 		};
+		F6FEF6001DCB4D09008D4369 /* Authentication Module */ = {
+			isa = PBXGroup;
+			children = (
+				F6FEF5FE1DCB4CF5008D4369 /* AuthenticationModule.swift */,
+			);
+			name = "Authentication Module";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1290,6 +1301,7 @@
 				F6826A201D0F4476007A3934 /* ICUserInterfaceFactory.m in Sources */,
 				F6D807E41D1826EB002953AB /* NSURL+Intercambio.m in Sources */,
 				F6052AA51DC5FD20005D79EA /* ContactPickerViewController.swift in Sources */,
+				F6FEF5FF1DCB4CF5008D4369 /* AuthenticationModule.swift in Sources */,
 				F678B6F31DBE5176004EF7EE /* ConversationViewLayoutConversationFragment.swift in Sources */,
 				F6A41B711D4B9F220077321C /* AccountListViewEventHandler.swift in Sources */,
 				F6FEF5FA1DCB42EC008D4369 /* SignupModule.swift in Sources */,
