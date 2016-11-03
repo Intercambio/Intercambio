@@ -55,7 +55,7 @@ public extension AccountViewController {
     public var router: AccountRouter? {
         set {
             if let presenter = self.eventHandler as? AccountPresenter {
-                presenter.router = router
+                presenter.router = newValue
             }
         }
         get {
