@@ -43,7 +43,6 @@ public class Wireframe : NSObject, NavigationControllerRouter, RecentConversatio
         mainModule.conversationModule = conversationModule
         mainModule.accountListModule = accountListModule
         mainModule.accountModule = accountModule
-        mainModule.settingsModule = settingsModule
         
         super.init()
         
@@ -81,7 +80,7 @@ public class Wireframe : NSObject, NavigationControllerRouter, RecentConversatio
     }
     
     public func presentSettings(for uri: URL) {
-        mainModule.presentSettings(for: uri, in: window)
+        settingsModule.presentSettings(for: uri, in: window)
     }
     
     public func present(_ error: Error, unrecoverable: Bool = false) {

@@ -8,14 +8,13 @@
 
 import UIKit
 
-public class MainModule : NSObject, UISplitViewControllerDelegate, SettingsViewControllerDelegate {
+public class MainModule : NSObject, UISplitViewControllerDelegate {
     
     public var navigationControllerModule: NavigationControllerModule?
     public var recentConversationsModule: RecentConversationsModule?
     public var conversationModule: ConversationModule?
     public var accountListModule: AccountListModule?
     public var accountModule: AccountModule?
-    public var settingsModule: SettingsModule?
     
     public func present(in window: UIWindow) {
         
@@ -92,18 +91,6 @@ public class MainModule : NSObject, UISplitViewControllerDelegate, SettingsViewC
         }
     }
     
-    public func presentSettings(for uri: URL, in window: UIWindow) {
-        if let viewController = settingsModule?.makeSettingsViewController(uri: uri),
-            let splitViewController = self.splitViewController(in: window) {
-            viewController.delegate = self
-            
-            let navigationController = UINavigationController(rootViewController: viewController)
-            navigationController.modalTransitionStyle = .coverVertical
-            navigationController.modalPresentationStyle = .formSheet
-            splitViewController.present(navigationController, animated: true, completion: nil)
-        }
-    }
-    
     private func showDetailViewController(_ vc: UIViewController, in window: UIWindow) {
         if let splitViewController = self.splitViewController(in: window) {
             splitViewController.showDetailViewController(vc, sender: self)
@@ -137,16 +124,6 @@ public class MainModule : NSObject, UISplitViewControllerDelegate, SettingsViewC
     
     private func tabBarController(in splitViewController: UISplitViewController) -> UITabBarController? {
         return splitViewController.viewControllers.first as? UITabBarController
-    }
-    
-    // SettingsViewControllerDelegate
-    
-    public func settingsDidSave(_ settingsViewController: SettingsViewController) {
-        settingsViewController.dismiss(animated: true, completion: nil)
-    }
-    
-    public func settingsDidCancel(_ settingsViewController: SettingsViewController) {
-        settingsViewController.dismiss(animated: true, completion: nil)
     }
     
     // UISplitViewControllerDelegate

@@ -9,7 +9,7 @@
 import UIKit
 import IntercambioCore
 
-public class SettingsModule : NSObject {
+public class SettingsModule : NSObject, SettingsViewControllerDelegate {
     
     public let service: CommunicationService
     
@@ -17,9 +17,31 @@ public class SettingsModule : NSObject {
         self.service = service
     }
 
+    public func presentSettings(for uri: URL, in window: UIWindow) {
+        if let viewController = makeSettingsViewController(uri: uri),
+            let rootViewController = window.rootViewController {
+            viewController.delegate = self
+            
+            let navigationController = UINavigationController(rootViewController: viewController)
+            navigationController.modalTransitionStyle = .coverVertical
+            navigationController.modalPresentationStyle = .formSheet
+            rootViewController.present(navigationController, animated: true, completion: nil)
+        }
+    }
+
     public func makeSettingsViewController(uri: URL) -> SettingsViewController? {
         let controller = SettingsViewController(service: service, account: uri)
         return controller
+    }
+    
+    // SettingsViewControllerDelegate
+    
+    public func settingsDidSave(_ settingsViewController: SettingsViewController) {
+        settingsViewController.dismiss(animated: true, completion: nil)
+    }
+    
+    public func settingsDidCancel(_ settingsViewController: SettingsViewController) {
+        settingsViewController.dismiss(animated: true, completion: nil)
     }
 }
 
