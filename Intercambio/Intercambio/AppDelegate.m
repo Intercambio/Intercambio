@@ -17,20 +17,17 @@
 #endif
 
 #import "AppDelegate.h"
-#import "ICAppWireframe.h"
 #import "ICURLHandler.h"
-#import "ICUserInterfaceFactory.h"
 #import "Intercambio-Swift.h"
 #import <CocoaLumberjack/CocoaLumberjack.h>
 #import <IntercambioCore/IntercambioCore.h>
 
 static DDLogLevel ddLogLevel = DDLogLevelInfo;
 
-@interface AppDelegate () <ICCommunicationServiceDelegate,
-                           BITHockeyManagerDelegate> {
+@interface AppDelegate () <ICCommunicationServiceDelegate, BITHockeyManagerDelegate> {
     ICCommunicationService *_communicationService;
-    ICUserInterfaceFactory *_userInterfaceFactory;
-    ICAppWireframe *_appWireframe;
+    Wireframe *_wireframe;
+    
     ICURLHandler *_URLHandler;
     NSURL *_pendingURLToHandle;
     BOOL _isSetup;
@@ -54,35 +51,10 @@ static DDLogLevel ddLogLevel = DDLogLevelInfo;
     _communicationService = [[ICCommunicationService alloc] initWithOptions:options];
     _communicationService.delegate = self;
 
-    _userInterfaceFactory = [[ICUserInterfaceFactory alloc] initWithCommunicationService:_communicationService];
+    _wireframe = [[Wireframe alloc] initWithWindow:self.window service:_communicationService];
+    [_wireframe presentLaunchScreen];
 
-    _appWireframe = [[ICAppWireframe alloc] init];
-    _appWireframe.delegate = _userInterfaceFactory;
-    _appWireframe.window = self.window;
-
-    _appWireframe.navigationControllerModule = [[NavigationControllerModule alloc] initWithService:_communicationService];
-    _appWireframe.navigationControllerModule.router = _appWireframe;
-
-    _appWireframe.contactPickerModule = [[ContactPickerModule alloc] initWithService:_communicationService];
-
-    _appWireframe.accountListModule = [[AccountListModule alloc] initWithService:_communicationService];
-    _appWireframe.accountListModule.router = _appWireframe;
-
-    _appWireframe.accountModule = [[AccountModule alloc] initWithService:_communicationService];
-    _appWireframe.accountModule.router = _appWireframe;
-
-    _appWireframe.settingsModule = [[SettingsModule alloc] initWithService:_communicationService];
-
-    _appWireframe.recentConversationsModule = [[RecentConversationsModule alloc] initWithService:_communicationService];
-    _appWireframe.recentConversationsModule.router = _appWireframe;
-
-    _appWireframe.conversationModule = [[ConversationModule alloc] initWithService:_communicationService];
-    _appWireframe.conversationModule.contactPickerModule = _appWireframe.contactPickerModule;
-
-    [_appWireframe presentLaunchScreen];
-
-    _URLHandler = [[ICURLHandler alloc] initWithAppWireframe:_appWireframe];
-    _URLHandler.accountProvider = _communicationService;
+    _URLHandler = [[ICURLHandler alloc] initWithWireframe:_wireframe];
 
     [self setupLogging];
 
@@ -142,13 +114,13 @@ static DDLogLevel ddLogLevel = DDLogLevelInfo;
 - (void)setupUserInterfaceWithError:(NSError *)error
 {
     if (error) {
-        [_appWireframe presentUnrecoverableError:error];
+        [_wireframe present:error unrecoverable:YES];
     } else {
-        [_appWireframe presentMainInterface];
+        [_wireframe presentMainScreen];
         BOOL hasAccount = [[_communicationService accountDataSource] numberOfSections] > 0 &&
                           [[_communicationService accountDataSource] numberOfItemsInSection:0] > 0;
         if (hasAccount == NO) {
-            [_appWireframe presentUserInterfaceForNewAccountFromViewController:nil];
+            [_wireframe presentNewAccount];
         }
     }
 }
@@ -159,38 +131,7 @@ static DDLogLevel ddLogLevel = DDLogLevelInfo;
      needsPasswordForAccount:(NSURL *)accountURI
                   completion:(void (^)(NSString *))completion
 {
-    UIAlertController *passwordController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Login", nil)
-                                                                                message:[NSString stringWithFormat:NSLocalizedString(@"Please enter the password for '%@'.", nil), [accountURI absoluteString]]
-                                                                         preferredStyle:UIAlertControllerStyleAlert];
-
-    [passwordController addTextFieldWithConfigurationHandler:^(UITextField *_Nonnull textField) {
-        textField.placeholder = NSLocalizedString(@"Password", nil);
-        textField.secureTextEntry = YES;
-        textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
-        textField.autocorrectionType = UITextAutocorrectionTypeNo;
-    }];
-
-    UIAlertAction *authenticate = [UIAlertAction actionWithTitle:NSLocalizedString(@"Login", nil)
-                                                           style:UIAlertActionStyleDefault
-                                                         handler:^(UIAlertAction *_Nonnull action) {
-                                                             NSString *password = [[passwordController.textFields firstObject] text];
-                                                             completion(password);
-                                                         }];
-
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Cancel", nil)
-                                                           style:UIAlertActionStyleCancel
-                                                         handler:^(UIAlertAction *action) {
-                                                             completion(nil);
-                                                         }];
-
-    [passwordController addAction:authenticate];
-    [passwordController addAction:cancelAction];
-
-    if (self.window.rootViewController.presentedViewController != nil) {
-        [self.window.rootViewController.presentedViewController presentViewController:passwordController animated:YES completion:nil];
-    } else {
-        [self.window.rootViewController presentViewController:passwordController animated:YES completion:nil];
-    }
+    [_wireframe presentLoginFor:accountURI completion:completion];
 }
 
 #pragma mark BITCrashManagerDelegate

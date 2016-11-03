@@ -69,9 +69,7 @@
 		F678B6F11DBE4DD8004EF7EE /* ConversationViewLayoutChapterFragment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F678B6F01DBE4DD8004EF7EE /* ConversationViewLayoutChapterFragment.swift */; };
 		F678B6F31DBE5176004EF7EE /* ConversationViewLayoutConversationFragment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F678B6F21DBE5176004EF7EE /* ConversationViewLayoutConversationFragment.swift */; };
 		F678B6F51DBE91AF004EF7EE /* ConversationViewGroupHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F678B6F41DBE91AF004EF7EE /* ConversationViewGroupHeaderView.swift */; };
-		F68269CF1D0EECE2007A3934 /* ICAppWireframe.m in Sources */ = {isa = PBXBuildFile; fileRef = F68269CE1D0EECE2007A3934 /* ICAppWireframe.m */; };
 		F6826A1D1D0F38BD007A3934 /* UITableView+CellAction.m in Sources */ = {isa = PBXBuildFile; fileRef = F6826A1C1D0F38BD007A3934 /* UITableView+CellAction.m */; };
-		F6826A201D0F4476007A3934 /* ICUserInterfaceFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = F6826A1F1D0F4476007A3934 /* ICUserInterfaceFactory.m */; };
 		F68EDFFA1D3D3CE800AFCB9D /* AccountListModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68EDFF91D3D3CE800AFCB9D /* AccountListModule.swift */; };
 		F68EE0021D3D457C00AFCB9D /* AccountListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68EE0011D3D457C00AFCB9D /* AccountListPresenter.swift */; };
 		F6A2592A1D33C3FE0005C533 /* AccountPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A259291D33C3FE0005C533 /* AccountPresenterTests.swift */; };
@@ -99,6 +97,8 @@
 		F6C6BD711D364AFC00CF3B8B /* FormDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C6BD701D364AFC00CF3B8B /* FormDataSource.swift */; };
 		F6C6BD741D3669D500CF3B8B /* FormItemURLCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C6BD721D3669D500CF3B8B /* FormItemURLCell.swift */; };
 		F6C6BD751D3669D500CF3B8B /* FormItemURLCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6C6BD731D3669D500CF3B8B /* FormItemURLCell.xib */; };
+		F6C74CDC1DC8E204002FA530 /* MainModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C74CDB1DC8E204002FA530 /* MainModule.swift */; };
+		F6C74CDE1DC9D972002FA530 /* Wireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C74CDD1DC9D972002FA530 /* Wireframe.swift */; };
 		F6CE94991DABF0B70044356A /* RecentConversationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6CE94981DABF0B70044356A /* RecentConversationsViewController.swift */; };
 		F6CE949B1DABF0DA0044356A /* RecentConversationsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6CE949A1DABF0DA0044356A /* RecentConversationsPresenter.swift */; };
 		F6CE94A01DABF10A0044356A /* RecentConversationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6CE949F1DABF10A0044356A /* RecentConversationsView.swift */; };
@@ -107,7 +107,6 @@
 		F6D740791DBF53E300506C8B /* ConversationViewLayoutInvalidationContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D740781DBF53E300506C8B /* ConversationViewLayoutInvalidationContext.swift */; };
 		F6D807D71D17DD95002953AB /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F6D807D61D17DD95002953AB /* fontawesome-webfont.ttf */; };
 		F6D807DA1D17F53E002953AB /* ICURLHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = F6D807D91D17F53E002953AB /* ICURLHandler.m */; };
-		F6D807DD1D17F9EE002953AB /* ICURLHandlerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F6D807DC1D17F9EE002953AB /* ICURLHandlerTests.m */; };
 		F6D807DF1D17FBA9002953AB /* OCHamcrest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F640F1231C648FCE00F65A9B /* OCHamcrest.framework */; };
 		F6D807E01D17FBA9002953AB /* OCMockito.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F640F1241C648FCE00F65A9B /* OCMockito.framework */; };
 		F6D807E41D1826EB002953AB /* NSURL+Intercambio.m in Sources */ = {isa = PBXBuildFile; fileRef = F6D807E31D1826EB002953AB /* NSURL+Intercambio.m */; };
@@ -127,6 +126,9 @@
 		F6F56AF51C51416600C34CC8 /* CoreXMPP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F68414001C4D8901009B37BE /* CoreXMPP.framework */; };
 		F6F56AF61C51416600C34CC8 /* PureXML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F68414011C4D8901009B37BE /* PureXML.framework */; };
 		F6F56AFE1C5395A700C34CC8 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = F6F56AFD1C5395A700C34CC8 /* Cartfile */; };
+		F6FEF5FA1DCB42EC008D4369 /* SignupModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FEF5F91DCB42EC008D4369 /* SignupModule.swift */; };
+		F6FEF5FC1DCB4671008D4369 /* SignupInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FEF5FB1DCB4671008D4369 /* SignupInteractor.swift */; };
+		F6FEF5FF1DCB4CF5008D4369 /* AuthenticationModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FEF5FE1DCB4CF5008D4369 /* AuthenticationModule.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -236,17 +238,8 @@
 		F678B6F01DBE4DD8004EF7EE /* ConversationViewLayoutChapterFragment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewLayoutChapterFragment.swift; sourceTree = "<group>"; };
 		F678B6F21DBE5176004EF7EE /* ConversationViewLayoutConversationFragment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewLayoutConversationFragment.swift; sourceTree = "<group>"; };
 		F678B6F41DBE91AF004EF7EE /* ConversationViewGroupHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewGroupHeaderView.swift; sourceTree = "<group>"; };
-		F68269CD1D0EECE2007A3934 /* ICAppWireframe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICAppWireframe.h; sourceTree = "<group>"; };
-		F68269CE1D0EECE2007A3934 /* ICAppWireframe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ICAppWireframe.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		F6826A111D0F0CF6007A3934 /* ICConversationUserInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICConversationUserInterface.h; sourceTree = "<group>"; };
-		F6826A121D0F0D07007A3934 /* ICRecentConversationsUserInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICRecentConversationsUserInterface.h; sourceTree = "<group>"; };
-		F6826A131D0F1147007A3934 /* ICAccountsUserInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICAccountsUserInterface.h; sourceTree = "<group>"; };
-		F6826A151D0F1879007A3934 /* ICUserInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICUserInterface.h; sourceTree = "<group>"; };
-		F6826A161D0F1A67007A3934 /* ICAccountSettingsUserInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICAccountSettingsUserInterface.h; sourceTree = "<group>"; };
 		F6826A1B1D0F38BD007A3934 /* UITableView+CellAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+CellAction.h"; sourceTree = "<group>"; };
 		F6826A1C1D0F38BD007A3934 /* UITableView+CellAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+CellAction.m"; sourceTree = "<group>"; };
-		F6826A1E1D0F4476007A3934 /* ICUserInterfaceFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICUserInterfaceFactory.h; sourceTree = "<group>"; };
-		F6826A1F1D0F4476007A3934 /* ICUserInterfaceFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ICUserInterfaceFactory.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		F68413FF1C4D8901009B37BE /* CocoaLumberjack.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaLumberjack.framework; path = ../Carthage/Build/iOS/CocoaLumberjack.framework; sourceTree = "<group>"; };
 		F68414001C4D8901009B37BE /* CoreXMPP.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreXMPP.framework; path = ../Carthage/Build/iOS/CoreXMPP.framework; sourceTree = "<group>"; };
 		F68414011C4D8901009B37BE /* PureXML.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PureXML.framework; path = ../Carthage/Build/iOS/PureXML.framework; sourceTree = "<group>"; };
@@ -279,6 +272,8 @@
 		F6C6BD701D364AFC00CF3B8B /* FormDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormDataSource.swift; sourceTree = "<group>"; };
 		F6C6BD721D3669D500CF3B8B /* FormItemURLCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormItemURLCell.swift; sourceTree = "<group>"; };
 		F6C6BD731D3669D500CF3B8B /* FormItemURLCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FormItemURLCell.xib; sourceTree = "<group>"; };
+		F6C74CDB1DC8E204002FA530 /* MainModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainModule.swift; sourceTree = "<group>"; };
+		F6C74CDD1DC9D972002FA530 /* Wireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wireframe.swift; sourceTree = "<group>"; };
 		F6CE94981DABF0B70044356A /* RecentConversationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentConversationsViewController.swift; sourceTree = "<group>"; };
 		F6CE949A1DABF0DA0044356A /* RecentConversationsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentConversationsPresenter.swift; sourceTree = "<group>"; };
 		F6CE949F1DABF10A0044356A /* RecentConversationsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentConversationsView.swift; sourceTree = "<group>"; };
@@ -288,7 +283,6 @@
 		F6D807D61D17DD95002953AB /* fontawesome-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fontawesome-webfont.ttf"; sourceTree = "<group>"; };
 		F6D807D81D17F53E002953AB /* ICURLHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICURLHandler.h; sourceTree = "<group>"; };
 		F6D807D91D17F53E002953AB /* ICURLHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICURLHandler.m; sourceTree = "<group>"; };
-		F6D807DC1D17F9EE002953AB /* ICURLHandlerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICURLHandlerTests.m; sourceTree = "<group>"; };
 		F6D807E21D1826EB002953AB /* NSURL+Intercambio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+Intercambio.h"; sourceTree = "<group>"; };
 		F6D807E31D1826EB002953AB /* NSURL+Intercambio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+Intercambio.m"; sourceTree = "<group>"; };
 		F6D807E51D1827E3002953AB /* NSURLIntercambioTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSURLIntercambioTests.m; sourceTree = "<group>"; };
@@ -312,6 +306,9 @@
 		F6F375401D55326000F718BC /* NavigationBarStatusView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationBarStatusView.swift; sourceTree = "<group>"; };
 		F6F375421D55EBD100F718BC /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HockeySDK.framework; path = ../Carthage/Build/iOS/HockeySDK.framework; sourceTree = "<group>"; };
 		F6F56AFD1C5395A700C34CC8 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Cartfile; path = ../Cartfile; sourceTree = "<group>"; };
+		F6FEF5F91DCB42EC008D4369 /* SignupModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupModule.swift; sourceTree = "<group>"; };
+		F6FEF5FB1DCB4671008D4369 /* SignupInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupInteractor.swift; sourceTree = "<group>"; };
+		F6FEF5FE1DCB4CF5008D4369 /* AuthenticationModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationModule.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -473,13 +470,13 @@
 				F6ACB0FC1D23BFB8002F3A66 /* Secrets.h */,
 				F619BDC31C4D071700F87F50 /* AppDelegate.h */,
 				F619BDC41C4D071700F87F50 /* AppDelegate.m */,
-				F6D807DB1D17F5EB002953AB /* URL Handling */,
-				F69C166A1C651F2800BC66F1 /* User Interface */,
 				F6E252161CAAC8060061531E /* Activity Item Source */,
 				F65F98511CB26531009A2FE5 /* Additions */,
 				F6EF1F381C7206620083F4BE /* CLTokenInputView */,
 				F69C166B1C651F3200BC66F1 /* Resources */,
 				F619BDC01C4D071700F87F50 /* Supporting Files */,
+				F6D807DB1D17F5EB002953AB /* URL Handling */,
+				F69C166A1C651F2800BC66F1 /* User Interface */,
 			);
 			path = Intercambio;
 			sourceTree = "<group>";
@@ -502,7 +499,6 @@
 				F63A66791D26685C00FCC82E /* Account Module */,
 				F6A9F9981D351E67007D8718 /* Settings Module */,
 				F619BDDA1C4D071700F87F50 /* IntercambioTests.m */,
-				F6D807DC1D17F9EE002953AB /* ICURLHandlerTests.m */,
 				F6D807E51D1827E3002953AB /* NSURLIntercambioTests.m */,
 				F619BDDC1C4D071700F87F50 /* Info.plist */,
 				F63A66761D26685200FCC82E /* IntercambioTests-Bridging-Header.h */,
@@ -697,9 +693,7 @@
 		F68269CC1D0EECCB007A3934 /* App Wireframe */ = {
 			isa = PBXGroup;
 			children = (
-				F68269CD1D0EECE2007A3934 /* ICAppWireframe.h */,
-				F68269CE1D0EECE2007A3934 /* ICAppWireframe.m */,
-				F6826A141D0F1155007A3934 /* Protocols */,
+				F6C74CDD1DC9D972002FA530 /* Wireframe.swift */,
 			);
 			name = "App Wireframe";
 			sourceTree = "<group>";
@@ -721,34 +715,16 @@
 			children = (
 				F68EDFF81D3D3CD300AFCB9D /* Account List Module */,
 				F6E604FE1C787273000CCDD9 /* Account Module */,
+				F6FEF6001DCB4D09008D4369 /* Authentication Module */,
 				F6052A981DC5FBBD005D79EA /* Contact Picker Module */,
 				F678B6D61DBA2406004EF7EE /* Conversation Module */,
+				F6C74CDA1DC8E170002FA530 /* Main Module */,
 				F61679F61D5070D70002A1A4 /* Navigation Controller Module */,
 				F6B9E33A1D8C743400510F01 /* Recent Conversations Module */,
 				F6A9F98E1D345B41007D8718 /* Settings Module */,
+				F6FEF5F81DCB42D7008D4369 /* Signup Module */,
 			);
 			name = Modules;
-			sourceTree = "<group>";
-		};
-		F6826A141D0F1155007A3934 /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				F6826A151D0F1879007A3934 /* ICUserInterface.h */,
-				F6826A161D0F1A67007A3934 /* ICAccountSettingsUserInterface.h */,
-				F6826A111D0F0CF6007A3934 /* ICConversationUserInterface.h */,
-				F6826A121D0F0D07007A3934 /* ICRecentConversationsUserInterface.h */,
-				F6826A131D0F1147007A3934 /* ICAccountsUserInterface.h */,
-			);
-			name = Protocols;
-			sourceTree = "<group>";
-		};
-		F6826A211D0F45C8007A3934 /* User Interface Factory */ = {
-			isa = PBXGroup;
-			children = (
-				F6826A1E1D0F4476007A3934 /* ICUserInterfaceFactory.h */,
-				F6826A1F1D0F4476007A3934 /* ICUserInterfaceFactory.m */,
-			);
-			name = "User Interface Factory";
 			sourceTree = "<group>";
 		};
 		F68414091C4D890B009B37BE /* Frameworks */ = {
@@ -786,7 +762,6 @@
 		F69C166A1C651F2800BC66F1 /* User Interface */ = {
 			isa = PBXGroup;
 			children = (
-				F6826A211D0F45C8007A3934 /* User Interface Factory */,
 				F68269CC1D0EECCB007A3934 /* App Wireframe */,
 				F6826A0F1D0EF148007A3934 /* Common */,
 				F6826A101D0EF151007A3934 /* Modules */,
@@ -881,6 +856,14 @@
 				F6CE949D1DABF0E40044356A /* View */,
 			);
 			name = "Recent Conversations Module";
+			sourceTree = "<group>";
+		};
+		F6C74CDA1DC8E170002FA530 /* Main Module */ = {
+			isa = PBXGroup;
+			children = (
+				F6C74CDB1DC8E204002FA530 /* MainModule.swift */,
+			);
+			name = "Main Module";
 			sourceTree = "<group>";
 		};
 		F6CE949C1DABF0DF0044356A /* Presenter */ = {
@@ -988,6 +971,31 @@
 				F6EF1F401C72066C0083F4BE /* CLToken.m */,
 			);
 			name = CLTokenInputView;
+			sourceTree = "<group>";
+		};
+		F6FEF5F81DCB42D7008D4369 /* Signup Module */ = {
+			isa = PBXGroup;
+			children = (
+				F6FEF5F91DCB42EC008D4369 /* SignupModule.swift */,
+				F6FEF5FD1DCB4919008D4369 /* Interactor */,
+			);
+			name = "Signup Module";
+			sourceTree = "<group>";
+		};
+		F6FEF5FD1DCB4919008D4369 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				F6FEF5FB1DCB4671008D4369 /* SignupInteractor.swift */,
+			);
+			name = Interactor;
+			sourceTree = "<group>";
+		};
+		F6FEF6001DCB4D09008D4369 /* Authentication Module */ = {
+			isa = PBXGroup;
+			children = (
+				F6FEF5FE1DCB4CF5008D4369 /* AuthenticationModule.swift */,
+			);
+			name = "Authentication Module";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1195,6 +1203,7 @@
 				F65237481D4FF15700285713 /* SettingsOutput.swift in Sources */,
 				F6167A051D5073890002A1A4 /* NavigationControllerPresenter.swift in Sources */,
 				F6052ABB1DC89B27005D79EA /* ContactPickerPresenter.swift in Sources */,
+				F6FEF5FC1DCB4671008D4369 /* SignupInteractor.swift in Sources */,
 				F6CE949B1DABF0DA0044356A /* RecentConversationsPresenter.swift in Sources */,
 				F63A666B1D2662DE00FCC82E /* AccountPresentationModel.swift in Sources */,
 				F605909C1D2F97AB0071FC63 /* AccountProvider.swift in Sources */,
@@ -1220,7 +1229,6 @@
 				F678B6E51DBA3273004EF7EE /* ConversationDataSource.swift in Sources */,
 				F678B6E71DBE02E8004EF7EE /* ConversationViewLayout.swift in Sources */,
 				F6555A571D340E52009C4324 /* AccountViewControllerHeaderView.swift in Sources */,
-				F68269CF1D0EECE2007A3934 /* ICAppWireframe.m in Sources */,
 				F6D740791DBF53E300506C8B /* ConversationViewLayoutInvalidationContext.swift in Sources */,
 				F652374A1D4FF17B00285713 /* SettingsView.swift in Sources */,
 				F6B9E33C1D8C745700510F01 /* RecentConversationsModule.swift in Sources */,
@@ -1240,6 +1248,7 @@
 				F6EF1F411C72066C0083F4BE /* CLTokenInputView.m in Sources */,
 				F63A66751D26672000FCC82E /* AccountViewModelImpl.swift in Sources */,
 				F6052AC41DC8A2D6005D79EA /* ContactPickerAddress.swift in Sources */,
+				F6C74CDE1DC9D972002FA530 /* Wireframe.swift in Sources */,
 				F646CA621DB6410300C239B1 /* AvatarView.swift in Sources */,
 				F678B6E91DBE2A7A004EF7EE /* ConversationViewLayoutFragment.swift in Sources */,
 				F652374C1D4FF1BC00285713 /* SettingsViewEventHandler.swift in Sources */,
@@ -1249,11 +1258,12 @@
 				F6826A1D1D0F38BD007A3934 /* UITableView+CellAction.m in Sources */,
 				F646CA5D1DB6264500C239B1 /* RecentConversationsCell.swift in Sources */,
 				F6B567001D507697004BCDB0 /* NavigationControllerStatusViewModel.swift in Sources */,
-				F6826A201D0F4476007A3934 /* ICUserInterfaceFactory.m in Sources */,
 				F6D807E41D1826EB002953AB /* NSURL+Intercambio.m in Sources */,
 				F6052AA51DC5FD20005D79EA /* ContactPickerViewController.swift in Sources */,
+				F6FEF5FF1DCB4CF5008D4369 /* AuthenticationModule.swift in Sources */,
 				F678B6F31DBE5176004EF7EE /* ConversationViewLayoutConversationFragment.swift in Sources */,
 				F6A41B711D4B9F220077321C /* AccountListViewEventHandler.swift in Sources */,
+				F6FEF5FA1DCB42EC008D4369 /* SignupModule.swift in Sources */,
 				F68EE0021D3D457C00AFCB9D /* AccountListPresenter.swift in Sources */,
 				F619BDC21C4D071700F87F50 /* main.m in Sources */,
 				F6E252151CAAC8010061531E /* ICAccountShareActivityItemSource.m in Sources */,
@@ -1274,6 +1284,7 @@
 				F6B7C3701DBF6B7400F977BF /* ConversationViewCell.swift in Sources */,
 				F678B6E31DBA28FC004EF7EE /* ConversationViewEventHandler.swift in Sources */,
 				F6A259331D33F5CF0005C533 /* AccountViewController.swift in Sources */,
+				F6C74CDC1DC8E204002FA530 /* MainModule.swift in Sources */,
 				F6F375411D55326000F718BC /* NavigationBarStatusView.swift in Sources */,
 				F6A9F9901D345B7D007D8718 /* SettingsModule.swift in Sources */,
 				F6A41B791D4BA89E0077321C /* AccountListViewController.swift in Sources */,
@@ -1287,7 +1298,6 @@
 				F6E08EAC1D267CB900241CBE /* AccountViewModelImplTests.swift in Sources */,
 				F6D807E61D1827E3002953AB /* NSURLIntercambioTests.m in Sources */,
 				F6A9F99A1D351E7B007D8718 /* SettingsInteractorTests.swift in Sources */,
-				F6D807DD1D17F9EE002953AB /* ICURLHandlerTests.m in Sources */,
 				F6A41B761D4BA2140077321C /* AccountListPresenterTests.swift in Sources */,
 				F6A2592A1D33C3FE0005C533 /* AccountPresenterTests.swift in Sources */,
 				F6151BB91D353B84000551B6 /* SettingsPresenterTests.swift in Sources */,

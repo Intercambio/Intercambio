@@ -45,7 +45,8 @@ class AccountListPresenterTests: XCTestCase {
     
     func testSetDataSource() {
         let keyChain = KeyChain(named: "AccountListPresenterTests")
-        let presenter = AccountListPresenter(keyChain: keyChain, router: Router())
+        let presenter = AccountListPresenter(keyChain: keyChain)
+        presenter.router = Router()
         
         let view = View()
         XCTAssertNil(view.dataSource)
@@ -55,6 +56,8 @@ class AccountListPresenterTests: XCTestCase {
     }
     
     func testPresentAccount() {
+        let view = View()
+        
         let keyChain = KeyChain(named: "AccountListPresenterTests")
         let jid = JID("romeo@example.com")!
         let item = KeyChainItem(jid: jid,
@@ -62,12 +65,13 @@ class AccountListPresenterTests: XCTestCase {
                                 options: [:])
         try! keyChain.add(item)
         
-        let presenter = AccountListPresenter(keyChain: keyChain, router: Router())
+        let presenter = AccountListPresenter(keyChain: keyChain)
+        presenter.router = Router()
         
         expectation(forNotification: "presentAccountUserInterface", object: presenter.router) { (n) -> Bool in true }
         
-        if let account = presenter.dataSource.item(at: IndexPath(item: 0, section: 0)) as? AccountListPresentationModel {
-            presenter.didSelect(account)
+        if presenter.dataSource.item(at: IndexPath(item: 0, section: 0)) is AccountListViewModel {
+            presenter.view(view, didSelectItemAt: IndexPath(item: 0, section: 0))
         } else {
             XCTFail()
         }
@@ -77,11 +81,12 @@ class AccountListPresenterTests: XCTestCase {
     
     func testPresentNewAccount() {
         let keyChain = KeyChain(named: "AccountListPresenterTests")
-        let presenter = AccountListPresenter(keyChain: keyChain, router: Router())
+        let presenter = AccountListPresenter(keyChain: keyChain)
+        presenter.router = Router()
                 
         expectation(forNotification: "presentNewAccountUserInterface", object: presenter.router) { (n) -> Bool in true }
         
-        presenter.didTapNewAccount()
+        presenter.addAccount()
 
         waitForExpectations(timeout: 1.0, handler: nil)
     }

@@ -13,11 +13,11 @@
 
 #pragma mark Life-cycle
 
-- (instancetype)initWithAppWireframe:(ICAppWireframe *)appWireframe
+- (instancetype)initWithWireframe:(Wireframe *)wireframe
 {
     self = [super init];
     if (self) {
-        _appWireframe = appWireframe;
+        _wireframe = wireframe;
     }
     return self;
 }
@@ -27,22 +27,7 @@
 - (BOOL)handleURL:(NSURL *)URL
 {
     if ([URL hasXMPPNodeComponent]) {
-        if ([URL hasXMPPAuthorityComponent]) {
-            id<ICAccountViewModel> account = [self.accountProvider accountWithURI:[URL accountURI]];
-            if (account != nil) {
-                [self.appWireframe presentUserInterfaceForConversationWithURI:URL
-                                                           fromViewController:nil];
-            }
-        } else {
-            [self.appWireframe presentUserInterfaceForSelectingAccountFromViewController:nil
-                                                                              completion:^(NSURL *accountURI) {
-                                                                                  if (accountURI) {
-                                                                                      NSURL *conversationURL = [URL URLWithAcountURI:accountURI];
-                                                                                      [self.appWireframe presentUserInterfaceForConversationWithURI:conversationURL
-                                                                                                                                 fromViewController:nil];
-                                                                                  }
-                                                                              }];
-        }
+        [self.wireframe presentConversationFor:URL];
         return YES;
     }
     return NO;
