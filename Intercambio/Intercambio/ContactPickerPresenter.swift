@@ -58,7 +58,11 @@ class ContactPickerPresenter : NSObject, ContectPickerViewEventHandler {
                     }
                 }
             }
+            if account == nil {
+                account = accountManager.accounts.first
+            }
             updateView()
+            postContactDidChangeNotification()
         }
         get {
             if let account = self.account {
