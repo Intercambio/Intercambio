@@ -10,6 +10,13 @@ import UIKit
 
 public class MainModule : NSObject, UISplitViewControllerDelegate {
     
+    class EmptyViewController : UIViewController {
+        override func viewDidLoad() {
+            super.viewDidLoad()
+            view.backgroundColor = UIColor.white
+        }
+    }
+    
     public var navigationControllerModule: NavigationControllerModule?
     public var recentConversationsModule: RecentConversationsModule?
     public var conversationModule: ConversationModule?
@@ -26,7 +33,7 @@ public class MainModule : NSObject, UISplitViewControllerDelegate {
         splitViewController.preferredDisplayMode = .allVisible
         splitViewController.viewControllers = [
             tabBarController,
-            UIViewController()
+            EmptyViewController()
         ]
         
         window.rootViewController = splitViewController
@@ -110,6 +117,17 @@ public class MainModule : NSObject, UISplitViewControllerDelegate {
         return nil
     }
     
+    private func conversationNavigationController(in tabBarController: UITabBarController) -> UINavigationController? {
+        for controller in tabBarController.viewControllers ?? [] {
+            if let navigationController = controller as? UINavigationController {
+                if navigationController.viewControllers.first is RecentConversationsViewController {
+                    return navigationController
+                }
+            }
+        }
+        return nil
+    }
+    
     private func splitViewController(in window: UIWindow) -> UISplitViewController? {
         return window.rootViewController as? UISplitViewController
     }
@@ -147,6 +165,69 @@ public class MainModule : NSObject, UISplitViewControllerDelegate {
             viewControllers.append(navigationController)
             splitViewController.viewControllers = viewControllers
             return true
+        }
+    }
+    
+    public func splitViewController(_ splitViewController: UISplitViewController,
+                                    collapseSecondary secondaryViewController: UIViewController,
+                                    onto primaryViewController: UIViewController) -> Bool {
+
+        if secondaryViewController is EmptyViewController {
+            // just "drop" an empty view controller
+            return true
+        }
+        
+        if let navigationController = secondaryViewController as? UINavigationController,
+            let tabBarController = primaryViewController as? UITabBarController {
+            return collapse(viewControllers: navigationController.viewControllers, onto: tabBarController)
+        } else {
+            return false
+        }
+    }
+    
+    public func splitViewController(_ splitViewController: UISplitViewController, separateSecondaryFrom primaryViewController: UIViewController) -> UIViewController? {
+        
+        if let tabBarController = primaryViewController as? UITabBarController {
+            if let navigationController = conversationNavigationController(in: tabBarController) {
+                if navigationController.viewControllers.count > 1 {
+                    
+                    var secondaryViewControllers = navigationController.viewControllers
+                    secondaryViewControllers.remove(at: 0)
+                    
+                    navigationController.popToRootViewController(animated: false)
+                    
+                    let secondaryNavigationController = UINavigationController()
+                    secondaryNavigationController.viewControllers = secondaryViewControllers
+                    
+                    return secondaryNavigationController
+                }
+            }
+        }
+        return EmptyViewController()
+    }
+    
+    private func collapse(viewControllers: [UIViewController], onto tabBarController: UITabBarController) -> Bool {
+        
+        if viewControllers.first is ConversationViewController {
+            if let navigationController = conversationNavigationController(in: tabBarController) {
+                navigationController.popToRootViewController(animated: false)
+                var newViewControllers = navigationController.viewControllers
+                newViewControllers.append(contentsOf: viewControllers)
+                navigationController.viewControllers = newViewControllers
+                
+                if tabBarController.selectedViewController !== navigationController {
+                    if let index = tabBarController.viewControllers?.index(of: navigationController) {
+                        tabBarController.selectedIndex = index
+                    }
+                }
+                
+                return true
+            } else {
+                return false
+            }
+        } else {
+            // Currently only a conversation view controller should be presented as a detail view controller
+            return false
         }
     }
 }
