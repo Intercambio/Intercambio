@@ -267,7 +267,7 @@
 {
     BOOL accountsNavigationVisible = self.tabBarController.selectedViewController == self.accountsNavigationController;
 
-    UIViewController *viewController = [self.accountModule viewControllerWithUri:accountURI];
+    UIViewController *viewController = [self.accountModule makeAccountViewControllerWithUri:accountURI];
     if ([self.accountsNavigationController.viewControllers count] > 1) {
         [self.accountsNavigationController popToRootViewControllerAnimated:NO];
         [self.accountsNavigationController pushViewController:viewController animated:NO];

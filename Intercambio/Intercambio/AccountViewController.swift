@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AccountViewController: UITableViewController, AccountView {
+public class AccountViewController: UITableViewController, AccountView {
 
     var accountLabel: String? { didSet { updateUserInterface() } }
     var stateLabel: String? { didSet { updateUserInterface() } }
@@ -22,15 +22,15 @@ class AccountViewController: UITableViewController, AccountView {
     
     private var headerView: AccountViewControllerHeaderView?
     
-    init() {
+    public init() {
         super.init(style: .grouped)
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         
         let nib = UINib(nibName: "AccountViewControllerHeaderView", bundle: Bundle.main)
@@ -44,7 +44,7 @@ class AccountViewController: UITableViewController, AccountView {
         layoutTableHeaderView()
     }
     
-    override func viewDidLayoutSubviews() {
+    public override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         layoutTableHeaderView()
     }
