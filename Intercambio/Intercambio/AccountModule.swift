@@ -22,7 +22,7 @@ public class AccountModule : NSObject {
         self.service = service
     }
     
-    public func viewController(uri: URL) -> (UIViewController?) {
+    public func viewController(uri: URL) -> AccountViewController? {
         
         if let host = uri.host,
             let jid = JID(user: uri.user, host: host, resource: nil) {
