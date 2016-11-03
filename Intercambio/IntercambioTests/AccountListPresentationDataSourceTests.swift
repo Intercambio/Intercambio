@@ -43,10 +43,9 @@ class AccountListPresentationDataSourceTests: XCTestCase {
         
         XCTAssertEqual(dataSource.numberOfItems(inSection: 0), 1)
         
-        if let model = dataSource.item(at: IndexPath(item: 0, section: 0)) as? AccountListPresentationModel {
-            XCTAssertEqual(model.identifier, "romeo@example.com")
-            XCTAssertEqual(model.name, "romeo@example.com")
-            XCTAssertEqual(model.accountURI?.absoluteString, "xmpp://romeo@example.com")
+        if dataSource.item(at: IndexPath(item: 0, section: 0)) is AccountListViewModel {
+            let uri = dataSource.accountURI(forItemAt: IndexPath(item: 0, section: 0))
+            XCTAssertEqual(uri?.absoluteString, "xmpp://romeo@example.com")
         } else {
             XCTFail()
         }

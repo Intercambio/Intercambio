@@ -7,8 +7,9 @@
 //
 
 @import Foundation;
-#import "ICAppWireframe.h"
-#import <IntercambioCore/IntercambioCore.h>
+@import IntercambioCore;
+
+#import "Intercambio-Swift.h"
 
 @interface ICURLHandler : NSObject
 
