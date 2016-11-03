@@ -12,8 +12,10 @@ import IntercambioCore
 class ConversationPresenter: NSObject, ConversationViewEventHandler {
 
     let db: ConversationMessageDB
-    init(db: ConversationMessageDB) {
+    let accountManager: AccountManager
+    init(db: ConversationMessageDB, accountManager: AccountManager) {
         self.db = db
+        self.accountManager = accountManager
     }
     
     weak var view: ConversationView? {
@@ -22,10 +24,16 @@ class ConversationPresenter: NSObject, ConversationViewEventHandler {
         }
     }
     
+    var showContactPicker: Bool = false
+    
     var conversation: URL? {
         didSet {
+            if account() == nil || counterpart() == nil {
+                showContactPicker = true
+            }
             updateDataSource()
             updateTitle()
+            updateView()
         }
     }
     
@@ -42,18 +50,21 @@ class ConversationPresenter: NSObject, ConversationViewEventHandler {
     }
 
     func performAction(_ action: Selector, forItemAt indexPath: IndexPath) {
-        view?.isContactPickerVisible = false
+        showContactPicker = false
         dataSource?.performAction(action, forItemAt: indexPath)
+        updateView()
     }
     
     func setValue(_ value: Any, forItemAt indexPath: IndexPath) {
-        view?.isContactPickerVisible = false
+        showContactPicker = false
         dataSource?.setValue(value, forItemAt: indexPath)
+        updateView()
     }
     
     private func updateView() {
         view?.dataSource = dataSource
         view?.title = title
+        view?.isContactPickerVisible = showContactPicker
     }
     
     private func updateTitle() {
@@ -84,7 +95,11 @@ class ConversationPresenter: NSObject, ConversationViewEventHandler {
             if let components = NSURLComponents(url: url, resolvingAgainstBaseURL: true) {
                 if components.scheme == "xmpp" {
                     if let host = components.host, let user = components.user {
-                        return JID(user: user, host: host, resource: nil)
+                        if let jid = JID(user: user, host: host, resource: nil) {
+                            if accountManager.accounts.contains(jid) {
+                                return jid
+                            }
+                        }
                     }
                 }
             }

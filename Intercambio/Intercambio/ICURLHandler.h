@@ -13,11 +13,10 @@
 @interface ICURLHandler : NSObject
 
 #pragma mark Life-cycle
-- (instancetype)initWithAppWireframe:(ICAppWireframe *)appWireframe;
+- (instancetype)initWithWireframe:(Wireframe *)appWireframe;
 
 #pragma mark Properties
-@property (nonatomic, readonly) ICAppWireframe *appWireframe;
-@property (nonatomic, readwrite) id<ICAccountProvider> accountProvider;
+@property (nonatomic, readonly) Wireframe *wireframe;
 
 #pragma mark Handle URL
 - (BOOL)handleURL:(NSURL *)URL;

@@ -46,6 +46,12 @@ public class ContactPickerViewController: UIViewController, CLTokenInputViewDele
         }
     }
     
+    var addresses: [ContactPickerAddress]? {
+        didSet {
+            updateAddresses()
+        }
+    }
+    
     var contentView: UIView? {
         if let view = self.view as? View {
             return view.contentView
@@ -102,6 +108,7 @@ public class ContactPickerViewController: UIViewController, CLTokenInputViewDele
         setupBackgroundView()
         
         updateAccounts()
+        updateAddresses()
     }
     
     private func setupSearchBar() -> UIView {
@@ -179,6 +186,15 @@ public class ContactPickerViewController: UIViewController, CLTokenInputViewDele
         } else {
             selectedAccount = nil
             presenter?.didSelectAccount(nil)
+        }
+    }
+    
+    private func updateAddresses() {
+        searchBar?.removeAllTokens()
+        if let addresses = self.addresses {
+            for address in addresses {
+                searchBar?.add(CLToken(displayText: address.title, context: address))
+            }
         }
     }
     

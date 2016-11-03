@@ -45,16 +45,33 @@ extension ConversationViewController : ContactPickerViewControllerDelegate {
 public extension ConversationViewController {
     public convenience init(service: CommunicationService, factory: ConversationModuleFactory, conversation uri: URL?) {
         self.init()
-        let presenter = ConversationPresenter(db: service.messageDB)
+        
+        let presenter = ConversationPresenter(db: service.messageDB, accountManager: service.accountManager)
         presenter.view = self
-        presenter.conversation = uri
         self.presenter = presenter
         
-        if uri == nil {
-            if let contactPicker = factory.makeContactPickerViewController() {
-                contactPickerViewController = contactPicker
-                contactPicker.delegate = self
-                isContactPickerVisible = true
+        if let contactPicker = factory.makeContactPickerViewController() {
+            contactPickerViewController = contactPicker
+            contactPicker.delegate = self
+        }
+        
+        conversationURI = uri
+    }
+    
+    public var conversationURI: URL? {
+        set {
+            if let presenter = self.presenter as? ConversationPresenter {
+                presenter.conversation = newValue
+            }
+            if let contactPicker = contactPickerViewController as? ContactPickerViewController {
+                contactPicker.conversationURI = newValue
+            }
+        }
+        get {
+            if let presenter = self.presenter as? ConversationPresenter {
+                return presenter.conversation
+            } else {
+                return nil
             }
         }
     }

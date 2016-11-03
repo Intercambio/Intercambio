@@ -41,27 +41,48 @@ class ContactPickerPresenter : NSObject, ContectPickerViewEventHandler {
     var counterparts: NSMutableOrderedSet = NSMutableOrderedSet()
     
     var conversationURI: URL? {
-        if let account = self.account {
-            
-            if counterparts.count != 1 {
-                return nil
-            } else if let counterpart = counterparts.firstObject as? JID {
+        set {
+            account = nil
+            counterparts.removeAllObjects()
+            if let uri = newValue {
+                if let components = NSURLComponents(url: uri, resolvingAgainstBaseURL: true) {
+                    if components.scheme == "xmpp" {
+                        if let host = components.host, let user = components.user {
+                            account = JID(user: user, host: host, resource: nil)
+                        }
+                    }
+                    if let string = uri.pathComponents.last {
+                        if let jid = JID(string) {
+                            counterparts.add(jid)
+                        }
+                    }
+                }
+            }
+            updateView()
+        }
+        get {
+            if let account = self.account {
                 
-                // account
-                var components = URLComponents()
-                components.scheme = "xmpp"
-                components.host = account.host
-                components.user = account.user
-                
-                // counterpart
-                components.path = "/\(counterpart.bare().stringValue)"
-                
-                return components.url
+                if counterparts.count != 1 {
+                    return nil
+                } else if let counterpart = counterparts.firstObject as? JID {
+                    
+                    // account
+                    var components = URLComponents()
+                    components.scheme = "xmpp"
+                    components.host = account.host
+                    components.user = account.user
+                    
+                    // counterpart
+                    components.path = "/\(counterpart.bare().stringValue)"
+                    
+                    return components.url
+                } else {
+                    return nil
+                }
             } else {
                 return nil
             }
-        } else {
-            return nil
         }
     }
     
@@ -81,11 +102,13 @@ class ContactPickerPresenter : NSObject, ContectPickerViewEventHandler {
     func didRemove(_ address: ContactPickerAddress) {
         counterparts.remove(address.jid)
         postContactDidChangeNotification()
+        updateView()
     }
     
     func didAdd(_ address: ContactPickerAddress) {
         counterparts.add(address.jid)
         postContactDidChangeNotification()
+        updateView()
     }
     
     private func postContactDidChangeNotification() {
@@ -116,6 +139,14 @@ class ContactPickerPresenter : NSObject, ContectPickerViewEventHandler {
             } else {
                 view.selectedAccount = nil
             }
+            
+            var counterpartAddresses: [ContactPickerAddress] = []
+            for counterpart in counterparts {
+                if let jid = counterpart as? JID {
+                    counterpartAddresses.append(ContactPickerAddress(jid))
+                }
+            }
+            view.addresses = counterpartAddresses
         }
     }
     

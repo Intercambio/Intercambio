@@ -17,9 +17,7 @@
 #endif
 
 #import "AppDelegate.h"
-#import "ICAppWireframe.h"
 #import "ICURLHandler.h"
-#import "ICUserInterfaceFactory.h"
 #import "Intercambio-Swift.h"
 #import <CocoaLumberjack/CocoaLumberjack.h>
 #import <IntercambioCore/IntercambioCore.h>
@@ -30,11 +28,9 @@ static DDLogLevel ddLogLevel = DDLogLevelInfo;
     ICCommunicationService *_communicationService;
     Wireframe *_wireframe;
     
-    ICUserInterfaceFactory *_userInterfaceFactory;
-//    ICAppWireframe *_appWireframe;
-//    ICURLHandler *_URLHandler;
-//    NSURL *_pendingURLToHandle;
-//    BOOL _isSetup;
+    ICURLHandler *_URLHandler;
+    NSURL *_pendingURLToHandle;
+    BOOL _isSetup;
 }
 
 @end
@@ -58,8 +54,7 @@ static DDLogLevel ddLogLevel = DDLogLevelInfo;
     _wireframe = [[Wireframe alloc] initWithWindow:self.window service:_communicationService];
     [_wireframe presentLaunchScreen];
 
-//    _URLHandler = [[ICURLHandler alloc] initWithAppWireframe:_appWireframe];
-//    _URLHandler.accountProvider = _communicationService;
+    _URLHandler = [[ICURLHandler alloc] initWithWireframe:_wireframe];
 
     [self setupLogging];
 
@@ -72,37 +67,37 @@ static DDLogLevel ddLogLevel = DDLogLevelInfo;
     return YES;
 }
 
-//- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *, id> *)options
-//{
-//    if (_isSetup) {
-//        return [_URLHandler handleURL:url];
-//    } else {
-//        _pendingURLToHandle = url;
-//        return YES;
-//    }
-//}
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *, id> *)options
+{
+    if (_isSetup) {
+        return [_URLHandler handleURL:url];
+    } else {
+        _pendingURLToHandle = url;
+        return YES;
+    }
+}
 
 #pragma mark Application Setup
 
 - (void)setupApplicationWithCompletion:(void (^)(BOOL success, NSError *error))completion
 {
-//    __weak typeof(self) _self = self;
+    __weak typeof(self) _self = self;
     [_communicationService setUpWithCompletion:^(BOOL success, NSError *error) {
-//        _isSetup = success;
+        _isSetup = success;
         if (completion) {
             completion(success, error);
         }
-//        [_self handlePendingOpenURL];
+        [_self handlePendingOpenURL];
     }];
 }
 
-//- (void)handlePendingOpenURL
-//{
-//    if (_pendingURLToHandle) {
-//        [_URLHandler handleURL:_pendingURLToHandle];
-//        _pendingURLToHandle = nil;
-//    }
-//}
+- (void)handlePendingOpenURL
+{
+    if (_pendingURLToHandle) {
+        [_URLHandler handleURL:_pendingURLToHandle];
+        _pendingURLToHandle = nil;
+    }
+}
 
 - (void)setupLogging
 {

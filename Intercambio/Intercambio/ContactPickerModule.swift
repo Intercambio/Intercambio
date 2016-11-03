@@ -53,6 +53,21 @@ public extension ContactPickerViewController {
         self.presenter = presenter
     }
     
+    public var conversationURI: URL? {
+        set {
+            if let presenter = self.presenter as? ContactPickerPresenter {
+                return presenter.conversationURI = newValue
+            }
+        }
+        get {
+            if let presenter = self.presenter as? ContactPickerPresenter {
+                return presenter.conversationURI
+            } else {
+                return nil
+            }
+        }
+    }
+    
     public weak var delegate: ContactPickerViewControllerDelegate? {
         set {
             if let proxy = delegateProxy {

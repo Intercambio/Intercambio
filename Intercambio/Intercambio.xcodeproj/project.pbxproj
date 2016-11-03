@@ -71,7 +71,6 @@
 		F678B6F51DBE91AF004EF7EE /* ConversationViewGroupHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F678B6F41DBE91AF004EF7EE /* ConversationViewGroupHeaderView.swift */; };
 		F68269CF1D0EECE2007A3934 /* ICAppWireframe.m in Sources */ = {isa = PBXBuildFile; fileRef = F68269CE1D0EECE2007A3934 /* ICAppWireframe.m */; };
 		F6826A1D1D0F38BD007A3934 /* UITableView+CellAction.m in Sources */ = {isa = PBXBuildFile; fileRef = F6826A1C1D0F38BD007A3934 /* UITableView+CellAction.m */; };
-		F6826A201D0F4476007A3934 /* ICUserInterfaceFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = F6826A1F1D0F4476007A3934 /* ICUserInterfaceFactory.m */; };
 		F68EDFFA1D3D3CE800AFCB9D /* AccountListModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68EDFF91D3D3CE800AFCB9D /* AccountListModule.swift */; };
 		F68EE0021D3D457C00AFCB9D /* AccountListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68EE0011D3D457C00AFCB9D /* AccountListPresenter.swift */; };
 		F6A2592A1D33C3FE0005C533 /* AccountPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A259291D33C3FE0005C533 /* AccountPresenterTests.swift */; };
@@ -250,8 +249,6 @@
 		F6826A161D0F1A67007A3934 /* ICAccountSettingsUserInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICAccountSettingsUserInterface.h; sourceTree = "<group>"; };
 		F6826A1B1D0F38BD007A3934 /* UITableView+CellAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+CellAction.h"; sourceTree = "<group>"; };
 		F6826A1C1D0F38BD007A3934 /* UITableView+CellAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+CellAction.m"; sourceTree = "<group>"; };
-		F6826A1E1D0F4476007A3934 /* ICUserInterfaceFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICUserInterfaceFactory.h; sourceTree = "<group>"; };
-		F6826A1F1D0F4476007A3934 /* ICUserInterfaceFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ICUserInterfaceFactory.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		F68413FF1C4D8901009B37BE /* CocoaLumberjack.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaLumberjack.framework; path = ../Carthage/Build/iOS/CocoaLumberjack.framework; sourceTree = "<group>"; };
 		F68414001C4D8901009B37BE /* CoreXMPP.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreXMPP.framework; path = ../Carthage/Build/iOS/CoreXMPP.framework; sourceTree = "<group>"; };
 		F68414011C4D8901009B37BE /* PureXML.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PureXML.framework; path = ../Carthage/Build/iOS/PureXML.framework; sourceTree = "<group>"; };
@@ -756,15 +753,6 @@
 			name = Protocols;
 			sourceTree = "<group>";
 		};
-		F6826A211D0F45C8007A3934 /* User Interface Factory */ = {
-			isa = PBXGroup;
-			children = (
-				F6826A1E1D0F4476007A3934 /* ICUserInterfaceFactory.h */,
-				F6826A1F1D0F4476007A3934 /* ICUserInterfaceFactory.m */,
-			);
-			name = "User Interface Factory";
-			sourceTree = "<group>";
-		};
 		F68414091C4D890B009B37BE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -800,7 +788,6 @@
 		F69C166A1C651F2800BC66F1 /* User Interface */ = {
 			isa = PBXGroup;
 			children = (
-				F6826A211D0F45C8007A3934 /* User Interface Factory */,
 				F68269CC1D0EECCB007A3934 /* App Wireframe */,
 				F6826A0F1D0EF148007A3934 /* Common */,
 				F6826A101D0EF151007A3934 /* Modules */,
@@ -1298,7 +1285,6 @@
 				F6826A1D1D0F38BD007A3934 /* UITableView+CellAction.m in Sources */,
 				F646CA5D1DB6264500C239B1 /* RecentConversationsCell.swift in Sources */,
 				F6B567001D507697004BCDB0 /* NavigationControllerStatusViewModel.swift in Sources */,
-				F6826A201D0F4476007A3934 /* ICUserInterfaceFactory.m in Sources */,
 				F6D807E41D1826EB002953AB /* NSURL+Intercambio.m in Sources */,
 				F6052AA51DC5FD20005D79EA /* ContactPickerViewController.swift in Sources */,
 				F6FEF5FF1DCB4CF5008D4369 /* AuthenticationModule.swift in Sources */,

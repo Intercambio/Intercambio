@@ -11,4 +11,5 @@ import UIKit
 protocol ContactPickerView : class {
     var selectedAccount: ContactPickerAddress? { get set }
     var accounts: [ContactPickerAddress]? { get set }
+    var addresses: [ContactPickerAddress]? { get set }
 }
