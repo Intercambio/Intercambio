@@ -35,6 +35,28 @@ public class MainModule : NSObject, UISplitViewControllerDelegate {
         window.makeKeyAndVisible()
     }
     
+    private func setupTabs(in tabBarController: UITabBarController) {
+        var tabs: [UINavigationController] = []
+        
+        if let viewController = self.recentConversationsModule?.makeRecentConversationsViewController() {
+            if let navigationController = self.navigationControllerModule?.makeNavigationController(rootViewController: viewController) {
+                tabs.append(navigationController)
+            } else {
+                tabs.append(UINavigationController(rootViewController: viewController))
+            }
+        }
+        
+        if let viewController = self.accountListModule?.makeAccountListViewController() {
+            if let navigationController = self.navigationControllerModule?.makeNavigationController(rootViewController: viewController) {
+                tabs.append(navigationController)
+            } else {
+                tabs.append(UINavigationController(rootViewController: viewController))
+            }
+        }
+        
+        tabBarController.viewControllers = tabs
+    }
+    
     public func presentConversation(for uri: URL, in window: UIWindow) {
         if let viewController = conversationModule?.makeConversationViewController(for: uri) {
             showDetailViewController(viewController, in: window)
@@ -48,6 +70,26 @@ public class MainModule : NSObject, UISplitViewControllerDelegate {
     }
     
     public func presentAccount(for uri: URL, in window: UIWindow) {
+        if let viewController = accountModule?.makeAccountViewController(uri: uri) {
+            if let navigationController = accountNavigationController(in: window) {
+                var animated = true
+                if navigationController.viewControllers.count > 1 {
+                    animated = false
+                    navigationController.popToRootViewController(animated: animated)
+                }
+                
+                if let tabBarController = navigationController.tabBarController {
+                    if tabBarController.selectedViewController !== navigationController {
+                        if let index = tabBarController.viewControllers?.index(of: navigationController) {
+                            tabBarController.selectedIndex = index
+                            animated = false
+                        }
+                    }
+                }
+                
+                navigationController.pushViewController(viewController, animated: animated)
+            }
+        }
     }
     
     public func presentNewAccount(in window: UIWindow) {
@@ -60,6 +102,19 @@ public class MainModule : NSObject, UISplitViewControllerDelegate {
         if let splitViewController = self.splitViewController(in: window) {
             splitViewController.showDetailViewController(vc, sender: self)
         }
+    }
+    
+    private func accountNavigationController(in window: UIWindow) -> UINavigationController? {
+        if let tabBarController = self.tabBarController(in: window) {
+            for controller in tabBarController.viewControllers ?? [] {
+                if let navigationController = controller as? UINavigationController {
+                    if navigationController.viewControllers.first is AccountListViewController {
+                        return navigationController
+                    }
+                }
+            }
+        }
+        return nil
     }
     
     private func splitViewController(in window: UIWindow) -> UISplitViewController? {
@@ -76,28 +131,6 @@ public class MainModule : NSObject, UISplitViewControllerDelegate {
     
     private func tabBarController(in splitViewController: UISplitViewController) -> UITabBarController? {
         return splitViewController.viewControllers.first as? UITabBarController
-    }
-    
-    private func setupTabs(in tabBarController: UITabBarController) {
-        var tabs: [UINavigationController] = []
-        
-        if let viewController = self.recentConversationsModule?.makeRecentConversationsViewController() {
-            if let navigationController = self.navigationControllerModule?.makeNavigationController(rootViewController: viewController) {
-                tabs.append(navigationController)
-            } else {
-                tabs.append(UINavigationController(rootViewController: viewController))
-            }
-        }
-
-        if let viewController = self.accountListModule?.makeAccountListViewController() {
-            if let navigationController = self.navigationControllerModule?.makeNavigationController(rootViewController: viewController) {
-                tabs.append(navigationController)
-            } else {
-                tabs.append(UINavigationController(rootViewController: viewController))
-            }
-        }
-        
-        tabBarController.viewControllers = tabs
     }
     
     // UISplitViewControllerDelegate
