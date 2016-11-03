@@ -9,9 +9,12 @@
 import Foundation
 import Fountain
 
+protocol SettingsPresenterEventHandler {
+    func settingsDidCancel(_ settingsPresenter: SettingsPresenter) -> Void
+    func settingsDidSave(_ settingsPresenter: SettingsPresenter) -> Void
+}
+
 class SettingsPresenter : SettingsOutput, SettingsViewEventHandler {
-    
-    var completion: ((Bool) -> Void)?
     
     weak var userInterface: SettingsView? {
         didSet {
@@ -23,6 +26,8 @@ class SettingsPresenter : SettingsOutput, SettingsViewEventHandler {
             updateIdentifier()
         }
     }
+    
+    var eventHandler: SettingsPresenterEventHandler?
     
     private var dataSource: FTDataSource?
     
@@ -39,16 +44,12 @@ class SettingsPresenter : SettingsOutput, SettingsViewEventHandler {
         if let dataSource = self.dataSource {
             let settings = toSettings(dataSource: dataSource)
             try interactor?.update(settings: settings)
-            if let completion = self.completion {
-                completion(true)
-            }
+            eventHandler?.settingsDidSave(self)
         }
     }
     
     func cancel() {
-        if let completion = self.completion {
-            completion(false)
-        }
+        eventHandler?.settingsDidCancel(self)
     }
     
     private func dataSource(settings: Settings) -> FTDataSource {

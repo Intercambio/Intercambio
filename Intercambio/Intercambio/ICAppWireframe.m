@@ -10,7 +10,7 @@
 #import "ICAccountShareActivityItemSource.h"
 #import "ICEmptyViewController.h"
 
-@interface ICAppWireframe () <UITabBarControllerDelegate, UISplitViewControllerDelegate>
+@interface ICAppWireframe () <UITabBarControllerDelegate, UISplitViewControllerDelegate, SettingsViewControllerDelegate>
 @property (nonatomic, weak) UISplitViewController *splitViewController;
 @property (nonatomic, weak) UITabBarController *tabBarController;
 
@@ -153,6 +153,16 @@
                                          }];
 }
 
+#pragma mark SettingsViewControllerDelegate
+
+- (void)settingsDidCancel:(SettingsViewController * _Nonnull)settingsViewController {
+    [settingsViewController dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)settingsDidSave:(SettingsViewController * _Nonnull)settingsViewController {
+    [settingsViewController dismissViewControllerAnimated:YES completion:nil];
+}
+
 #pragma mark UITabBarControllerDelegate
 
 - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController
@@ -282,10 +292,8 @@
 
 - (void)presentSettingsUserInterfaceFor:(NSURL *_Nonnull)accountURI
 {
-    UIViewController *viewController = [self.settingsModule viewControllerWithUri:accountURI
-                                                                       completion:^(BOOL saved, UIViewController *_Nonnull controller) {
-                                                                           [controller dismissViewControllerAnimated:YES completion:nil];
-                                                                       }];
+    SettingsViewController *viewController = [self.settingsModule makeSettingsViewControllerWithUri:accountURI];
+    viewController.delegate = self;
 
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
     navigationController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;

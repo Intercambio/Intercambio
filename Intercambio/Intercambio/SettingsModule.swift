@@ -16,34 +16,84 @@ public class SettingsModule : NSObject {
     public init(service: CommunicationService) {
         self.service = service
     }
+
+    public func makeSettingsViewController(uri: URL) -> SettingsViewController? {
+        let controller = SettingsViewController(service: service, account: uri)
+        return controller
+    }
+}
+
+@objc public protocol SettingsViewControllerDelegate : class {
+    func settingsDidCancel(_ settingsViewController: SettingsViewController) -> Void
+    func settingsDidSave(_ settingsViewController: SettingsViewController) -> Void
+}
+
+public extension SettingsViewController {
     
-    public func viewController(uri: URL, completion: ((Bool, UIViewController) -> Void)?) -> (UIViewController?) {
+    private class DelegateProxy : SettingsPresenterEventHandler {
+        weak var delegate: SettingsViewControllerDelegate?
+        weak var viewController: SettingsViewController?
+
+        func settingsDidSave(_ settingsPresenter: SettingsPresenter) {
+            if let delegate = self.delegate,
+               let viewController = self.viewController {
+               delegate.settingsDidSave(viewController)
+            }
+        }
         
+        func settingsDidCancel(_ settingsPresenter: SettingsPresenter) {
+            if let delegate = self.delegate,
+                let viewController = self.viewController {
+                delegate.settingsDidCancel(viewController)
+            }
+        }
+    }
+    
+    public convenience init?(service: CommunicationService, account uri: URL) {
         if let host = uri.host, let jid = JID(user: uri.user, host: host, resource: nil) {
+            
+            self.init()
             
             let interactor = SettingsInteractor(accountJID: jid, keyChain: service.keyChain)
             let presenter = SettingsPresenter()
-            let view = SettingsViewController()
             
             // strong references (view controller -> presenter -> interactor)
-            view.eventHandler = presenter
+            eventHandler = presenter
             presenter.interactor = interactor
             
             // weak references
             interactor.presenter = presenter
-            presenter.userInterface = view
-            if let c = completion {
-                presenter.completion = { [weak view] saved in
-                    if let v = view {
-                        c(saved, v)
-                    }
-                }
-            }
+            presenter.userInterface = self
             
-            return view
+            let proxy = DelegateProxy()
+            proxy.viewController = self
+            presenter.eventHandler = proxy
             
         } else {
             return nil
         }
+    }
+    
+    public weak var delegate: SettingsViewControllerDelegate? {
+        set {
+            if let proxy = delegateProxy {
+                proxy.delegate = newValue
+            }
+        }
+        get {
+            if let proxy = delegateProxy {
+                return proxy.delegate
+            } else {
+                return nil
+            }
+        }
+    }
+    
+    private var delegateProxy: DelegateProxy? {
+        if let presenter = self.eventHandler as? SettingsPresenter,
+            let proxy = presenter.eventHandler as? DelegateProxy{
+            return proxy
+        }
+        return nil
     }
 }
