@@ -129,6 +129,8 @@
 		F6F56AF51C51416600C34CC8 /* CoreXMPP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F68414001C4D8901009B37BE /* CoreXMPP.framework */; };
 		F6F56AF61C51416600C34CC8 /* PureXML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F68414011C4D8901009B37BE /* PureXML.framework */; };
 		F6F56AFE1C5395A700C34CC8 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = F6F56AFD1C5395A700C34CC8 /* Cartfile */; };
+		F6FEF5FA1DCB42EC008D4369 /* SignupModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FEF5F91DCB42EC008D4369 /* SignupModule.swift */; };
+		F6FEF5FC1DCB4671008D4369 /* SignupInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FEF5FB1DCB4671008D4369 /* SignupInteractor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -316,6 +318,8 @@
 		F6F375401D55326000F718BC /* NavigationBarStatusView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationBarStatusView.swift; sourceTree = "<group>"; };
 		F6F375421D55EBD100F718BC /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HockeySDK.framework; path = ../Carthage/Build/iOS/HockeySDK.framework; sourceTree = "<group>"; };
 		F6F56AFD1C5395A700C34CC8 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Cartfile; path = ../Cartfile; sourceTree = "<group>"; };
+		F6FEF5F91DCB42EC008D4369 /* SignupModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupModule.swift; sourceTree = "<group>"; };
+		F6FEF5FB1DCB4671008D4369 /* SignupInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupInteractor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -732,6 +736,7 @@
 				F61679F61D5070D70002A1A4 /* Navigation Controller Module */,
 				F6B9E33A1D8C743400510F01 /* Recent Conversations Module */,
 				F6A9F98E1D345B41007D8718 /* Settings Module */,
+				F6FEF5F81DCB42D7008D4369 /* Signup Module */,
 			);
 			name = Modules;
 			sourceTree = "<group>";
@@ -1004,6 +1009,23 @@
 			name = CLTokenInputView;
 			sourceTree = "<group>";
 		};
+		F6FEF5F81DCB42D7008D4369 /* Signup Module */ = {
+			isa = PBXGroup;
+			children = (
+				F6FEF5F91DCB42EC008D4369 /* SignupModule.swift */,
+				F6FEF5FD1DCB4919008D4369 /* Interactor */,
+			);
+			name = "Signup Module";
+			sourceTree = "<group>";
+		};
+		F6FEF5FD1DCB4919008D4369 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				F6FEF5FB1DCB4671008D4369 /* SignupInteractor.swift */,
+			);
+			name = Interactor;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1209,6 +1231,7 @@
 				F65237481D4FF15700285713 /* SettingsOutput.swift in Sources */,
 				F6167A051D5073890002A1A4 /* NavigationControllerPresenter.swift in Sources */,
 				F6052ABB1DC89B27005D79EA /* ContactPickerPresenter.swift in Sources */,
+				F6FEF5FC1DCB4671008D4369 /* SignupInteractor.swift in Sources */,
 				F6CE949B1DABF0DA0044356A /* RecentConversationsPresenter.swift in Sources */,
 				F63A666B1D2662DE00FCC82E /* AccountPresentationModel.swift in Sources */,
 				F605909C1D2F97AB0071FC63 /* AccountProvider.swift in Sources */,
@@ -1269,6 +1292,7 @@
 				F6052AA51DC5FD20005D79EA /* ContactPickerViewController.swift in Sources */,
 				F678B6F31DBE5176004EF7EE /* ConversationViewLayoutConversationFragment.swift in Sources */,
 				F6A41B711D4B9F220077321C /* AccountListViewEventHandler.swift in Sources */,
+				F6FEF5FA1DCB42EC008D4369 /* SignupModule.swift in Sources */,
 				F68EE0021D3D457C00AFCB9D /* AccountListPresenter.swift in Sources */,
 				F619BDC21C4D071700F87F50 /* main.m in Sources */,
 				F6E252151CAAC8010061531E /* ICAccountShareActivityItemSource.m in Sources */,

@@ -92,9 +92,6 @@ public class MainModule : NSObject, UISplitViewControllerDelegate, SettingsViewC
         }
     }
     
-    public func presentNewAccount(in window: UIWindow) {
-    }
-    
     public func presentSettings(for uri: URL, in window: UIWindow) {
         if let viewController = settingsModule?.makeSettingsViewController(uri: uri),
             let splitViewController = self.splitViewController(in: window) {

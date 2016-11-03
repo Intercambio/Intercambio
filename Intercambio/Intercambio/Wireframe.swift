@@ -21,6 +21,7 @@ public class Wireframe : NSObject, NavigationControllerRouter, RecentConversatio
     let accountListModule: AccountListModule
     let accountModule: AccountModule
     let settingsModule: SettingsModule
+    let signupModule: SignupModule
     
     public required init(window: UIWindow, service: CommunicationService) {
         self.window = window
@@ -33,6 +34,7 @@ public class Wireframe : NSObject, NavigationControllerRouter, RecentConversatio
         accountListModule = AccountListModule(service: service)
         accountModule = AccountModule(service: service)
         settingsModule = SettingsModule(service: service)
+        signupModule = SignupModule(service: service)
 
         conversationModule.contactPickerModule = contactPickerModule
         
@@ -75,7 +77,7 @@ public class Wireframe : NSObject, NavigationControllerRouter, RecentConversatio
     }
     
     public func presentNewAccount() {
-        mainModule.presentNewAccount(in: window)
+        signupModule.present(in: window)
     }
     
     public func presentSettings(for uri: URL) {
