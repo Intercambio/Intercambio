@@ -17,7 +17,7 @@ public class SettingsModule : NSObject {
         self.service = service
     }
     
-    public func viewController(uri: URL, completion: ((Bool, UIViewController) -> Void)?) -> (UIViewController?) {
+    public func viewController(uri: URL, completion: ((Bool, UIViewController) -> Void)?) -> SettingsViewController? {
         
         if let host = uri.host, let jid = JID(user: uri.user, host: host, resource: nil) {
             
