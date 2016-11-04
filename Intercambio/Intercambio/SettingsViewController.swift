@@ -52,6 +52,16 @@ public class SettingsViewController: UITableViewController, UITableViewDelegateC
             }
         }
         
+        tableView.register(FormTextItemCell.self, forCellReuseIdentifier: "FormTextItemCell")
+        tableViewAdapter?.forRowsMatching(FormTextItemCell.predicate,
+                                          useCellWithReuseIdentifier: "FormTextItemCell")
+        { (view, item, indexPath, dataSource) in
+            if  let cell = view as? FormTextItemCell,
+                let formItem = item as? FormTextItem {
+                cell.item = formItem
+            }
+        }
+        
         tableView.register(FormURLItemCell.self, forCellReuseIdentifier: "FormURLItemCell")
         tableViewAdapter?.forRowsMatching(FormURLItemCell.predicate,
                                           useCellWithReuseIdentifier: "FormURLItemCell")
@@ -87,10 +97,16 @@ public class SettingsViewController: UITableViewController, UITableViewDelegateC
     }
     
     func cancel(sender: AnyObject) {
+        if let responder = view.firstResponder() {
+            responder.resignFirstResponder()
+        }
         presenter?.cancel()
     }
     
     func save(sender: AnyObject) {
+        if let responder = view.firstResponder() {
+            responder.resignFirstResponder()
+        }
         presenter?.save()
     }
 }

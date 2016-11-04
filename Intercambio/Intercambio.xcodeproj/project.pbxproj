@@ -17,6 +17,9 @@
 		F6052AC61DC8BB1A005D79EA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6052AC51DC8BB1A005D79EA /* ContentView.swift */; };
 		F605909C1D2F97AB0071FC63 /* AccountProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F605909B1D2F97AB0071FC63 /* AccountProvider.swift */; };
 		F605909E1D2F97E70071FC63 /* AccountOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F605909D1D2F97E70071FC63 /* AccountOutput.swift */; };
+		F61510731DCC9CDD00DCFD17 /* FormTextItemData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61510721DCC9CDD00DCFD17 /* FormTextItemData.swift */; };
+		F61510751DCC9D2800DCFD17 /* FormTextItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61510741DCC9D2800DCFD17 /* FormTextItemCell.swift */; };
+		F61510771DCCA2DE00DCFD17 /* FirstResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61510761DCCA2DE00DCFD17 /* FirstResponder.swift */; };
 		F6151BB31D3538CD000551B6 /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6151BB21D3538CD000551B6 /* SettingsPresenter.swift */; };
 		F61679F81D5070F20002A1A4 /* NavigationControllerModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61679F71D5070F20002A1A4 /* NavigationControllerModule.swift */; };
 		F61679FC1D50725B0002A1A4 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61679FB1D50725B0002A1A4 /* NavigationController.swift */; };
@@ -93,7 +96,6 @@
 		F6BB8F081DCC9336005EAFB0 /* FormValueItemData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BB8F071DCC9336005EAFB0 /* FormValueItemData.swift */; };
 		F6BB8F0A1DCC938A005EAFB0 /* FormValueItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BB8F091DCC938A005EAFB0 /* FormValueItemCell.swift */; };
 		F6C6BD6F1D3645BD00CF3B8B /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C6BD6E1D3645BD00CF3B8B /* SettingsViewController.swift */; };
-		F6C6BD711D364AFC00CF3B8B /* FormDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C6BD701D364AFC00CF3B8B /* FormDataSource.swift */; };
 		F6C74CDC1DC8E204002FA530 /* MainModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C74CDB1DC8E204002FA530 /* MainModule.swift */; };
 		F6C74CDE1DC9D972002FA530 /* Wireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C74CDD1DC9D972002FA530 /* Wireframe.swift */; };
 		F6CE94991DABF0B70044356A /* RecentConversationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6CE94981DABF0B70044356A /* RecentConversationsViewController.swift */; };
@@ -172,6 +174,9 @@
 		F605909B1D2F97AB0071FC63 /* AccountProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AccountProvider.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		F605909D1D2F97E70071FC63 /* AccountOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AccountOutput.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		F60881A41D3777340028FDEB /* Intercambio.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Intercambio.entitlements; sourceTree = "<group>"; };
+		F61510721DCC9CDD00DCFD17 /* FormTextItemData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormTextItemData.swift; sourceTree = "<group>"; };
+		F61510741DCC9D2800DCFD17 /* FormTextItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormTextItemCell.swift; sourceTree = "<group>"; };
+		F61510761DCCA2DE00DCFD17 /* FirstResponder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstResponder.swift; sourceTree = "<group>"; };
 		F6151BB21D3538CD000551B6 /* SettingsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = SettingsPresenter.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		F61679F71D5070F20002A1A4 /* NavigationControllerModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationControllerModule.swift; sourceTree = "<group>"; };
 		F61679FB1D50725B0002A1A4 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
@@ -267,7 +272,6 @@
 		F6BB8F071DCC9336005EAFB0 /* FormValueItemData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormValueItemData.swift; sourceTree = "<group>"; };
 		F6BB8F091DCC938A005EAFB0 /* FormValueItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormValueItemCell.swift; sourceTree = "<group>"; };
 		F6C6BD6E1D3645BD00CF3B8B /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = SettingsViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		F6C6BD701D364AFC00CF3B8B /* FormDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormDataSource.swift; sourceTree = "<group>"; };
 		F6C74CDB1DC8E204002FA530 /* MainModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainModule.swift; sourceTree = "<group>"; };
 		F6C74CDD1DC9D972002FA530 /* Wireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wireframe.swift; sourceTree = "<group>"; };
 		F6CE94981DABF0B70044356A /* RecentConversationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentConversationsViewController.swift; sourceTree = "<group>"; };
@@ -579,7 +583,6 @@
 				F6FEF6011DCBA693008D4369 /* Form.swift */,
 				F6FEF6031DCBA836008D4369 /* Data */,
 				F6FEF6041DCBA854008D4369 /* Cell */,
-				F6FEF6051DCBA8C9008D4369 /* Data Source */,
 			);
 			name = Forms;
 			sourceTree = "<group>";
@@ -612,6 +615,7 @@
 				F6826A1C1D0F38BD007A3934 /* UITableView+CellAction.m */,
 				F6D807E21D1826EB002953AB /* NSURL+Intercambio.h */,
 				F6D807E31D1826EB002953AB /* NSURL+Intercambio.m */,
+				F61510761DCCA2DE00DCFD17 /* FirstResponder.swift */,
 			);
 			name = Additions;
 			sourceTree = "<group>";
@@ -996,6 +1000,7 @@
 			isa = PBXGroup;
 			children = (
 				F6BB8F031DCC792E005EAFB0 /* FormSectionData.swift */,
+				F61510721DCC9CDD00DCFD17 /* FormTextItemData.swift */,
 				F6BA3EE81D36438200C12E3D /* FormURLItemData.swift */,
 				F6BB8F071DCC9336005EAFB0 /* FormValueItemData.swift */,
 			);
@@ -1005,18 +1010,11 @@
 		F6FEF6041DCBA854008D4369 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				F61510741DCC9D2800DCFD17 /* FormTextItemCell.swift */,
 				F6FEF6061DCBA919008D4369 /* FormURLItemCell.swift */,
 				F6BB8F091DCC938A005EAFB0 /* FormValueItemCell.swift */,
 			);
 			name = Cell;
-			sourceTree = "<group>";
-		};
-		F6FEF6051DCBA8C9008D4369 /* Data Source */ = {
-			isa = PBXGroup;
-			children = (
-				F6C6BD701D364AFC00CF3B8B /* FormDataSource.swift */,
-			);
-			name = "Data Source";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1231,7 +1229,6 @@
 				F63A66711D26647700FCC82E /* AccountModule.swift in Sources */,
 				F63404271C65F78300464F3E /* ICEmptyViewController.m in Sources */,
 				F6CE94A01DABF10A0044356A /* RecentConversationsView.swift in Sources */,
-				F6C6BD711D364AFC00CF3B8B /* FormDataSource.swift in Sources */,
 				F6052AC61DC8BB1A005D79EA /* ContentView.swift in Sources */,
 				F61679F81D5070F20002A1A4 /* NavigationControllerModule.swift in Sources */,
 				F6151BB31D3538CD000551B6 /* SettingsPresenter.swift in Sources */,
@@ -1252,6 +1249,7 @@
 				F6BB8F081DCC9336005EAFB0 /* FormValueItemData.swift in Sources */,
 				F652374A1D4FF17B00285713 /* SettingsView.swift in Sources */,
 				F6B9E33C1D8C745700510F01 /* RecentConversationsModule.swift in Sources */,
+				F61510731DCC9CDD00DCFD17 /* FormTextItemData.swift in Sources */,
 				F6052AA81DC64506005D79EA /* OptionPicker.swift in Sources */,
 				F6FEF6021DCBA693008D4369 /* Form.swift in Sources */,
 				F678B6EF1DBE4435004EF7EE /* ConversationViewLayoutParagraphFragment.swift in Sources */,
@@ -1271,12 +1269,14 @@
 				F6052AC41DC8A2D6005D79EA /* ContactPickerAddress.swift in Sources */,
 				F6C74CDE1DC9D972002FA530 /* Wireframe.swift in Sources */,
 				F646CA621DB6410300C239B1 /* AvatarView.swift in Sources */,
+				F61510751DCC9D2800DCFD17 /* FormTextItemCell.swift in Sources */,
 				F678B6E91DBE2A7A004EF7EE /* ConversationViewLayoutFragment.swift in Sources */,
 				F652374C1D4FF1BC00285713 /* SettingsViewEventHandler.swift in Sources */,
 				F635166E1D33A52A007822F3 /* AccountView.swift in Sources */,
 				F605909E1D2F97E70071FC63 /* AccountOutput.swift in Sources */,
 				F619BDC51C4D071700F87F50 /* AppDelegate.m in Sources */,
 				F6826A1D1D0F38BD007A3934 /* UITableView+CellAction.m in Sources */,
+				F61510771DCCA2DE00DCFD17 /* FirstResponder.swift in Sources */,
 				F646CA5D1DB6264500C239B1 /* RecentConversationsCell.swift in Sources */,
 				F6B567001D507697004BCDB0 /* NavigationControllerStatusViewModel.swift in Sources */,
 				F6D807E41D1826EB002953AB /* NSURL+Intercambio.m in Sources */,

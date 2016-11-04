@@ -20,6 +20,11 @@ public protocol FormValueItem : FormItem {
     var hasDetails: Bool { get }
 }
 
+public protocol FormTextItem : FormItem {
+    var placeholder: String? { get }
+    var text: String? { get }
+}
+
 public protocol FormURLItem : FormItem {
     var placeholder: String? { get }
     var url: URL? { get }

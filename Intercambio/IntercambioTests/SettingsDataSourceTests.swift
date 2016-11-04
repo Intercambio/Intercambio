@@ -62,7 +62,7 @@ class SettingsDataSourceTests: XCTestCase {
             try dataSource.reload()
             
             XCTAssertEqual(dataSource.numberOfSections(), 2)
-            XCTAssertEqual(dataSource.numberOfItems(inSection: 0), 1)
+            XCTAssertEqual(dataSource.numberOfItems(inSection: 0), 2)
             
             if let item = dataSource.item(at: IndexPath(item: 0, section: 0)) as? FormValueItem {
                 XCTAssertEqual(item.title, jid.stringValue)

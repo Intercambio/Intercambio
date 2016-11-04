@@ -59,12 +59,14 @@ class SettingsDataSource: NSObject, FTDataSource {
     // Options
     
     var supportedKeys: [String] {
-        return [WebsocketStreamURLKey]
+        return [ClientOptionsResourceKey, WebsocketStreamURLKey]
     }
     
     private func indexPath(for option: String) -> IndexPath? {
         if option == SettingsDataSourceAccountKey {
             return IndexPath(item: 0, section: 0)
+        } else if option == ClientOptionsResourceKey {
+            return IndexPath(item: 1, section: 0)
         } else if option == WebsocketStreamURLKey {
             return IndexPath(item: 0, section: 1)
         } else {
@@ -77,18 +79,15 @@ class SettingsDataSource: NSObject, FTDataSource {
 
         case 0:
             switch indexPath.item {
-            case 0:
-                return SettingsDataSourceAccountKey
-            default:
-                return nil
+            case 0: return SettingsDataSourceAccountKey
+            case 1: return ClientOptionsResourceKey
+            default: return nil
             }
             
         case 1:
             switch indexPath.item {
-            case 0:
-                return WebsocketStreamURLKey
-            default:
-                return nil
+            case 0: return WebsocketStreamURLKey
+            default: return nil
             }
         default:
             return nil
@@ -144,7 +143,7 @@ class SettingsDataSource: NSObject, FTDataSource {
     
     func numberOfItems(inSection section: UInt) -> UInt {
         switch section {
-        case 0: return 1
+        case 0: return 2
         case 1: return 1
         default: return 0
         }
@@ -174,6 +173,11 @@ class SettingsDataSource: NSObject, FTDataSource {
                 let item = FormValueItemData(identifier: key)
                 item.title = accountJID.stringValue
                 item.hasDetails = false
+                return item
+            } else if key == ClientOptionsResourceKey {
+                let item = FormTextItemData(identifier: key)
+                item.placeholder = "Resource Name"
+                item.text = value(forKey: key) as? String
                 return item
             } else if key == WebsocketStreamURLKey {
                 let item = FormURLItemData(identifier: key)
