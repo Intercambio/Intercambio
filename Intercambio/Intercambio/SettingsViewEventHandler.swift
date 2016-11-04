@@ -9,7 +9,7 @@
 import Foundation
 
 protocol SettingsViewEventHandler : class {
-    func loadSettings()
-    func save() throws
+    func setValue(_ value: Any?, forItemAt indexPath: IndexPath) -> Void
+    func save()
     func cancel()
 }

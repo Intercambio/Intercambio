@@ -8,43 +8,41 @@
 
 import Foundation
 import Fountain
+import IntercambioCore
+import CoreXMPP
 
 protocol SettingsPresenterEventHandler {
     func settingsDidCancel(_ settingsPresenter: SettingsPresenter) -> Void
     func settingsDidSave(_ settingsPresenter: SettingsPresenter) -> Void
 }
 
-class SettingsPresenter : SettingsOutput, SettingsViewEventHandler {
-    
-    weak var userInterface: SettingsView? {
-        didSet {
-            updateIdentifier()
-        }
-    }
-    var interactor: SettingsProvider? {
-        didSet {
-            updateIdentifier()
-        }
-    }
+class SettingsPresenter : SettingsViewEventHandler {
     
     var eventHandler: SettingsPresenterEventHandler?
-    
-    private var dataSource: FTDataSource?
-    
-    func loadSettings() {
-        if let interactor = self.interactor {
-            dataSource = dataSource(settings: interactor.settings)
-        } else {
-            dataSource = nil
+
+    weak var view: SettingsView? {
+        didSet {
+            view?.dataSource = dataSource
         }
-        userInterface?.dataSource = dataSource
+    }
+
+    private let dataSource: SettingsDataSource
+
+    init(accountJID: JID, keyChain: KeyChain) {
+        dataSource = SettingsDataSource(accountJID: accountJID, keyChain: keyChain)
+        do {
+            try dataSource.reload()
+        } catch {
+            
+        }
     }
     
-    func save() throws {
-        if let dataSource = self.dataSource {
-            let settings = toSettings(dataSource: dataSource)
-            try interactor?.update(settings: settings)
+    func save() {
+        do {
+            try dataSource.save()
             eventHandler?.settingsDidSave(self)
+        } catch {
+            
         }
     }
     
@@ -52,47 +50,7 @@ class SettingsPresenter : SettingsOutput, SettingsViewEventHandler {
         eventHandler?.settingsDidCancel(self)
     }
     
-    private func dataSource(settings: Settings) -> FTDataSource {
-        
-        let section = FormSectionDataSource()
-        section.title = "Websocket URL"
-        section.instructions = "Websockt URL that should be used."
-        
-        let item = FormItem<URL>(identifier: "websocketURL")
-        item.label = "Automatic Discovery"
-        item.value = settings.websocketURL
-        section.add(item)
-        
-        let dataSource = FormDataSource(dataSources: [section])
-        
-        return dataSource!
-    }
-    
-    private func toSettings(dataSource: FTDataSource) -> Settings {
-        
-        var settings = Settings()
-        
-        let numberOfSection = dataSource.numberOfSections()
-        for section in 0..<numberOfSection {
-            
-            let numberOfItems = dataSource.numberOfItems(inSection: section)
-            for item in 0..<numberOfItems {
-                
-                let indexPath = IndexPath(indexes: [Int(section), Int(item)])
-                let item = dataSource.item(at: indexPath)
-                
-                if let formItem = item as? FormItem<URL> {
-                    if formItem.identifier == "websocketURL" {
-                        settings.websocketURL = formItem.value
-                    }
-                }
-            }
-        }
-        
-        return settings
-    }
-    
-    private func updateIdentifier() {
-        userInterface?.identifier = interactor?.identifier
+    func setValue(_ value: Any?, forItemAt indexPath: IndexPath) {
+        dataSource.setValue(value, forItemAt: indexPath)
     }
 }

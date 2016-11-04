@@ -11,5 +11,4 @@ import Fountain
 
 protocol SettingsView : class {
     var dataSource: FTDataSource? { get set }
-    var identifier: String? { get set }
 }

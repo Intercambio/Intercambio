@@ -1,5 +1,5 @@
 //
-//  FormItem.swift
+//  FormURLItemData.swift
 //  Intercambio
 //
 //  Created by Tobias Kraentzer on 13.07.16.
@@ -8,10 +8,13 @@
 
 import Foundation
 
-public class FormItem<T> {
+public class FormURLItemData : FormURLItem {
+    
+    public var selectable: Bool = false
+    public var placeholder: String?
+    public var url: URL?
+    
     public let identifier: String
-    public var label: String?
-    public var value: T?
     init(identifier: String) {
         self.identifier = identifier
     }
