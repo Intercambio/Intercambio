@@ -30,6 +30,14 @@ public protocol FormURLItem : FormItem {
     var url: URL? { get }
 }
 
+public protocol FormButtonItem : FormItem {
+    var title: String? { get }
+    var action: Selector { get }
+    var enabled: Bool { get }
+    var destructive: Bool { get }
+    var destructionMessage: String? { get }
+}
+
 public protocol FormSection {
     var title: String? { get }
     var instructions: String? { get }

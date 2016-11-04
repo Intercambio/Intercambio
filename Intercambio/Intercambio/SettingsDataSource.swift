@@ -12,11 +12,17 @@ import IntercambioCore
 import CoreXMPP
 
 let SettingsDataSourceAccountKey: String = "SettingsDataSourceAccountKey"
+let SettingsDataSourceRemoveActionKey: String = "SettingsDataSourceRemoveActionKey"
+
+protocol SettingsDataSourceDelegate : class {
+    func settingsDataSource(_ dataSource: SettingsDataSource, didRemoveAccount jid: JID) -> Void
+}
 
 class SettingsDataSource: NSObject, FTDataSource {
 
     let accountJID: JID
     let keyChain: KeyChain
+    weak var delegate: SettingsDataSourceDelegate?
     
     private let proxy: FTObserverProxy
     
@@ -69,6 +75,8 @@ class SettingsDataSource: NSObject, FTDataSource {
             return IndexPath(item: 1, section: 0)
         } else if option == WebsocketStreamURLKey {
             return IndexPath(item: 0, section: 1)
+        } else if option == SettingsDataSourceRemoveActionKey {
+            return IndexPath(item: 0, section: 2)
         } else {
             return nil
         }
@@ -89,6 +97,13 @@ class SettingsDataSource: NSObject, FTDataSource {
             case 0: return WebsocketStreamURLKey
             default: return nil
             }
+            
+        case 2:
+            switch indexPath.item {
+            case 0: return SettingsDataSourceRemoveActionKey
+            default: return nil
+            }
+            
         default:
             return nil
         }
@@ -131,11 +146,32 @@ class SettingsDataSource: NSObject, FTDataSource {
         }
     }
     
+    // Action
+    
+    func performAction(_ action: Selector, forItemAt indexPath: IndexPath) {
+        if action == #selector(removeAccount) {
+            do {
+                try removeAccount()
+            } catch {
+                
+            }
+        }
+    }
+    
+    // Remove
+    
+    func removeAccount() throws {
+        if let item = self.item {
+            try keyChain.remove(item)
+            delegate?.settingsDataSource(self, didRemoveAccount: item.jid)
+        }
+    }
+    
     // FTDataSource
     
     func numberOfSections() -> UInt {
         if item != nil {
-            return 2
+            return 3
         } else {
             return 0
         }
@@ -145,6 +181,7 @@ class SettingsDataSource: NSObject, FTDataSource {
         switch section {
         case 0: return 2
         case 1: return 1
+        case 2: return 1
         default: return 0
         }
     }
@@ -160,6 +197,12 @@ class SettingsDataSource: NSObject, FTDataSource {
             let item = FormSectionData()
             item.title = "Websocket URL"
             item.instructions = "Websocket URL that should be used."
+            return item
+            
+        case 2:
+            let item = FormSectionData()
+            item.title = nil
+            item.instructions = "Removing the account will also delete all messages from this device. This will not delete the account on the server."
             return item
             
         default:
@@ -183,6 +226,13 @@ class SettingsDataSource: NSObject, FTDataSource {
                 let item = FormURLItemData(identifier: key)
                 item.placeholder = "Automatic Discovery"
                 item.url = value(forKey: key) as? URL
+                return item
+            } else if key == SettingsDataSourceRemoveActionKey {
+                let item = FormButtonItemData(identifier: key, action: #selector(removeAccount))
+                item.title = "Remove Account"
+                item.enabled = true
+                item.destructive = true
+                item.destructionMessage = "Are you sure, that you want to remove '\(accountJID.stringValue)' from this device?"
                 return item
             } else {
                 return nil

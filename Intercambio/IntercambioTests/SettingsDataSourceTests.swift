@@ -41,6 +41,7 @@ class SettingsDataSourceTests: XCTestCase {
         let dataSource = SettingsDataSource(accountJID: jid, keyChain: keyChain)
         
         XCTAssertThrowsError(try dataSource.reload())
+        XCTAssertEqual(dataSource.numberOfSections(), 0)
     }
     
     func testExistingAccount() {
@@ -49,6 +50,7 @@ class SettingsDataSourceTests: XCTestCase {
         
         do {
             try dataSource.reload()
+            XCTAssertEqual(dataSource.numberOfSections(), 3)
         } catch {
             XCTFail(error.localizedDescription)
         }
@@ -61,7 +63,6 @@ class SettingsDataSourceTests: XCTestCase {
         do {
             try dataSource.reload()
             
-            XCTAssertEqual(dataSource.numberOfSections(), 2)
             XCTAssertEqual(dataSource.numberOfItems(inSection: 0), 2)
             
             if let item = dataSource.item(at: IndexPath(item: 0, section: 0)) as? FormValueItem {
@@ -82,7 +83,6 @@ class SettingsDataSourceTests: XCTestCase {
         do {
             try dataSource.reload()
             
-            XCTAssertEqual(dataSource.numberOfSections(), 2)
             XCTAssertEqual(dataSource.numberOfItems(inSection: 1), 1)
             
             if let item = dataSource.item(at: IndexPath(item: 0, section: 1)) as? FormURLItem {
@@ -103,7 +103,6 @@ class SettingsDataSourceTests: XCTestCase {
         do {
             try dataSource.reload()
             
-            XCTAssertEqual(dataSource.numberOfSections(), 2)
             XCTAssertEqual(dataSource.numberOfItems(inSection: 1), 1)
             
             dataSource.setValue(URL(string: "https://ws.example.com/test"), forItemAt: IndexPath(item: 0, section: 1))
@@ -113,6 +112,23 @@ class SettingsDataSourceTests: XCTestCase {
             } else {
                 XCTFail("Expecting the item to be of type 'FormURLItem'.")
             }
+            
+        } catch {
+            XCTFail(error.localizedDescription)
+        }
+    }
+    
+    func testRemoveAccount() {
+        let jid = JID("juliet@example.com")!
+        let dataSource = SettingsDataSource(accountJID: jid, keyChain: keyChain)
+        
+        do {
+            try dataSource.reload()
+            
+            XCTAssertEqual(dataSource.numberOfItems(inSection: 2), 1)
+            
+            dataSource.performAction(#selector(removeAccount), forItemAt: IndexPath(item: 0, section: 2))
+            XCTAssertThrowsError(try keyChain.item(jid: jid))
             
         } catch {
             XCTFail(error.localizedDescription)
@@ -137,4 +153,6 @@ class SettingsDataSourceTests: XCTestCase {
             XCTFail(error.localizedDescription)
         }
     }
+    
+    func removeAccount() throws {} // Just to have the selector
 }

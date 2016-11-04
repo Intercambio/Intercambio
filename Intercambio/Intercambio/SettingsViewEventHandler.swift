@@ -10,6 +10,7 @@ import Foundation
 
 protocol SettingsViewEventHandler : class {
     func setValue(_ value: Any?, forItemAt indexPath: IndexPath) -> Void
+    func performAction(_ action: Selector, forItemAt indexPath: IndexPath) -> Void
     func save()
     func cancel()
 }

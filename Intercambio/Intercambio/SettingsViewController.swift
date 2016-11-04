@@ -71,6 +71,16 @@ public class SettingsViewController: UITableViewController, UITableViewDelegateC
                 cell.item = formItem
             }
         }
+        
+        tableView.register(FormButtonItemCell.self, forCellReuseIdentifier: "FormButtonItemCell")
+        tableViewAdapter?.forRowsMatching(FormButtonItemCell.predicate,
+                                          useCellWithReuseIdentifier: "FormButtonItemCell")
+        { (view, item, indexPath, dataSource) in
+            if  let cell = view as? FormButtonItemCell,
+                let formItem = item as? FormButtonItem {
+                cell.item = formItem
+            }
+        }
 
         tableViewAdapter?.delegate = self
         tableViewAdapter?.dataSource = dataSource
@@ -94,6 +104,10 @@ public class SettingsViewController: UITableViewController, UITableViewDelegateC
     
     public func tableView(_ tableView: UITableView, setValue value: Any?, forRowAt indexPath: IndexPath) {
         presenter?.setValue(value, forItemAt: indexPath)
+    }
+    
+    public override func tableView(_ tableView: UITableView, performAction action: Selector, forRowAt indexPath: IndexPath, withSender sender: Any?) {
+        presenter?.performAction(action, forItemAt: indexPath)
     }
     
     func cancel(sender: AnyObject) {

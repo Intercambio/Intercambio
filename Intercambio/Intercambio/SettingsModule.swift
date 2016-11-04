@@ -10,7 +10,7 @@ import UIKit
 import IntercambioCore
 
 public class SettingsModule : NSObject, SettingsViewControllerDelegate {
-    
+
     public let service: CommunicationService
     
     public init(service: CommunicationService) {
@@ -43,11 +43,16 @@ public class SettingsModule : NSObject, SettingsViewControllerDelegate {
     public func settingsDidCancel(_ settingsViewController: SettingsViewController) {
         settingsViewController.dismiss(animated: true, completion: nil)
     }
+    
+    public func settingsDidRemoveAccount(_ settingsViewController: SettingsViewController) {
+        settingsViewController.dismiss(animated: true, completion: nil)
+    }
 }
 
 @objc public protocol SettingsViewControllerDelegate : class {
     func settingsDidCancel(_ settingsViewController: SettingsViewController) -> Void
     func settingsDidSave(_ settingsViewController: SettingsViewController) -> Void
+    func settingsDidRemoveAccount(_ settingsViewController: SettingsViewController) -> Void
 }
 
 public extension SettingsViewController {
@@ -67,6 +72,13 @@ public extension SettingsViewController {
             if let delegate = self.delegate,
                 let viewController = self.viewController {
                 delegate.settingsDidCancel(viewController)
+            }
+        }
+        
+        func settingsDidRemove(_ settingsPresenter: SettingsPresenter) {
+            if let delegate = self.delegate,
+                let viewController = self.viewController {
+                delegate.settingsDidRemoveAccount(viewController)
             }
         }
     }
@@ -108,6 +120,17 @@ public extension SettingsViewController {
         if let presenter = self.presenter as? SettingsPresenter,
             let proxy = presenter.eventHandler as? DelegateProxy{
             return proxy
+        }
+        return nil
+    }
+    
+    var account: URL? {
+        if let presenter = self.presenter as? SettingsPresenter {
+            var components = URLComponents()
+            components.scheme = "xmpp"
+            components.host = presenter.accountJID.host
+            components.user = presenter.accountJID.user
+            return components.url
         }
         return nil
     }
