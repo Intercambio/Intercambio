@@ -9,6 +9,4 @@
 import Foundation
 
 protocol AccountViewEventHandler : class {
-    func connectAccount()
-    func showAccountSettings()
 }

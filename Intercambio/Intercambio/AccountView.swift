@@ -9,12 +9,4 @@
 import Foundation
 
 protocol AccountView : class {
-    
-    var accountLabel: String? { get set}
-    var stateLabel: String? { get set}
-    var nextConnectionLabel: String? { get set }
-    var errorMessageLabel : String? { get set }
-    
-    var connectionButtonEnabled: Bool { get set }
-    var connectionButtonHidden: Bool { get set }
 }

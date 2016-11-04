@@ -10,7 +10,6 @@ import UIKit
 import IntercambioCore
 
 @objc public protocol AccountRouter : class {
-    func presentSettingsUserInterface(for accountURI: URL)
 }
 
 public class AccountModule : NSObject {
@@ -22,44 +21,33 @@ public class AccountModule : NSObject {
         self.service = service
     }
     
-    public func makeAccountViewController(uri: URL) -> AccountViewController? {
-        if let controller = AccountViewController(service: service, account: uri) {
-            controller.router = router
-            return controller
-        } else {
-            return nil
-        }
+    public var accountProfileModule: AccountProfileModule?
+    
+    public func makeAccountViewController(uri: URL) -> AccountViewController {
+        let controller = AccountViewController()
+        controller.accountProfileViewController = accountProfileModule?.makeAccountProfileViewController(uri: uri)
+        return controller
     }
 }
 
 public extension AccountViewController {
     public convenience init?(service: CommunicationService, account uri: URL) {
-        if let host = uri.host, let jid = JID(user: uri.user, host: host, resource: nil) {
-            self.init()
-            
-            let interactor = AccountInteractor(accountJID: jid, keyChain: service.keyChain, accountManager: service.accountManager)
-            let presenter = AccountPresenter()
-            
-            // strong references (view controller -> presenter -> interactor)
-            self.eventHandler = presenter
-            presenter.interactor = interactor
-            
-            // weak references
-            interactor.output = presenter
-            presenter.view = self
-        } else {
-            return nil
-        }
+        self.init()
+
+        let presenter = AccountPresenter()
+        presenter.view = self
+        self.presenter = presenter
+
     }
     
     public var router: AccountRouter? {
         set {
-            if let presenter = self.eventHandler as? AccountPresenter {
+            if let presenter = self.presenter as? AccountPresenter {
                 presenter.router = newValue
             }
         }
         get {
-            if let presenter = self.eventHandler as? AccountPresenter {
+            if let presenter = self.presenter as? AccountPresenter {
                 return presenter.router
             } else {
                 return nil

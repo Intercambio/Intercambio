@@ -9,7 +9,7 @@
 import UIKit
 import  IntercambioCore
 
-public class Wireframe : NSObject, NavigationControllerRouter, RecentConversationsRouter, AccountListRouter, AccountRouter {
+public class Wireframe : NSObject, NavigationControllerRouter, RecentConversationsRouter, AccountListRouter, AccountRouter, AccountProfileRouter {
     
     public let window: UIWindow
     
@@ -23,6 +23,7 @@ public class Wireframe : NSObject, NavigationControllerRouter, RecentConversatio
     let settingsModule: SettingsModule
     let signupModule: SignupModule
     let authenticationModule: AuthenticationModule
+    let accountProfileModule: AccountProfileModule
     
     public required init(window: UIWindow, service: CommunicationService) {
         self.window = window
@@ -37,7 +38,10 @@ public class Wireframe : NSObject, NavigationControllerRouter, RecentConversatio
         settingsModule = SettingsModule(service: service)
         signupModule = SignupModule(service: service)
         authenticationModule = AuthenticationModule()
+        accountProfileModule = AccountProfileModule(service: service)
 
+        accountModule.accountProfileModule = accountProfileModule
+        
         conversationModule.contactPickerModule = contactPickerModule
         
         mainModule.navigationControllerModule = navigationControllerModule
@@ -52,6 +56,7 @@ public class Wireframe : NSObject, NavigationControllerRouter, RecentConversatio
         recentConversationsModule.router = self
         accountListModule.router = self
         accountModule.router = self
+        accountProfileModule.router = self
     }
     
     public func presentLaunchScreen() {

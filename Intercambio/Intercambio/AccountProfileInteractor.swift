@@ -1,8 +1,8 @@
 //
-//  AccountInteractor.swift
+//  AccountProfileInteractor.swift
 //  Intercambio
 //
-//  Created by Tobias Kraentzer on 01.07.16.
+//  Created by Tobias Kraentzer on 04.11.16.
 //  Copyright © 2016 Tobias Kräntzer. All rights reserved.
 //
 
@@ -10,15 +10,7 @@ import Foundation
 import IntercambioCore
 import CoreXMPP
 
-class AccountInteractor : AccountProvider {
-
-    weak var output: AccountOutput? {
-        didSet {
-            if let account = self.account {
-                output?.present(account: account)
-            }
-        }
-    }
+class AccountProfileInteractor : AccountProfileProvider {
     
     private let accountJID: JID
     private let keyChain: KeyChain
@@ -35,38 +27,26 @@ class AccountInteractor : AccountProvider {
         unregisterNotificationObservers()
     }
     
-    var account: AccountPresentationModel? {
+    // AccountProfileProvider
+
+    var accountURI: URL? {
+        var components = URLComponents()
+        components.scheme = "xmpp"
+        components.host = accountJID.host
+        components.user = accountJID.user
+        return components.url
+    }
+    
+    var account: AccountProfileModel? {
         get {
             do {
                 let item = try keyChain.item(jid: accountJID)
                 let info = accountManager.info(for: accountJID)
-                return AccountPresentationModelImpl(keyChainItem: item, info:  info)
+                return Model(keyChainItem: item, info: info)
             } catch {
                 return nil
             }
         }
-    }
-    
-    func enable() throws {
-        var item = try keyChain.item(jid: accountJID)
-        if item.invisible == true {
-            item = KeyChainItem(jid: item.jid, invisible: false, options: item.options)
-            try keyChain.update(item)
-        }
-    }
-    
-    func disable() throws {
-        var item = try keyChain.item(jid: accountJID)
-        if item.invisible == false {
-            item = KeyChainItem(jid: item.jid, invisible: true, options: item.options)
-            try keyChain.update(item)
-        }
-    }
-    
-    func update(options: Dictionary<String, AnyObject>) throws {
-        var item = try keyChain.item(jid : accountJID)
-        item = KeyChainItem(jid: item.jid, invisible: item.invisible, options: options)
-        try keyChain.update(item)
     }
     
     func connect() throws {
@@ -116,7 +96,7 @@ class AccountInteractor : AccountProvider {
     
     private func forwardKeyChainNotification(_ notification: Notification) {
         if let userInfo = notification.userInfo,
-        let item = userInfo[KeyChainItemKey] as? KeyChainItem {
+            let item = userInfo[KeyChainItemKey] as? KeyChainItem {
             if item.jid == accountJID {
                 self.handleAccountUpdate()
             }
@@ -125,20 +105,58 @@ class AccountInteractor : AccountProvider {
     
     private func forwardAccountManagerDidChangeAccountNotification(_ notification: Notification) {
         if let userInfo = notification.userInfo,
-        let jid = userInfo[AccountManagerAccountJIDKey] as? JID {
+            let jid = userInfo[AccountManagerAccountJIDKey] as? JID {
             if jid == accountJID {
                 self.handleAccountUpdate()
             }
         }
     }
-
+    
     private func handleAccountUpdate() {
-        
         let center = NotificationCenter.default
-        center.post(name: AccountProviderDidUpdateAccount, object: self)
+        center.post(name: AccountProfileProviderDidUpdateAccount, object: self)
+    }
+}
+
+extension AccountProfileInteractor {
+    class Model: AccountProfileModel {
         
-        if let account = self.account {
-            self.output?.present(account: account)
+        let keyChainItem: KeyChainItem
+        let info: AccountInfo?
+        
+        convenience init(keyChainItem: KeyChainItem) {
+            self.init(keyChainItem: keyChainItem, info: nil)
+        }
+        
+        init(keyChainItem: KeyChainItem, info: AccountInfo?) {
+            self.keyChainItem = keyChainItem
+            self.info = info
+        }
+        
+        var enabled: Bool {
+            get { return keyChainItem.invisible == false }
+        }
+        
+        var state: AccountProfilePresentationModelConnectionState {
+            get {
+                if let i = info {
+                    return i.connectionState
+                } else {
+                    return .disconnected
+                }
+            }
+        }
+        
+        var name: String? {
+            get { return keyChainItem.identifier }
+        }
+        
+        var error: Error? {
+            get { return info?.recentError }
+        }
+        
+        var nextConnectionAttempt: Date? {
+            get { return info?.nextConnectionAttempt }
         }
     }
 }
