@@ -9,18 +9,14 @@
 import UIKit
 import Fountain
 
-public class SettingsViewController: UITableViewController, SettingsView {
+public class SettingsViewController: UITableViewController, UITableViewDelegateCellAction, SettingsView {
     
-    var eventHandler: SettingsViewEventHandler?
-    
-    var identifier: String? {
-        didSet {
-            navigationItem.prompt = identifier
-        }
-    }
+    var presenter: SettingsViewEventHandler?
     
     var dataSource: FTDataSource? {
-        didSet { tableViewAdapter?.dataSource = dataSource }
+        didSet {
+            tableViewAdapter?.dataSource = dataSource
+        }
     }
     
     public init() {
@@ -37,31 +33,47 @@ public class SettingsViewController: UITableViewController, SettingsView {
         super.viewDidLoad()
 
         navigationItem.title = NSLocalizedString("Settings", comment: "")
-        navigationItem.prompt = identifier
-
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancel(sender:)))
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(save(sender:)))
         
         tableView.allowsSelection = false
-        tableView.register(UINib(nibName: "FormItemURLCell", bundle: nil), forCellReuseIdentifier: "FormItemURLCell")
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 45
         
         tableViewAdapter = FTTableViewAdapter(tableView: tableView)
         
-        tableViewAdapter?.forRowsMatching(nil, useCellWithReuseIdentifier: "FormItemURLCell") {
-            (view, item, indexPath, dataSource) in
-            if  let cell = view as? FormItemURLCell,
-                let formItem = item as? FormItem<URL> {
-                cell.formItem = formItem
+        tableView.register(FormValueItemCell.self, forCellReuseIdentifier: "FormValueItemCell")
+        tableViewAdapter?.forRowsMatching(FormValueItemCell.predicate,
+                                          useCellWithReuseIdentifier: "FormValueItemCell")
+        { (view, item, indexPath, dataSource) in
+            if  let cell = view as? FormValueItemCell,
+                let formItem = item as? FormValueItem {
+                cell.item = formItem
             }
         }
         
+        tableView.register(FormTextItemCell.self, forCellReuseIdentifier: "FormTextItemCell")
+        tableViewAdapter?.forRowsMatching(FormTextItemCell.predicate,
+                                          useCellWithReuseIdentifier: "FormTextItemCell")
+        { (view, item, indexPath, dataSource) in
+            if  let cell = view as? FormTextItemCell,
+                let formItem = item as? FormTextItem {
+                cell.item = formItem
+            }
+        }
+        
+        tableView.register(FormURLItemCell.self, forCellReuseIdentifier: "FormURLItemCell")
+        tableViewAdapter?.forRowsMatching(FormURLItemCell.predicate,
+                                          useCellWithReuseIdentifier: "FormURLItemCell")
+        { (view, item, indexPath, dataSource) in
+            if  let cell = view as? FormURLItemCell,
+                let formItem = item as? FormURLItem {
+                cell.item = formItem
+            }
+        }
+
         tableViewAdapter?.delegate = self
         tableViewAdapter?.dataSource = dataSource
-    }
-    
-    public override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        eventHandler?.loadSettings()
     }
     
     public override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -80,15 +92,21 @@ public class SettingsViewController: UITableViewController, SettingsView {
         }
     }
     
+    public func tableView(_ tableView: UITableView, setValue value: Any?, forRowAt indexPath: IndexPath) {
+        presenter?.setValue(value, forItemAt: indexPath)
+    }
+    
     func cancel(sender: AnyObject) {
-        eventHandler?.cancel()
+        if let responder = view.firstResponder() {
+            responder.resignFirstResponder()
+        }
+        presenter?.cancel()
     }
     
     func save(sender: AnyObject) {
-        do {
-            try eventHandler?.save()
-        } catch {
-            
+        if let responder = view.firstResponder() {
+            responder.resignFirstResponder()
         }
+        presenter?.save()
     }
 }

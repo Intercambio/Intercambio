@@ -76,16 +76,9 @@ public extension SettingsViewController {
             
             self.init()
             
-            let interactor = SettingsInteractor(accountJID: jid, keyChain: service.keyChain)
-            let presenter = SettingsPresenter()
-            
-            // strong references (view controller -> presenter -> interactor)
-            eventHandler = presenter
-            presenter.interactor = interactor
-            
-            // weak references
-            interactor.presenter = presenter
-            presenter.userInterface = self
+            let presenter = SettingsPresenter(accountJID: jid, keyChain: service.keyChain)
+            presenter.view = self
+            self.presenter = presenter
             
             let proxy = DelegateProxy()
             proxy.viewController = self
@@ -112,7 +105,7 @@ public extension SettingsViewController {
     }
     
     private var delegateProxy: DelegateProxy? {
-        if let presenter = self.eventHandler as? SettingsPresenter,
+        if let presenter = self.presenter as? SettingsPresenter,
             let proxy = presenter.eventHandler as? DelegateProxy{
             return proxy
         }
