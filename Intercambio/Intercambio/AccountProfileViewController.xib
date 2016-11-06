@@ -23,6 +23,7 @@
                 <outlet property="connectionStateLabel" destination="89P-mr-XGj" id="ln4-mR-eP9"/>
                 <outlet property="errorMessageLabel" destination="PBv-qa-36D" id="gDR-fO-uFF"/>
                 <outlet property="nextReconnectionLabel" destination="eeR-70-tkI" id="eUV-Kw-bxA"/>
+                <outlet property="profileContainerView" destination="xTA-i9-ykq" id="9MY-0v-1Rh"/>
                 <outlet property="reconnectButton" destination="1c7-fI-UUS" id="iu8-Cu-7a6"/>
                 <outlet property="reconnectContainerView" destination="LSA-mf-luK" id="ibt-c7-kqk"/>
                 <outlet property="settingsButton" destination="gAM-ly-VN7" id="hiX-gK-1Lz"/>
@@ -80,13 +81,13 @@
                             <constraints>
                                 <constraint firstItem="gAM-ly-VN7" firstAttribute="leading" secondItem="BGl-rG-eOu" secondAttribute="trailing" id="40e-Ck-mEC"/>
                                 <constraint firstItem="8ND-Lv-1T3" firstAttribute="centerY" secondItem="xTA-i9-ykq" secondAttribute="centerY" id="6lc-Mk-VBm"/>
-                                <constraint firstItem="8ND-Lv-1T3" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="xTA-i9-ykq" secondAttribute="leadingMargin" id="E0x-V1-wUo"/>
+                                <constraint firstItem="8ND-Lv-1T3" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="xTA-i9-ykq" secondAttribute="leadingMargin" priority="999" id="E0x-V1-wUo"/>
                                 <constraint firstItem="BGl-rG-eOu" firstAttribute="centerY" secondItem="gAM-ly-VN7" secondAttribute="centerY" id="JoX-B8-bXT"/>
                                 <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="gAM-ly-VN7" secondAttribute="trailing" id="KJL-cg-LZt"/>
                                 <constraint firstItem="8ND-Lv-1T3" firstAttribute="centerX" secondItem="xTA-i9-ykq" secondAttribute="centerX" id="KyY-rd-GIc"/>
-                                <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="8ND-Lv-1T3" secondAttribute="bottom" constant="16" id="d5l-Am-vv4"/>
-                                <constraint firstItem="8ND-Lv-1T3" firstAttribute="top" relation="greaterThanOrEqual" secondItem="xTA-i9-ykq" secondAttribute="topMargin" constant="16" id="l4P-OB-QqD"/>
-                                <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="8ND-Lv-1T3" secondAttribute="trailing" id="ndZ-wn-hbJ"/>
+                                <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="8ND-Lv-1T3" secondAttribute="bottom" priority="999" constant="16" id="d5l-Am-vv4"/>
+                                <constraint firstItem="8ND-Lv-1T3" firstAttribute="top" relation="greaterThanOrEqual" secondItem="xTA-i9-ykq" secondAttribute="topMargin" priority="999" constant="16" id="l4P-OB-QqD"/>
+                                <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="8ND-Lv-1T3" secondAttribute="trailing" priority="999" id="ndZ-wn-hbJ"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="LSA-mf-luK">

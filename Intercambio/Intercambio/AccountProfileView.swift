@@ -9,6 +9,7 @@
 import Foundation
 
 protocol AccountProfileView : class {
+    var isProfileHidden: Bool { get set }
     var name: String? { get set}
     var details: String? { get set}
     var nextAction: String? { get set }
