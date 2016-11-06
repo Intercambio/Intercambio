@@ -14,9 +14,10 @@ import CoreXMPP
 protocol SettingsPresenterEventHandler {
     func settingsDidCancel(_ settingsPresenter: SettingsPresenter) -> Void
     func settingsDidSave(_ settingsPresenter: SettingsPresenter) -> Void
+    func settingsDidRemove(_ settingsPresenter: SettingsPresenter) -> Void
 }
 
-class SettingsPresenter : SettingsViewEventHandler {
+class SettingsPresenter : SettingsViewEventHandler, SettingsDataSourceDelegate {
     
     var eventHandler: SettingsPresenterEventHandler?
 
@@ -27,9 +28,14 @@ class SettingsPresenter : SettingsViewEventHandler {
     }
 
     private let dataSource: SettingsDataSource
-
+    
+    var accountJID: JID {
+        return dataSource.accountJID
+    }
+    
     init(accountJID: JID, keyChain: KeyChain) {
         dataSource = SettingsDataSource(accountJID: accountJID, keyChain: keyChain)
+        dataSource.delegate = self
         do {
             try dataSource.reload()
         } catch {
@@ -52,5 +58,15 @@ class SettingsPresenter : SettingsViewEventHandler {
     
     func setValue(_ value: Any?, forItemAt indexPath: IndexPath) {
         dataSource.setValue(value, forItemAt: indexPath)
+    }
+    
+    func performAction(_ action: Selector, forItemAt indexPath: IndexPath) {
+        dataSource.performAction(action, forItemAt: indexPath)
+    }
+    
+    // SettingsDataSourceDelegate
+    
+    func settingsDataSource(_ dataSource: SettingsDataSource, didRemoveAccount jid: JID) {
+        eventHandler?.settingsDidRemove(self)
     }
 }

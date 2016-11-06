@@ -10,14 +10,18 @@ import UIKit
 
 public class AccountProfileViewController: UIViewController, AccountProfileView {
     
+    @IBOutlet weak var profileContainerView: UIView!
+    @IBOutlet weak var reconnectContainerView: UIView!
+    
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var accountLabel: UILabel!
     @IBOutlet weak var connectionStateLabel: UILabel!
     @IBOutlet weak var settingsButton: UIButton!
-    @IBOutlet weak var reconnectContainerView: UIView!
     @IBOutlet weak var errorMessageLabel: UILabel!
     @IBOutlet weak var nextReconnectionLabel: UILabel!
     @IBOutlet weak var reconnectButton: UIButton!
+    
+    var isProfileHidden: Bool = false
     
     var name: String? { didSet { updateUserInterface() } }
     var details: String? { didSet { updateUserInterface() } }
@@ -44,6 +48,8 @@ public class AccountProfileViewController: UIViewController, AccountProfileView 
     
     private func updateUserInterface() {
         if isViewLoaded {
+            self.profileContainerView.isHidden = isProfileHidden
+            
             self.accountLabel.text = self.name
             self.connectionStateLabel.text = self.details
             self.nextReconnectionLabel.text = self.nextAction

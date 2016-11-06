@@ -64,6 +64,8 @@ class AccountProfilePresenter: AccountProfileViewEventHandler {
             disableNextConnectionAttemptTimer()
         }
         
+        view?.isProfileHidden = account == nil
+        
         view?.name = account?.name
         view?.details = account != nil ? connectionStateLabel(for: account!) : nil
         view?.nextAction = account != nil ? nextConnectionLabel(for: account!) : nil
