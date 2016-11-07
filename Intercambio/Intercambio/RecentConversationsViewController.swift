@@ -35,6 +35,10 @@ public class RecentConversationsViewController: UITableViewController, RecentCon
     public override func viewDidLoad() {
         super.viewDidLoad()
         
+        let isCollapsed: () -> Bool = { [weak self] () in
+            return self?.splitViewController?.isCollapsed ?? false
+        }
+        
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .compose,
                                                             target: self,
                                                             action: #selector(newConversation))
@@ -50,8 +54,11 @@ public class RecentConversationsViewController: UITableViewController, RecentCon
             if  let cell = view as? RecentConversationsCell,
                 let viewModel = item as? RecentConversationsViewModel {
                 cell.viewModel = viewModel
+                cell.isChevronHidden = isCollapsed() == false
             }
         }
+        
+        
         
         tableView.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: "undefined")
         tableViewAdapter?.forRowsMatching(nil, useCellWithReuseIdentifier: "undefined") {

@@ -17,6 +17,12 @@ class RecentConversationsCell: UITableViewCell {
     @IBOutlet weak var chevronLabel: UILabel!
     @IBOutlet weak var avatarImageView: UIImageView!
     
+    var isChevronHidden: Bool = false {
+        didSet {
+            chevronLabel.isHidden = isChevronHidden
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
