@@ -39,6 +39,7 @@ public class RecentConversationsViewController: UITableViewController, RecentCon
             return self?.splitViewController?.isCollapsed ?? false
         }
         
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .compose,
                                                             target: self,
                                                             action: #selector(newConversation))
