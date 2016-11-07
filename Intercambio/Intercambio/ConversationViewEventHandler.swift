@@ -9,6 +9,8 @@
 import Foundation
 
 protocol ConversationViewEventHandler: class {
-    func performAction(_ action: Selector, forItemAt indexPath: IndexPath)
-    func setValue(_ value: Any, forItemAt indexPath: IndexPath)
+    func shouldShowMenu(for itemAtIndexPtah: IndexPath) -> Bool
+    func canPerformAction(_ action: Selector, forItemAt indexPath: IndexPath) -> Bool
+    func performAction(_ action: Selector, forItemAt indexPath: IndexPath) -> Void
+    func setValue(_ value: Any, forItemAt indexPath: IndexPath) -> Void
 }

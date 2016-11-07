@@ -250,6 +250,20 @@ public class ConversationViewController: UICollectionViewController, Conversatio
         cell.resignFirstResponder()
     }
     
+    public override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
+        return presenter?.shouldShowMenu(for: indexPath) ?? false
+    }
+    
+    public override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath?, withSender sender: Any?) -> Bool {
+        if action == #selector(collectionView(_:handle:forItemAt:sender:)) {
+            return true
+        } else if let path = indexPath {
+            return presenter?.canPerformAction(action, forItemAt: path) ?? false
+        } else {
+            return false
+        }
+    }
+    
     public override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
         if let responder = sender as? UIResponder {
             if responder.isFirstResponder {

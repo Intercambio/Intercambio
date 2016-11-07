@@ -10,6 +10,7 @@ import Foundation
 import Fountain
 import XMPPMessageArchive
 import PureXML
+import MobileCoreServices
 
 protocol ConversationMessageDB {
     func pendingMessages(withParticipants participants: [Any], includeTrashed: Bool) throws -> [Any]
@@ -105,11 +106,24 @@ class ConversationDataSource: NSObject, FTDataSource {
     
     // Performing actions
     
+    func shouldShowMenu(for itemAtIndexPtah: IndexPath) -> Bool {
+        return true
+    }
+    
+    func canPerformAction(_ action: Selector, forItemAt indexPath: IndexPath) -> Bool {
+        if action == #selector(UIResponder.copy(_:)) {
+            return true
+        }
+        return false
+    }
+    
     func performAction(_ action: Selector, forItemAt indexPath: IndexPath) {
-        if indexPath.section == 0 && indexPath.item == backingStore.count {
-            if action == #selector(send) {
+        if action == #selector(send) {
+            if indexPath.section == 0 && indexPath.item == backingStore.count {
                 send()
             }
+        } else if action == #selector(UIResponder.copy(_:)) {
+            copyMessage(forItemAt: indexPath)
         }
     }
     
@@ -120,6 +134,14 @@ class ConversationDataSource: NSObject, FTDataSource {
                 resetPendingMessageText()
             } catch {
                 
+            }
+        }
+    }
+    
+    func copyMessage(forItemAt indexPath: IndexPath) {
+        if let item = item(at: indexPath) as? ConversationViewModel {
+            if let text = item.body {
+                UIPasteboard.general.setValue(text.string, forPasteboardType: kUTTypeUTF8PlainText as String)
             }
         }
     }

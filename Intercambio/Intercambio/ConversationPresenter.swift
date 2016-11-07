@@ -49,6 +49,14 @@ class ConversationPresenter: NSObject, ConversationViewEventHandler {
         }
     }
 
+    func shouldShowMenu(for itemAtIndexPtah: IndexPath) -> Bool {
+        return dataSource?.shouldShowMenu(for: itemAtIndexPtah) ?? false
+    }
+    
+    func canPerformAction(_ action: Selector, forItemAt indexPath: IndexPath) -> Bool {
+        return dataSource?.canPerformAction(action, forItemAt: indexPath) ?? false
+    }
+    
     func performAction(_ action: Selector, forItemAt indexPath: IndexPath) {
         showContactPicker = false
         dataSource?.performAction(action, forItemAt: indexPath)
