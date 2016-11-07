@@ -57,6 +57,8 @@
 		F657513A1D1011FC0038AB25 /* IntercambioCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F65751381D1011FC0038AB25 /* IntercambioCore.framework */; };
 		F657513B1D1011FC0038AB25 /* SASLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F65751391D1011FC0038AB25 /* SASLKit.framework */; };
 		F65F98501CB26132009A2FE5 /* UICollectionView+CellAction.m in Sources */ = {isa = PBXBuildFile; fileRef = F65F984F1CB26132009A2FE5 /* UICollectionView+CellAction.m */; };
+		F6635C291DD0F36400BE5036 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6635C281DD0F36400BE5036 /* MainViewController.swift */; };
+		F6635C2B1DD0F38800BE5036 /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6635C2A1DD0F38800BE5036 /* MainPresenter.swift */; };
 		F676EF7E1CD264A4003047EC /* ISO8601.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F676EF7C1CD26492003047EC /* ISO8601.framework */; };
 		F678B6D81DBA24DE004EF7EE /* ConversationModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = F678B6D71DBA24DE004EF7EE /* ConversationModule.swift */; };
 		F678B6DD1DBA257D004EF7EE /* ConversationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F678B6DC1DBA257D004EF7EE /* ConversationView.swift */; };
@@ -227,6 +229,8 @@
 		F65751391D1011FC0038AB25 /* SASLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SASLKit.framework; path = ../Carthage/Build/iOS/SASLKit.framework; sourceTree = "<group>"; };
 		F65F984E1CB26132009A2FE5 /* UICollectionView+CellAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UICollectionView+CellAction.h"; sourceTree = "<group>"; };
 		F65F984F1CB26132009A2FE5 /* UICollectionView+CellAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UICollectionView+CellAction.m"; sourceTree = "<group>"; };
+		F6635C281DD0F36400BE5036 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		F6635C2A1DD0F38800BE5036 /* MainPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
 		F676EF7C1CD26492003047EC /* ISO8601.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ISO8601.framework; path = ../Carthage/Build/iOS/ISO8601.framework; sourceTree = "<group>"; };
 		F678B6D71DBA24DE004EF7EE /* ConversationModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationModule.swift; sourceTree = "<group>"; };
 		F678B6DC1DBA257D004EF7EE /* ConversationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationView.swift; sourceTree = "<group>"; };
@@ -646,6 +650,22 @@
 			name = Additions;
 			sourceTree = "<group>";
 		};
+		F6635C261DD0F33A00BE5036 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F6635C281DD0F36400BE5036 /* MainViewController.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		F6635C271DD0F33F00BE5036 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				F6635C2A1DD0F38800BE5036 /* MainPresenter.swift */,
+			);
+			name = Presenter;
+			sourceTree = "<group>";
+		};
 		F670FEE41D4BB35E00B6B11C /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -875,6 +895,8 @@
 			isa = PBXGroup;
 			children = (
 				F6C74CDB1DC8E204002FA530 /* MainModule.swift */,
+				F6635C271DD0F33F00BE5036 /* Presenter */,
+				F6635C261DD0F33A00BE5036 /* View */,
 			);
 			name = "Main Module";
 			sourceTree = "<group>";
@@ -1251,6 +1273,7 @@
 				F6CE94A21DABF1570044356A /* RecentConversationsViewEventHandler.swift in Sources */,
 				F678B6F51DBE91AF004EF7EE /* ConversationViewGroupHeaderView.swift in Sources */,
 				F619AC9C1DBFAA3F00960632 /* ConversationViewComposeCell.swift in Sources */,
+				F6635C2B1DD0F38800BE5036 /* MainPresenter.swift in Sources */,
 				F6CE94A41DAC04BD0044356A /* RecentConversationsDataSource.swift in Sources */,
 				F6BA3EE91D36438200C12E3D /* FormURLItemData.swift in Sources */,
 				F6EF1F431C72066C0083F4BE /* CLBackspaceDetectingTextField.m in Sources */,
@@ -1307,6 +1330,7 @@
 				F6BB8F041DCC792E005EAFB0 /* FormSectionData.swift in Sources */,
 				F68EE0021D3D457C00AFCB9D /* AccountListPresenter.swift in Sources */,
 				F619BDC21C4D071700F87F50 /* main.m in Sources */,
+				F6635C291DD0F36400BE5036 /* MainViewController.swift in Sources */,
 				F6E252151CAAC8010061531E /* ICAccountShareActivityItemSource.m in Sources */,
 				F61679FE1D5072820002A1A4 /* NavigationBar.swift in Sources */,
 				F65F98501CB26132009A2FE5 /* UICollectionView+CellAction.m in Sources */,
