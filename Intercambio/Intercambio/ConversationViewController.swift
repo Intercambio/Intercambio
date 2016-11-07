@@ -77,6 +77,7 @@ public class ConversationViewController: UICollectionViewController, Conversatio
             view.insertSubview(dummyTextView, belowSubview: collectionView)
         }
         
+        collectionView?.allowsSelection = false
         collectionView?.keyboardDismissMode = .interactive
         collectionView?.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         collectionView?.alwaysBounceVertical = true
