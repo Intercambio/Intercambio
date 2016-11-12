@@ -7,9 +7,16 @@
 //
 
 import UIKit
+import IntercambioCore
 
 public class MainModule : NSObject, MainPresenterFactory {
 
+    public let service: CommunicationService
+    
+    public init(service: CommunicationService) {
+        self.service = service
+    }
+    
     public var navigationControllerModule: NavigationControllerModule?
     public var recentConversationsModule: RecentConversationsModule?
     public var conversationModule: ConversationModule?
@@ -18,7 +25,7 @@ public class MainModule : NSObject, MainPresenterFactory {
     
     public func makeMainViewController() -> MainViewController {
         
-        let presenter = MainPresenter(factory: self)
+        let presenter = MainPresenter(keyChain: service.keyChain, factory: self)
         let view = MainViewController()
         presenter.view = view
         view.presenter = presenter

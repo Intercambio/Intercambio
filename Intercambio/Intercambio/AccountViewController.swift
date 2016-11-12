@@ -32,6 +32,10 @@ public class AccountViewController: UITableViewController, AccountView {
     
     public init() {
         super.init(style: .grouped)
+        title = NSLocalizedString("Accounts", comment: "")
+        tabBarItem = UITabBarItem(title: title,
+                                  image: UIImage(named: "779-users"),
+                                  selectedImage: UIImage(named: "779-users-selected"))
     }
     
     public required init?(coder aDecoder: NSCoder) {
@@ -40,7 +44,7 @@ public class AccountViewController: UITableViewController, AccountView {
     
     public override func viewDidLoad() {
         super.viewDidLoad()
-        
+                
         if let viewController = accountProfileViewController {
             addChildViewController(viewController)
             tableView.tableHeaderView = viewController.view
@@ -49,9 +53,24 @@ public class AccountViewController: UITableViewController, AccountView {
         layoutTableHeaderView()
     }
     
+    public override func viewWillAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if navigationController?.viewControllers.index(of: self) == 0 {
+            navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addAccount(sender:)))
+
+        } else {
+            navigationItem.leftBarButtonItem = nil
+        }
+    }
+    
     public override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         layoutTableHeaderView()
+    }
+    
+    @objc private func addAccount(sender: AnyObject) {
+        presenter?.addAccount()
     }
 
     private func layoutTableHeaderView() {

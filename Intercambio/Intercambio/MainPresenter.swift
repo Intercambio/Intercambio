@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import IntercambioCore
 
 protocol MainPresenterFactory : MainAccountNavigationPresenterFactory {
     func makeNavigationController(rootViewController: UIViewController) -> NavigationController?
@@ -25,8 +26,11 @@ class MainPresenter: NSObject {
         }
     }
     
+    let keyChain: KeyChain
     let factory: MainPresenterFactory
-    init(factory: MainPresenterFactory) {
+    
+    init(keyChain: KeyChain, factory: MainPresenterFactory) {
+        self.keyChain = keyChain
         self.factory = factory
         super.init()
     }
@@ -35,7 +39,7 @@ class MainPresenter: NSObject {
         return self.factory.makeNavigationController()
     }()
     private lazy var accountNavigationPresenter: MainAccountNavigationPresenter = {
-       return MainAccountNavigationPresenter(factory: self.factory)
+       return MainAccountNavigationPresenter(keyChain: self.keyChain, factory: self.factory)
     }()
     
     private var conversationNavigationController: UINavigationController?

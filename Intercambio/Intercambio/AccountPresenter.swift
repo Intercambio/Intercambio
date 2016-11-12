@@ -11,4 +11,13 @@ import Foundation
 class AccountPresenter : AccountViewEventHandler {
     weak var view: AccountView?
     var router: AccountRouter?
+    
+    let account: URL
+    init(account: URL) {
+        self.account = account
+    }
+    
+    func addAccount() {
+        router?.presentNewAccountUserInterface()
+    }
 }

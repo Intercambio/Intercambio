@@ -28,7 +28,7 @@ public class Wireframe : NSObject, NavigationControllerRouter, RecentConversatio
     public required init(window: UIWindow, service: CommunicationService) {
         self.window = window
 
-        mainModule = MainModule()
+        mainModule = MainModule(service: service)
         navigationControllerModule = NavigationControllerModule(service: service)
         contactPickerModule = ContactPickerModule(service: service)
         recentConversationsModule = RecentConversationsModule(service: service)
