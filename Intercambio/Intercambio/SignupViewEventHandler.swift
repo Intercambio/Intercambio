@@ -1,13 +1,13 @@
 //
-//  AccountViewEventHandler.swift
+//  SignupViewEventHandler.swift
 //  Intercambio
 //
-//  Created by Tobias Kraentzer on 11.07.16.
+//  Created by Tobias Kraentzer on 12.11.16.
 //  Copyright © 2016 Tobias Kräntzer. All rights reserved.
 //
 
 import Foundation
 
-protocol AccountViewEventHandler : class {
+protocol SignupViewEventHandler : class {
     func addAccount()
 }

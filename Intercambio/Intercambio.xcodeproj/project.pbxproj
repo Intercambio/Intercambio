@@ -57,6 +57,15 @@
 		F657513A1D1011FC0038AB25 /* IntercambioCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F65751381D1011FC0038AB25 /* IntercambioCore.framework */; };
 		F657513B1D1011FC0038AB25 /* SASLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F65751391D1011FC0038AB25 /* SASLKit.framework */; };
 		F65F98501CB26132009A2FE5 /* UICollectionView+CellAction.m in Sources */ = {isa = PBXBuildFile; fileRef = F65F984F1CB26132009A2FE5 /* UICollectionView+CellAction.m */; };
+		F6635C291DD0F36400BE5036 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6635C281DD0F36400BE5036 /* MainViewController.swift */; };
+		F6635C2B1DD0F38800BE5036 /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6635C2A1DD0F38800BE5036 /* MainPresenter.swift */; };
+		F6635C2D1DD12B3F00BE5036 /* MainPresenterSplitViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6635C2C1DD12B3F00BE5036 /* MainPresenterSplitViewControllerDelegate.swift */; };
+		F6635C2F1DD756BF00BE5036 /* MainAccountNavigationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6635C2E1DD756BF00BE5036 /* MainAccountNavigationPresenter.swift */; };
+		F6635C331DD77D8200BE5036 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6635C311DD77D8200BE5036 /* SignupViewController.swift */; };
+		F6635C341DD77D8200BE5036 /* SignupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6635C321DD77D8200BE5036 /* SignupViewController.xib */; };
+		F6635C371DD77FF900BE5036 /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6635C361DD77FF900BE5036 /* SignupView.swift */; };
+		F6635C391DD7800600BE5036 /* SignupViewEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6635C381DD7800600BE5036 /* SignupViewEventHandler.swift */; };
+		F6635C3C1DD7803800BE5036 /* SignupPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6635C3B1DD7803800BE5036 /* SignupPresenter.swift */; };
 		F676EF7E1CD264A4003047EC /* ISO8601.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F676EF7C1CD26492003047EC /* ISO8601.framework */; };
 		F678B6D81DBA24DE004EF7EE /* ConversationModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = F678B6D71DBA24DE004EF7EE /* ConversationModule.swift */; };
 		F678B6DD1DBA257D004EF7EE /* ConversationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F678B6DC1DBA257D004EF7EE /* ConversationView.swift */; };
@@ -227,6 +236,15 @@
 		F65751391D1011FC0038AB25 /* SASLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SASLKit.framework; path = ../Carthage/Build/iOS/SASLKit.framework; sourceTree = "<group>"; };
 		F65F984E1CB26132009A2FE5 /* UICollectionView+CellAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UICollectionView+CellAction.h"; sourceTree = "<group>"; };
 		F65F984F1CB26132009A2FE5 /* UICollectionView+CellAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UICollectionView+CellAction.m"; sourceTree = "<group>"; };
+		F6635C281DD0F36400BE5036 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		F6635C2A1DD0F38800BE5036 /* MainPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
+		F6635C2C1DD12B3F00BE5036 /* MainPresenterSplitViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPresenterSplitViewControllerDelegate.swift; sourceTree = "<group>"; };
+		F6635C2E1DD756BF00BE5036 /* MainAccountNavigationPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainAccountNavigationPresenter.swift; sourceTree = "<group>"; };
+		F6635C311DD77D8200BE5036 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		F6635C321DD77D8200BE5036 /* SignupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignupViewController.xib; sourceTree = "<group>"; };
+		F6635C361DD77FF900BE5036 /* SignupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
+		F6635C381DD7800600BE5036 /* SignupViewEventHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewEventHandler.swift; sourceTree = "<group>"; };
+		F6635C3B1DD7803800BE5036 /* SignupPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupPresenter.swift; sourceTree = "<group>"; };
 		F676EF7C1CD26492003047EC /* ISO8601.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ISO8601.framework; path = ../Carthage/Build/iOS/ISO8601.framework; sourceTree = "<group>"; };
 		F678B6D71DBA24DE004EF7EE /* ConversationModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationModule.swift; sourceTree = "<group>"; };
 		F678B6DC1DBA257D004EF7EE /* ConversationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationView.swift; sourceTree = "<group>"; };
@@ -646,6 +664,50 @@
 			name = Additions;
 			sourceTree = "<group>";
 		};
+		F6635C261DD0F33A00BE5036 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F6635C281DD0F36400BE5036 /* MainViewController.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		F6635C271DD0F33F00BE5036 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				F6635C2A1DD0F38800BE5036 /* MainPresenter.swift */,
+				F6635C2E1DD756BF00BE5036 /* MainAccountNavigationPresenter.swift */,
+				F6635C2C1DD12B3F00BE5036 /* MainPresenterSplitViewControllerDelegate.swift */,
+			);
+			name = Presenter;
+			sourceTree = "<group>";
+		};
+		F6635C301DD77D5400BE5036 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F6635C311DD77D8200BE5036 /* SignupViewController.swift */,
+				F6635C321DD77D8200BE5036 /* SignupViewController.xib */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		F6635C351DD77FDF00BE5036 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				F6635C361DD77FF900BE5036 /* SignupView.swift */,
+				F6635C381DD7800600BE5036 /* SignupViewEventHandler.swift */,
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
+		F6635C3A1DD7802800BE5036 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				F6635C3B1DD7803800BE5036 /* SignupPresenter.swift */,
+			);
+			name = Presenter;
+			sourceTree = "<group>";
+		};
 		F670FEE41D4BB35E00B6B11C /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -875,6 +937,8 @@
 			isa = PBXGroup;
 			children = (
 				F6C74CDB1DC8E204002FA530 /* MainModule.swift */,
+				F6635C271DD0F33F00BE5036 /* Presenter */,
+				F6635C261DD0F33A00BE5036 /* View */,
 			);
 			name = "Main Module";
 			sourceTree = "<group>";
@@ -990,6 +1054,9 @@
 			children = (
 				F6FEF5F91DCB42EC008D4369 /* SignupModule.swift */,
 				F6FEF5FD1DCB4919008D4369 /* Interactor */,
+				F6635C3A1DD7802800BE5036 /* Presenter */,
+				F6635C351DD77FDF00BE5036 /* Protocols */,
+				F6635C301DD77D5400BE5036 /* View */,
 			);
 			name = "Signup Module";
 			sourceTree = "<group>";
@@ -1164,6 +1231,7 @@
 				F6555A591D3413AE009C4324 /* Assets.xcassets in Resources */,
 				F6D807D71D17DD95002953AB /* fontawesome-webfont.ttf in Resources */,
 				F619BDD01C4D071700F87F50 /* LaunchScreen.storyboard in Resources */,
+				F6635C341DD77D8200BE5036 /* SignupViewController.xib in Resources */,
 				F6F56AFE1C5395A700C34CC8 /* Cartfile in Resources */,
 				F646CA5F1DB62F8000C239B1 /* RecentConversationsCell.xib in Resources */,
 			);
@@ -1251,7 +1319,9 @@
 				F6CE94A21DABF1570044356A /* RecentConversationsViewEventHandler.swift in Sources */,
 				F678B6F51DBE91AF004EF7EE /* ConversationViewGroupHeaderView.swift in Sources */,
 				F619AC9C1DBFAA3F00960632 /* ConversationViewComposeCell.swift in Sources */,
+				F6635C2B1DD0F38800BE5036 /* MainPresenter.swift in Sources */,
 				F6CE94A41DAC04BD0044356A /* RecentConversationsDataSource.swift in Sources */,
+				F6635C2F1DD756BF00BE5036 /* MainAccountNavigationPresenter.swift in Sources */,
 				F6BA3EE91D36438200C12E3D /* FormURLItemData.swift in Sources */,
 				F6EF1F431C72066C0083F4BE /* CLBackspaceDetectingTextField.m in Sources */,
 				F6052ABF1DC89B6B005D79EA /* ContactPickerView.swift in Sources */,
@@ -1272,15 +1342,18 @@
 				F6BB8F0A1DCC938A005EAFB0 /* FormValueItemCell.swift in Sources */,
 				F63516771D33C076007822F3 /* AccountPresenter.swift in Sources */,
 				F6EF1F441C72066C0083F4BE /* CLToken.m in Sources */,
+				F6635C331DD77D8200BE5036 /* SignupViewController.swift in Sources */,
 				F6A41B741D4B9F400077321C /* AccountListView.swift in Sources */,
 				F6167A021D50733E0002A1A4 /* NavigationControllerViewEventHandler.swift in Sources */,
 				F61679FC1D50725B0002A1A4 /* NavigationController.swift in Sources */,
 				F61510831DCCABA600DCFD17 /* AccountProfileView.swift in Sources */,
 				F61510871DCCAD7000DCFD17 /* AccountProfilePresenter.swift in Sources */,
 				F6B3CC621D4B85A600234F9B /* AccountListDataSource.swift in Sources */,
+				F6635C2D1DD12B3F00BE5036 /* MainPresenterSplitViewControllerDelegate.swift in Sources */,
 				F678B6D81DBA24DE004EF7EE /* ConversationModule.swift in Sources */,
 				F615107F1DCCA9E200DCFD17 /* AccountProfileViewController.swift in Sources */,
 				F615108E1DCCC09600DCFD17 /* FormButtonItemData.swift in Sources */,
+				F6635C391DD7800600BE5036 /* SignupViewEventHandler.swift in Sources */,
 				F68EDFFA1D3D3CE800AFCB9D /* AccountListModule.swift in Sources */,
 				F678B6E11DBA25D0004EF7EE /* ConversationPresenter.swift in Sources */,
 				F6EF1F411C72066C0083F4BE /* CLTokenInputView.m in Sources */,
@@ -1307,16 +1380,19 @@
 				F6BB8F041DCC792E005EAFB0 /* FormSectionData.swift in Sources */,
 				F68EE0021D3D457C00AFCB9D /* AccountListPresenter.swift in Sources */,
 				F619BDC21C4D071700F87F50 /* main.m in Sources */,
+				F6635C291DD0F36400BE5036 /* MainViewController.swift in Sources */,
 				F6E252151CAAC8010061531E /* ICAccountShareActivityItemSource.m in Sources */,
 				F61679FE1D5072820002A1A4 /* NavigationBar.swift in Sources */,
 				F65F98501CB26132009A2FE5 /* UICollectionView+CellAction.m in Sources */,
 				F6EF1F421C72066C0083F4BE /* CLTokenView.m in Sources */,
 				F6D807DA1D17F53E002953AB /* ICURLHandler.m in Sources */,
+				F6635C3C1DD7803800BE5036 /* SignupPresenter.swift in Sources */,
 				F678B6F11DBE4DD8004EF7EE /* ConversationViewLayoutChapterFragment.swift in Sources */,
 				F6A2592E1D33EC080005C533 /* AccountViewEventHandler.swift in Sources */,
 				F61510901DCCC12500DCFD17 /* FormButtonItemCell.swift in Sources */,
 				F6C6BD6F1D3645BD00CF3B8B /* SettingsViewController.swift in Sources */,
 				F678B6DF1DBA25C0004EF7EE /* ConversationViewController.swift in Sources */,
+				F6635C371DD77FF900BE5036 /* SignupView.swift in Sources */,
 				F6BB8F021DCC7096005EAFB0 /* SettingsDataSource.swift in Sources */,
 				F6052AC11DC89B9D005D79EA /* ContectPickerViewEventHandler.swift in Sources */,
 				F6052A9A1DC5FBF5005D79EA /* ContactPickerModule.swift in Sources */,

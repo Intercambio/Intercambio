@@ -9,11 +9,26 @@
 import UIKit
 import IntercambioCore
 
+@objc public protocol SignupRouter : class {
+    func presentNewAccountUserInterface()
+}
+
 public class SignupModule : NSObject {
+    
+    weak public var router: SignupRouter?
     
     public let service: CommunicationService
     public init(service: CommunicationService) {
         self.service = service
+    }
+    
+    public func makeSignupViewController() -> SignupViewController {
+        let controller = SignupViewController()
+        let presenter = SignupPresenter()
+        presenter.view = controller
+        presenter.router = router
+        controller.presenter = presenter
+        return controller
     }
     
     public func present(in window: UIWindow) {

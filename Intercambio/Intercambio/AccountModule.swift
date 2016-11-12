@@ -10,6 +10,7 @@ import UIKit
 import IntercambioCore
 
 @objc public protocol AccountRouter : class {
+    func presentNewAccountUserInterface()
 }
 
 public class AccountModule : NSObject {
@@ -24,20 +25,20 @@ public class AccountModule : NSObject {
     public var accountProfileModule: AccountProfileModule?
     
     public func makeAccountViewController(uri: URL) -> AccountViewController {
-        let controller = AccountViewController()
+        let controller = AccountViewController(service: service, account: uri)
         controller.accountProfileViewController = accountProfileModule?.makeAccountProfileViewController(uri: uri)
+        controller.router = router
         return controller
     }
 }
 
 public extension AccountViewController {
-    public convenience init?(service: CommunicationService, account uri: URL) {
+    public convenience init(service: CommunicationService, account uri: URL) {
         self.init()
 
-        let presenter = AccountPresenter()
+        let presenter = AccountPresenter(account: uri)
         presenter.view = self
         self.presenter = presenter
-
     }
     
     public var router: AccountRouter? {
@@ -53,5 +54,12 @@ public extension AccountViewController {
                 return nil
             }
         }
+    }
+    
+    public var account: URL? {
+        guard let presenter = self.presenter as? AccountPresenter else {
+            return nil
+        }
+        return presenter.account
     }
 }
