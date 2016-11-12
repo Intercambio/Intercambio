@@ -14,8 +14,6 @@ protocol MainPresenterFactory : MainAccountNavigationPresenterFactory {
     func makeNavigationController() -> NavigationController?
     func makeRecentConversationsViewController() -> RecentConversationsViewController?
     func makeConversationViewController(for uri: URL?) -> ConversationViewController?
-    func makeAccountListViewController() -> AccountListViewController?
-    func makeAccountViewController(uri: URL) -> AccountViewController?
 }
 
 class MainPresenter: NSObject {

@@ -12,23 +12,10 @@ import IntercambioCore
 protocol MainAccountNavigationPresenterFactory {
     func makeAccountListViewController() -> AccountListViewController?
     func makeAccountViewController(uri: URL) -> AccountViewController?
+    func makeSignupViewController() -> SignupViewController?
 }
 
 class MainAccountNavigationPresenter: NSObject {
-
-    class SignupViewController: UIViewController {
-        init() {
-            super.init(nibName: nil, bundle: nil)
-            title = NSLocalizedString("Accounts", comment: "")
-            tabBarItem = UITabBarItem(title: title,
-                                      image: UIImage(named: "779-users"),
-                                      selectedImage: UIImage(named: "779-users-selected"))
-        }
-        
-        required init?(coder aDecoder: NSCoder) {
-            fatalError("init(coder:) has not been implemented")
-        }
-    }
     
     weak var view: UINavigationController? {
         didSet {
@@ -59,8 +46,10 @@ class MainAccountNavigationPresenter: NSObject {
         case 0:
             if let viewController = signupViewController() {
                 return [viewController]
+            } else if let viewController = factory.makeSignupViewController() {
+                return [viewController]
             } else {
-                return [SignupViewController()]
+                return []
             }
             
         case 1:
@@ -73,7 +62,7 @@ class MainAccountNavigationPresenter: NSObject {
                 let viewController = factory.makeAccountViewController(uri: uri) {
                 return [viewController]
             } else {
-                return [SignupViewController()]
+                return []
             }
             
         default:

@@ -22,6 +22,7 @@ public class MainModule : NSObject, MainPresenterFactory {
     public var conversationModule: ConversationModule?
     public var accountListModule: AccountListModule?
     public var accountModule: AccountModule?
+    public var signupModule: SignupModule?
     
     public func makeMainViewController() -> MainViewController {
         
@@ -82,5 +83,9 @@ public class MainModule : NSObject, MainPresenterFactory {
     
     func makeAccountViewController(uri: URL) -> AccountViewController? {
         return accountModule?.makeAccountViewController(uri: uri)
+    }
+    
+    func makeSignupViewController() -> SignupViewController? {
+        return signupModule?.makeSignupViewController()
     }
 }
