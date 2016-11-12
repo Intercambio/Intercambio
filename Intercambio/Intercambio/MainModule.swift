@@ -52,6 +52,10 @@ public class MainModule : NSObject, MainPresenterFactory {
     }
     
     // MARK: MainPresenterFactory
+
+    func makeNavigationController() -> NavigationController? {
+        return navigationControllerModule?.makeNavigationController()
+    }
     
     func makeNavigationController(rootViewController: UIViewController) -> NavigationController? {
         return navigationControllerModule?.makeNavigationController(rootViewController: rootViewController)

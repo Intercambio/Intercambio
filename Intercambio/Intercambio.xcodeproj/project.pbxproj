@@ -60,6 +60,7 @@
 		F6635C291DD0F36400BE5036 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6635C281DD0F36400BE5036 /* MainViewController.swift */; };
 		F6635C2B1DD0F38800BE5036 /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6635C2A1DD0F38800BE5036 /* MainPresenter.swift */; };
 		F6635C2D1DD12B3F00BE5036 /* MainPresenterSplitViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6635C2C1DD12B3F00BE5036 /* MainPresenterSplitViewControllerDelegate.swift */; };
+		F6635C2F1DD756BF00BE5036 /* MainAccountNavigationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6635C2E1DD756BF00BE5036 /* MainAccountNavigationPresenter.swift */; };
 		F676EF7E1CD264A4003047EC /* ISO8601.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F676EF7C1CD26492003047EC /* ISO8601.framework */; };
 		F678B6D81DBA24DE004EF7EE /* ConversationModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = F678B6D71DBA24DE004EF7EE /* ConversationModule.swift */; };
 		F678B6DD1DBA257D004EF7EE /* ConversationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F678B6DC1DBA257D004EF7EE /* ConversationView.swift */; };
@@ -233,6 +234,7 @@
 		F6635C281DD0F36400BE5036 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		F6635C2A1DD0F38800BE5036 /* MainPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
 		F6635C2C1DD12B3F00BE5036 /* MainPresenterSplitViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPresenterSplitViewControllerDelegate.swift; sourceTree = "<group>"; };
+		F6635C2E1DD756BF00BE5036 /* MainAccountNavigationPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainAccountNavigationPresenter.swift; sourceTree = "<group>"; };
 		F676EF7C1CD26492003047EC /* ISO8601.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ISO8601.framework; path = ../Carthage/Build/iOS/ISO8601.framework; sourceTree = "<group>"; };
 		F678B6D71DBA24DE004EF7EE /* ConversationModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationModule.swift; sourceTree = "<group>"; };
 		F678B6DC1DBA257D004EF7EE /* ConversationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationView.swift; sourceTree = "<group>"; };
@@ -664,6 +666,7 @@
 			isa = PBXGroup;
 			children = (
 				F6635C2A1DD0F38800BE5036 /* MainPresenter.swift */,
+				F6635C2E1DD756BF00BE5036 /* MainAccountNavigationPresenter.swift */,
 				F6635C2C1DD12B3F00BE5036 /* MainPresenterSplitViewControllerDelegate.swift */,
 			);
 			name = Presenter;
@@ -1278,6 +1281,7 @@
 				F619AC9C1DBFAA3F00960632 /* ConversationViewComposeCell.swift in Sources */,
 				F6635C2B1DD0F38800BE5036 /* MainPresenter.swift in Sources */,
 				F6CE94A41DAC04BD0044356A /* RecentConversationsDataSource.swift in Sources */,
+				F6635C2F1DD756BF00BE5036 /* MainAccountNavigationPresenter.swift in Sources */,
 				F6BA3EE91D36438200C12E3D /* FormURLItemData.swift in Sources */,
 				F6EF1F431C72066C0083F4BE /* CLBackspaceDetectingTextField.m in Sources */,
 				F6052ABF1DC89B6B005D79EA /* ContactPickerView.swift in Sources */,

@@ -8,8 +8,9 @@
 
 import UIKit
 
-protocol MainPresenterFactory {
+protocol MainPresenterFactory : MainAccountNavigationPresenterFactory {
     func makeNavigationController(rootViewController: UIViewController) -> NavigationController?
+    func makeNavigationController() -> NavigationController?
     func makeRecentConversationsViewController() -> RecentConversationsViewController?
     func makeConversationViewController(for uri: URL?) -> ConversationViewController?
     func makeAccountListViewController() -> AccountListViewController?
@@ -30,7 +31,13 @@ class MainPresenter: NSObject {
         super.init()
     }
     
-    private var accountNavigationController: UINavigationController?
+    private lazy var accountNavigationController: UINavigationController? = {
+        return self.factory.makeNavigationController()
+    }()
+    private lazy var accountNavigationPresenter: MainAccountNavigationPresenter = {
+       return MainAccountNavigationPresenter(factory: self.factory)
+    }()
+    
     private var conversationNavigationController: UINavigationController?
     private var tabBarController: UITabBarController?
     
@@ -70,15 +77,9 @@ class MainPresenter: NSObject {
             }
         }
         
-        if let viewController = factory.makeAccountListViewController() {
-            if let navigationController = factory.makeNavigationController(rootViewController: viewController) {
-                accountNavigationController = navigationController
-                tabs.append(navigationController)
-            } else {
-                let navigationController = UINavigationController(rootViewController: viewController)
-                accountNavigationController = navigationController
-                tabs.append(navigationController)
-            }
+        if let navigationController = accountNavigationController {
+            accountNavigationPresenter.view = navigationController
+            tabs.append(navigationController)
         }
         
         let tabBarController = UITabBarController()
@@ -102,30 +103,25 @@ class MainPresenter: NSObject {
     }
     
     func showAccount(for uri: URL) {
-        if let viewController = factory.makeAccountViewController(uri: uri) {
-            if let navigationController = accountNavigationController {
-                var animated = true
-                if navigationController.viewControllers.count > 1 {
+        
+        var animated = true
+        
+        if let navigationController = accountNavigationController,
+           let tabBarController = self.tabBarController {
+            
+            if tabBarController.selectedViewController !== navigationController {
+                if let index = tabBarController.viewControllers?.index(of: navigationController) {
+                    tabBarController.selectedIndex = index
                     animated = false
-                    navigationController.popToRootViewController(animated: animated)
                 }
-                
-                if let tabBarController = navigationController.tabBarController {
-                    if tabBarController.selectedViewController !== navigationController {
-                        if let index = tabBarController.viewControllers?.index(of: navigationController) {
-                            tabBarController.selectedIndex = index
-                            animated = false
-                        }
-                    }
-                }
-                
-                navigationController.pushViewController(viewController, animated: animated)
             }
+    
+            accountNavigationPresenter.showAccount(for: uri, animated: animated)
         }
     }
     
     private func showDetailViewController(_ vc: UIViewController) {
-            view?.showDetailViewController(vc, sender: self)
+        view?.showDetailViewController(vc, sender: self)
     }
 }
 
