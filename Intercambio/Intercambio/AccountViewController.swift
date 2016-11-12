@@ -32,8 +32,7 @@ public class AccountViewController: UITableViewController, AccountView {
     
     public init() {
         super.init(style: .grouped)
-        title = NSLocalizedString("Accounts", comment: "")
-        tabBarItem = UITabBarItem(title: title,
+        tabBarItem = UITabBarItem(title: NSLocalizedString("Accounts", comment: ""),
                                   image: UIImage(named: "779-users"),
                                   selectedImage: UIImage(named: "779-users-selected"))
     }
