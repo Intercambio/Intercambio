@@ -129,7 +129,7 @@ static CGFloat const FIELD_MARGIN_X = 4.0; // Note: Same as CLTokenView.PADDING_
     [self.tokenViews addObject:tokenView];
     [self addSubview:tokenView];
     self.textField.text = @"";
-    
+
     // Clearing text programmatically doesn't call this automatically
     [self onTextFieldDidChange:self.textField];
 
@@ -172,10 +172,10 @@ static CGFloat const FIELD_MARGIN_X = 4.0; // Note: Same as CLTokenView.PADDING_
     if (index == NSNotFound) {
         return;
     }
-    
+
     CLToken *removedToken = self.tokens[index];
     [self removeTokenAtIndex:index];
-    
+
     if ([self.delegate respondsToSelector:@selector(tokenInputView:didRemoveToken:)]) {
         [self.delegate tokenInputView:self didRemoveToken:removedToken];
     }

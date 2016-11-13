@@ -27,7 +27,7 @@ static DDLogLevel ddLogLevel = DDLogLevelInfo;
 @interface AppDelegate () <ICCommunicationServiceDelegate, BITHockeyManagerDelegate> {
     ICCommunicationService *_communicationService;
     Wireframe *_wireframe;
-    
+
     ICURLHandler *_URLHandler;
     NSURL *_pendingURLToHandle;
     BOOL _isSetup;
@@ -117,8 +117,9 @@ static DDLogLevel ddLogLevel = DDLogLevelInfo;
         [_wireframe present:error unrecoverable:YES];
     } else {
         [_wireframe presentMainScreen];
-        BOOL hasAccount = [[_communicationService accountDataSource] numberOfSections] > 0 &&
-                          [[_communicationService accountDataSource] numberOfItemsInSection:0] > 0;
+
+        NSArray *items = [_communicationService.keyChain fetchItems:nil];
+        BOOL hasAccount = [items count] > 0;
         if (hasAccount == NO) {
             [_wireframe presentNewAccount];
         }

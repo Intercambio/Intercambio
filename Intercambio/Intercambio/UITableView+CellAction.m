@@ -20,7 +20,8 @@
     }
 }
 
-- (void)setValue:(id)value forCell:(UITableViewCell *)cell sender:(id)sender {
+- (void)setValue:(id)value forCell:(UITableViewCell *)cell sender:(id)sender
+{
     if ([self.delegate respondsToSelector:@selector(tableView:setValue:forRowAtIndexPath:)]) {
         NSIndexPath *indexPath = [self indexPathForCell:cell];
         if (indexPath) {
