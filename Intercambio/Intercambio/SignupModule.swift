@@ -10,6 +10,7 @@ import UIKit
 import IntercambioCore
 
 @objc public protocol SignupRouter : class {
+    func presentAccountUserInterface(for accountURI: URL)
     func presentNewAccountUserInterface()
 }
 
@@ -52,6 +53,13 @@ public class SignupModule : NSObject {
             if let address = alert.textFields?.first?.text {
                 if let jid = JID(address) {
                     interactor.addAccount(jid)
+                    var components = URLComponents()
+                    components.scheme = "xmpp"
+                    components.host = jid.host
+                    components.user = jid.user
+                    if let url = components.url {
+                        self.router?.presentAccountUserInterface(for: url)
+                    }
                 }
             }
         }
