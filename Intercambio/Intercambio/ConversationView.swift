@@ -15,8 +15,17 @@ enum ConversationViewModelDirection {
     case outbound
 }
 
+enum ConversationViewModelType: String {
+    case chat = "chat"
+    case error = "error"
+    case groupchat = "groupchat"
+    case headline = "headline"
+    case normal = "normal"
+}
+
 protocol ConversationViewModel {
     var direction: ConversationViewModelDirection { get }
+    var type: ConversationViewModelType { get }
     var origin: URL? { get }
     var editable: Bool { get }
     var temporary: Bool { get }

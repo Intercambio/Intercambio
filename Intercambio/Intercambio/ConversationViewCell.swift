@@ -87,29 +87,22 @@ class ConversationViewCell: UICollectionViewCell {
             return UIColor.black
         }
         
-        switch viewModel.direction {
-        case .inbound:
-            return UIColor.black
-        case .outbound:
-            return viewModel.temporary == true ? UIColor.black : UIColor.white
-        default:
-            return UIColor.black
+        if viewModel.type == .error {
+            return #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
+        } else {
+            switch viewModel.direction {
+            case .inbound:
+                return UIColor.black
+            case .outbound:
+                return viewModel.temporary == true ? UIColor.black : UIColor.white
+            default:
+                return UIColor.black
+            }
         }
     }
     
     func selectedTextColor() -> UIColor {
-        guard let viewModel = self.viewModel else {
-            return UIColor.gray
-        }
-        
-        switch viewModel.direction {
-        case .inbound:
-            return UIColor.white
-        case .outbound:
-            return UIColor.white
-        default:
-            return UIColor.gray
-        }
+        return UIColor.white
     }
     
     func borderColor() -> UIColor {

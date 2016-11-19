@@ -201,6 +201,7 @@ public class ConversationViewController: UICollectionViewController, Conversatio
         var direction = ConversationViewLayoutDirection.undefined
         var origin = NSUUID().uuidString
         var temporary = false
+        var type: ConversationViewModelType = .normal
         
         if let model = dataSource?.item(at: indexPath) as? ConversationViewModel {
             switch model.direction {
@@ -217,8 +218,9 @@ public class ConversationViewController: UICollectionViewController, Conversatio
             }
             
             temporary = model.temporary
+            type = model.type
         }
-        return ConversationViewLayoutItem(direction: direction, origin: origin, temporary: temporary)
+        return ConversationViewLayoutItem(direction: direction, type: type, origin: origin, temporary: temporary)
     }
     
     func collectionView(_ collectionView: UICollectionView,

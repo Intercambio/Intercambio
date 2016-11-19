@@ -330,12 +330,15 @@ extension ConversationDataSource {
         let message: XMPPMessage
         let document: PXDocument?
         let direction: ConversationViewModelDirection
+        let type: ConversationViewModelType
         let editable: Bool
         
         init(message: XMPPMessage, document: PXDocument?, direction: ConversationViewModelDirection, editable: Bool) {
+            let type = ConversationViewModelType(rawValue: message.messageID.type) ?? .normal
+            self.type = type
             self.message = message
             self.document = document
-            self.direction = direction
+            self.direction = type == .error ? .undefined : direction
             self.editable = editable
         }
         
@@ -359,14 +362,22 @@ extension ConversationDataSource {
         }
         
         var body: NSAttributedString? {
-            if let document = self.document {
+            guard let document = self.document else {
+                return NSAttributedString()
+            }
+            
+            if type == .error {
+                let error = NSError(fromStanza: document.root)
+                return NSAttributedString(string: error?.localizedDescription ?? "")
+            } else {
                 let elements = document.root.nodes(forXPath: "x:body",
                                                    usingNamespaces: ["x":"jabber:client"])
                 if let body = elements?.first as? PXElement {
                     return NSAttributedString(string: body.stringValue, attributes: [NSFontAttributeName: UIFont.preferredFont(forTextStyle: .body)])
+                } else {
+                    return NSAttributedString()
                 }
             }
-            return NSAttributedString()
         }
     }
 }
@@ -375,6 +386,7 @@ extension ConversationDataSource {
     class ComposeViewModel: NSObject, ConversationViewModel {
         
         var direction: ConversationViewModelDirection = .outbound
+        var type: ConversationViewModelType = .chat
         var editable: Bool = true
         var temporary: Bool = true
         var timestamp: Date?

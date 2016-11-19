@@ -19,13 +19,15 @@ enum ConversationViewLayoutDirection {
 
 @objc class ConversationViewLayoutItem : NSObject {
     
-    init(direction: ConversationViewLayoutDirection, origin: String, temporary: Bool) {
+    init(direction: ConversationViewLayoutDirection, type: ConversationViewModelType, origin: String, temporary: Bool) {
         self.direction = direction
+        self.type = type
         self.origin = origin
         self.temporary = temporary
     }
     
     var direction: ConversationViewLayoutDirection
+    var type: ConversationViewModelType
     var origin: String
     var temporary: Bool
 }
@@ -166,7 +168,9 @@ class ConversationViewLayout: UICollectionViewLayout {
             if timestamp == nil || previousTimestamp == nil || fabs(previousTimestamp!.timeIntervalSince(timestamp!)) > 60 * 15 {
                 // Start a new chapter if the gap between the messages exceeded a certain threshold
                 conversation.addChapter(timestamp: timestamp, showAvatar: showAvatar)
-            } else if previousLayoutItem == nil || previousLayoutItem!.origin != layoutItem.origin {
+            } else if previousLayoutItem == nil ||
+                previousLayoutItem!.origin != layoutItem.origin ||
+                previousLayoutItem!.type != layoutItem.type {
                 // Start a new paragraph if the origin of the message did change
                 conversation.addParagraph(showAvatar: showAvatar)
             }
@@ -249,7 +253,7 @@ class ConversationViewLayout: UICollectionViewLayout {
         if let collectionView = self.collectionView, let delegate = collectionView.delegate as? UICollectionViewDelegateConversationViewLayout {
             return delegate.collectionView(collectionView, layout: self, layoutItemOfItemAt: indexPath)
         } else {
-            return ConversationViewLayoutItem(direction: .undefined, origin: NSUUID().uuidString, temporary: false)
+            return ConversationViewLayoutItem(direction: .undefined, type: .normal, origin: NSUUID().uuidString, temporary: false)
         }
     }
     
