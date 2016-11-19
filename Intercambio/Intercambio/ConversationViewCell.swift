@@ -49,7 +49,7 @@ class ConversationViewCell: UICollectionViewCell {
     
     override func tintColorDidChange() {
         super.tintColorDidChange()
-        backgroundView?.backgroundColor = tintColor
+        setNeedsLayout()
     }
     
     override var isSelected: Bool {
