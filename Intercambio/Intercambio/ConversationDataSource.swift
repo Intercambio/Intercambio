@@ -151,7 +151,7 @@ class ConversationDataSource: NSObject, FTDataSource {
         let _ = doc?.root.add(withName: "body", namespace: "jabber:client", content: pendingMessage?.string ?? "")
         doc?.root.setValue(self.account.stringValue, forAttribute: "from")
         doc?.root.setValue(self.counterpart.stringValue, forAttribute: "to")
-        doc?.root.setValue(self.counterpart.stringValue, forAttribute: "type")
+        doc?.root.setValue("chat", forAttribute: "type")
         doc?.root.setValue(NSUUID().uuidString, forAttribute: "id")
         return doc
     }
