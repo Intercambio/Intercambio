@@ -58,9 +58,14 @@ class MainAccountNavigationPresenter: NSObject {
             components.scheme = "xmpp"
             components.host = jid.host
             components.user = jid.user
-            if let uri = components.url,
-                let viewController = factory.makeAccountViewController(uri: uri) {
-                return [viewController]
+            if let uri = components.url {
+                if let viewController = accountViewController(for: uri) {
+                    return [viewController]
+                } else if let viewController = factory.makeAccountViewController(uri: uri) {
+                    return [viewController]
+                } else {
+                    return []
+                }
             } else {
                 return []
             }
@@ -142,15 +147,32 @@ class MainAccountNavigationPresenter: NSObject {
     func showAccount(for uri: URL, animated: Bool = true) {
         
         guard let navigationController = view else { return }
-        guard let viewController = factory.makeAccountViewController(uri: uri) else { return }
-
-        var animated = animated
-        if navigationController.viewControllers.count > 1 {
-            animated = false
-            navigationController.popToRootViewController(animated: animated)
+        guard let viewController: AccountViewController = {
+            if let viewController = accountViewController(for: uri) {
+                return viewController
+            } else if let viewController = factory.makeAccountViewController(uri: uri) {
+                return viewController
+            } else {
+                return nil
+            }
+        }() else { return }
+        
+        if navigationController.topViewController == viewController {
+            return
         }
-
-        navigationController.pushViewController(viewController, animated: animated)
+        
+        if signupViewController() != nil {
+            navigationController.setViewControllers([], animated: animated)
+        } else if let list = accountListViewController() {
+            if navigationController.topViewController != list {
+                navigationController.popToViewController(list, animated: false)
+                navigationController.pushViewController(viewController, animated: animated)
+            } else {
+                navigationController.pushViewController(viewController, animated: animated)
+            }
+        } else {
+            navigationController.setViewControllers([viewController], animated: animated)
+        }
     }
     
     // Notification Handling
