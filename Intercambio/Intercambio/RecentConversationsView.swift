@@ -9,7 +9,16 @@
 import UIKit
 import Fountain
 
+enum RecentConversationsViewModelType: String {
+    case chat = "chat"
+    case error = "error"
+    case groupchat = "groupchat"
+    case headline = "headline"
+    case normal = "normal"
+}
+
 protocol RecentConversationsViewModel {
+    var type: RecentConversationsViewModelType { get }
     var title: String? { get }
     var subtitle: String? { get }
     var body: String? { get }

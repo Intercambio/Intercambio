@@ -294,9 +294,12 @@ extension RecentConversationsDataSource {
 
         init(_ conversation: Conversation, document: PXDocument?) {
             showSubtitle = true
+            self.type = RecentConversationsViewModelType(rawValue: conversation.message.messageID.type) ?? .normal
             self.conversation = conversation
             self.document = document
         }
+        
+        let type: RecentConversationsViewModelType
         
         var title: String? {
             return self.conversation.counterpart.stringValue
@@ -311,14 +314,22 @@ extension RecentConversationsDataSource {
         }
         
         var body: String? {
-            if let document = self.document {
+            guard let document = self.document else {
+                return String()
+            }
+            
+            if type == .error {
+                let error = NSError(fromStanza: document.root)
+                return error?.localizedDescription ?? ""
+            } else {
                 let elements = document.root.nodes(forXPath: "x:body",
                                                    usingNamespaces: ["x":"jabber:client"])
                 if let body = elements?.first as? PXElement {
                     return body.stringValue
+                } else {
+                    return String()
                 }
             }
-            return nil
         }
         
         var dateString: String? {

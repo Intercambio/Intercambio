@@ -43,7 +43,13 @@ class RecentConversationsCell: UITableViewCell {
         subtitleLabel.text = viewModel?.subtitle
         subtitleLabel.isHidden = viewModel?.subtitle == nil
         timestampLabel.text = viewModel?.dateString
-        bodyLabel.text = viewModel?.body
         avatarImageView.image = viewModel?.avatarImage
+        bodyLabel.text = viewModel?.body
+        
+        if viewModel?.type == .error {
+            bodyLabel.textColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
+        } else {
+            bodyLabel.textColor = #colorLiteral(red: 0.6666666667, green: 0.6666666667, blue: 0.6666666667, alpha: 1)
+        }
     }
 }
