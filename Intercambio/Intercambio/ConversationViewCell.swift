@@ -110,6 +110,10 @@ class ConversationViewCell: UICollectionViewCell {
             return UIColor.clear
         }
         
+        if viewModel.type == .emoji {
+            return UIColor.clear
+        }
+        
         switch viewModel.direction {
         case .inbound:
             return UIColor.black
@@ -122,6 +126,10 @@ class ConversationViewCell: UICollectionViewCell {
     
     func color() -> UIColor {
         guard let viewModel = self.viewModel else {
+            return UIColor.clear
+        }
+        
+        if viewModel.type == .emoji {
             return UIColor.clear
         }
         

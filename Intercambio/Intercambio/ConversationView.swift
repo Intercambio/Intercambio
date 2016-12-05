@@ -21,6 +21,7 @@ enum ConversationViewModelType: String {
     case groupchat = "groupchat"
     case headline = "headline"
     case normal = "normal"
+    case emoji = "emoji"
 }
 
 protocol ConversationViewModel {

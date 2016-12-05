@@ -82,6 +82,7 @@
 		F678B6F31DBE5176004EF7EE /* ConversationViewLayoutConversationFragment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F678B6F21DBE5176004EF7EE /* ConversationViewLayoutConversationFragment.swift */; };
 		F678B6F51DBE91AF004EF7EE /* ConversationViewGroupHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F678B6F41DBE91AF004EF7EE /* ConversationViewGroupHeaderView.swift */; };
 		F6826A1D1D0F38BD007A3934 /* UITableView+CellAction.m in Sources */ = {isa = PBXBuildFile; fileRef = F6826A1C1D0F38BD007A3934 /* UITableView+CellAction.m */; };
+		F68576741DF619CB00B3EF1D /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68576731DF619CB00B3EF1D /* String.swift */; };
 		F68EDFFA1D3D3CE800AFCB9D /* AccountListModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68EDFF91D3D3CE800AFCB9D /* AccountListModule.swift */; };
 		F68EE0021D3D457C00AFCB9D /* AccountListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68EE0011D3D457C00AFCB9D /* AccountListPresenter.swift */; };
 		F6A2592E1D33EC080005C533 /* AccountViewEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A2592D1D33EC080005C533 /* AccountViewEventHandler.swift */; };
@@ -266,6 +267,7 @@
 		F68414001C4D8901009B37BE /* CoreXMPP.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreXMPP.framework; path = ../Carthage/Build/iOS/CoreXMPP.framework; sourceTree = "<group>"; };
 		F68414011C4D8901009B37BE /* PureXML.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PureXML.framework; path = ../Carthage/Build/iOS/PureXML.framework; sourceTree = "<group>"; };
 		F684140B1C4D8A7F009B37BE /* SocketRocket.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SocketRocket.framework; path = ../Carthage/Build/iOS/SocketRocket.framework; sourceTree = "<group>"; };
+		F68576731DF619CB00B3EF1D /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		F68EDFF91D3D3CE800AFCB9D /* AccountListModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountListModule.swift; sourceTree = "<group>"; };
 		F68EE0011D3D457C00AFCB9D /* AccountListPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AccountListPresenter.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		F6A2592D1D33EC080005C533 /* AccountViewEventHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewEventHandler.swift; sourceTree = "<group>"; };
@@ -660,6 +662,7 @@
 				F6D807E21D1826EB002953AB /* NSURL+Intercambio.h */,
 				F6D807E31D1826EB002953AB /* NSURL+Intercambio.m */,
 				F61510761DCCA2DE00DCFD17 /* FirstResponder.swift */,
+				F68576731DF619CB00B3EF1D /* String.swift */,
 			);
 			name = Additions;
 			sourceTree = "<group>";
@@ -1402,6 +1405,7 @@
 				F6A259331D33F5CF0005C533 /* AccountViewController.swift in Sources */,
 				F6C74CDC1DC8E204002FA530 /* MainModule.swift in Sources */,
 				F6F375411D55326000F718BC /* NavigationBarStatusView.swift in Sources */,
+				F68576741DF619CB00B3EF1D /* String.swift in Sources */,
 				F6A9F9901D345B7D007D8718 /* SettingsModule.swift in Sources */,
 				F6A41B791D4BA89E0077321C /* AccountListViewController.swift in Sources */,
 			);

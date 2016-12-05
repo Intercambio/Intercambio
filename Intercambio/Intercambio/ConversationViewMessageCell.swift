@@ -21,9 +21,15 @@ class ConversationViewMessageCell: ConversationViewCell {
             
             let messageLabel = UILabel()
             messageLabel.numberOfLines = 0
-            messageLabel.font = UIFont.preferredFont(forTextStyle: .body)
             messageLabel.preferredMaxLayoutWidth = lableWidth
-            messageLabel.attributedText = body
+            
+            if viewModel.type == .emoji {
+                messageLabel.text = body.string
+                messageLabel.font = UIFont.systemFont(ofSize: 90)
+            } else {
+                messageLabel.attributedText = body
+                messageLabel.font = UIFont.preferredFont(forTextStyle: .body)
+            }
             
             var size = messageLabel.sizeThatFits(CGSize(width: lableWidth, height: maxHeight))
             size.width = layoutMargins.left + size.width + layoutMargins.right
@@ -38,7 +44,13 @@ class ConversationViewMessageCell: ConversationViewCell {
     
     override var viewModel: ConversationViewModel? {
         didSet {
-            messageLabel.attributedText = viewModel?.body
+            if viewModel?.type == .emoji {
+                messageLabel.font = UIFont.systemFont(ofSize: 90)
+                messageLabel.text = viewModel?.body?.string
+            } else {
+                messageLabel.font = UIFont.preferredFont(forTextStyle: .body)
+                messageLabel.attributedText = viewModel?.body
+            }
         }
     }
     

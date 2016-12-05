@@ -330,15 +330,15 @@ extension ConversationDataSource {
         let message: XMPPMessage
         let document: PXDocument?
         let direction: ConversationViewModelDirection
-        let type: ConversationViewModelType
         let editable: Bool
+        let originalType: ConversationViewModelType
         
         init(message: XMPPMessage, document: PXDocument?, direction: ConversationViewModelDirection, editable: Bool) {
-            let type = ConversationViewModelType(rawValue: message.messageID.type) ?? .normal
-            self.type = type
+            let originalType = ConversationViewModelType(rawValue: message.messageID.type) ?? .normal
+            self.originalType = originalType
             self.message = message
             self.document = document
-            self.direction = type == .error ? .undefined : direction
+            self.direction = originalType == .error ? .undefined : direction
             self.editable = editable
         }
         
@@ -366,7 +366,7 @@ extension ConversationDataSource {
                 return NSAttributedString()
             }
             
-            if type == .error {
+            if originalType == .error {
                 let error = NSError(fromStanza: document.root)
                 return NSAttributedString(string: error?.localizedDescription ?? "")
             } else {
@@ -377,6 +377,17 @@ extension ConversationDataSource {
                 } else {
                     return NSAttributedString()
                 }
+            }
+        }
+        
+        var type: ConversationViewModelType {
+            if let string = body?.string, originalType != .error {
+                let isOnlyEmoji = string.unicodeScalars.reduce(true) { result, codePoint in
+                    codePoint.isEmoji
+                }
+                return isOnlyEmoji ? .emoji : originalType
+            } else {
+                return originalType
             }
         }
     }
