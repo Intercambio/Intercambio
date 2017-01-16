@@ -9,6 +9,7 @@
 import XCTest
 import IntercambioCore
 import CoreXMPP
+import Fountain
 @testable import Intercambio
 
 class AccountListPresenterTests: XCTestCase {

@@ -34,7 +34,9 @@ public class AccountProfileModule : NSObject {
 
 public extension AccountProfileViewController {
     public convenience init?(service: CommunicationService, account uri: URL) {
-        if let host = uri.host, let jid = JID(user: uri.user, host: host, resource: nil) {
+        if let host = uri.host {
+            let jid = JID(user: uri.user, host: host, resource: nil)
+            
             self.init()
             
             let presenter = AccountProfilePresenter()

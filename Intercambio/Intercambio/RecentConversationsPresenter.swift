@@ -20,8 +20,8 @@ class RecentConversationsPresenter: NSObject, RecentConversationsViewEventHandle
     
     let dataSource: RecentConversationsDataSource
     
-    init(keyChain: KeyChain, db: RecentConversationsMessageDB) {
-        self.dataSource = RecentConversationsDataSource(keyChain: keyChain, db: db)
+    init(keyChain: KeyChain, archiveManager: ArchiveManager) {
+        self.dataSource = RecentConversationsDataSource(keyChain: keyChain, archiveManager: archiveManager)
     }
     
     func newConversation() {

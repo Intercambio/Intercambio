@@ -27,10 +27,7 @@ static DDLogLevel ddLogLevel = DDLogLevelInfo;
 @interface AppDelegate () <ICCommunicationServiceDelegate, BITHockeyManagerDelegate> {
     ICCommunicationService *_communicationService;
     Wireframe *_wireframe;
-
     ICURLHandler *_URLHandler;
-    NSURL *_pendingURLToHandle;
-    BOOL _isSetup;
 }
 
 @end
@@ -59,9 +56,7 @@ static DDLogLevel ddLogLevel = DDLogLevelInfo;
     [self setupLogging];
 
     if ([self didCrashInLastSessionOnStartup] == NO) {
-        [self setupApplicationWithCompletion:^(BOOL success, NSError *error) {
-            [self setupUserInterfaceWithError:success ? nil : error];
-        }];
+        [self setupUserInterfaceWithError:nil];
     }
 
     return YES;
@@ -69,35 +64,10 @@ static DDLogLevel ddLogLevel = DDLogLevelInfo;
 
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *, id> *)options
 {
-    if (_isSetup) {
-        return [_URLHandler handleURL:url];
-    } else {
-        _pendingURLToHandle = url;
-        return YES;
-    }
+    return [_URLHandler handleURL:url];
 }
 
 #pragma mark Application Setup
-
-- (void)setupApplicationWithCompletion:(void (^)(BOOL success, NSError *error))completion
-{
-    __weak typeof(self) _self = self;
-    [_communicationService setUpWithCompletion:^(BOOL success, NSError *error) {
-        _isSetup = success;
-        if (completion) {
-            completion(success, error);
-        }
-        [_self handlePendingOpenURL];
-    }];
-}
-
-- (void)handlePendingOpenURL
-{
-    if (_pendingURLToHandle) {
-        [_URLHandler handleURL:_pendingURLToHandle];
-        _pendingURLToHandle = nil;
-    }
-}
 
 - (void)setupLogging
 {
@@ -140,27 +110,21 @@ static DDLogLevel ddLogLevel = DDLogLevelInfo;
 - (void)crashManagerWillCancelSendingCrashReport:(BITCrashManager *)crashManager
 {
     if ([self didCrashInLastSessionOnStartup]) {
-        [self setupApplicationWithCompletion:^(BOOL success, NSError *error) {
-            [self setupUserInterfaceWithError:success ? nil : error];
-        }];
+        [self setupUserInterfaceWithError:nil];
     }
 }
 
 - (void)crashManager:(BITCrashManager *)crashManager didFailWithError:(NSError *)error
 {
     if ([self didCrashInLastSessionOnStartup]) {
-        [self setupApplicationWithCompletion:^(BOOL success, NSError *error) {
-            [self setupUserInterfaceWithError:success ? nil : error];
-        }];
+        [self setupUserInterfaceWithError:nil];
     }
 }
 
 - (void)crashManagerDidFinishSendingCrashReport:(BITCrashManager *)crashManager
 {
     if ([self didCrashInLastSessionOnStartup]) {
-        [self setupApplicationWithCompletion:^(BOOL success, NSError *error) {
-            [self setupUserInterfaceWithError:success ? nil : error];
-        }];
+        [self setupUserInterfaceWithError:nil];
     }
 }
 

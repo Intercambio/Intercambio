@@ -85,11 +85,10 @@ class MainAccountNavigationPresenter: NSObject {
                     let components = NSURLComponents(url: url, resolvingAgainstBaseURL: true) {
                     if components.scheme == "xmpp" {
                         if let host = components.host, let user = components.user {
-                            if let jid = JID(user: user, host: host, resource: nil) {
-                                if accounts.contains(jid) {
-                                    viewControllers.append(accountViewController)
-                                    accountViewController.navigationItem.leftBarButtonItem = nil
-                                }
+                            let jid = JID(user: user, host: host, resource: nil)
+                            if accounts.contains(jid) {
+                                viewControllers.append(accountViewController)
+                                accountViewController.navigationItem.leftBarButtonItem = nil
                             }
                         }
                     }
