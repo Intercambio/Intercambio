@@ -8,6 +8,7 @@
 
 import Foundation
 import IntercambioCore
+import KeyChain
 import CoreXMPP
 
 class AccountProfileInteractor : AccountProfileProvider {
@@ -40,7 +41,7 @@ class AccountProfileInteractor : AccountProfileProvider {
     var account: AccountProfileModel? {
         get {
             do {
-                let item = try keyChain.item(jid: accountJID)
+                let item = try keyChain.item(with: accountJID.stringValue)
                 let info = accountManager.info(for: accountJID)
                 return Model(keyChainItem: item, info: info)
             } catch {
@@ -75,7 +76,7 @@ class AccountProfileInteractor : AccountProfileProvider {
                                                         queue: OperationQueue.main) { [weak self] (notification) in
                                                             self?.forwardKeyChainNotification(notification) })
         
-        notificationObservers.append(center.addObserver(forName: NSNotification.Name(rawValue: KeyChainDidClearNotification),
+        notificationObservers.append(center.addObserver(forName: NSNotification.Name(rawValue: KeyChainDidRemoveAllItemsNotification),
                                                         object: keyChain,
                                                         queue: OperationQueue.main) { [weak self] (notification) in
                                                             self?.forwardKeyChainNotification(notification) })
@@ -96,8 +97,9 @@ class AccountProfileInteractor : AccountProfileProvider {
     
     private func forwardKeyChainNotification(_ notification: Notification) {
         if let userInfo = notification.userInfo,
-            let item = userInfo[KeyChainItemKey] as? KeyChainItem {
-            if item.jid == accountJID {
+            let item = userInfo[KeyChainItemKey] as? KeyChainItem,
+            let account = JID(item.identifier) {
+            if account == accountJID {
                 self.handleAccountUpdate()
             }
         }

@@ -8,6 +8,7 @@
 
 import UIKit
 import IntercambioCore
+import XMPPFoundation
 
 @objc public protocol AccountProfileRouter : class {
     func presentSettingsUserInterface(for accountURI: URL)

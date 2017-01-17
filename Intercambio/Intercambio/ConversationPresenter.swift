@@ -7,7 +7,9 @@
 //
 
 import UIKit
-import IntercambioCore
+import XMPPFoundation
+import CoreXMPP
+import XMPPMessageHub
 
 class ConversationPresenter: NSObject, ConversationViewEventHandler {
 

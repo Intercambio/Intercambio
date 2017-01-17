@@ -7,7 +7,8 @@
 //
 
 import UIKit
-import IntercambioCore
+import KeyChain
+import XMPPMessageHub
 
 class RecentConversationsPresenter: NSObject, RecentConversationsViewEventHandler {
     

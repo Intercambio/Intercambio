@@ -7,6 +7,8 @@
 //
 
 @import HockeySDK;
+@import IntercambioCore;
+@import KeyChain;
 
 #if __has_include("Secrets.h")
 #import "Secrets.h"
@@ -20,12 +22,11 @@
 #import "ICURLHandler.h"
 #import "Intercambio-Swift.h"
 #import <CocoaLumberjack/CocoaLumberjack.h>
-#import <IntercambioCore/IntercambioCore.h>
 
 static DDLogLevel ddLogLevel = DDLogLevelInfo;
 
-@interface AppDelegate () <ICCommunicationServiceDelegate, BITHockeyManagerDelegate> {
-    ICCommunicationService *_communicationService;
+@interface AppDelegate () <CommunicationServiceDelegate, BITHockeyManagerDelegate> {
+    CommunicationService *_communicationService;
     Wireframe *_wireframe;
     ICURLHandler *_URLHandler;
 }
@@ -44,8 +45,8 @@ static DDLogLevel ddLogLevel = DDLogLevelInfo;
 
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
-    NSDictionary *options = @{};
-    _communicationService = [[ICCommunicationService alloc] initWithOptions:options];
+    _communicationService = [[CommunicationService alloc] initWithBaseDirectory:[self documentDirectoryURL]
+                                                                    serviceName:@"intercambio.im"];
     _communicationService.delegate = self;
 
     _wireframe = [[Wireframe alloc] initWithWindow:self.window service:_communicationService];
@@ -56,7 +57,7 @@ static DDLogLevel ddLogLevel = DDLogLevelInfo;
     [self setupLogging];
 
     if ([self didCrashInLastSessionOnStartup] == NO) {
-        [self setupUserInterfaceWithError:nil];
+        [self setupUserInterface];
     }
 
     return YES;
@@ -81,24 +82,20 @@ static DDLogLevel ddLogLevel = DDLogLevelInfo;
     [DDLog addLogger:fileLogger];
 }
 
-- (void)setupUserInterfaceWithError:(NSError *)error
+- (void)setupUserInterface
 {
-    if (error) {
-        [_wireframe present:error unrecoverable:YES];
-    } else {
-        [_wireframe presentMainScreen];
-
-        NSArray *items = [_communicationService.keyChain fetchItems:nil];
-        BOOL hasAccount = [items count] > 0;
-        if (hasAccount == NO) {
-            [_wireframe presentNewAccount];
-        }
+    [_wireframe presentMainScreen];
+    
+    NSArray *items = [_communicationService.keyChain items:nil];
+    BOOL hasAccount = [items count] > 0;
+    if (hasAccount == NO) {
+        [_wireframe presentNewAccount];
     }
 }
 
 #pragma mark ICCommunicationServiceDelegate
 
-- (void)communicationService:(ICCommunicationService *)communicationService
+- (void)communicationService:(CommunicationService *)communicationService
      needsPasswordForAccount:(NSURL *)accountURI
                   completion:(void (^)(NSString *))completion
 {
@@ -110,21 +107,21 @@ static DDLogLevel ddLogLevel = DDLogLevelInfo;
 - (void)crashManagerWillCancelSendingCrashReport:(BITCrashManager *)crashManager
 {
     if ([self didCrashInLastSessionOnStartup]) {
-        [self setupUserInterfaceWithError:nil];
+        [self setupUserInterface];
     }
 }
 
 - (void)crashManager:(BITCrashManager *)crashManager didFailWithError:(NSError *)error
 {
     if ([self didCrashInLastSessionOnStartup]) {
-        [self setupUserInterfaceWithError:nil];
+        [self setupUserInterface];
     }
 }
 
 - (void)crashManagerDidFinishSendingCrashReport:(BITCrashManager *)crashManager
 {
     if ([self didCrashInLastSessionOnStartup]) {
-        [self setupUserInterfaceWithError:nil];
+        [self setupUserInterface];
     }
 }
 

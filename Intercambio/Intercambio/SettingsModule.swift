@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import XMPPFoundation
 import IntercambioCore
 
 public class SettingsModule : NSObject, SettingsViewControllerDelegate {

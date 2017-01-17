@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import KeyChain
 import IntercambioCore
 import CoreXMPP
 import Fountain
@@ -32,20 +33,20 @@ class AccountListPresenterTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        let keyChain = KeyChain(named: "AccountListPresenterTests")
-        try! keyChain.clear()
+        let keyChain = KeyChain(serviceName: "AccountListPresenterTests")
+        try! keyChain.removeAllItems()
     }
     
     override func tearDown() {
-        let keyChain = KeyChain(named: "AccountListPresenterTests")
-        try! keyChain.clear()
+        let keyChain = KeyChain(serviceName: "AccountListPresenterTests")
+        try! keyChain.removeAllItems()
         super.tearDown()
     }
     
     // Tests
     
     func testSetDataSource() {
-        let keyChain = KeyChain(named: "AccountListPresenterTests")
+        let keyChain = KeyChain(serviceName: "AccountListPresenterTests")
         let presenter = AccountListPresenter(keyChain: keyChain)
         presenter.router = Router()
         
@@ -59,9 +60,9 @@ class AccountListPresenterTests: XCTestCase {
     func testPresentAccount() {
         let view = View()
         
-        let keyChain = KeyChain(named: "AccountListPresenterTests")
+        let keyChain = KeyChain(serviceName: "AccountListPresenterTests")
         let jid = JID("romeo@example.com")!
-        let item = KeyChainItem(jid: jid,
+        let item = KeyChainItem(identifier: jid.stringValue,
                                 invisible: false,
                                 options: [:])
         try! keyChain.add(item)
@@ -81,7 +82,7 @@ class AccountListPresenterTests: XCTestCase {
     }
     
     func testPresentNewAccount() {
-        let keyChain = KeyChain(named: "AccountListPresenterTests")
+        let keyChain = KeyChain(serviceName: "AccountListPresenterTests")
         let presenter = AccountListPresenter(keyChain: keyChain)
         presenter.router = Router()
                 

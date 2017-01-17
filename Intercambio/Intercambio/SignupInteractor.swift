@@ -7,7 +7,8 @@
 //
 
 import Foundation
-import IntercambioCore
+import KeyChain
+import XMPPFoundation
 
 class SignupInteractor {
     
@@ -20,7 +21,7 @@ class SignupInteractor {
         if jid.host.characters.count > 0 && jid.user != nil && jid.user!.characters.count > 0 {
             
             let options: [AnyHashable: Any] = [:]
-            let item = KeyChainItem(jid: jid,
+            let item = KeyChainItem(identifier: jid.stringValue,
                                     invisible: false,
                                     options: options)
             

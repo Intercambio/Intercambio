@@ -117,6 +117,20 @@
 		F6D76D8C1E2D1887007E13BB /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6D76D891E2D1887007E13BB /* SQLite.framework */; };
 		F6D76D8D1E2D1887007E13BB /* XMPPFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6D76D8A1E2D1887007E13BB /* XMPPFoundation.framework */; };
 		F6D76D8E1E2D1887007E13BB /* XMPPMessageHub.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6D76D8B1E2D1887007E13BB /* XMPPMessageHub.framework */; };
+		F6D76DA61E2E5B10007E13BB /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6D76D891E2D1887007E13BB /* SQLite.framework */; };
+		F6D76DA71E2E5B10007E13BB /* XMPPFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6D76D8A1E2D1887007E13BB /* XMPPFoundation.framework */; };
+		F6D76DA81E2E5B10007E13BB /* XMPPMessageHub.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6D76D8B1E2D1887007E13BB /* XMPPMessageHub.framework */; };
+		F6D76DA91E2E5B10007E13BB /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6F375421D55EBD100F718BC /* HockeySDK.framework */; };
+		F6D76DAA1E2E5B10007E13BB /* IntercambioCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F65751381D1011FC0038AB25 /* IntercambioCore.framework */; };
+		F6D76DAB1E2E5B10007E13BB /* SASLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F65751391D1011FC0038AB25 /* SASLKit.framework */; };
+		F6D76DAC1E2E5B10007E13BB /* Fountain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6A697021CFC348700E0A0D2 /* Fountain.framework */; };
+		F6D76DAD1E2E5B10007E13BB /* ISO8601.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F676EF7C1CD26492003047EC /* ISO8601.framework */; };
+		F6D76DAE1E2E5B10007E13BB /* OHHTTPStubs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6E251EA1CA3ED080061531E /* OHHTTPStubs.framework */; };
+		F6D76DAF1E2E5B10007E13BB /* SocketRocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F684140B1C4D8A7F009B37BE /* SocketRocket.framework */; };
+		F6D76DB01E2E5B10007E13BB /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F68413FF1C4D8901009B37BE /* CocoaLumberjack.framework */; };
+		F6D76DB11E2E5B10007E13BB /* CoreXMPP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F68414001C4D8901009B37BE /* CoreXMPP.framework */; };
+		F6D76DB21E2E5B10007E13BB /* PureXML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F68414011C4D8901009B37BE /* PureXML.framework */; };
+		F6D76DB41E2E68F7007E13BB /* KeyChain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6D76DB31E2E68F7007E13BB /* KeyChain.framework */; };
 		F6D807D71D17DD95002953AB /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F6D807D61D17DD95002953AB /* fontawesome-webfont.ttf */; };
 		F6D807DA1D17F53E002953AB /* ICURLHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = F6D807D91D17F53E002953AB /* ICURLHandler.m */; };
 		F6D807DF1D17FBA9002953AB /* OCHamcrest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F640F1231C648FCE00F65A9B /* OCHamcrest.framework */; };
@@ -304,6 +318,7 @@
 		F6D76D891E2D1887007E13BB /* SQLite.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SQLite.framework; path = ../Carthage/Build/iOS/SQLite.framework; sourceTree = "<group>"; };
 		F6D76D8A1E2D1887007E13BB /* XMPPFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XMPPFoundation.framework; path = ../Carthage/Build/iOS/XMPPFoundation.framework; sourceTree = "<group>"; };
 		F6D76D8B1E2D1887007E13BB /* XMPPMessageHub.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XMPPMessageHub.framework; path = ../Carthage/Build/iOS/XMPPMessageHub.framework; sourceTree = "<group>"; };
+		F6D76DB31E2E68F7007E13BB /* KeyChain.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeyChain.framework; path = ../Carthage/Build/iOS/KeyChain.framework; sourceTree = "<group>"; };
 		F6D807D61D17DD95002953AB /* fontawesome-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fontawesome-webfont.ttf"; sourceTree = "<group>"; };
 		F6D807D81D17F53E002953AB /* ICURLHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICURLHandler.h; sourceTree = "<group>"; };
 		F6D807D91D17F53E002953AB /* ICURLHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICURLHandler.m; sourceTree = "<group>"; };
@@ -340,6 +355,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6D76DB41E2E68F7007E13BB /* KeyChain.framework in Frameworks */,
 				F6D76D8C1E2D1887007E13BB /* SQLite.framework in Frameworks */,
 				F6D76D8D1E2D1887007E13BB /* XMPPFoundation.framework in Frameworks */,
 				F6D76D8E1E2D1887007E13BB /* XMPPMessageHub.framework in Frameworks */,
@@ -359,8 +375,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6D76DA61E2E5B10007E13BB /* SQLite.framework in Frameworks */,
+				F6D76DA71E2E5B10007E13BB /* XMPPFoundation.framework in Frameworks */,
+				F6D76DA81E2E5B10007E13BB /* XMPPMessageHub.framework in Frameworks */,
+				F6D76DA91E2E5B10007E13BB /* HockeySDK.framework in Frameworks */,
+				F6D76DAA1E2E5B10007E13BB /* IntercambioCore.framework in Frameworks */,
+				F6D76DAB1E2E5B10007E13BB /* SASLKit.framework in Frameworks */,
+				F6D76DAC1E2E5B10007E13BB /* Fountain.framework in Frameworks */,
+				F6D76DAD1E2E5B10007E13BB /* ISO8601.framework in Frameworks */,
+				F6D76DAE1E2E5B10007E13BB /* OHHTTPStubs.framework in Frameworks */,
 				F6D807DF1D17FBA9002953AB /* OCHamcrest.framework in Frameworks */,
 				F6D807E01D17FBA9002953AB /* OCMockito.framework in Frameworks */,
+				F6D76DAF1E2E5B10007E13BB /* SocketRocket.framework in Frameworks */,
+				F6D76DB01E2E5B10007E13BB /* CocoaLumberjack.framework in Frameworks */,
+				F6D76DB11E2E5B10007E13BB /* CoreXMPP.framework in Frameworks */,
+				F6D76DB21E2E5B10007E13BB /* PureXML.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -812,6 +841,7 @@
 		F68414091C4D890B009B37BE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F6D76DB31E2E68F7007E13BB /* KeyChain.framework */,
 				F6D76D891E2D1887007E13BB /* SQLite.framework */,
 				F6D76D8A1E2D1887007E13BB /* XMPPFoundation.framework */,
 				F6D76D8B1E2D1887007E13BB /* XMPPMessageHub.framework */,
@@ -1279,6 +1309,7 @@
 				"$(SRCROOT)/../Carthage/Build/iOS/XMPPFoundation.framework",
 				"$(SRCROOT)/../Carthage/Build/iOS/SQLite.framework",
 				"$(SRCROOT)/../Carthage/Build/iOS/XMPPMessageHub.framework",
+				"$(SRCROOT)/../Carthage/Build/iOS/KeyChain.framework",
 			);
 			outputPaths = (
 			);

@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import IntercambioCore
+import KeyChain
 
 class AccountListPresenter : AccountListViewEventHandler {
     

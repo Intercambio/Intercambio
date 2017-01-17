@@ -13,6 +13,7 @@ import XMPPMessageHub
 import XMPPFoundation
 import PureXML
 import Dispatch
+import KeyChain
 
 class RecentConversationsDataSource: NSObject, FTDataSource {
     
@@ -103,9 +104,9 @@ class RecentConversationsDataSource: NSObject, FTDataSource {
     private func accountJIDs() -> [JID] {
         do {
             var accountJIDs: [JID] = []
-            for i in try keyChain.fetch() {
-                if let item = i as? KeyChainItem {
-                    accountJIDs.append(item.jid)
+            for item in try keyChain.items() {
+                if let account = JID(item.identifier) {
+                    accountJIDs.append(account)
                 }
             }
             return accountJIDs
@@ -193,9 +194,10 @@ class RecentConversationsDataSource: NSObject, FTDataSource {
     
     private func loadArchives() {
         do {
-            if let items = try keyChain.fetch() as? [KeyChainItem] {
-                for item in items {
-                    addArchive(for: item.jid)
+            let items = try keyChain.items()
+            for item in items {
+                if let account = JID(item.identifier) {
+                    addArchive(for: account)
                 }
             }
         } catch {
@@ -236,18 +238,24 @@ class RecentConversationsDataSource: NSObject, FTDataSource {
     
     @objc private func handleKeyChainNotification(_ notification: Notification) {
         DispatchQueue.main.async {
-            let item = notification.userInfo?[KeyChainItemKey] as? KeyChainItem
+
             switch notification.name.rawValue {
 
             case KeyChainDidAddItemNotification:
-                guard let account = item?.jid else { return }
+                guard
+                    let item = notification.userInfo?[KeyChainItemKey] as? KeyChainItem,
+                    let account = JID(item.identifier)
+                    else { return }
                 self.addArchive(for: account)
                 
             case KeyChainDidRemoveItemNotification:
-                guard let account = item?.jid else { return }
+                guard
+                    let item = notification.userInfo?[KeyChainItemKey] as? KeyChainItem,
+                    let account = JID(item.identifier)
+                    else { return }
                 self.removeArchive(for: account)
                 
-            case KeyChainDidClearNotification:
+            case KeyChainDidRemoveAllItemsNotification:
                 self.removeAllArchives()
                 
             default:

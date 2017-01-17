@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import XMPPFoundation
+import KeyChain
 import IntercambioCore
 
 protocol MainAccountNavigationPresenterFactory {
@@ -133,9 +135,9 @@ class MainAccountNavigationPresenter: NSObject {
     
     private func accounts() -> [JID] {
         var accounts: [JID] = []
-        for item in (try? keyChain.fetch()) ?? [] {
-            if let i = item as? KeyChainItem {
-                accounts.append(i.jid)
+        for item in (try? keyChain.items()) ?? [] {
+            if let account = JID(item.identifier) {
+                accounts.append(account)
             }
         }
         return accounts
@@ -193,7 +195,7 @@ class MainAccountNavigationPresenter: NSObject {
                                                             self?.setupView()
         })
         
-        notificationObservers.append(center.addObserver(forName: NSNotification.Name(rawValue: KeyChainDidClearNotification),
+        notificationObservers.append(center.addObserver(forName: NSNotification.Name(rawValue: KeyChainDidRemoveAllItemsNotification),
                                                         object: keyChain,
                                                         queue: OperationQueue.main) { [weak self] (notification) in
                                                             self?.setupView()
