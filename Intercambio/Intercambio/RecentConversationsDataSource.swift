@@ -119,7 +119,7 @@ class RecentConversationsDataSource: NSObject, FTDataSource {
     
     private func recentMessages(for account: JID) throws -> [Message] {
         guard
-            let archive = archvies[account]
+            let archive = archives[account]
             else { return [] }
         return try archive.recent()
     }
@@ -164,7 +164,7 @@ class RecentConversationsDataSource: NSObject, FTDataSource {
         if let conversation = backingStore.item(at: indexPath) as? Conversation {
             var viewModel: ViewModel
             do {
-                if let document = try archvies[conversation.account]?.document(for: conversation.message.messageID),
+                if let document = try archives[conversation.account]?.document(for: conversation.message.messageID),
                     let stanza = document.root as? MessageStanza  {
                     viewModel = ViewModel(conversation, stanza: stanza)
                 } else {
@@ -207,22 +207,22 @@ class RecentConversationsDataSource: NSObject, FTDataSource {
         }
     }
     
-    var archvies: [JID:Archive] = [:]
+    var archives: [JID:Archive] = [:]
     
     private func addArchive(for account: JID) {
         archiveManager.archive(for: account, create: true) { (archive, error) in
-            self.archvies[account] = archive
+            self.archives[account] = archive
             self.updateConversations(for: account)
         }
     }
     
     private func removeArchive(for account: JID) {
-        archvies[account] = nil
+        archives[account] = nil
         updateConversations(for: account)
     }
     
     private func removeAllArchives() {
-        archvies.removeAll()
+        archives.removeAll()
         updateConversations()
     }
     
@@ -275,7 +275,7 @@ class RecentConversationsDataSource: NSObject, FTDataSource {
                     return
             }
 
-            if self.archvies[archive.account] === archive {
+            if self.archives[archive.account] === archive {
                 self.updateConversations(for: archive.account)
             }
         }
