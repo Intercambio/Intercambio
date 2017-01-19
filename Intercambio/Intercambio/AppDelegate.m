@@ -48,7 +48,7 @@ static DDLogLevel ddLogLevel = DDLogLevelInfo;
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
     _communicationService = [[CommunicationService alloc] initWithBaseDirectory:[self documentDirectoryURL]
-                                                                    serviceName:@"intercambio.im"];
+                                                                    serviceName:[[NSBundle mainBundle] bundleIdentifier]];
     _communicationService.delegate = self;
 
     _wireframe = [[Wireframe alloc] initWithWindow:self.window service:_communicationService];
