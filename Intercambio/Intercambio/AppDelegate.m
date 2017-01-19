@@ -43,6 +43,8 @@ static DDLogLevel ddLogLevel = DDLogLevelInfo;
     [[BITHockeyManager sharedHockeyManager] startManager];
     [[BITHockeyManager sharedHockeyManager].authenticator authenticateInstallation];
 
+    [[UIApplication sharedApplication] setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
     _communicationService = [[CommunicationService alloc] initWithBaseDirectory:[self documentDirectoryURL]
@@ -68,11 +70,14 @@ static DDLogLevel ddLogLevel = DDLogLevelInfo;
     return [_URLHandler handleURL:url];
 }
 
-- (void)applicationDidBecomeActive:(UIApplication *)application
-{
+- (void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
     [_communicationService loadRecentMessagesWithCompletion:^(NSError *error) {
-        if (error) {
-            NSLog(@"Failed to load recent messages: %@", [error localizedDescription]);
+        if (completionHandler) {
+            if (error) {
+                completionHandler(UIBackgroundFetchResultFailed);
+            } else {
+                completionHandler(UIBackgroundFetchResultNewData);
+            }
         }
     }];
 }
