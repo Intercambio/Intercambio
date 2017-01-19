@@ -68,6 +68,15 @@ static DDLogLevel ddLogLevel = DDLogLevelInfo;
     return [_URLHandler handleURL:url];
 }
 
+- (void)applicationDidBecomeActive:(UIApplication *)application
+{
+    [_communicationService loadRecentMessagesWithCompletion:^(NSError *error) {
+        if (error) {
+            NSLog(@"Failed to load recent messages: %@", [error localizedDescription]);
+        }
+    }];
+}
+
 #pragma mark Application Setup
 
 - (void)setupLogging
