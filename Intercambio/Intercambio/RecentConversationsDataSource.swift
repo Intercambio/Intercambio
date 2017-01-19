@@ -57,6 +57,7 @@ class RecentConversationsDataSource: NSObject, FTDataSource {
                     }
                 }
             }
+            NSLog("Did update conversations.")
         } catch {
             NSLog("Failed to update conversations: \(error)")
         }
@@ -78,6 +79,7 @@ class RecentConversationsDataSource: NSObject, FTDataSource {
                     }
                 }
             }
+            NSLog("Did update conversations for '\(account)'.")
         } catch {
             NSLog("Failed to update conversations: \(error)")
         }
@@ -229,6 +231,7 @@ class RecentConversationsDataSource: NSObject, FTDataSource {
     private func registerNotificationObservers() {
         let center = NotificationCenter.default
         center.addObserver(self, selector: #selector(handleKeyChainNotification(_:)), name: nil, object: keyChain)
+        center.addObserver(self, selector: #selector(handleArchiveChangeNotification(_:)), name: Notification.Name.ArchiveDidChange, object: nil)
     }
     
     private func unregisterNotificationObservers() {
@@ -260,6 +263,20 @@ class RecentConversationsDataSource: NSObject, FTDataSource {
                 
             default:
                 break
+            }
+        }
+    }
+    
+    @objc private func handleArchiveChangeNotification(_ notification: Notification) {
+        DispatchQueue.main.async {
+            guard
+                let archive = notification.object as? Archive
+                else {
+                    return
+            }
+
+            if self.archvies[archive.account] === archive {
+                self.updateConversations(for: archive.account)
             }
         }
     }
