@@ -352,7 +352,7 @@ extension RecentConversationsDataSource {
                 return error?.localizedDescription ?? ""
             } else {
                 let elements = stanza.nodes(forXPath: "x:body", usingNamespaces: ["x":"jabber:client"])
-                if let body = elements?.first as? PXElement {
+                if let body = elements.first as? PXElement {
                     return body.stringValue
                 } else {
                     return String()
