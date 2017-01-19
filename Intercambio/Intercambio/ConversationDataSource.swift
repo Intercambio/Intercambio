@@ -26,7 +26,7 @@ extension ConversationViewModelType {
     }
 }
 
-class ConversationDataSource: NSObject, FTDataSource {
+class ConversationDataSource: NSObject, FTDataSource, FTPagingDataSource {
 
     let archive: Archive
     let counterpart: JID
@@ -208,6 +208,41 @@ class ConversationDataSource: NSObject, FTDataSource {
     
     func removeObserver(_ observer: FTDataSourceObserver!) {
         proxy.removeObserver(observer)
+    }
+    
+    // FTPagingDataSource
+    
+    func hasItemsBeforeFirstItem() -> Bool {
+        guard
+            let incrementalArchive = archive as? IncrementalArchive
+            else {
+                return false
+        }
+        
+        return incrementalArchive.canLoadMore
+    }
+    
+    func loadMoreItems(beforeFirstItemCompletionHandler completionHandler: ((Bool, Error?) -> Swift.Void)!) {
+        guard
+            let incrementalArchive = archive as? IncrementalArchive
+            else {
+                completionHandler?(true, nil)
+                return
+        }
+        
+        incrementalArchive.loadMoreMessages { (error) in
+            DispatchQueue.main.async {
+                completionHandler?(error == nil, error)
+            }
+        }
+    }
+    
+    func hasItemsAfterLastItem() -> Bool {
+        return false
+    }
+    
+    func loadMoreItems(afterLastItemCompletionHandler completionHandler: ((Bool, Error?) -> Swift.Void)!) {
+        completionHandler?(true, nil)
     }
 
     // Direction
