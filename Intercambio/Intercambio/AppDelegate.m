@@ -9,6 +9,7 @@
 @import HockeySDK;
 @import IntercambioCore;
 @import KeyChain;
+@import PureXML;
 
 #if __has_include("Secrets.h")
 #import "Secrets.h"
@@ -25,7 +26,7 @@
 
 static DDLogLevel ddLogLevel = DDLogLevelInfo;
 
-@interface AppDelegate () <CommunicationServiceDelegate, BITHockeyManagerDelegate> {
+@interface AppDelegate () <CommunicationServiceDelegate, CommunicationServiceDebugDelegate, BITHockeyManagerDelegate> {
     CommunicationService *_communicationService;
     Wireframe *_wireframe;
     ICURLHandler *_URLHandler;
@@ -114,6 +115,24 @@ static DDLogLevel ddLogLevel = DDLogLevelInfo;
                   completion:(void (^)(NSString *))completion
 {
     [_wireframe presentLoginFor:accountURI completion:completion];
+}
+
+#pragma mark ICCommunicationServiceDebugDelegate
+
+- (void)communicationService:(CommunicationService *)communicationService
+                  didReceive:(PXDocument *)document
+{
+#ifdef DEBUG
+    NSLog(@"\n<<<<<<<<<< RECEIVED\n%@----------", document);
+#endif
+}
+
+- (void)communicationService:(CommunicationService *)communicationService
+                    willSend:(PXDocument *)document
+{
+#ifdef DEBUG
+    NSLog(@"\n>>>>>>>>>> SENT\n%@----------", document);
+#endif
 }
 
 #pragma mark BITCrashManagerDelegate

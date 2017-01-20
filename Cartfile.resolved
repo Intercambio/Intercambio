@@ -12,5 +12,5 @@ github "anagromataf/iso-8601-date-formatter" "e3cd1805147c2b869eb1b2a659c221556e
 github "jonreid/OCMockito" "v3.0.2"
 github "Internetslum/XMPPFoundation" "1.1"
 github "Internetslum/XMPPMessageHub" "77c51beae0b340c9f930d87218178318abd46821"
-github "Internetslum/CoreXMPP" "2ff351459d92fe6879123f100631626a91c6e593"
-github "Internetslum/IntercambioCore" "2a4125bc8ab70a481bd1d086a39aff7baeebaa60"
+github "Internetslum/CoreXMPP" "e66be3ae44f4c35272a9395e3f9aaf00425b5640"
+github "Internetslum/IntercambioCore" "9ee02631d289ba751a55cfe716a41ef36a9a9433"
