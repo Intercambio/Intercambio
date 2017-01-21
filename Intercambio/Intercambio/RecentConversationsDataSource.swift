@@ -9,26 +9,23 @@
 import Foundation
 import Fountain
 import IntercambioCore
-import XMPPMessageArchive
+import XMPPMessageHub
+import XMPPFoundation
 import PureXML
 import Dispatch
-
-protocol RecentConversationsMessageDB {
-    func recentMessagesIncludeTrashed(_ includeTrashed: Bool) throws -> [Any]
-    func document(for messageID: XMPPMessageID) throws -> PXDocument
-}
+import KeyChain
 
 class RecentConversationsDataSource: NSObject, FTDataSource {
     
     private let keyChain: KeyChain
-    private let db: RecentConversationsMessageDB
+    private let archiveManager: ArchiveManager
     private let backingStore :FTMutableSet
     private let proxy: FTObserverProxy
     private var numberOfAccounts: Int
     
-    init(keyChain: KeyChain, db: RecentConversationsMessageDB) {
+    init(keyChain: KeyChain, archiveManager: ArchiveManager) {
         self.keyChain = keyChain
-        self.db = db
+        self.archiveManager = archiveManager
         numberOfAccounts = 0
         proxy = FTObserverProxy()
         backingStore = FTMutableSet(sortDescriptors: [NSSortDescriptor(key: "date", ascending: false)])
@@ -36,7 +33,7 @@ class RecentConversationsDataSource: NSObject, FTDataSource {
         proxy.object = self
         backingStore.addObserver(proxy)
         registerNotificationObservers()
-        loadItems()
+        loadArchives()
     }
     
     deinit {
@@ -45,19 +42,10 @@ class RecentConversationsDataSource: NSObject, FTDataSource {
     
     // Load Items
     
-    private func loadItems() {
-        
-        let currentNumberOfAccounts = numberOfAccounts
-        numberOfAccounts = accountJIDs().count
-        let needsReoad = numberOfAccounts != currentNumberOfAccounts
-        
-        backingStore.performBatchUpdate {
-            let recentConversations = self.conversations()
-            
-            if needsReoad {
-                self.backingStore.removeAllObjects()
-                self.backingStore.addObjects(from: recentConversations)
-            } else {
+    private func updateConversations() {
+        do {
+            let recentConversations = try conversations()
+            backingStore.performBatchUpdate {
                 for conversation in recentConversations {
                     if !self.backingStore.contains(conversation) {
                         self.backingStore.add(conversation)
@@ -69,22 +57,48 @@ class RecentConversationsDataSource: NSObject, FTDataSource {
                     }
                 }
             }
+            NSLog("Did update conversations.")
+        } catch {
+            NSLog("Failed to update conversations: \(error)")
         }
     }
     
-    private func conversations() -> [Conversation] {
+    private func updateConversations(for account: JID) {
+        do {
+            let recentConversations = try conversations(for: account)
+            backingStore.performBatchUpdate {
+                for conversation in recentConversations {
+                    if !self.backingStore.contains(conversation) {
+                        self.backingStore.add(conversation)
+                    }
+                }
+                for obj in self.backingStore.allObjects {
+                    let conversation = obj as! Conversation
+                    if conversation.account == account && recentConversations.contains(conversation) == false {
+                        self.backingStore.remove(conversation)
+                    }
+                }
+            }
+            NSLog("Did update conversations for '\(account)'.")
+        } catch {
+            NSLog("Failed to update conversations: \(error)")
+        }
+    }
+    
+    private func conversations() throws -> [Conversation] {
         let accounts = accountJIDs()
-        let messages = recentMessages()
         var conversations: [Conversation] = []
+        for account in accounts {
+            try conversations.append(contentsOf: self.conversations(for: account))
+        }
+        return conversations
+    }
+    
+    private func conversations(for account: JID) throws -> [Conversation] {
+        var conversations: [Conversation] = []
+        let messages = try recentMessages(for: account)
         for message in messages {
-            // outbound
-            if accounts.contains(message.from.bare()) {
-                conversations.append(Conversation(message: message, direction: .outbound))
-            }
-            // inbound
-            if accounts.contains(message.to.bare()) {
-                conversations.append(Conversation(message: message, direction: .inbound))
-            }
+            conversations.append(Conversation(message: message))
         }
         return conversations
     }
@@ -92,9 +106,9 @@ class RecentConversationsDataSource: NSObject, FTDataSource {
     private func accountJIDs() -> [JID] {
         do {
             var accountJIDs: [JID] = []
-            for i in try keyChain.fetch() {
-                if let item = i as? KeyChainItem {
-                    accountJIDs.append(item.jid)
+            for item in try keyChain.items() {
+                if let account = JID(item.identifier) {
+                    accountJIDs.append(account)
                 }
             }
             return accountJIDs
@@ -103,18 +117,11 @@ class RecentConversationsDataSource: NSObject, FTDataSource {
         }
     }
     
-    private func recentMessages() -> [XMPPMessage] {
-        do {
-            var messages: [XMPPMessage] = []
-            for item in try self.db.recentMessagesIncludeTrashed(false) {
-                if let message = item as? XMPPMessage {
-                    messages.append(message)
-                }
-            }
-            return messages
-        } catch {
-            return []
-        }
+    private func recentMessages(for account: JID) throws -> [Message] {
+        guard
+            let archive = archives[account]
+            else { return [] }
+        return try archive.recent()
     }
     
     // Conversation URL
@@ -157,10 +164,14 @@ class RecentConversationsDataSource: NSObject, FTDataSource {
         if let conversation = backingStore.item(at: indexPath) as? Conversation {
             var viewModel: ViewModel
             do {
-                let document = try db.document(for: conversation.message.messageID)
-                viewModel = ViewModel(conversation, document: document)
+                if let document = try archives[conversation.account]?.document(for: conversation.message.messageID),
+                    let stanza = document.root as? MessageStanza  {
+                    viewModel = ViewModel(conversation, stanza: stanza)
+                } else {
+                    viewModel = ViewModel(conversation, stanza: nil)
+                }
             } catch {
-                viewModel = ViewModel(conversation, document: nil)
+                viewModel = ViewModel(conversation, stanza: nil)
             }
             viewModel.showSubtitle = numberOfAccounts > 1
             return viewModel
@@ -181,83 +192,111 @@ class RecentConversationsDataSource: NSObject, FTDataSource {
         proxy.removeObserver(observer)
     }
     
-    // Notification Handling
+    // Archive Management
     
-    private lazy var notificationObservers = [NSObjectProtocol]()
+    private func loadArchives() {
+        do {
+            let items = try keyChain.items()
+            for item in items {
+                if let account = JID(item.identifier) {
+                    addArchive(for: account)
+                }
+            }
+        } catch {
+            NSLog("Failed to load the archive: \(error)")
+        }
+    }
+    
+    var archives: [JID:Archive] = [:]
+    
+    private func addArchive(for account: JID) {
+        archiveManager.archive(for: account, create: true) { (archive, error) in
+            self.archives[account] = archive
+            self.updateConversations(for: account)
+        }
+    }
+    
+    private func removeArchive(for account: JID) {
+        archives[account] = nil
+        updateConversations(for: account)
+    }
+    
+    private func removeAllArchives() {
+        archives.removeAll()
+        updateConversations()
+    }
+    
+    // Notification Handling
     
     private func registerNotificationObservers() {
         let center = NotificationCenter.default
-        
-        // KeyChain
-        
-        notificationObservers.append(center.addObserver(forName: NSNotification.Name(rawValue: KeyChainDidAddItemNotification),
-                                                        object: keyChain,
-                                                        queue: OperationQueue.main) { [weak self] (notification) in
-                                                            self?.loadItems()
-        })
-        
-        notificationObservers.append(center.addObserver(forName: NSNotification.Name(rawValue: KeyChainDidRemoveItemNotification),
-                                                        object: keyChain,
-                                                        queue: OperationQueue.main) { [weak self] (notification) in
-                                                            self?.loadItems()
-        })
-        
-        notificationObservers.append(center.addObserver(forName: NSNotification.Name(rawValue: KeyChainDidClearNotification),
-                                                        object: keyChain,
-                                                        queue: OperationQueue.main) { [weak self] (notification) in
-                                                            self?.loadItems()
-        })
-        
-        // MessageDB
-        
-        notificationObservers.append(center.addObserver(forName: NSNotification.Name(rawValue: XMPPMessageDBDidChange),
-                                                        object: self.db,
-                                                        queue: OperationQueue.main) { [weak self] (notifcation) in
-                                                            self?.loadItems()
-        })
+        center.addObserver(self, selector: #selector(handleKeyChainNotification(_:)), name: nil, object: keyChain)
+        center.addObserver(self, selector: #selector(handleArchiveChangeNotification(_:)), name: Notification.Name.ArchiveDidChange, object: nil)
     }
     
     private func unregisterNotificationObservers() {
         let center = NotificationCenter.default
-        for observer in notificationObservers {
-            center.removeObserver(observer)
+        center.removeObserver(self, name: nil, object: keyChain)
+    }
+    
+    @objc private func handleKeyChainNotification(_ notification: Notification) {
+        DispatchQueue.main.async {
+
+            switch notification.name.rawValue {
+
+            case KeyChainDidAddItemNotification:
+                guard
+                    let item = notification.userInfo?[KeyChainItemKey] as? KeyChainItem,
+                    let account = JID(item.identifier)
+                    else { return }
+                self.addArchive(for: account)
+                
+            case KeyChainDidRemoveItemNotification:
+                guard
+                    let item = notification.userInfo?[KeyChainItemKey] as? KeyChainItem,
+                    let account = JID(item.identifier)
+                    else { return }
+                self.removeArchive(for: account)
+                
+            case KeyChainDidRemoveAllItemsNotification:
+                self.removeAllArchives()
+                
+            default:
+                break
+            }
         }
-        notificationObservers.removeAll()
+    }
+    
+    @objc private func handleArchiveChangeNotification(_ notification: Notification) {
+        DispatchQueue.main.async {
+            guard
+                let archive = notification.object as? Archive
+                else {
+                    return
+            }
+
+            if self.archives[archive.account] === archive {
+                self.updateConversations(for: archive.account)
+            }
+        }
     }
 }
 
 extension RecentConversationsDataSource {
     @objc class Conversation : NSObject {
 
-        enum Direction {
-            case inbound
-            case outbound
-        }
+        let message: Message
         
-        let message: XMPPMessage
-        let direction: Direction
-        
-        init(message: XMPPMessage, direction: Direction) {
+        init(message: Message) {
             self.message = message
-            self.direction = direction
         }
         
         var account: JID {
-            switch direction {
-            case .inbound:
-                return message.to.bare()
-            case .outbound:
-                return message.from.bare()
-            }
+            return message.messageID.account
         }
         
         var counterpart: JID {
-            switch direction {
-            case .inbound:
-                return message.from.bare()
-            case .outbound:
-                return message.to.bare()
-            }
+            return message.messageID.counterpart
         }
         
         var date: Date {
@@ -271,12 +310,12 @@ extension RecentConversationsDataSource {
         }
         
         override var hash: Int {
-            return self.account.hash ^ self.counterpart.hash ^ (Int)(self.date.timeIntervalSinceReferenceDate)
+            return account.hash ^ counterpart.hash ^ (Int)(date.timeIntervalSinceReferenceDate)
         }
         
         override func isEqual(_ object: Any?) -> Bool {
             if let other = object as? Conversation {
-                return self.account.isEqual(other.account) && self.counterpart.isEqual(other.counterpart) && self.date == other.date
+                return account.isEqual(other.account) && counterpart.isEqual(other.counterpart) && date == other.date
             } else {
                 return false
             }
@@ -290,41 +329,47 @@ extension RecentConversationsDataSource {
         var showSubtitle: Bool
         
         private let conversation: Conversation
-        private let document: PXDocument?
+        private let stanza: MessageStanza?
 
-        init(_ conversation: Conversation, document: PXDocument?) {
+        init(_ conversation: Conversation, stanza: MessageStanza?) {
             showSubtitle = true
-            self.type = RecentConversationsViewModelType(rawValue: conversation.message.messageID.type) ?? .normal
             self.conversation = conversation
-            self.document = document
+            self.stanza = stanza
         }
         
-        let type: RecentConversationsViewModelType
+        var type: RecentConversationsViewModelType {
+            switch conversation.message.messageID.type {
+            case .chat: return .chat
+            case .error: return .error
+            case .groupchat: return .groupchat
+            case .headline: return .headline
+            case .normal: return .normal
+            }
+        }
         
         var title: String? {
-            return self.conversation.counterpart.stringValue
+            return conversation.counterpart.stringValue
         }
         
         var subtitle: String? {
             if showSubtitle {
-                return "via \(self.conversation.account.stringValue)"
+                return "via \(conversation.account.stringValue)"
             } else {
                 return nil
             }
         }
         
         var body: String? {
-            guard let document = self.document else {
+            guard let stanza = self.stanza else {
                 return String()
             }
             
             if type == .error {
-                let error = NSError(fromStanza: document.root)
+                let error = stanza.error
                 return error?.localizedDescription ?? ""
             } else {
-                let elements = document.root.nodes(forXPath: "x:body",
-                                                   usingNamespaces: ["x":"jabber:client"])
-                if let body = elements?.first as? PXElement {
+                let elements = stanza.nodes(forXPath: "x:body", usingNamespaces: ["x":"jabber:client"])
+                if let body = elements.first as? PXElement {
                     return body.stringValue
                 } else {
                     return String()

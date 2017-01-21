@@ -7,6 +7,9 @@
 //
 
 @import HockeySDK;
+@import IntercambioCore;
+@import KeyChain;
+@import PureXML;
 
 #if __has_include("Secrets.h")
 #import "Secrets.h"
@@ -20,17 +23,13 @@
 #import "ICURLHandler.h"
 #import "Intercambio-Swift.h"
 #import <CocoaLumberjack/CocoaLumberjack.h>
-#import <IntercambioCore/IntercambioCore.h>
 
 static DDLogLevel ddLogLevel = DDLogLevelInfo;
 
-@interface AppDelegate () <ICCommunicationServiceDelegate, BITHockeyManagerDelegate> {
-    ICCommunicationService *_communicationService;
+@interface AppDelegate () <CommunicationServiceDelegate, CommunicationServiceDebugDelegate, BITHockeyManagerDelegate> {
+    CommunicationService *_communicationService;
     Wireframe *_wireframe;
-
     ICURLHandler *_URLHandler;
-    NSURL *_pendingURLToHandle;
-    BOOL _isSetup;
 }
 
 @end
@@ -45,10 +44,12 @@ static DDLogLevel ddLogLevel = DDLogLevelInfo;
     [[BITHockeyManager sharedHockeyManager] startManager];
     [[BITHockeyManager sharedHockeyManager].authenticator authenticateInstallation];
 
+    [[UIApplication sharedApplication] setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
-    NSDictionary *options = @{};
-    _communicationService = [[ICCommunicationService alloc] initWithOptions:options];
+    _communicationService = [[CommunicationService alloc] initWithBaseDirectory:[self documentDirectoryURL]
+                                                                    serviceName:[[NSBundle mainBundle] bundleIdentifier]];
     _communicationService.delegate = self;
 
     _wireframe = [[Wireframe alloc] initWithWindow:self.window service:_communicationService];
@@ -59,9 +60,7 @@ static DDLogLevel ddLogLevel = DDLogLevelInfo;
     [self setupLogging];
 
     if ([self didCrashInLastSessionOnStartup] == NO) {
-        [self setupApplicationWithCompletion:^(BOOL success, NSError *error) {
-            [self setupUserInterfaceWithError:success ? nil : error];
-        }];
+        [self setupUserInterface];
     }
 
     return YES;
@@ -69,35 +68,22 @@ static DDLogLevel ddLogLevel = DDLogLevelInfo;
 
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *, id> *)options
 {
-    if (_isSetup) {
-        return [_URLHandler handleURL:url];
-    } else {
-        _pendingURLToHandle = url;
-        return YES;
-    }
+    return [_URLHandler handleURL:url];
 }
 
-#pragma mark Application Setup
-
-- (void)setupApplicationWithCompletion:(void (^)(BOOL success, NSError *error))completion
-{
-    __weak typeof(self) _self = self;
-    [_communicationService setUpWithCompletion:^(BOOL success, NSError *error) {
-        _isSetup = success;
-        if (completion) {
-            completion(success, error);
+- (void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+    [_communicationService loadRecentMessagesWithCompletion:^(NSError *error) {
+        if (completionHandler) {
+            if (error) {
+                completionHandler(UIBackgroundFetchResultFailed);
+            } else {
+                completionHandler(UIBackgroundFetchResultNewData);
+            }
         }
-        [_self handlePendingOpenURL];
     }];
 }
 
-- (void)handlePendingOpenURL
-{
-    if (_pendingURLToHandle) {
-        [_URLHandler handleURL:_pendingURLToHandle];
-        _pendingURLToHandle = nil;
-    }
-}
+#pragma mark Application Setup
 
 - (void)setupLogging
 {
@@ -111,28 +97,42 @@ static DDLogLevel ddLogLevel = DDLogLevelInfo;
     [DDLog addLogger:fileLogger];
 }
 
-- (void)setupUserInterfaceWithError:(NSError *)error
+- (void)setupUserInterface
 {
-    if (error) {
-        [_wireframe present:error unrecoverable:YES];
-    } else {
-        [_wireframe presentMainScreen];
-
-        NSArray *items = [_communicationService.keyChain fetchItems:nil];
-        BOOL hasAccount = [items count] > 0;
-        if (hasAccount == NO) {
-            [_wireframe presentNewAccount];
-        }
+    [_wireframe presentMainScreen];
+    
+    NSArray *items = [_communicationService.keyChain items:nil];
+    BOOL hasAccount = [items count] > 0;
+    if (hasAccount == NO) {
+        [_wireframe presentNewAccount];
     }
 }
 
 #pragma mark ICCommunicationServiceDelegate
 
-- (void)communicationService:(ICCommunicationService *)communicationService
+- (void)communicationService:(CommunicationService *)communicationService
      needsPasswordForAccount:(NSURL *)accountURI
                   completion:(void (^)(NSString *))completion
 {
     [_wireframe presentLoginFor:accountURI completion:completion];
+}
+
+#pragma mark ICCommunicationServiceDebugDelegate
+
+- (void)communicationService:(CommunicationService *)communicationService
+                  didReceive:(PXDocument *)document
+{
+#ifdef DEBUG
+    NSLog(@"\n<<<<<<<<<< RECEIVED\n%@----------", document);
+#endif
+}
+
+- (void)communicationService:(CommunicationService *)communicationService
+                    willSend:(PXDocument *)document
+{
+#ifdef DEBUG
+    NSLog(@"\n>>>>>>>>>> SENT\n%@----------", document);
+#endif
 }
 
 #pragma mark BITCrashManagerDelegate
@@ -140,27 +140,21 @@ static DDLogLevel ddLogLevel = DDLogLevelInfo;
 - (void)crashManagerWillCancelSendingCrashReport:(BITCrashManager *)crashManager
 {
     if ([self didCrashInLastSessionOnStartup]) {
-        [self setupApplicationWithCompletion:^(BOOL success, NSError *error) {
-            [self setupUserInterfaceWithError:success ? nil : error];
-        }];
+        [self setupUserInterface];
     }
 }
 
 - (void)crashManager:(BITCrashManager *)crashManager didFailWithError:(NSError *)error
 {
     if ([self didCrashInLastSessionOnStartup]) {
-        [self setupApplicationWithCompletion:^(BOOL success, NSError *error) {
-            [self setupUserInterfaceWithError:success ? nil : error];
-        }];
+        [self setupUserInterface];
     }
 }
 
 - (void)crashManagerDidFinishSendingCrashReport:(BITCrashManager *)crashManager
 {
     if ([self didCrashInLastSessionOnStartup]) {
-        [self setupApplicationWithCompletion:^(BOOL success, NSError *error) {
-            [self setupUserInterfaceWithError:success ? nil : error];
-        }];
+        [self setupUserInterface];
     }
 }
 

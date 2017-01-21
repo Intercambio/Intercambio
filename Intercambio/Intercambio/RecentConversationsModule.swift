@@ -8,6 +8,7 @@
 
 import UIKit
 import IntercambioCore
+import XMPPMessageHub
 
 @objc public protocol RecentConversationsRouter : class {
     func presentConversationUserInterface(for conversationURI: URL)
@@ -34,7 +35,7 @@ public extension RecentConversationsViewController {
     
     public convenience init(service: CommunicationService) {
         self.init()
-        let presenter = RecentConversationsPresenter(keyChain: service.keyChain, db: service.messageDB)
+        let presenter = RecentConversationsPresenter(keyChain: service.keyChain, archiveManager: service.messageHub)
         presenter.view = self
         self.presenter = presenter
     }
@@ -54,5 +55,3 @@ public extension RecentConversationsViewController {
         }
     }
 }
-
-extension XMPPMessageDB : RecentConversationsMessageDB {}

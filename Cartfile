@@ -1,6 +1,3 @@
-github "Internetslum/XMPPMessageArchive" ~> 1.3
-github "Internetslum/CoreXMPP" ~> 1.4.2
-github "Internetslum/PureXML" ~> 1.1
-github "Internetslum/IntercambioCore" ~> 1.2.5
+github "Internetslum/IntercambioCore" ~> 1.3
 github "anagromataf/Fountain" ~> 2.4.2
 github "bitstadium/HockeySDK-iOS"

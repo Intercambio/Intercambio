@@ -8,6 +8,8 @@
 
 import Foundation
 import Fountain
+import KeyChain
+import XMPPFoundation
 import IntercambioCore
 
 class AccountListDataSource: NSObject, FTDataSource {
@@ -15,7 +17,7 @@ class AccountListDataSource: NSObject, FTDataSource {
     class Model: AccountListViewModel {
         
         var name: String {
-            return item.jid.stringValue
+            return item.identifier
         }
         
         private let item: KeyChainItem
@@ -47,7 +49,7 @@ class AccountListDataSource: NSObject, FTDataSource {
     
     private func loadItems() {
         do {
-            let items = try keyChain.fetch()
+            let items = try keyChain.items()
             backingStore.performBatchUpdate({
                 self.backingStore.removeAllObjects()
                 self.backingStore.addObjects(from: items)
@@ -58,11 +60,12 @@ class AccountListDataSource: NSObject, FTDataSource {
     }
     
     func accountURI(forItemAt indexPath: IndexPath) -> URL? {
-        if let item = backingStore.item(at: indexPath) as? KeyChainItem {
+        if let item = backingStore.item(at: indexPath) as? KeyChainItem,
+            let account = JID(item.identifier) {
             var components = URLComponents()
             components.scheme = "xmpp"
-            components.host = item.jid.host
-            components.user = item.jid.user
+            components.host = account.host
+            components.user = account.user
             return components.url
         } else {
             return nil
@@ -137,7 +140,7 @@ class AccountListDataSource: NSObject, FTDataSource {
                                                             }
             })
         
-        notificationObservers.append(center.addObserver(forName: NSNotification.Name(rawValue: KeyChainDidClearNotification),
+        notificationObservers.append(center.addObserver(forName: NSNotification.Name(rawValue: KeyChainDidRemoveAllItemsNotification),
                                                         object: keyChain,
                                                         queue: OperationQueue.main) { [weak self] (notification) in
                                                             if let dataSource = self?.backingStore {

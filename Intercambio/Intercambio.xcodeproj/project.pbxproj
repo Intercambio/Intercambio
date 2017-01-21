@@ -47,7 +47,6 @@
 		F635166E1D33A52A007822F3 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F635166D1D33A52A007822F3 /* AccountView.swift */; };
 		F63516771D33C076007822F3 /* AccountPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63516761D33C076007822F3 /* AccountPresenter.swift */; };
 		F63A66711D26647700FCC82E /* AccountModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63A66701D26647700FCC82E /* AccountModule.swift */; };
-		F640F0E41C63B7A500F65A9B /* FMDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F640F0E11C63B7A500F65A9B /* FMDB.framework */; };
 		F646CA5D1DB6264500C239B1 /* RecentConversationsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F646CA5C1DB6264500C239B1 /* RecentConversationsCell.swift */; };
 		F646CA5F1DB62F8000C239B1 /* RecentConversationsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F646CA5E1DB62F8000C239B1 /* RecentConversationsCell.xib */; };
 		F646CA621DB6410300C239B1 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F646CA611DB6410300C239B1 /* AvatarView.swift */; };
@@ -115,13 +114,29 @@
 		F6CE94A21DABF1570044356A /* RecentConversationsViewEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6CE94A11DABF1570044356A /* RecentConversationsViewEventHandler.swift */; };
 		F6CE94A41DAC04BD0044356A /* RecentConversationsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6CE94A31DAC04BD0044356A /* RecentConversationsDataSource.swift */; };
 		F6D740791DBF53E300506C8B /* ConversationViewLayoutInvalidationContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D740781DBF53E300506C8B /* ConversationViewLayoutInvalidationContext.swift */; };
+		F6D76D8C1E2D1887007E13BB /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6D76D891E2D1887007E13BB /* SQLite.framework */; };
+		F6D76D8D1E2D1887007E13BB /* XMPPFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6D76D8A1E2D1887007E13BB /* XMPPFoundation.framework */; };
+		F6D76D8E1E2D1887007E13BB /* XMPPMessageHub.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6D76D8B1E2D1887007E13BB /* XMPPMessageHub.framework */; };
+		F6D76DA61E2E5B10007E13BB /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6D76D891E2D1887007E13BB /* SQLite.framework */; };
+		F6D76DA71E2E5B10007E13BB /* XMPPFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6D76D8A1E2D1887007E13BB /* XMPPFoundation.framework */; };
+		F6D76DA81E2E5B10007E13BB /* XMPPMessageHub.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6D76D8B1E2D1887007E13BB /* XMPPMessageHub.framework */; };
+		F6D76DA91E2E5B10007E13BB /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6F375421D55EBD100F718BC /* HockeySDK.framework */; };
+		F6D76DAA1E2E5B10007E13BB /* IntercambioCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F65751381D1011FC0038AB25 /* IntercambioCore.framework */; };
+		F6D76DAB1E2E5B10007E13BB /* SASLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F65751391D1011FC0038AB25 /* SASLKit.framework */; };
+		F6D76DAC1E2E5B10007E13BB /* Fountain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6A697021CFC348700E0A0D2 /* Fountain.framework */; };
+		F6D76DAD1E2E5B10007E13BB /* ISO8601.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F676EF7C1CD26492003047EC /* ISO8601.framework */; };
+		F6D76DAE1E2E5B10007E13BB /* OHHTTPStubs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6E251EA1CA3ED080061531E /* OHHTTPStubs.framework */; };
+		F6D76DAF1E2E5B10007E13BB /* SocketRocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F684140B1C4D8A7F009B37BE /* SocketRocket.framework */; };
+		F6D76DB01E2E5B10007E13BB /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F68413FF1C4D8901009B37BE /* CocoaLumberjack.framework */; };
+		F6D76DB11E2E5B10007E13BB /* CoreXMPP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F68414001C4D8901009B37BE /* CoreXMPP.framework */; };
+		F6D76DB21E2E5B10007E13BB /* PureXML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F68414011C4D8901009B37BE /* PureXML.framework */; };
+		F6D76DB41E2E68F7007E13BB /* KeyChain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6D76DB31E2E68F7007E13BB /* KeyChain.framework */; };
 		F6D807D71D17DD95002953AB /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F6D807D61D17DD95002953AB /* fontawesome-webfont.ttf */; };
 		F6D807DA1D17F53E002953AB /* ICURLHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = F6D807D91D17F53E002953AB /* ICURLHandler.m */; };
 		F6D807DF1D17FBA9002953AB /* OCHamcrest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F640F1231C648FCE00F65A9B /* OCHamcrest.framework */; };
 		F6D807E01D17FBA9002953AB /* OCMockito.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F640F1241C648FCE00F65A9B /* OCMockito.framework */; };
 		F6D807E41D1826EB002953AB /* NSURL+Intercambio.m in Sources */ = {isa = PBXBuildFile; fileRef = F6D807E31D1826EB002953AB /* NSURL+Intercambio.m */; };
 		F6D807E61D1827E3002953AB /* NSURLIntercambioTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F6D807E51D1827E3002953AB /* NSURLIntercambioTests.m */; };
-		F6E2431B1CC1595600523F46 /* XMPPMessageArchive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6E2431A1CC1595600523F46 /* XMPPMessageArchive.framework */; };
 		F6E252151CAAC8010061531E /* ICAccountShareActivityItemSource.m in Sources */ = {isa = PBXBuildFile; fileRef = F6E252141CAAC8010061531E /* ICAccountShareActivityItemSource.m */; };
 		F6E2521A1CAACDF50061531E /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F6E252191CAACDF50061531E /* Settings.bundle */; };
 		F6EF1F411C72066C0083F4BE /* CLTokenInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = F6EF1F3A1C72066C0083F4BE /* CLTokenInputView.m */; };
@@ -224,7 +239,6 @@
 		F63A66671D2660BD00FCC82E /* Intercambio-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Intercambio-Bridging-Header.h"; sourceTree = "<group>"; };
 		F63A66701D26647700FCC82E /* AccountModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AccountModule.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		F63A66761D26685200FCC82E /* IntercambioTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IntercambioTests-Bridging-Header.h"; sourceTree = "<group>"; };
-		F640F0E11C63B7A500F65A9B /* FMDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FMDB.framework; path = ../Carthage/Build/iOS/FMDB.framework; sourceTree = "<group>"; };
 		F640F1231C648FCE00F65A9B /* OCHamcrest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OCHamcrest.framework; path = ../Carthage/Build/iOS/OCHamcrest.framework; sourceTree = "<group>"; };
 		F640F1241C648FCE00F65A9B /* OCMockito.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OCMockito.framework; path = ../Carthage/Build/iOS/OCMockito.framework; sourceTree = "<group>"; };
 		F646CA5C1DB6264500C239B1 /* RecentConversationsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentConversationsCell.swift; sourceTree = "<group>"; };
@@ -301,13 +315,16 @@
 		F6CE94A11DABF1570044356A /* RecentConversationsViewEventHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentConversationsViewEventHandler.swift; sourceTree = "<group>"; };
 		F6CE94A31DAC04BD0044356A /* RecentConversationsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentConversationsDataSource.swift; sourceTree = "<group>"; };
 		F6D740781DBF53E300506C8B /* ConversationViewLayoutInvalidationContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewLayoutInvalidationContext.swift; sourceTree = "<group>"; };
+		F6D76D891E2D1887007E13BB /* SQLite.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SQLite.framework; path = ../Carthage/Build/iOS/SQLite.framework; sourceTree = "<group>"; };
+		F6D76D8A1E2D1887007E13BB /* XMPPFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XMPPFoundation.framework; path = ../Carthage/Build/iOS/XMPPFoundation.framework; sourceTree = "<group>"; };
+		F6D76D8B1E2D1887007E13BB /* XMPPMessageHub.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XMPPMessageHub.framework; path = ../Carthage/Build/iOS/XMPPMessageHub.framework; sourceTree = "<group>"; };
+		F6D76DB31E2E68F7007E13BB /* KeyChain.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeyChain.framework; path = ../Carthage/Build/iOS/KeyChain.framework; sourceTree = "<group>"; };
 		F6D807D61D17DD95002953AB /* fontawesome-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fontawesome-webfont.ttf"; sourceTree = "<group>"; };
 		F6D807D81D17F53E002953AB /* ICURLHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICURLHandler.h; sourceTree = "<group>"; };
 		F6D807D91D17F53E002953AB /* ICURLHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICURLHandler.m; sourceTree = "<group>"; };
 		F6D807E21D1826EB002953AB /* NSURL+Intercambio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+Intercambio.h"; sourceTree = "<group>"; };
 		F6D807E31D1826EB002953AB /* NSURL+Intercambio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+Intercambio.m"; sourceTree = "<group>"; };
 		F6D807E51D1827E3002953AB /* NSURLIntercambioTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSURLIntercambioTests.m; sourceTree = "<group>"; };
-		F6E2431A1CC1595600523F46 /* XMPPMessageArchive.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XMPPMessageArchive.framework; path = ../Carthage/Build/iOS/XMPPMessageArchive.framework; sourceTree = "<group>"; };
 		F6E251E91CA3EA8B0061531E /* Cartfile.private */ = {isa = PBXFileReference; lastKnownFileType = text; name = Cartfile.private; path = ../Cartfile.private; sourceTree = "<group>"; };
 		F6E251EA1CA3ED080061531E /* OHHTTPStubs.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OHHTTPStubs.framework; path = ../Carthage/Build/iOS/OHHTTPStubs.framework; sourceTree = "<group>"; };
 		F6E252131CAAC8010061531E /* ICAccountShareActivityItemSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICAccountShareActivityItemSource.h; sourceTree = "<group>"; };
@@ -338,12 +355,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6D76DB41E2E68F7007E13BB /* KeyChain.framework in Frameworks */,
+				F6D76D8C1E2D1887007E13BB /* SQLite.framework in Frameworks */,
+				F6D76D8D1E2D1887007E13BB /* XMPPFoundation.framework in Frameworks */,
+				F6D76D8E1E2D1887007E13BB /* XMPPMessageHub.framework in Frameworks */,
 				F6F375431D55EBD100F718BC /* HockeySDK.framework in Frameworks */,
 				F657513A1D1011FC0038AB25 /* IntercambioCore.framework in Frameworks */,
 				F657513B1D1011FC0038AB25 /* SASLKit.framework in Frameworks */,
 				F6A697031CFC348700E0A0D2 /* Fountain.framework in Frameworks */,
-				F6E2431B1CC1595600523F46 /* XMPPMessageArchive.framework in Frameworks */,
-				F640F0E41C63B7A500F65A9B /* FMDB.framework in Frameworks */,
 				F6F56AF31C51416600C34CC8 /* SocketRocket.framework in Frameworks */,
 				F6F56AF41C51416600C34CC8 /* CocoaLumberjack.framework in Frameworks */,
 				F6F56AF51C51416600C34CC8 /* CoreXMPP.framework in Frameworks */,
@@ -356,8 +375,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6D76DA61E2E5B10007E13BB /* SQLite.framework in Frameworks */,
+				F6D76DA71E2E5B10007E13BB /* XMPPFoundation.framework in Frameworks */,
+				F6D76DA81E2E5B10007E13BB /* XMPPMessageHub.framework in Frameworks */,
+				F6D76DA91E2E5B10007E13BB /* HockeySDK.framework in Frameworks */,
+				F6D76DAA1E2E5B10007E13BB /* IntercambioCore.framework in Frameworks */,
+				F6D76DAB1E2E5B10007E13BB /* SASLKit.framework in Frameworks */,
+				F6D76DAC1E2E5B10007E13BB /* Fountain.framework in Frameworks */,
+				F6D76DAD1E2E5B10007E13BB /* ISO8601.framework in Frameworks */,
+				F6D76DAE1E2E5B10007E13BB /* OHHTTPStubs.framework in Frameworks */,
 				F6D807DF1D17FBA9002953AB /* OCHamcrest.framework in Frameworks */,
 				F6D807E01D17FBA9002953AB /* OCMockito.framework in Frameworks */,
+				F6D76DAF1E2E5B10007E13BB /* SocketRocket.framework in Frameworks */,
+				F6D76DB01E2E5B10007E13BB /* CocoaLumberjack.framework in Frameworks */,
+				F6D76DB11E2E5B10007E13BB /* CoreXMPP.framework in Frameworks */,
+				F6D76DB21E2E5B10007E13BB /* PureXML.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -809,16 +841,18 @@
 		F68414091C4D890B009B37BE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F6D76DB31E2E68F7007E13BB /* KeyChain.framework */,
+				F6D76D891E2D1887007E13BB /* SQLite.framework */,
+				F6D76D8A1E2D1887007E13BB /* XMPPFoundation.framework */,
+				F6D76D8B1E2D1887007E13BB /* XMPPMessageHub.framework */,
 				F6F375421D55EBD100F718BC /* HockeySDK.framework */,
 				F65751381D1011FC0038AB25 /* IntercambioCore.framework */,
 				F65751391D1011FC0038AB25 /* SASLKit.framework */,
 				F6A697021CFC348700E0A0D2 /* Fountain.framework */,
 				F676EF7C1CD26492003047EC /* ISO8601.framework */,
-				F6E2431A1CC1595600523F46 /* XMPPMessageArchive.framework */,
 				F6E251EA1CA3ED080061531E /* OHHTTPStubs.framework */,
 				F640F1231C648FCE00F65A9B /* OCHamcrest.framework */,
 				F640F1241C648FCE00F65A9B /* OCMockito.framework */,
-				F640F0E11C63B7A500F65A9B /* FMDB.framework */,
 				F684140B1C4D8A7F009B37BE /* SocketRocket.framework */,
 				F68413FF1C4D8901009B37BE /* CocoaLumberjack.framework */,
 				F68414001C4D8901009B37BE /* CoreXMPP.framework */,
@@ -1181,7 +1215,7 @@
 								enabled = 0;
 							};
 							com.apple.BackgroundModes = {
-								enabled = 0;
+								enabled = 1;
 							};
 							com.apple.Keychain = {
 								enabled = 1;
@@ -1267,13 +1301,15 @@
 				"$(SRCROOT)/../Carthage/Build/iOS/CoreXMPP.framework",
 				"$(SRCROOT)/../Carthage/Build/iOS/CocoaLumberjack.framework",
 				"$(SRCROOT)/../Carthage/Build/iOS/SocketRocket.framework",
-				"$(SRCROOT)/../Carthage/Build/iOS/FMDB.framework",
 				"$(SRCROOT)/../Carthage/Build/iOS/Fountain.framework",
-				"$(SRCROOT)/../Carthage/Build/iOS/XMPPMessageArchive.framework",
 				"$(SRCROOT)/../Carthage/Build/iOS/ISO8601.framework",
 				"$(SRCROOT)/../Carthage/Build/iOS/IntercambioCore.framework",
 				"$(SRCROOT)/../Carthage/Build/iOS/SASLKit.framework",
 				"$(SRCROOT)/../Carthage/Build/iOS/HockeySDK.framework",
+				"$(SRCROOT)/../Carthage/Build/iOS/XMPPFoundation.framework",
+				"$(SRCROOT)/../Carthage/Build/iOS/SQLite.framework",
+				"$(SRCROOT)/../Carthage/Build/iOS/XMPPMessageHub.framework",
+				"$(SRCROOT)/../Carthage/Build/iOS/KeyChain.framework",
 			);
 			outputPaths = (
 			);
@@ -1497,7 +1533,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "$(TARGET_TEMP_DIR)/../$(PROJECT_NAME).build/DerivedSources";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1538,7 +1574,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "$(TARGET_TEMP_DIR)/../$(PROJECT_NAME).build/DerivedSources";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -1556,6 +1592,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../Carthage/Build/iOS/";
 				INFOPLIST_FILE = Intercambio/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = im.intercambio.develop;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1574,6 +1611,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../Carthage/Build/iOS/";
 				INFOPLIST_FILE = Intercambio/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = im.intercambio;
 				PRODUCT_NAME = "$(TARGET_NAME)";

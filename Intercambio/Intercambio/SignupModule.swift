@@ -8,6 +8,7 @@
 
 import UIKit
 import IntercambioCore
+import XMPPFoundation
 
 @objc public protocol SignupRouter : class {
     func presentAccountUserInterface(for accountURI: URL)

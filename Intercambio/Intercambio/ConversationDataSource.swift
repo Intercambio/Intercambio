@@ -7,23 +7,28 @@
 //
 
 import Foundation
-import Fountain
-import XMPPMessageArchive
-import PureXML
 import MobileCoreServices
 
-protocol ConversationMessageDB {
-    func pendingMessages(withParticipants participants: [Any], includeTrashed: Bool) throws -> [Any]
-    func messages(withParticipants participants: [Any], includeTrashed: Bool, before: Date?, limit: UInt) throws -> [Any]
-    func document(for messageID: XMPPMessageID) throws -> PXDocument
-    func message(with messageID: XMPPMessageID) throws -> XMPPMessage
-    func insert(_ document: PXDocument) throws -> XMPPMessage
+import Fountain
+import PureXML
+import XMPPFoundation
+import XMPPMessageHub
+
+extension ConversationViewModelType {
+    fileprivate static func make(with type: MessageType) -> ConversationViewModelType {
+        switch type {
+        case .chat: return .chat
+        case .error: return .error
+        case .groupchat: return .groupchat
+        case .headline: return .headline
+        default: return .normal
+        }
+    }
 }
 
-class ConversationDataSource: NSObject, FTDataSource {
+class ConversationDataSource: NSObject, FTDataSource, FTPagingDataSource {
 
-    let db: ConversationMessageDB
-    let account: JID
+    let archive: Archive
     let counterpart: JID
     
     var pendingMessage: NSAttributedString?
@@ -31,19 +36,18 @@ class ConversationDataSource: NSObject, FTDataSource {
     private let backingStore :FTMutableSet
     private let proxy: FTObserverProxy
     
-    init(db: ConversationMessageDB, account: JID, counterpart: JID) {
-        self.db = db
-        self.account = account.bare()
-        self.counterpart = counterpart.bare()
+    init(archive: Archive, counterpart: JID) {
+        self.archive = archive
+        self.counterpart = counterpart
         
         proxy = FTObserverProxy()
         
         let sortDescriptors = [
-            NSSortDescriptor(key: "metadata", ascending: true, comparator: { (obj1, obj2) -> ComparisonResult in
-                if let metadata1 = obj1 as? XMPPMessageMetadata,
-                   let metadata2 = obj2 as? XMPPMessageMetadata {
-                    if let date1 = metadata1.transmitted != nil ? metadata1.transmitted : metadata1.created,
-                        let date2 = metadata2.transmitted != nil ? metadata2.transmitted : metadata2.created {
+            NSSortDescriptor(key: nil, ascending: true, comparator: { (obj1, obj2) -> ComparisonResult in
+                if let message1 = obj1 as? Message,
+                   let message2 = obj2 as? Message {
+                    if let date1 = message1.metadata.transmitted != nil ? message1.metadata.transmitted : message1.metadata.created,
+                        let date2 = message2.metadata.transmitted != nil ? message2.metadata.transmitted : message2.metadata.created {
                         return date1.compare(date2)
                     } else {
                         return .orderedSame
@@ -51,8 +55,7 @@ class ConversationDataSource: NSObject, FTDataSource {
                 } else {
                     return .orderedSame
                 }
-            }),
-            NSSortDescriptor(key: "messageID.ID", ascending: false)
+            })
         ]
         
         backingStore = FTMutableSet(sortDescriptors: sortDescriptors)
@@ -69,39 +72,15 @@ class ConversationDataSource: NSObject, FTDataSource {
     // Load Items
     
     func reload() throws {
-        
-        var messages: [XMPPMessage] = []
-        messages.append(contentsOf: try pendingMessages())
-        messages.append(contentsOf: try recentMessages())
-        
+        let messages = try archive.conversation(with: counterpart)
         backingStore.performBatchUpdate { 
             self.backingStore.removeAllObjects()
             self.backingStore.addObjects(from: messages)
         }
     }
     
-    private func pendingMessages() throws -> [XMPPMessage] {
-        var messages: [XMPPMessage] = []
-        for obj in try db.pendingMessages(withParticipants: participants(), includeTrashed: false) {
-            if let message = obj as? XMPPMessage {
-                messages.append(message)
-            }
-        }
-        return messages
-    }
-    
-    private func recentMessages() throws -> [XMPPMessage] {
-        var messages: [XMPPMessage] = []
-        for obj in try db.messages(withParticipants: participants(), includeTrashed: false, before: nil, limit: 0) {
-            if let message = obj as? XMPPMessage {
-                messages.append(message)
-            }
-        }
-        return messages
-    }
-    
     private func participants() -> [JID] {
-        return [self.account, self.counterpart]
+        return [self.archive.account, self.counterpart]
     }
     
     // Performing actions
@@ -130,10 +109,12 @@ class ConversationDataSource: NSObject, FTDataSource {
     func send() {
         if let doc = messageDocument() {
             do {
-                let _ = try db.insert(doc)
+                let now = Date()
+                let metadata = Metadata(created: now)
+                let _ = try archive.insert(doc, metadata: metadata)
                 resetPendingMessageText()
             } catch {
-                
+                NSLog("Failed to insert message into the archive: \(error)")
             }
         }
     }
@@ -147,13 +128,10 @@ class ConversationDataSource: NSObject, FTDataSource {
     }
     
     private func messageDocument() -> PXDocument? {
-        let doc = PXDocument(elementName: "message", namespace: "jabber:client", prefix: nil)
-        let _ = doc?.root.add(withName: "body", namespace: "jabber:client", content: pendingMessage?.string ?? "")
-        doc?.root.setValue(self.account.stringValue, forAttribute: "from")
-        doc?.root.setValue(self.counterpart.stringValue, forAttribute: "to")
-        doc?.root.setValue("chat", forAttribute: "type")
-        doc?.root.setValue(NSUUID().uuidString, forAttribute: "id")
-        return doc
+        let stanza = MessageStanza(from: archive.account, to: counterpart)
+        stanza.type = .chat
+        let _ = stanza.add(withName: "body", namespace: "jabber:client", content: pendingMessage?.string ?? "")
+        return stanza.document
     }
     
     private func resetPendingMessageText() {
@@ -194,22 +172,21 @@ class ConversationDataSource: NSObject, FTDataSource {
         if indexPath.section == 0 {
             if indexPath.item == backingStore.count {
                 if let body = pendingMessage {
-                    return ComposeViewModel(account: account, attributedString: body)
+                    return ComposeViewModel(account: archive.account, attributedString: body)
                 } else {
-                    return ComposeViewModel(account: account, attributedString: NSAttributedString())
+                    return ComposeViewModel(account: archive.account, attributedString: NSAttributedString())
                 }
             } else {
-                if let message = backingStore.item(at: indexPath) as? XMPPMessage {
+                if let message = backingStore.item(at: indexPath) as? Message {
                     do {
-                        let document = try db.document(for: message.messageID)
+                        let document = try archive.document(for: message.messageID)
+                        let stanza = document.root as? MessageStanza
                         return ViewModel(message: message,
-                                         document: document,
-                                         direction: direction(for: message),
+                                         stanza: stanza,
                                          editable: false)
                     } catch {
                         return ViewModel(message: message,
-                                         document: nil,
-                                         direction: direction(for: message),
+                                         stanza: nil,
                                          editable: false)
                     }
                 } else {
@@ -232,120 +209,139 @@ class ConversationDataSource: NSObject, FTDataSource {
     func removeObserver(_ observer: FTDataSourceObserver!) {
         proxy.removeObserver(observer)
     }
+    
+    // FTPagingDataSource
+    
+    func hasItemsBeforeFirstItem() -> Bool {
+        guard
+            let incrementalArchive = archive as? IncrementalArchive
+            else {
+                return false
+        }
+        
+        return incrementalArchive.canLoadMore
+    }
+    
+    func loadMoreItems(beforeFirstItemCompletionHandler completionHandler: ((Bool, Error?) -> Swift.Void)!) {
+        guard
+            let incrementalArchive = archive as? IncrementalArchive
+            else {
+                completionHandler?(true, nil)
+                return
+        }
+        
+        incrementalArchive.loadMoreMessages { (error) in
+            DispatchQueue.main.async {
+                completionHandler?(error == nil, error)
+            }
+        }
+    }
+    
+    func hasItemsAfterLastItem() -> Bool {
+        return false
+    }
+    
+    func loadMoreItems(afterLastItemCompletionHandler completionHandler: ((Bool, Error?) -> Swift.Void)!) {
+        completionHandler?(true, nil)
+    }
 
     // Direction
     
-    private func direction(for message: XMPPMessage) -> ConversationViewModelDirection {
-        if message.from.bare().isEqual(self.account.bare()) {
-            return .outbound
-        } else if message.from.bare().isEqual(self.counterpart.bare()) {
-            return .inbound
-        } else {
-            return .undefined
+    private func direction(for message: Message) -> ConversationViewModelDirection {
+        switch message.messageID.direction {
+        case .inbound: return .inbound
+        case .outbound: return .outbound
         }
     }
     
     // Notification Handling
     
-    private lazy var notificationObservers = [NSObjectProtocol]()
-    
     private func registerNotificationObservers() {
         let center = NotificationCenter.default
-        
-        notificationObservers.append(center.addObserver(forName: NSNotification.Name(rawValue: XMPPMessageDBDidChange),
-                                                        object: self.db,
-                                                        queue: OperationQueue.main) { [weak self] (notification) in
-                                                            self?.handleMessageDBDidChange(notification: notification)
-        })
+        center.addObserver(self,
+                           selector: #selector(handleArchiveDidChange(notification:)),
+                           name: Notification.Name.ArchiveDidChange,
+                           object: archive)
     }
     
     private func unregisterNotificationObservers() {
         let center = NotificationCenter.default
-        for observer in notificationObservers {
-            center.removeObserver(observer)
-        }
-        notificationObservers.removeAll()
+        center.removeObserver(self, name: Notification.Name.ArchiveDidChange, object: archive)
     }
     
-    private func handleMessageDBDidChange(notification: Notification) {
-        let insertedOrUpdated = Set(insertedOrUpdatedMessages(in: notification))
-        let removed = Set(removedMessages(in: notification))
-        backingStore.performBatchUpdate {
-            self.backingStore.union(insertedOrUpdated)
-            self.backingStore.minus(removed)
-        }
-    }
-    
-    private func insertedOrUpdatedMessages(in notification: Notification) -> [XMPPMessage] {
-        if let messageIDs = notification.userInfo?[XMPPInsertedOrUpdatedMessageIDsKey] as? Set<XMPPMessageID> {
-            do {
-                return try messageIDs.filter({ (messageID) -> Bool in
-                    return isConversationMessage(messageID)
-                }).map({ (messageID) -> XMPPMessage in
-                    return try db.message(with: messageID)
-                })
-            } catch {
-                return []
+    @objc private func handleArchiveDidChange(notification: Notification) {
+        DispatchQueue.main.async {
+            let insertedOrUpdated = Set<Message>(self.insertedOrUpdatedMessages(in: notification))
+            let removed = Set<Message>(self.removedMessages(in: notification))
+            self.backingStore.performBatchUpdate {
+                self.backingStore.union(insertedOrUpdated)
+                self.backingStore.minus(removed)
             }
+        }
+    }
+
+    private func insertedOrUpdatedMessages(in notification: Notification) -> [Message] {
+        var messages: [Message] = []
+        if let inserted = notification.userInfo?[InsertedMessagesKey] as? [Message] {
+            let filtered = inserted.filter({ (message) -> Bool in
+                return isConversationMessage(message.messageID)
+            })
+            messages.append(contentsOf: filtered)
+        }
+        if let updated = notification.userInfo?[UpdatedMessagesKey] as? [Message] {
+            let filtered = updated.filter({ (message) -> Bool in
+                return isConversationMessage(message.messageID)
+            })
+            messages.append(contentsOf: filtered)
+        }
+        return messages
+    }
+    
+    private func removedMessages(in notification: Notification) -> [Message] {
+        if let removed = notification.userInfo?[DeletedMessagesKey] as? [Message] {
+            let filtered = removed.filter({ (message) -> Bool in
+                return isConversationMessage(message.messageID)
+            })
+            return filtered
         } else {
             return []
         }
     }
     
-    private func removedMessages(in notification: Notification) -> [XMPPMessage] {
-        if let messageIDs = notification.userInfo?[XMPPDeletedMessageIDsKey] as? Set<XMPPMessageID> {
-            do {
-                return try messageIDs.filter({ (messageID) -> Bool in
-                    return isConversationMessage(messageID)
-                }).map({ (messageID) -> XMPPMessage in
-                    return try db.message(with: messageID)
-                })
-            } catch {
-                return []
-            }
-        } else {
-            return []
-        }
-    }
-    
-    private func isConversationMessage(_ messageID: XMPPMessageID) -> Bool {
-        let participants = Set(self.participants())
-        switch participants.count {
-        case 1:
-            return messageID.from.bare() == messageID.to.bare()
-                && participants.contains(messageID.to.bare())
-        case 2:
-            return messageID.from.bare() != messageID.to.bare()
-                && participants.contains(messageID.from.bare())
-                && participants.contains(messageID.to.bare())
-        default:
-            return false
-        }
+    private func isConversationMessage(_ messageID: MessageID) -> Bool {
+        return messageID.account == archive.account && messageID.counterpart == counterpart
     }
 }
 
 extension ConversationDataSource {
     class ViewModel : NSObject, ConversationViewModel {
         
-        let message: XMPPMessage
-        let document: PXDocument?
+        let message: Message
+        let stanza: MessageStanza?
         let direction: ConversationViewModelDirection
         let editable: Bool
-        let originalType: ConversationViewModelType
         
-        init(message: XMPPMessage, document: PXDocument?, direction: ConversationViewModelDirection, editable: Bool) {
-            let originalType = ConversationViewModelType(rawValue: message.messageID.type) ?? .normal
-            self.originalType = originalType
+        init(message: Message, stanza: MessageStanza?, editable: Bool) {
             self.message = message
-            self.document = document
-            self.direction = originalType == .error ? .undefined : direction
+            self.stanza = stanza
             self.editable = editable
+            switch message.messageID.type {
+            case .error:
+                self.direction = .undefined
+            default:
+                self.direction = message.messageID.direction == .inbound ? .inbound : .outbound
+            }
         }
         
         var origin: URL? {
             let components = NSURLComponents()
             components.scheme = "xmpp"
-            components.path = "/\(message.from.bare().stringValue)"
+            switch message.messageID.direction {
+            case .inbound:
+                components.path = "/\(message.messageID.counterpart.bare().stringValue)"
+            case .outbound:
+                components.path = "/\(message.messageID.account.bare().stringValue)"
+            }
             return components.url
         }
         
@@ -362,18 +358,18 @@ extension ConversationDataSource {
         }
         
         var body: NSAttributedString? {
-            guard let document = self.document else {
+            guard let stanza = self.stanza else {
                 return NSAttributedString()
             }
             
-            if originalType == .error {
-                let error = NSError(fromStanza: document.root)
+            if message.messageID.type == .error {
+                let error = stanza.error
                 return NSAttributedString(string: error?.localizedDescription ?? "")
             } else {
-                let elements = document.root.nodes(forXPath: "x:body",
-                                                   usingNamespaces: ["x":"jabber:client"])
-                if let body = elements?.first as? PXElement {
-                    return NSAttributedString(string: body.stringValue, attributes: [NSFontAttributeName: UIFont.preferredFont(forTextStyle: .body)])
+                let elements = stanza.nodes(forXPath: "x:body",
+                                            usingNamespaces: ["x":"jabber:client"])
+                if let body = elements.first as? PXElement {
+                    return NSAttributedString(string: body.stringValue ?? "", attributes: [NSFontAttributeName: UIFont.preferredFont(forTextStyle: .body)])
                 } else {
                     return NSAttributedString()
                 }
@@ -381,13 +377,13 @@ extension ConversationDataSource {
         }
         
         var type: ConversationViewModelType {
-            if let string = body?.string, originalType != .error {
+            if let string = body?.string, message.messageID.type != .error {
                 let isOnlyEmoji = string.unicodeScalars.reduce(true) { result, codePoint in
                     codePoint.isEmoji
                 }
-                return isOnlyEmoji ? .emoji : originalType
+                return isOnlyEmoji ? .emoji : ConversationViewModelType.make(with: message.messageID.type)
             } else {
-                return originalType
+                return ConversationViewModelType.make(with: message.messageID.type)
             }
         }
     }

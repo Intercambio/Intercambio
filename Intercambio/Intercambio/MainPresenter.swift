@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import KeyChain
 import IntercambioCore
 
 protocol MainPresenterFactory : MainAccountNavigationPresenterFactory {

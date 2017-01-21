@@ -8,8 +8,8 @@
 
 import Foundation
 import Fountain
-import IntercambioCore
-import CoreXMPP
+import XMPPFoundation
+import KeyChain
 
 protocol SettingsPresenterEventHandler {
     func settingsDidCancel(_ settingsPresenter: SettingsPresenter) -> Void

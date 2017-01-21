@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import XMPPFoundation
 import IntercambioCore
 
 public class SettingsModule : NSObject, SettingsViewControllerDelegate {
@@ -84,7 +85,9 @@ public extension SettingsViewController {
     }
     
     public convenience init?(service: CommunicationService, account uri: URL) {
-        if let host = uri.host, let jid = JID(user: uri.user, host: host, resource: nil) {
+        if let host = uri.host {
+            
+            let jid = JID(user: uri.user, host: host, resource: nil)
             
             self.init()
             

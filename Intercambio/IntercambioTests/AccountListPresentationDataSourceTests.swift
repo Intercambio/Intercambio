@@ -9,33 +9,34 @@
 import XCTest
 import IntercambioCore
 import CoreXMPP
+import KeyChain
 @testable import Intercambio
 
 class AccountListPresentationDataSourceTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        let keyChain = KeyChain(named: "AccountListPresentationDataSourceTests")
-        try! keyChain.clear()
+        let keyChain = KeyChain(serviceName: "AccountListPresentationDataSourceTests")
+        try! keyChain.removeAllItems()
     }
     
     override func tearDown() {
-        let keyChain = KeyChain(named: "AccountListPresentationDataSourceTests")
-        try! keyChain.clear()
+        let keyChain = KeyChain(serviceName: "AccountListPresentationDataSourceTests")
+        try! keyChain.removeAllItems()
         super.tearDown()
     }
     
     // Tests
     
     func test() {
-        let keyChain = KeyChain(named: "AccountListPresentationDataSourceTests")
+        let keyChain = KeyChain(serviceName: "AccountListPresentationDataSourceTests")
         let dataSource = AccountListDataSource(keyChain: keyChain)
         
         XCTAssertEqual(dataSource.numberOfSections(), 1)
         XCTAssertEqual(dataSource.numberOfItems(inSection: 0), 0)
         
         let jid = JID("romeo@example.com")!
-        let item = KeyChainItem(jid: jid,
+        let item = KeyChainItem(identifier: jid.stringValue,
                                 invisible: false,
                                 options: [:])
         

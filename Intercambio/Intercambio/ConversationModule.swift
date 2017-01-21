@@ -8,7 +8,7 @@
 
 import UIKit
 import IntercambioCore
-import XMPPMessageArchive
+import XMPPMessageHub
 
 public protocol ConversationModuleFactory {
     func makeContactPickerViewController() -> ContactPickerViewController?
@@ -46,7 +46,7 @@ public extension ConversationViewController {
     public convenience init(service: CommunicationService, factory: ConversationModuleFactory, conversation uri: URL?) {
         self.init()
         
-        let presenter = ConversationPresenter(db: service.messageDB, accountManager: service.accountManager)
+        let presenter = ConversationPresenter(archiveManager: service.messageHub, accountManager: service.accountManager)
         presenter.view = self
         self.presenter = presenter
         
@@ -76,5 +76,3 @@ public extension ConversationViewController {
         }
     }
 }
-
-extension XMPPMessageDB : ConversationMessageDB {}

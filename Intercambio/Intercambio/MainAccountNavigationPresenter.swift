@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import XMPPFoundation
+import KeyChain
 import IntercambioCore
 
 protocol MainAccountNavigationPresenterFactory {
@@ -85,11 +87,10 @@ class MainAccountNavigationPresenter: NSObject {
                     let components = NSURLComponents(url: url, resolvingAgainstBaseURL: true) {
                     if components.scheme == "xmpp" {
                         if let host = components.host, let user = components.user {
-                            if let jid = JID(user: user, host: host, resource: nil) {
-                                if accounts.contains(jid) {
-                                    viewControllers.append(accountViewController)
-                                    accountViewController.navigationItem.leftBarButtonItem = nil
-                                }
+                            let jid = JID(user: user, host: host, resource: nil)
+                            if accounts.contains(jid) {
+                                viewControllers.append(accountViewController)
+                                accountViewController.navigationItem.leftBarButtonItem = nil
                             }
                         }
                     }
@@ -134,9 +135,9 @@ class MainAccountNavigationPresenter: NSObject {
     
     private func accounts() -> [JID] {
         var accounts: [JID] = []
-        for item in (try? keyChain.fetch()) ?? [] {
-            if let i = item as? KeyChainItem {
-                accounts.append(i.jid)
+        for item in (try? keyChain.items()) ?? [] {
+            if let account = JID(item.identifier) {
+                accounts.append(account)
             }
         }
         return accounts
@@ -194,7 +195,7 @@ class MainAccountNavigationPresenter: NSObject {
                                                             self?.setupView()
         })
         
-        notificationObservers.append(center.addObserver(forName: NSNotification.Name(rawValue: KeyChainDidClearNotification),
+        notificationObservers.append(center.addObserver(forName: NSNotification.Name(rawValue: KeyChainDidRemoveAllItemsNotification),
                                                         object: keyChain,
                                                         queue: OperationQueue.main) { [weak self] (notification) in
                                                             self?.setupView()

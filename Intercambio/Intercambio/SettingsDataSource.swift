@@ -8,7 +8,8 @@
 
 import Foundation
 import Fountain
-import IntercambioCore
+import KeyChain
+import XMPPFoundation
 import CoreXMPP
 
 let SettingsDataSourceAccountKey: String = "SettingsDataSourceAccountKey"
@@ -112,7 +113,7 @@ class SettingsDataSource: NSObject, FTDataSource {
     // Reload
     
     func reload() throws {
-        let item = try keyChain.item(jid: accountJID)
+        let item = try keyChain.item(with: accountJID.stringValue)
         
         proxy.dataSourceWillReset(self)
         self.item = item
@@ -131,9 +132,9 @@ class SettingsDataSource: NSObject, FTDataSource {
                     newOptions[key] = value
                 }
             }
-            let newItem = KeyChainItem(jid: item.jid,
-                                       invisible: item.invisible,
-                                       options: newOptions)
+            let newItem = KeyChainItem(identifier: item.identifier,
+                                        invisible: item.invisible,
+                                        options: newOptions)
             try keyChain.update(newItem)
         }
     }
@@ -161,9 +162,10 @@ class SettingsDataSource: NSObject, FTDataSource {
     // Remove
     
     func removeAccount() throws {
-        if let item = self.item {
+        if let item = self.item,
+            let account = JID(item.identifier) {
             try keyChain.remove(item)
-            delegate?.settingsDataSource(self, didRemoveAccount: item.jid)
+            delegate?.settingsDataSource(self, didRemoveAccount: account)
         }
     }
     
