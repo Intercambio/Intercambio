@@ -15,6 +15,7 @@
 		F6052AC11DC89B9D005D79EA /* ContectPickerViewEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6052AC01DC89B9D005D79EA /* ContectPickerViewEventHandler.swift */; };
 		F6052AC41DC8A2D6005D79EA /* ContactPickerAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6052AC31DC8A2D6005D79EA /* ContactPickerAddress.swift */; };
 		F6052AC61DC8BB1A005D79EA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6052AC51DC8BB1A005D79EA /* ContentView.swift */; };
+		F61126D91E3A670600A8E75F /* XMPPContactHub.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F61126D81E3A670600A8E75F /* XMPPContactHub.framework */; };
 		F61510731DCC9CDD00DCFD17 /* FormTextItemData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61510721DCC9CDD00DCFD17 /* FormTextItemData.swift */; };
 		F61510751DCC9D2800DCFD17 /* FormTextItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61510741DCC9D2800DCFD17 /* FormTextItemCell.swift */; };
 		F61510771DCCA2DE00DCFD17 /* FirstResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61510761DCCA2DE00DCFD17 /* FirstResponder.swift */; };
@@ -197,6 +198,7 @@
 		F6052AC31DC8A2D6005D79EA /* ContactPickerAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactPickerAddress.swift; sourceTree = "<group>"; };
 		F6052AC51DC8BB1A005D79EA /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F60881A41D3777340028FDEB /* Intercambio.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Intercambio.entitlements; sourceTree = "<group>"; };
+		F61126D81E3A670600A8E75F /* XMPPContactHub.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XMPPContactHub.framework; path = ../Carthage/Build/iOS/XMPPContactHub.framework; sourceTree = "<group>"; };
 		F61510721DCC9CDD00DCFD17 /* FormTextItemData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormTextItemData.swift; sourceTree = "<group>"; };
 		F61510741DCC9D2800DCFD17 /* FormTextItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormTextItemCell.swift; sourceTree = "<group>"; };
 		F61510761DCCA2DE00DCFD17 /* FirstResponder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstResponder.swift; sourceTree = "<group>"; };
@@ -355,6 +357,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F61126D91E3A670600A8E75F /* XMPPContactHub.framework in Frameworks */,
 				F6D76DB41E2E68F7007E13BB /* KeyChain.framework in Frameworks */,
 				F6D76D8C1E2D1887007E13BB /* SQLite.framework in Frameworks */,
 				F6D76D8D1E2D1887007E13BB /* XMPPFoundation.framework in Frameworks */,
@@ -841,6 +844,7 @@
 		F68414091C4D890B009B37BE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F61126D81E3A670600A8E75F /* XMPPContactHub.framework */,
 				F6D76DB31E2E68F7007E13BB /* KeyChain.framework */,
 				F6D76D891E2D1887007E13BB /* SQLite.framework */,
 				F6D76D8A1E2D1887007E13BB /* XMPPFoundation.framework */,
@@ -1310,6 +1314,7 @@
 				"$(SRCROOT)/../Carthage/Build/iOS/SQLite.framework",
 				"$(SRCROOT)/../Carthage/Build/iOS/XMPPMessageHub.framework",
 				"$(SRCROOT)/../Carthage/Build/iOS/KeyChain.framework",
+				"$(SRCROOT)/../Carthage/Build/iOS/XMPPContactHub.framework",
 			);
 			outputPaths = (
 			);
