@@ -74,7 +74,7 @@ public extension ConversationViewController {
     public convenience init(service: CommunicationService, factory: ConversationModuleFactory, conversation uri: URL?) {
         self.init()
         
-        let presenter = ConversationPresenter(archiveManager: service.messageHub, accountManager: service.accountManager)
+        let presenter = ConversationPresenter(messageHub: service.messageHub, accountManager: service.accountManager)
         presenter.view = self
         self.presenter = presenter
         

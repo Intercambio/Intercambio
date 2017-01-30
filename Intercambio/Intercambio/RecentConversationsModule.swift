@@ -63,7 +63,7 @@ public extension RecentConversationsViewController {
     
     public convenience init(service: CommunicationService) {
         self.init()
-        let presenter = RecentConversationsPresenter(keyChain: service.keyChain, archiveManager: service.messageHub)
+        let presenter = RecentConversationsPresenter(keyChain: service.keyChain, messageHub: service.messageHub)
         presenter.view = self
         self.presenter = presenter
     }

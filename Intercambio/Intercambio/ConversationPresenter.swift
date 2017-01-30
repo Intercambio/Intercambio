@@ -41,10 +41,10 @@ import XMPPMessageHub
 
 class ConversationPresenter: NSObject, ConversationViewEventHandler {
 
-    let archiveManager: ArchiveManager
+    let messageHub: MessageHub
     let accountManager: AccountManager
-    init(archiveManager: ArchiveManager, accountManager: AccountManager) {
-        self.archiveManager = archiveManager
+    init(messageHub: MessageHub, accountManager: AccountManager) {
+        self.messageHub = messageHub
         self.accountManager = accountManager
     }
     
@@ -128,7 +128,7 @@ class ConversationPresenter: NSObject, ConversationViewEventHandler {
             return
         }
 
-        archiveManager.archive(for: account, create: true) { (archive, error) in
+        messageHub.archive(for: account) { (archive, error) in
             guard
                 let newArchive = archive
                 else {

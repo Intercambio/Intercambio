@@ -46,16 +46,16 @@ import KeyChain
 class RecentConversationsDataSource: NSObject, FTDataSource {
     
     private let keyChain: KeyChain
-    private let archiveManager: ArchiveManager
+    private let messageHub: MessageHub
     private let backingStore :FTMutableSet
     private let proxy: FTObserverProxy
     private var numberOfAccounts: Int {
         return archives.count
     }
     
-    init(keyChain: KeyChain, archiveManager: ArchiveManager) {
+    init(keyChain: KeyChain, messageHub: MessageHub) {
         self.keyChain = keyChain
-        self.archiveManager = archiveManager
+        self.messageHub = messageHub
         proxy = FTObserverProxy()
         backingStore = FTMutableSet(sortDescriptors: [NSSortDescriptor(key: "date", ascending: false)])
         super.init()
@@ -229,7 +229,7 @@ class RecentConversationsDataSource: NSObject, FTDataSource {
     var archives: [JID:Archive] = [:]
     
     private func addArchive(for account: JID) {
-        archiveManager.archive(for: account, create: true) { (archive, error) in
+        messageHub.archive(for: account) { (archive, error) in
             DispatchQueue.main.async {
                 self.archives[account] = archive
                 self.updateConversations()

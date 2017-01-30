@@ -49,8 +49,8 @@ class RecentConversationsPresenter: NSObject, RecentConversationsViewEventHandle
     
     let dataSource: RecentConversationsDataSource
     
-    init(keyChain: KeyChain, archiveManager: ArchiveManager) {
-        self.dataSource = RecentConversationsDataSource(keyChain: keyChain, archiveManager: archiveManager)
+    init(keyChain: KeyChain, messageHub: MessageHub) {
+        self.dataSource = RecentConversationsDataSource(keyChain: keyChain, messageHub: messageHub)
     }
     
     func newConversation() {
