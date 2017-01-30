@@ -49,12 +49,13 @@ class RecentConversationsDataSource: NSObject, FTDataSource {
     private let archiveManager: ArchiveManager
     private let backingStore :FTMutableSet
     private let proxy: FTObserverProxy
-    private var numberOfAccounts: Int
+    private var numberOfAccounts: Int {
+        return archives.count
+    }
     
     init(keyChain: KeyChain, archiveManager: ArchiveManager) {
         self.keyChain = keyChain
         self.archiveManager = archiveManager
-        numberOfAccounts = 0
         proxy = FTObserverProxy()
         backingStore = FTMutableSet(sortDescriptors: [NSSortDescriptor(key: "date", ascending: false)])
         super.init()
@@ -74,18 +75,9 @@ class RecentConversationsDataSource: NSObject, FTDataSource {
         do {
             let recentConversations = try conversations()
             backingStore.performBatchUpdate {
-                for conversation in recentConversations {
-                    if !self.backingStore.contains(conversation) {
-                        self.backingStore.add(conversation)
-                    }
-                }
-                for conversation in self.backingStore.allObjects {
-                    if !recentConversations.contains(conversation as! RecentConversationsDataSource.Conversation) {
-                        self.backingStore.remove(conversation)
-                    }
-                }
+                self.backingStore.removeAllObjects()
+                self.backingStore.addObjects(from: recentConversations)
             }
-            NSLog("Did update conversations.")
         } catch {
             NSLog("Failed to update conversations: \(error)")
         }
@@ -107,7 +99,6 @@ class RecentConversationsDataSource: NSObject, FTDataSource {
                     }
                 }
             }
-            NSLog("Did update conversations for '\(account)'.")
         } catch {
             NSLog("Failed to update conversations: \(error)")
         }
@@ -239,14 +230,16 @@ class RecentConversationsDataSource: NSObject, FTDataSource {
     
     private func addArchive(for account: JID) {
         archiveManager.archive(for: account, create: true) { (archive, error) in
-            self.archives[account] = archive
-            self.updateConversations(for: account)
+            DispatchQueue.main.async {
+                self.archives[account] = archive
+                self.updateConversations()
+            }
         }
     }
     
     private func removeArchive(for account: JID) {
         archives[account] = nil
-        updateConversations(for: account)
+        updateConversations()
     }
     
     private func removeAllArchives() {
