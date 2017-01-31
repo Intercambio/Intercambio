@@ -36,6 +36,7 @@
 
 @import HockeySDK;
 @import IntercambioCore;
+@import IntercambioUI;
 @import KeyChain;
 @import PureXML;
 
@@ -49,7 +50,6 @@
 
 #import "AppDelegate.h"
 #import "ICURLHandler.h"
-#import "Intercambio-Swift.h"
 #import <CocoaLumberjack/CocoaLumberjack.h>
 
 static DDLogLevel ddLogLevel = DDLogLevelInfo;

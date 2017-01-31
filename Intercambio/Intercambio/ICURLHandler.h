@@ -36,8 +36,7 @@
 
 @import Foundation;
 @import IntercambioCore;
-
-#import "Intercambio-Swift.h"
+@import IntercambioUI;
 
 @interface ICURLHandler : NSObject
 
