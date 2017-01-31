@@ -35,6 +35,12 @@
 
 
 import Foundation
+import Fountain
+
+protocol AccountContactViewModel : class {
+    var name: String { get }
+}
 
 protocol AccountView : class {
+    var contactDataSource: FTDataSource? { get set }
 }

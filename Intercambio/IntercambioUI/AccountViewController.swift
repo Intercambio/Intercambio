@@ -33,8 +33,8 @@
 //  this library, you must extend this exception to your version of the library.
 //
 
-
 import UIKit
+import Fountain
 
 public class AccountViewController: UITableViewController, AccountView {
 
@@ -57,6 +57,14 @@ public class AccountViewController: UITableViewController, AccountView {
     }
     
     var presenter: AccountViewEventHandler?
+
+    var contactDataSource: FTDataSource? {
+        didSet {
+            tableViewAdapter?.dataSource = contactDataSource
+        }
+    }
+    
+    private var tableViewAdapter: FTTableViewAdapter?
     
     public init() {
         super.init(style: .grouped)
@@ -77,7 +85,21 @@ public class AccountViewController: UITableViewController, AccountView {
             tableView.tableHeaderView = viewController.view
         }
         
-        layoutTableHeaderView()
+        tableView.allowsSelection = false
+        
+        tableViewAdapter = FTTableViewAdapter(tableView: tableView)
+        
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "UITableViewCell")
+        tableViewAdapter?.forRowsMatching(nil, useCellWithReuseIdentifier: "UITableViewCell") {
+            (view, item, indexPath, dataSource) in
+            if  let cell = view as? UITableViewCell,
+                let account = item as? AccountContactViewModel {
+                cell.textLabel?.text = account.name
+            }
+        }
+        
+        tableViewAdapter?.delegate = self
+        tableViewAdapter?.dataSource = contactDataSource
     }
     
     public override func viewWillAppear(_ animated: Bool) {
