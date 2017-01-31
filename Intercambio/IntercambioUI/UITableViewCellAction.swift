@@ -1,8 +1,8 @@
 //
-//  ICURLHandler.h
+//  UITableViewCellAction.swift
 //  Intercambio
 //
-//  Created by Tobias Kraentzer on 20.06.16.
+//  Created by Tobias Kraentzer on 31.01.17.
 //  Copyright © 2016, 2017 Tobias Kräntzer.
 //
 //  This file is part of Intercambio.
@@ -33,20 +33,48 @@
 //  this library, you must extend this exception to your version of the library.
 //
 
+import UIKit
 
-@import Foundation;
-@import IntercambioCore;
-@import IntercambioUI;
+@objc public protocol UITableViewDelegateCellAction : UITableViewDelegate {
+    
+    @objc optional func tableView(_ tableView: UITableView, setValue value: Any?, forRowAt indexPath: IndexPath) -> Void
+    
+}
 
-@interface ICURLHandler : NSObject
+extension UITableView {
+    
+    open func performAction(_ action: Selector, for cell: UITableViewCell, sender: Any?) {
+        guard
+            let delegate = self.delegate,
+            let indexPath = indexPath(for: cell)
+            else { return }
+        delegate.tableView?(self, performAction: action, forRowAt: indexPath, withSender: sender)
+    }
+    
+    open func setValue(_ value: Any?, for cell: UITableViewCell, sender: Any?) {
+        guard
+            let delegate = self.delegate as? UITableViewDelegateCellAction,
+            let indexPath = indexPath(for: cell)
+            else { return }
+        delegate.tableView?(self, setValue: value, forRowAt: indexPath)
+    }
+    
+}
 
-#pragma mark Life-cycle
-- (instancetype)initWithWireframe:(Wireframe *)appWireframe;
-
-#pragma mark Properties
-@property (nonatomic, readonly) Wireframe *wireframe;
-
-#pragma mark Handle URL
-- (BOOL)handleURL:(NSURL *)URL;
-
-@end
+extension UITableViewCell {
+    
+    open func performAction(_ action: Selector, sender: Any?) {
+        guard
+            let target = target(forAction: action, withSender: sender) as? UITableView
+            else { return }
+        target.performAction(action, for: self, sender: sender)
+    }
+    
+    open func setValue(_ value: Any?, sender: Any?) {
+        guard
+            let target = target(forAction: #selector(UITableView.setValue(_:for:sender:)), withSender:self) as? UITableView
+            else { return }
+        target.setValue(value, for: self, sender: sender)
+    }
+    
+}

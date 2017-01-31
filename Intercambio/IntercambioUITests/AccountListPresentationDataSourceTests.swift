@@ -1,8 +1,8 @@
 //
-//  ICURLHandler.h
+//  AccountListPresentationDataSourceTests.swift
 //  Intercambio
 //
-//  Created by Tobias Kraentzer on 20.06.16.
+//  Created by Tobias Kraentzer on 29.07.16.
 //  Copyright © 2016, 2017 Tobias Kräntzer.
 //
 //  This file is part of Intercambio.
@@ -34,19 +34,49 @@
 //
 
 
-@import Foundation;
-@import IntercambioCore;
-@import IntercambioUI;
+import XCTest
+import IntercambioCore
+import CoreXMPP
+import KeyChain
+@testable import IntercambioUI
 
-@interface ICURLHandler : NSObject
-
-#pragma mark Life-cycle
-- (instancetype)initWithWireframe:(Wireframe *)appWireframe;
-
-#pragma mark Properties
-@property (nonatomic, readonly) Wireframe *wireframe;
-
-#pragma mark Handle URL
-- (BOOL)handleURL:(NSURL *)URL;
-
-@end
+class AccountListPresentationDataSourceTests: XCTestCase {
+    
+    override func setUp() {
+        super.setUp()
+        let keyChain = KeyChain(serviceName: "AccountListPresentationDataSourceTests")
+        try! keyChain.removeAllItems()
+    }
+    
+    override func tearDown() {
+        let keyChain = KeyChain(serviceName: "AccountListPresentationDataSourceTests")
+        try! keyChain.removeAllItems()
+        super.tearDown()
+    }
+    
+    // Tests
+    
+    func test() {
+        let keyChain = KeyChain(serviceName: "AccountListPresentationDataSourceTests")
+        let dataSource = AccountListDataSource(keyChain: keyChain)
+        
+        XCTAssertEqual(dataSource.numberOfSections(), 1)
+        XCTAssertEqual(dataSource.numberOfItems(inSection: 0), 0)
+        
+        let jid = JID("romeo@example.com")!
+        let item = KeyChainItem(identifier: jid.stringValue,
+                                invisible: false,
+                                options: [:])
+        
+        try! keyChain.add(item)
+        
+        XCTAssertEqual(dataSource.numberOfItems(inSection: 0), 1)
+        
+        if dataSource.item(at: IndexPath(item: 0, section: 0)) is AccountListViewModel {
+            let uri = dataSource.accountURI(forItemAt: IndexPath(item: 0, section: 0))
+            XCTAssertEqual(uri?.absoluteString, "xmpp://romeo@example.com")
+        } else {
+            XCTFail()
+        }
+    }
+}

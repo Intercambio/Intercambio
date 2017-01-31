@@ -1,8 +1,8 @@
 //
-//  ICURLHandler.h
+//  CoversationViewAvatarView.swift
 //  Intercambio
 //
-//  Created by Tobias Kraentzer on 20.06.16.
+//  Created by Tobias Kraentzer on 25.10.16.
 //  Copyright © 2016, 2017 Tobias Kräntzer.
 //
 //  This file is part of Intercambio.
@@ -34,19 +34,29 @@
 //
 
 
-@import Foundation;
-@import IntercambioCore;
-@import IntercambioUI;
+import UIKit
 
-@interface ICURLHandler : NSObject
-
-#pragma mark Life-cycle
-- (instancetype)initWithWireframe:(Wireframe *)appWireframe;
-
-#pragma mark Properties
-@property (nonatomic, readonly) Wireframe *wireframe;
-
-#pragma mark Handle URL
-- (BOOL)handleURL:(NSURL *)URL;
-
-@end
+class ConversationViewAvatarView: UICollectionReusableView {
+    
+    var viewModel: ConversationViewModel? {
+        didSet {
+            setNeedsLayout()
+        }
+    }
+    
+    let avatar: AvatarView
+    
+    override init(frame: CGRect) {
+        avatar = AvatarView()
+        super.init(frame: frame)
+        
+        avatar.frame = bounds
+        avatar.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        
+        addSubview(avatar)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
