@@ -35,17 +35,64 @@
 
 
 import Foundation
+import XMPPFoundation
+import XMPPContactHub
 
 class AccountPresenter : AccountViewEventHandler {
-    weak var view: AccountView?
+    
+    weak var view: AccountView? {
+        didSet {
+            view?.contactDataSource = dataSource
+        }
+    }
+    
     var router: AccountRouter?
     
-    let account: URL
-    init(account: URL) {
-        self.account = account
+    let accountURI: URL
+    let contactHub: ContactHub
+    
+    init(accountURI: URL, contactHub: ContactHub) {
+        self.accountURI = accountURI
+        self.contactHub = contactHub
+        loadRoster()
     }
     
     func addAccount() {
         router?.presentNewAccountUserInterface()
+    }
+    
+    private var dataSource: AccountContactDataSource? {
+        didSet {
+            view?.contactDataSource = dataSource
+        }
+    }
+    
+    private func loadRoster() {
+        guard
+            let account = self.account
+            else { return }
+        
+        self.contactHub.roster(for: account) { (roster, error) in
+            DispatchQueue.main.async {
+                guard
+                    let roster = roster
+                    else {
+                        self.dataSource = nil
+                        return
+                }
+                self.dataSource = AccountContactDataSource(roster: roster)
+            }
+        }
+    }
+    
+    private var account: JID? {
+        guard
+            let components = NSURLComponents(url: accountURI, resolvingAgainstBaseURL: true),
+            let host = components.host,
+            let user = components.user,
+            components.scheme == "xmpp"
+            else { return nil }
+
+        return JID(user: user, host: host, resource: nil)
     }
 }

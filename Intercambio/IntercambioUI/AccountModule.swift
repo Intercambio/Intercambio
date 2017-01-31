@@ -64,7 +64,7 @@ public extension AccountViewController {
     public convenience init(service: CommunicationService, account uri: URL) {
         self.init()
 
-        let presenter = AccountPresenter(account: uri)
+        let presenter = AccountPresenter(accountURI: uri, contactHub: service.contactHub)
         presenter.view = self
         self.presenter = presenter
     }
@@ -88,6 +88,6 @@ public extension AccountViewController {
         guard let presenter = self.presenter as? AccountPresenter else {
             return nil
         }
-        return presenter.account
+        return presenter.accountURI
     }
 }
