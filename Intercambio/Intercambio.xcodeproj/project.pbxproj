@@ -101,6 +101,26 @@
 		F61E0D141E40A24400ECA678 /* CLTokenInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = F61E0D0A1E40A24400ECA678 /* CLTokenInputView.m */; };
 		F61E0D151E40A24400ECA678 /* CLTokenView.h in Headers */ = {isa = PBXBuildFile; fileRef = F61E0D0B1E40A24400ECA678 /* CLTokenView.h */; };
 		F61E0D161E40A24400ECA678 /* CLTokenView.m in Sources */ = {isa = PBXBuildFile; fileRef = F61E0D0C1E40A24400ECA678 /* CLTokenView.m */; };
+		F61E0D2C1E40A33900ECA678 /* ConversationDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E0D181E40A33900ECA678 /* ConversationDataSource.swift */; };
+		F61E0D2D1E40A33900ECA678 /* ConversationModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E0D191E40A33900ECA678 /* ConversationModule.swift */; };
+		F61E0D2E1E40A33900ECA678 /* ConversationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E0D1A1E40A33900ECA678 /* ConversationPresenter.swift */; };
+		F61E0D2F1E40A33900ECA678 /* ConversationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E0D1B1E40A33900ECA678 /* ConversationView.swift */; };
+		F61E0D301E40A33900ECA678 /* ConversationViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E0D1C1E40A33900ECA678 /* ConversationViewCell.swift */; };
+		F61E0D311E40A33900ECA678 /* ConversationViewCellBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E0D1D1E40A33900ECA678 /* ConversationViewCellBackgroundView.swift */; };
+		F61E0D321E40A33900ECA678 /* ConversationViewComposeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E0D1E1E40A33900ECA678 /* ConversationViewComposeCell.swift */; };
+		F61E0D331E40A33900ECA678 /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E0D1F1E40A33900ECA678 /* ConversationViewController.swift */; };
+		F61E0D341E40A33900ECA678 /* ConversationViewEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E0D201E40A33900ECA678 /* ConversationViewEventHandler.swift */; };
+		F61E0D351E40A33900ECA678 /* ConversationViewGroupHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E0D211E40A33900ECA678 /* ConversationViewGroupHeaderView.swift */; };
+		F61E0D361E40A33900ECA678 /* ConversationViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E0D221E40A33900ECA678 /* ConversationViewLayout.swift */; };
+		F61E0D371E40A33900ECA678 /* ConversationViewLayoutAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E0D231E40A33900ECA678 /* ConversationViewLayoutAttributes.swift */; };
+		F61E0D381E40A33900ECA678 /* ConversationViewLayoutChapterFragment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E0D241E40A33900ECA678 /* ConversationViewLayoutChapterFragment.swift */; };
+		F61E0D391E40A33900ECA678 /* ConversationViewLayoutConversationFragment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E0D251E40A33900ECA678 /* ConversationViewLayoutConversationFragment.swift */; };
+		F61E0D3A1E40A33900ECA678 /* ConversationViewLayoutFragment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E0D261E40A33900ECA678 /* ConversationViewLayoutFragment.swift */; };
+		F61E0D3B1E40A33900ECA678 /* ConversationViewLayoutInvalidationContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E0D271E40A33900ECA678 /* ConversationViewLayoutInvalidationContext.swift */; };
+		F61E0D3C1E40A33900ECA678 /* ConversationViewLayoutMessageFragment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E0D281E40A33900ECA678 /* ConversationViewLayoutMessageFragment.swift */; };
+		F61E0D3D1E40A33900ECA678 /* ConversationViewLayoutParagraphFragment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E0D291E40A33900ECA678 /* ConversationViewLayoutParagraphFragment.swift */; };
+		F61E0D3E1E40A33900ECA678 /* ConversationViewMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E0D2A1E40A33900ECA678 /* ConversationViewMessageCell.swift */; };
+		F61E0D3F1E40A33900ECA678 /* ConversationViewAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E0D2B1E40A33900ECA678 /* ConversationViewAvatarView.swift */; };
 		F63404271C65F78300464F3E /* ICEmptyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F63404251C65F78300464F3E /* ICEmptyViewController.m */; };
 		F63404281C65F78300464F3E /* ICEmptyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F63404261C65F78300464F3E /* ICEmptyViewController.xib */; };
 		F635166E1D33A52A007822F3 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F635166D1D33A52A007822F3 /* AccountView.swift */; };
@@ -373,6 +393,26 @@
 		F61E0D0A1E40A24400ECA678 /* CLTokenInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLTokenInputView.m; sourceTree = "<group>"; };
 		F61E0D0B1E40A24400ECA678 /* CLTokenView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLTokenView.h; sourceTree = "<group>"; };
 		F61E0D0C1E40A24400ECA678 /* CLTokenView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLTokenView.m; sourceTree = "<group>"; };
+		F61E0D181E40A33900ECA678 /* ConversationDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationDataSource.swift; sourceTree = "<group>"; };
+		F61E0D191E40A33900ECA678 /* ConversationModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationModule.swift; sourceTree = "<group>"; };
+		F61E0D1A1E40A33900ECA678 /* ConversationPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationPresenter.swift; sourceTree = "<group>"; };
+		F61E0D1B1E40A33900ECA678 /* ConversationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationView.swift; sourceTree = "<group>"; };
+		F61E0D1C1E40A33900ECA678 /* ConversationViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewCell.swift; sourceTree = "<group>"; };
+		F61E0D1D1E40A33900ECA678 /* ConversationViewCellBackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewCellBackgroundView.swift; sourceTree = "<group>"; };
+		F61E0D1E1E40A33900ECA678 /* ConversationViewComposeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewComposeCell.swift; sourceTree = "<group>"; };
+		F61E0D1F1E40A33900ECA678 /* ConversationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
+		F61E0D201E40A33900ECA678 /* ConversationViewEventHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewEventHandler.swift; sourceTree = "<group>"; };
+		F61E0D211E40A33900ECA678 /* ConversationViewGroupHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewGroupHeaderView.swift; sourceTree = "<group>"; };
+		F61E0D221E40A33900ECA678 /* ConversationViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewLayout.swift; sourceTree = "<group>"; };
+		F61E0D231E40A33900ECA678 /* ConversationViewLayoutAttributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewLayoutAttributes.swift; sourceTree = "<group>"; };
+		F61E0D241E40A33900ECA678 /* ConversationViewLayoutChapterFragment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewLayoutChapterFragment.swift; sourceTree = "<group>"; };
+		F61E0D251E40A33900ECA678 /* ConversationViewLayoutConversationFragment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewLayoutConversationFragment.swift; sourceTree = "<group>"; };
+		F61E0D261E40A33900ECA678 /* ConversationViewLayoutFragment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewLayoutFragment.swift; sourceTree = "<group>"; };
+		F61E0D271E40A33900ECA678 /* ConversationViewLayoutInvalidationContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewLayoutInvalidationContext.swift; sourceTree = "<group>"; };
+		F61E0D281E40A33900ECA678 /* ConversationViewLayoutMessageFragment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewLayoutMessageFragment.swift; sourceTree = "<group>"; };
+		F61E0D291E40A33900ECA678 /* ConversationViewLayoutParagraphFragment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewLayoutParagraphFragment.swift; sourceTree = "<group>"; };
+		F61E0D2A1E40A33900ECA678 /* ConversationViewMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewMessageCell.swift; sourceTree = "<group>"; };
+		F61E0D2B1E40A33900ECA678 /* ConversationViewAvatarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewAvatarView.swift; sourceTree = "<group>"; };
 		F63404241C65F78300464F3E /* ICEmptyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICEmptyViewController.h; sourceTree = "<group>"; };
 		F63404251C65F78300464F3E /* ICEmptyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ICEmptyViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		F63404261C65F78300464F3E /* ICEmptyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ICEmptyViewController.xib; sourceTree = "<group>"; };
@@ -828,6 +868,7 @@
 			isa = PBXGroup;
 			children = (
 				F61E0CF51E40A1F900ECA678 /* Contact Picker */,
+				F61E0D171E40A30E00ECA678 /* Conversation */,
 				F61E0CE31E40A12C00ECA678 /* Recent Conversations */,
 				F61E0CD61E40A0D400ECA678 /* Settings */,
 				F61E0CC61E40A04C00ECA678 /* Signup */,
@@ -941,6 +982,65 @@
 				F61E0D0C1E40A24400ECA678 /* CLTokenView.m */,
 			);
 			name = 3rdParty;
+			sourceTree = "<group>";
+		};
+		F61E0D171E40A30E00ECA678 /* Conversation */ = {
+			isa = PBXGroup;
+			children = (
+				F61E0D181E40A33900ECA678 /* ConversationDataSource.swift */,
+				F61E0D191E40A33900ECA678 /* ConversationModule.swift */,
+				F61E0D1A1E40A33900ECA678 /* ConversationPresenter.swift */,
+				F61E0D431E40A3F000ECA678 /* View */,
+			);
+			name = Conversation;
+			sourceTree = "<group>";
+		};
+		F61E0D401E40A34700ECA678 /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				F61E0D211E40A33900ECA678 /* ConversationViewGroupHeaderView.swift */,
+				F61E0D221E40A33900ECA678 /* ConversationViewLayout.swift */,
+				F61E0D231E40A33900ECA678 /* ConversationViewLayoutAttributes.swift */,
+				F61E0D241E40A33900ECA678 /* ConversationViewLayoutChapterFragment.swift */,
+				F61E0D251E40A33900ECA678 /* ConversationViewLayoutConversationFragment.swift */,
+				F61E0D261E40A33900ECA678 /* ConversationViewLayoutFragment.swift */,
+				F61E0D271E40A33900ECA678 /* ConversationViewLayoutInvalidationContext.swift */,
+				F61E0D281E40A33900ECA678 /* ConversationViewLayoutMessageFragment.swift */,
+				F61E0D291E40A33900ECA678 /* ConversationViewLayoutParagraphFragment.swift */,
+			);
+			name = Layout;
+			sourceTree = "<group>";
+		};
+		F61E0D411E40A3A200ECA678 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				F61E0D1C1E40A33900ECA678 /* ConversationViewCell.swift */,
+				F61E0D1D1E40A33900ECA678 /* ConversationViewCellBackgroundView.swift */,
+				F61E0D1E1E40A33900ECA678 /* ConversationViewComposeCell.swift */,
+				F61E0D2A1E40A33900ECA678 /* ConversationViewMessageCell.swift */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		F61E0D421E40A3CB00ECA678 /* Supplementary Views */ = {
+			isa = PBXGroup;
+			children = (
+				F61E0D2B1E40A33900ECA678 /* ConversationViewAvatarView.swift */,
+			);
+			name = "Supplementary Views";
+			sourceTree = "<group>";
+		};
+		F61E0D431E40A3F000ECA678 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F61E0D1B1E40A33900ECA678 /* ConversationView.swift */,
+				F61E0D1F1E40A33900ECA678 /* ConversationViewController.swift */,
+				F61E0D201E40A33900ECA678 /* ConversationViewEventHandler.swift */,
+				F61E0D401E40A34700ECA678 /* Layout */,
+				F61E0D411E40A3A200ECA678 /* Cells */,
+				F61E0D421E40A3CB00ECA678 /* Supplementary Views */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 		F63A66631D265BCA00FCC82E /* Presenter */ = {
@@ -1884,15 +1984,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				F61E0CD11E40A05F00ECA678 /* SignupView.swift in Sources */,
+				F61E0D3E1E40A33900ECA678 /* ConversationViewMessageCell.swift in Sources */,
 				F61E0CF21E40A14100ECA678 /* RecentConversationsViewController.swift in Sources */,
+				F61E0D321E40A33900ECA678 /* ConversationViewComposeCell.swift in Sources */,
 				F61E0D141E40A24400ECA678 /* CLTokenInputView.m in Sources */,
 				F61E0CCF1E40A05F00ECA678 /* SignupModule.swift in Sources */,
+				F61E0D3C1E40A33900ECA678 /* ConversationViewLayoutMessageFragment.swift in Sources */,
+				F61E0D2D1E40A33900ECA678 /* ConversationModule.swift in Sources */,
+				F61E0D341E40A33900ECA678 /* ConversationViewEventHandler.swift in Sources */,
 				F61E0CD21E40A05F00ECA678 /* SignupViewController.swift in Sources */,
 				F61E0CA91E40990100ECA678 /* FormTextItemData.swift in Sources */,
+				F61E0D361E40A33900ECA678 /* ConversationViewLayout.swift in Sources */,
 				F61E0CD41E40A05F00ECA678 /* SignupViewEventHandler.swift in Sources */,
 				F61E0CF31E40A14100ECA678 /* RecentConversationsViewEventHandler.swift in Sources */,
+				F61E0D3F1E40A33900ECA678 /* ConversationViewAvatarView.swift in Sources */,
 				F61E0D0E1E40A24400ECA678 /* CLBackspaceDetectingTextField.m in Sources */,
 				F61E0CA51E40990100ECA678 /* FormButtonItemCell.swift in Sources */,
+				F61E0D391E40A33900ECA678 /* ConversationViewLayoutConversationFragment.swift in Sources */,
+				F61E0D2E1E40A33900ECA678 /* ConversationPresenter.swift in Sources */,
 				F61E0CCE1E40A05F00ECA678 /* SignupInteractor.swift in Sources */,
 				F61E0CF01E40A14100ECA678 /* RecentConversationsPresenter.swift in Sources */,
 				F61E0CDF1E40A0FA00ECA678 /* SettingsPresenter.swift in Sources */,
@@ -1900,6 +2009,9 @@
 				F61E0CAC1E40990100ECA678 /* FormValueItemCell.swift in Sources */,
 				F61E0CE21E40A0FA00ECA678 /* SettingsViewEventHandler.swift in Sources */,
 				F61E0CA81E40990100ECA678 /* FormTextItemCell.swift in Sources */,
+				F61E0D331E40A33900ECA678 /* ConversationViewController.swift in Sources */,
+				F61E0D2F1E40A33900ECA678 /* ConversationView.swift in Sources */,
+				F61E0D311E40A33900ECA678 /* ConversationViewCellBackgroundView.swift in Sources */,
 				F61E0D101E40A24400ECA678 /* CLToken.m in Sources */,
 				F61E0CFF1E40A21D00ECA678 /* ContactPickerView.swift in Sources */,
 				F61E0CFE1E40A21D00ECA678 /* ContactPickerPresenter.swift in Sources */,
@@ -1907,8 +2019,11 @@
 				F61E0C971E4098D900ECA678 /* ContentView.swift in Sources */,
 				F61E0CAD1E40990100ECA678 /* FormValueItemData.swift in Sources */,
 				F61E0CFD1E40A21D00ECA678 /* ContactPickerModule.swift in Sources */,
+				F61E0D381E40A33900ECA678 /* ConversationViewLayoutChapterFragment.swift in Sources */,
+				F61E0D301E40A33900ECA678 /* ConversationViewCell.swift in Sources */,
 				F61E0D001E40A21D00ECA678 /* ContactPickerViewController.swift in Sources */,
 				F61E0CEF1E40A14100ECA678 /* RecentConversationsModule.swift in Sources */,
+				F61E0D3D1E40A33900ECA678 /* ConversationViewLayoutParagraphFragment.swift in Sources */,
 				F61E0CA41E40990100ECA678 /* Form.swift in Sources */,
 				F61E0CF11E40A14100ECA678 /* RecentConversationsView.swift in Sources */,
 				F61E0C991E4098EB00ECA678 /* AvatarView.swift in Sources */,
@@ -1917,18 +2032,23 @@
 				F61E0CA61E40990100ECA678 /* FormButtonItemData.swift in Sources */,
 				F61E0CDE1E40A0FA00ECA678 /* SettingsModule.swift in Sources */,
 				F61E0C951E4098CA00ECA678 /* OptionPicker.swift in Sources */,
+				F61E0D3A1E40A33900ECA678 /* ConversationViewLayoutFragment.swift in Sources */,
 				F61E0CE01E40A0FA00ECA678 /* SettingsView.swift in Sources */,
 				F61E0CBA1E409C6500ECA678 /* UICollectionViewCellAction.swift in Sources */,
 				F61E0CE11E40A0FA00ECA678 /* SettingsViewController.swift in Sources */,
 				F61E0CFC1E40A21D00ECA678 /* ContactPickerAddress.swift in Sources */,
 				F61E0CAA1E40990100ECA678 /* FormURLItemCell.swift in Sources */,
+				F61E0D371E40A33900ECA678 /* ConversationViewLayoutAttributes.swift in Sources */,
 				F61E0CC51E409FEC00ECA678 /* String.swift in Sources */,
 				F61E0D011E40A21D00ECA678 /* ContectPickerViewEventHandler.swift in Sources */,
 				F61E0CAB1E40990100ECA678 /* FormURLItemData.swift in Sources */,
+				F61E0D3B1E40A33900ECA678 /* ConversationViewLayoutInvalidationContext.swift in Sources */,
 				F61E0CA71E40990100ECA678 /* FormSectionData.swift in Sources */,
+				F61E0D2C1E40A33900ECA678 /* ConversationDataSource.swift in Sources */,
 				F61E0D161E40A24400ECA678 /* CLTokenView.m in Sources */,
 				F61E0CEC1E40A14100ECA678 /* RecentConversationsCell.swift in Sources */,
 				F61E0CEE1E40A14100ECA678 /* RecentConversationsDataSource.swift in Sources */,
+				F61E0D351E40A33900ECA678 /* ConversationViewGroupHeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
