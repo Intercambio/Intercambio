@@ -137,6 +137,11 @@
 		F61E0D631E40A49700ECA678 /* AccountProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E0D5B1E40A49700ECA678 /* AccountProfileViewController.swift */; };
 		F61E0D641E40A49700ECA678 /* AccountProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F61E0D5C1E40A49700ECA678 /* AccountProfileViewController.xib */; };
 		F61E0D651E40A49700ECA678 /* AccountProfileViewEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E0D5D1E40A49700ECA678 /* AccountProfileViewEventHandler.swift */; };
+		F61E0D6C1E40A57700ECA678 /* AccountModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E0D671E40A57700ECA678 /* AccountModule.swift */; };
+		F61E0D6D1E40A57700ECA678 /* AccountPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E0D681E40A57700ECA678 /* AccountPresenter.swift */; };
+		F61E0D6E1E40A57700ECA678 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E0D691E40A57700ECA678 /* AccountView.swift */; };
+		F61E0D6F1E40A57700ECA678 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E0D6A1E40A57700ECA678 /* AccountViewController.swift */; };
+		F61E0D701E40A57700ECA678 /* AccountViewEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E0D6B1E40A57700ECA678 /* AccountViewEventHandler.swift */; };
 		F63404271C65F78300464F3E /* ICEmptyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F63404251C65F78300464F3E /* ICEmptyViewController.m */; };
 		F63404281C65F78300464F3E /* ICEmptyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F63404261C65F78300464F3E /* ICEmptyViewController.xib */; };
 		F635166E1D33A52A007822F3 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F635166D1D33A52A007822F3 /* AccountView.swift */; };
@@ -445,6 +450,11 @@
 		F61E0D5B1E40A49700ECA678 /* AccountProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountProfileViewController.swift; sourceTree = "<group>"; };
 		F61E0D5C1E40A49700ECA678 /* AccountProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccountProfileViewController.xib; sourceTree = "<group>"; };
 		F61E0D5D1E40A49700ECA678 /* AccountProfileViewEventHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountProfileViewEventHandler.swift; sourceTree = "<group>"; };
+		F61E0D671E40A57700ECA678 /* AccountModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountModule.swift; sourceTree = "<group>"; };
+		F61E0D681E40A57700ECA678 /* AccountPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountPresenter.swift; sourceTree = "<group>"; };
+		F61E0D691E40A57700ECA678 /* AccountView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
+		F61E0D6A1E40A57700ECA678 /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
+		F61E0D6B1E40A57700ECA678 /* AccountViewEventHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewEventHandler.swift; sourceTree = "<group>"; };
 		F63404241C65F78300464F3E /* ICEmptyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICEmptyViewController.h; sourceTree = "<group>"; };
 		F63404251C65F78300464F3E /* ICEmptyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ICEmptyViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		F63404261C65F78300464F3E /* ICEmptyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ICEmptyViewController.xib; sourceTree = "<group>"; };
@@ -899,10 +909,11 @@
 		F61E0C931E40987000ECA678 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				F61E0D661E40A56200ECA678 /* Account */,
 				F61E0D551E40A47E00ECA678 /* Account Profile */,
-				F61E0D441E40A42A00ECA678 /* Navigation Controller */,
 				F61E0CF51E40A1F900ECA678 /* Contact Picker */,
 				F61E0D171E40A30E00ECA678 /* Conversation */,
+				F61E0D441E40A42A00ECA678 /* Navigation Controller */,
 				F61E0CE31E40A12C00ECA678 /* Recent Conversations */,
 				F61E0CD61E40A0D400ECA678 /* Settings */,
 				F61E0CC61E40A04C00ECA678 /* Signup */,
@@ -1105,6 +1116,18 @@
 				F61E0D5D1E40A49700ECA678 /* AccountProfileViewEventHandler.swift */,
 			);
 			name = "Account Profile";
+			sourceTree = "<group>";
+		};
+		F61E0D661E40A56200ECA678 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				F61E0D671E40A57700ECA678 /* AccountModule.swift */,
+				F61E0D681E40A57700ECA678 /* AccountPresenter.swift */,
+				F61E0D691E40A57700ECA678 /* AccountView.swift */,
+				F61E0D6A1E40A57700ECA678 /* AccountViewController.swift */,
+				F61E0D6B1E40A57700ECA678 /* AccountViewEventHandler.swift */,
+			);
+			name = Account;
 			sourceTree = "<group>";
 		};
 		F63A66631D265BCA00FCC82E /* Presenter */ = {
@@ -2075,6 +2098,7 @@
 				F61E0D391E40A33900ECA678 /* ConversationViewLayoutConversationFragment.swift in Sources */,
 				F61E0D2E1E40A33900ECA678 /* ConversationPresenter.swift in Sources */,
 				F61E0CCE1E40A05F00ECA678 /* SignupInteractor.swift in Sources */,
+				F61E0D6D1E40A57700ECA678 /* AccountPresenter.swift in Sources */,
 				F61E0CF01E40A14100ECA678 /* RecentConversationsPresenter.swift in Sources */,
 				F61E0CDF1E40A0FA00ECA678 /* SettingsPresenter.swift in Sources */,
 				F61E0CDD1E40A0FA00ECA678 /* SettingsDataSource.swift in Sources */,
@@ -2103,10 +2127,12 @@
 				F61E0C991E4098EB00ECA678 /* AvatarView.swift in Sources */,
 				F61E0CB81E4099D200ECA678 /* UITableViewCellAction.swift in Sources */,
 				F61E0D4D1E40A45100ECA678 /* NavigationBar.swift in Sources */,
+				F61E0D701E40A57700ECA678 /* AccountViewEventHandler.swift in Sources */,
 				F61E0CC41E409FEC00ECA678 /* FirstResponder.swift in Sources */,
 				F61E0CA61E40990100ECA678 /* FormButtonItemData.swift in Sources */,
 				F61E0D621E40A49700ECA678 /* AccountProfileView.swift in Sources */,
 				F61E0CDE1E40A0FA00ECA678 /* SettingsModule.swift in Sources */,
+				F61E0D6E1E40A57700ECA678 /* AccountView.swift in Sources */,
 				F61E0C951E4098CA00ECA678 /* OptionPicker.swift in Sources */,
 				F61E0D3A1E40A33900ECA678 /* ConversationViewLayoutFragment.swift in Sources */,
 				F61E0CE01E40A0FA00ECA678 /* SettingsView.swift in Sources */,
@@ -2121,6 +2147,8 @@
 				F61E0D011E40A21D00ECA678 /* ContectPickerViewEventHandler.swift in Sources */,
 				F61E0CAB1E40990100ECA678 /* FormURLItemData.swift in Sources */,
 				F61E0D4F1E40A45100ECA678 /* NavigationController.swift in Sources */,
+				F61E0D6C1E40A57700ECA678 /* AccountModule.swift in Sources */,
+				F61E0D6F1E40A57700ECA678 /* AccountViewController.swift in Sources */,
 				F61E0D3B1E40A33900ECA678 /* ConversationViewLayoutInvalidationContext.swift in Sources */,
 				F61E0CA71E40990100ECA678 /* FormSectionData.swift in Sources */,
 				F61E0D2C1E40A33900ECA678 /* ConversationDataSource.swift in Sources */,
