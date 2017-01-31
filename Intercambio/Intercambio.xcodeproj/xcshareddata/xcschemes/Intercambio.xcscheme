@@ -69,6 +69,16 @@
                ReferencedContainer = "container:Intercambio.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "F61E0C7A1E4096E300ECA678"
+               BuildableName = "IntercambioUITests.xctest"
+               BlueprintName = "IntercambioUITests"
+               ReferencedContainer = "container:Intercambio.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
