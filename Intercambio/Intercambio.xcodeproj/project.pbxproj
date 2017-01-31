@@ -64,6 +64,8 @@
 		F61E0CB81E4099D200ECA678 /* UITableViewCellAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E0CB71E4099D200ECA678 /* UITableViewCellAction.swift */; };
 		F61E0CBA1E409C6500ECA678 /* UICollectionViewCellAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E0CB91E409C6500ECA678 /* UICollectionViewCellAction.swift */; };
 		F61E0CC01E409F1B00ECA678 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F61E0CBF1E409F1B00ECA678 /* Assets.xcassets */; };
+		F61E0CC41E409FEC00ECA678 /* FirstResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E0CC21E409FEC00ECA678 /* FirstResponder.swift */; };
+		F61E0CC51E409FEC00ECA678 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E0CC31E409FEC00ECA678 /* String.swift */; };
 		F63404271C65F78300464F3E /* ICEmptyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F63404251C65F78300464F3E /* ICEmptyViewController.m */; };
 		F63404281C65F78300464F3E /* ICEmptyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F63404261C65F78300464F3E /* ICEmptyViewController.xib */; };
 		F635166E1D33A52A007822F3 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F635166D1D33A52A007822F3 /* AccountView.swift */; };
@@ -297,6 +299,8 @@
 		F61E0CB71E4099D200ECA678 /* UITableViewCellAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewCellAction.swift; sourceTree = "<group>"; };
 		F61E0CB91E409C6500ECA678 /* UICollectionViewCellAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionViewCellAction.swift; sourceTree = "<group>"; };
 		F61E0CBF1E409F1B00ECA678 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F61E0CC21E409FEC00ECA678 /* FirstResponder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstResponder.swift; sourceTree = "<group>"; };
+		F61E0CC31E409FEC00ECA678 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		F63404241C65F78300464F3E /* ICEmptyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICEmptyViewController.h; sourceTree = "<group>"; };
 		F63404251C65F78300464F3E /* ICEmptyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ICEmptyViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		F63404261C65F78300464F3E /* ICEmptyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ICEmptyViewController.xib; sourceTree = "<group>"; };
@@ -774,17 +778,12 @@
 		F61E0CBB1E409DDE00ECA678 /* Additions */ = {
 			isa = PBXGroup;
 			children = (
+				F61E0CC21E409FEC00ECA678 /* FirstResponder.swift */,
+				F61E0CC31E409FEC00ECA678 /* String.swift */,
 				F61E0CB71E4099D200ECA678 /* UITableViewCellAction.swift */,
 				F61E0CB91E409C6500ECA678 /* UICollectionViewCellAction.swift */,
 			);
 			name = Additions;
-			sourceTree = "<group>";
-		};
-		F61E0CBC1E409E6800ECA678 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Resources;
 			sourceTree = "<group>";
 		};
 		F61E0CC11E409F2D00ECA678 /* Resources */ = {
@@ -1056,7 +1055,6 @@
 		F69C166A1C651F2800BC66F1 /* User Interface */ = {
 			isa = PBXGroup;
 			children = (
-				F61E0CBC1E409E6800ECA678 /* Resources */,
 				F68269CC1D0EECCB007A3934 /* App Wireframe */,
 				F6826A0F1D0EF148007A3934 /* Common */,
 				F6826A101D0EF151007A3934 /* Modules */,
@@ -1739,10 +1737,12 @@
 				F61E0CA41E40990100ECA678 /* Form.swift in Sources */,
 				F61E0C991E4098EB00ECA678 /* AvatarView.swift in Sources */,
 				F61E0CB81E4099D200ECA678 /* UITableViewCellAction.swift in Sources */,
+				F61E0CC41E409FEC00ECA678 /* FirstResponder.swift in Sources */,
 				F61E0CA61E40990100ECA678 /* FormButtonItemData.swift in Sources */,
 				F61E0C951E4098CA00ECA678 /* OptionPicker.swift in Sources */,
 				F61E0CBA1E409C6500ECA678 /* UICollectionViewCellAction.swift in Sources */,
 				F61E0CAA1E40990100ECA678 /* FormURLItemCell.swift in Sources */,
+				F61E0CC51E409FEC00ECA678 /* String.swift in Sources */,
 				F61E0CAB1E40990100ECA678 /* FormURLItemData.swift in Sources */,
 				F61E0CA71E40990100ECA678 /* FormSectionData.swift in Sources */,
 			);
