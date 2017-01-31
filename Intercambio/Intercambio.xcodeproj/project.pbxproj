@@ -79,6 +79,14 @@
 		F61E0CE01E40A0FA00ECA678 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E0CDA1E40A0FA00ECA678 /* SettingsView.swift */; };
 		F61E0CE11E40A0FA00ECA678 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E0CDB1E40A0FA00ECA678 /* SettingsViewController.swift */; };
 		F61E0CE21E40A0FA00ECA678 /* SettingsViewEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E0CDC1E40A0FA00ECA678 /* SettingsViewEventHandler.swift */; };
+		F61E0CEC1E40A14100ECA678 /* RecentConversationsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E0CE41E40A14100ECA678 /* RecentConversationsCell.swift */; };
+		F61E0CED1E40A14100ECA678 /* RecentConversationsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F61E0CE51E40A14100ECA678 /* RecentConversationsCell.xib */; };
+		F61E0CEE1E40A14100ECA678 /* RecentConversationsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E0CE61E40A14100ECA678 /* RecentConversationsDataSource.swift */; };
+		F61E0CEF1E40A14100ECA678 /* RecentConversationsModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E0CE71E40A14100ECA678 /* RecentConversationsModule.swift */; };
+		F61E0CF01E40A14100ECA678 /* RecentConversationsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E0CE81E40A14100ECA678 /* RecentConversationsPresenter.swift */; };
+		F61E0CF11E40A14100ECA678 /* RecentConversationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E0CE91E40A14100ECA678 /* RecentConversationsView.swift */; };
+		F61E0CF21E40A14100ECA678 /* RecentConversationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E0CEA1E40A14100ECA678 /* RecentConversationsViewController.swift */; };
+		F61E0CF31E40A14100ECA678 /* RecentConversationsViewEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E0CEB1E40A14100ECA678 /* RecentConversationsViewEventHandler.swift */; };
 		F63404271C65F78300464F3E /* ICEmptyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F63404251C65F78300464F3E /* ICEmptyViewController.m */; };
 		F63404281C65F78300464F3E /* ICEmptyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F63404261C65F78300464F3E /* ICEmptyViewController.xib */; };
 		F635166E1D33A52A007822F3 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F635166D1D33A52A007822F3 /* AccountView.swift */; };
@@ -327,6 +335,14 @@
 		F61E0CDA1E40A0FA00ECA678 /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		F61E0CDB1E40A0FA00ECA678 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		F61E0CDC1E40A0FA00ECA678 /* SettingsViewEventHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewEventHandler.swift; sourceTree = "<group>"; };
+		F61E0CE41E40A14100ECA678 /* RecentConversationsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentConversationsCell.swift; sourceTree = "<group>"; };
+		F61E0CE51E40A14100ECA678 /* RecentConversationsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecentConversationsCell.xib; sourceTree = "<group>"; };
+		F61E0CE61E40A14100ECA678 /* RecentConversationsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentConversationsDataSource.swift; sourceTree = "<group>"; };
+		F61E0CE71E40A14100ECA678 /* RecentConversationsModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentConversationsModule.swift; sourceTree = "<group>"; };
+		F61E0CE81E40A14100ECA678 /* RecentConversationsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentConversationsPresenter.swift; sourceTree = "<group>"; };
+		F61E0CE91E40A14100ECA678 /* RecentConversationsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentConversationsView.swift; sourceTree = "<group>"; };
+		F61E0CEA1E40A14100ECA678 /* RecentConversationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentConversationsViewController.swift; sourceTree = "<group>"; };
+		F61E0CEB1E40A14100ECA678 /* RecentConversationsViewEventHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentConversationsViewEventHandler.swift; sourceTree = "<group>"; };
 		F63404241C65F78300464F3E /* ICEmptyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICEmptyViewController.h; sourceTree = "<group>"; };
 		F63404251C65F78300464F3E /* ICEmptyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ICEmptyViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		F63404261C65F78300464F3E /* ICEmptyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ICEmptyViewController.xib; sourceTree = "<group>"; };
@@ -780,6 +796,7 @@
 		F61E0C931E40987000ECA678 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				F61E0CE31E40A12C00ECA678 /* Recent Conversations */,
 				F61E0CD61E40A0D400ECA678 /* Settings */,
 				F61E0CC61E40A04C00ECA678 /* Signup */,
 			);
@@ -847,6 +864,21 @@
 				F61E0CDC1E40A0FA00ECA678 /* SettingsViewEventHandler.swift */,
 			);
 			name = Settings;
+			sourceTree = "<group>";
+		};
+		F61E0CE31E40A12C00ECA678 /* Recent Conversations */ = {
+			isa = PBXGroup;
+			children = (
+				F61E0CE41E40A14100ECA678 /* RecentConversationsCell.swift */,
+				F61E0CE51E40A14100ECA678 /* RecentConversationsCell.xib */,
+				F61E0CE61E40A14100ECA678 /* RecentConversationsDataSource.swift */,
+				F61E0CE71E40A14100ECA678 /* RecentConversationsModule.swift */,
+				F61E0CE81E40A14100ECA678 /* RecentConversationsPresenter.swift */,
+				F61E0CE91E40A14100ECA678 /* RecentConversationsView.swift */,
+				F61E0CEA1E40A14100ECA678 /* RecentConversationsViewController.swift */,
+				F61E0CEB1E40A14100ECA678 /* RecentConversationsViewEventHandler.swift */,
+			);
+			name = "Recent Conversations";
 			sourceTree = "<group>";
 		};
 		F63A66631D265BCA00FCC82E /* Presenter */ = {
@@ -1590,6 +1622,7 @@
 			files = (
 				F61E0CD31E40A05F00ECA678 /* SignupViewController.xib in Resources */,
 				F61E0CC01E409F1B00ECA678 /* Assets.xcassets in Resources */,
+				F61E0CED1E40A14100ECA678 /* RecentConversationsCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1785,12 +1818,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				F61E0CD11E40A05F00ECA678 /* SignupView.swift in Sources */,
+				F61E0CF21E40A14100ECA678 /* RecentConversationsViewController.swift in Sources */,
 				F61E0CCF1E40A05F00ECA678 /* SignupModule.swift in Sources */,
 				F61E0CD21E40A05F00ECA678 /* SignupViewController.swift in Sources */,
 				F61E0CA91E40990100ECA678 /* FormTextItemData.swift in Sources */,
 				F61E0CD41E40A05F00ECA678 /* SignupViewEventHandler.swift in Sources */,
+				F61E0CF31E40A14100ECA678 /* RecentConversationsViewEventHandler.swift in Sources */,
 				F61E0CA51E40990100ECA678 /* FormButtonItemCell.swift in Sources */,
 				F61E0CCE1E40A05F00ECA678 /* SignupInteractor.swift in Sources */,
+				F61E0CF01E40A14100ECA678 /* RecentConversationsPresenter.swift in Sources */,
 				F61E0CDF1E40A0FA00ECA678 /* SettingsPresenter.swift in Sources */,
 				F61E0CDD1E40A0FA00ECA678 /* SettingsDataSource.swift in Sources */,
 				F61E0CAC1E40990100ECA678 /* FormValueItemCell.swift in Sources */,
@@ -1799,7 +1835,9 @@
 				F61E0CD01E40A05F00ECA678 /* SignupPresenter.swift in Sources */,
 				F61E0C971E4098D900ECA678 /* ContentView.swift in Sources */,
 				F61E0CAD1E40990100ECA678 /* FormValueItemData.swift in Sources */,
+				F61E0CEF1E40A14100ECA678 /* RecentConversationsModule.swift in Sources */,
 				F61E0CA41E40990100ECA678 /* Form.swift in Sources */,
+				F61E0CF11E40A14100ECA678 /* RecentConversationsView.swift in Sources */,
 				F61E0C991E4098EB00ECA678 /* AvatarView.swift in Sources */,
 				F61E0CB81E4099D200ECA678 /* UITableViewCellAction.swift in Sources */,
 				F61E0CC41E409FEC00ECA678 /* FirstResponder.swift in Sources */,
@@ -1813,6 +1851,8 @@
 				F61E0CC51E409FEC00ECA678 /* String.swift in Sources */,
 				F61E0CAB1E40990100ECA678 /* FormURLItemData.swift in Sources */,
 				F61E0CA71E40990100ECA678 /* FormSectionData.swift in Sources */,
+				F61E0CEC1E40A14100ECA678 /* RecentConversationsCell.swift in Sources */,
+				F61E0CEE1E40A14100ECA678 /* RecentConversationsDataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
