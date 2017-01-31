@@ -142,6 +142,12 @@
 		F61E0D6E1E40A57700ECA678 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E0D691E40A57700ECA678 /* AccountView.swift */; };
 		F61E0D6F1E40A57700ECA678 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E0D6A1E40A57700ECA678 /* AccountViewController.swift */; };
 		F61E0D701E40A57700ECA678 /* AccountViewEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E0D6B1E40A57700ECA678 /* AccountViewEventHandler.swift */; };
+		F61E0D781E40A5AA00ECA678 /* AccountListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E0D721E40A5AA00ECA678 /* AccountListDataSource.swift */; };
+		F61E0D791E40A5AA00ECA678 /* AccountListModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E0D731E40A5AA00ECA678 /* AccountListModule.swift */; };
+		F61E0D7A1E40A5AA00ECA678 /* AccountListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E0D741E40A5AA00ECA678 /* AccountListPresenter.swift */; };
+		F61E0D7B1E40A5AA00ECA678 /* AccountListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E0D751E40A5AA00ECA678 /* AccountListView.swift */; };
+		F61E0D7C1E40A5AA00ECA678 /* AccountListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E0D761E40A5AA00ECA678 /* AccountListViewController.swift */; };
+		F61E0D7D1E40A5AA00ECA678 /* AccountListViewEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E0D771E40A5AA00ECA678 /* AccountListViewEventHandler.swift */; };
 		F63404271C65F78300464F3E /* ICEmptyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F63404251C65F78300464F3E /* ICEmptyViewController.m */; };
 		F63404281C65F78300464F3E /* ICEmptyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F63404261C65F78300464F3E /* ICEmptyViewController.xib */; };
 		F635166E1D33A52A007822F3 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F635166D1D33A52A007822F3 /* AccountView.swift */; };
@@ -455,6 +461,12 @@
 		F61E0D691E40A57700ECA678 /* AccountView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		F61E0D6A1E40A57700ECA678 /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		F61E0D6B1E40A57700ECA678 /* AccountViewEventHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewEventHandler.swift; sourceTree = "<group>"; };
+		F61E0D721E40A5AA00ECA678 /* AccountListDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountListDataSource.swift; sourceTree = "<group>"; };
+		F61E0D731E40A5AA00ECA678 /* AccountListModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountListModule.swift; sourceTree = "<group>"; };
+		F61E0D741E40A5AA00ECA678 /* AccountListPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountListPresenter.swift; sourceTree = "<group>"; };
+		F61E0D751E40A5AA00ECA678 /* AccountListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountListView.swift; sourceTree = "<group>"; };
+		F61E0D761E40A5AA00ECA678 /* AccountListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountListViewController.swift; sourceTree = "<group>"; };
+		F61E0D771E40A5AA00ECA678 /* AccountListViewEventHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountListViewEventHandler.swift; sourceTree = "<group>"; };
 		F63404241C65F78300464F3E /* ICEmptyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICEmptyViewController.h; sourceTree = "<group>"; };
 		F63404251C65F78300464F3E /* ICEmptyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ICEmptyViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		F63404261C65F78300464F3E /* ICEmptyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ICEmptyViewController.xib; sourceTree = "<group>"; };
@@ -910,6 +922,7 @@
 			isa = PBXGroup;
 			children = (
 				F61E0D661E40A56200ECA678 /* Account */,
+				F61E0D711E40A59400ECA678 /* Account List */,
 				F61E0D551E40A47E00ECA678 /* Account Profile */,
 				F61E0CF51E40A1F900ECA678 /* Contact Picker */,
 				F61E0D171E40A30E00ECA678 /* Conversation */,
@@ -1128,6 +1141,19 @@
 				F61E0D6B1E40A57700ECA678 /* AccountViewEventHandler.swift */,
 			);
 			name = Account;
+			sourceTree = "<group>";
+		};
+		F61E0D711E40A59400ECA678 /* Account List */ = {
+			isa = PBXGroup;
+			children = (
+				F61E0D721E40A5AA00ECA678 /* AccountListDataSource.swift */,
+				F61E0D731E40A5AA00ECA678 /* AccountListModule.swift */,
+				F61E0D741E40A5AA00ECA678 /* AccountListPresenter.swift */,
+				F61E0D751E40A5AA00ECA678 /* AccountListView.swift */,
+				F61E0D761E40A5AA00ECA678 /* AccountListViewController.swift */,
+				F61E0D771E40A5AA00ECA678 /* AccountListViewEventHandler.swift */,
+			);
+			name = "Account List";
 			sourceTree = "<group>";
 		};
 		F63A66631D265BCA00FCC82E /* Presenter */ = {
@@ -2092,6 +2118,7 @@
 				F61E0CF31E40A14100ECA678 /* RecentConversationsViewEventHandler.swift in Sources */,
 				F61E0D601E40A49700ECA678 /* AccountProfilePresenter.swift in Sources */,
 				F61E0D3F1E40A33900ECA678 /* ConversationViewAvatarView.swift in Sources */,
+				F61E0D7A1E40A5AA00ECA678 /* AccountListPresenter.swift in Sources */,
 				F61E0D611E40A49700ECA678 /* AccountProfileProvider.swift in Sources */,
 				F61E0D0E1E40A24400ECA678 /* CLBackspaceDetectingTextField.m in Sources */,
 				F61E0CA51E40990100ECA678 /* FormButtonItemCell.swift in Sources */,
@@ -2103,13 +2130,16 @@
 				F61E0CDF1E40A0FA00ECA678 /* SettingsPresenter.swift in Sources */,
 				F61E0CDD1E40A0FA00ECA678 /* SettingsDataSource.swift in Sources */,
 				F61E0CAC1E40990100ECA678 /* FormValueItemCell.swift in Sources */,
+				F61E0D7C1E40A5AA00ECA678 /* AccountListViewController.swift in Sources */,
 				F61E0CE21E40A0FA00ECA678 /* SettingsViewEventHandler.swift in Sources */,
+				F61E0D791E40A5AA00ECA678 /* AccountListModule.swift in Sources */,
 				F61E0CA81E40990100ECA678 /* FormTextItemCell.swift in Sources */,
 				F61E0D331E40A33900ECA678 /* ConversationViewController.swift in Sources */,
 				F61E0D2F1E40A33900ECA678 /* ConversationView.swift in Sources */,
 				F61E0D311E40A33900ECA678 /* ConversationViewCellBackgroundView.swift in Sources */,
 				F61E0D101E40A24400ECA678 /* CLToken.m in Sources */,
 				F61E0CFF1E40A21D00ECA678 /* ContactPickerView.swift in Sources */,
+				F61E0D781E40A5AA00ECA678 /* AccountListDataSource.swift in Sources */,
 				F61E0CFE1E40A21D00ECA678 /* ContactPickerPresenter.swift in Sources */,
 				F61E0CD01E40A05F00ECA678 /* SignupPresenter.swift in Sources */,
 				F61E0C971E4098D900ECA678 /* ContentView.swift in Sources */,
@@ -2119,9 +2149,11 @@
 				F61E0D521E40A45100ECA678 /* NavigationControllerStatusViewModel.swift in Sources */,
 				F61E0D301E40A33900ECA678 /* ConversationViewCell.swift in Sources */,
 				F61E0D001E40A21D00ECA678 /* ContactPickerViewController.swift in Sources */,
+				F61E0D7D1E40A5AA00ECA678 /* AccountListViewEventHandler.swift in Sources */,
 				F61E0CEF1E40A14100ECA678 /* RecentConversationsModule.swift in Sources */,
 				F61E0D3D1E40A33900ECA678 /* ConversationViewLayoutParagraphFragment.swift in Sources */,
 				F61E0CA41E40990100ECA678 /* Form.swift in Sources */,
+				F61E0D7B1E40A5AA00ECA678 /* AccountListView.swift in Sources */,
 				F61E0CF11E40A14100ECA678 /* RecentConversationsView.swift in Sources */,
 				F61E0D541E40A45100ECA678 /* NavigationControllerViewEventHandler.swift in Sources */,
 				F61E0C991E4098EB00ECA678 /* AvatarView.swift in Sources */,
