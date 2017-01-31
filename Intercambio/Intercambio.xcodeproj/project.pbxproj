@@ -73,6 +73,12 @@
 		F61E0CD21E40A05F00ECA678 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E0CCB1E40A05F00ECA678 /* SignupViewController.swift */; };
 		F61E0CD31E40A05F00ECA678 /* SignupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F61E0CCC1E40A05F00ECA678 /* SignupViewController.xib */; };
 		F61E0CD41E40A05F00ECA678 /* SignupViewEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E0CCD1E40A05F00ECA678 /* SignupViewEventHandler.swift */; };
+		F61E0CDD1E40A0FA00ECA678 /* SettingsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E0CD71E40A0FA00ECA678 /* SettingsDataSource.swift */; };
+		F61E0CDE1E40A0FA00ECA678 /* SettingsModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E0CD81E40A0FA00ECA678 /* SettingsModule.swift */; };
+		F61E0CDF1E40A0FA00ECA678 /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E0CD91E40A0FA00ECA678 /* SettingsPresenter.swift */; };
+		F61E0CE01E40A0FA00ECA678 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E0CDA1E40A0FA00ECA678 /* SettingsView.swift */; };
+		F61E0CE11E40A0FA00ECA678 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E0CDB1E40A0FA00ECA678 /* SettingsViewController.swift */; };
+		F61E0CE21E40A0FA00ECA678 /* SettingsViewEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E0CDC1E40A0FA00ECA678 /* SettingsViewEventHandler.swift */; };
 		F63404271C65F78300464F3E /* ICEmptyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F63404251C65F78300464F3E /* ICEmptyViewController.m */; };
 		F63404281C65F78300464F3E /* ICEmptyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F63404261C65F78300464F3E /* ICEmptyViewController.xib */; };
 		F635166E1D33A52A007822F3 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F635166D1D33A52A007822F3 /* AccountView.swift */; };
@@ -315,6 +321,12 @@
 		F61E0CCB1E40A05F00ECA678 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		F61E0CCC1E40A05F00ECA678 /* SignupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignupViewController.xib; sourceTree = "<group>"; };
 		F61E0CCD1E40A05F00ECA678 /* SignupViewEventHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewEventHandler.swift; sourceTree = "<group>"; };
+		F61E0CD71E40A0FA00ECA678 /* SettingsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsDataSource.swift; sourceTree = "<group>"; };
+		F61E0CD81E40A0FA00ECA678 /* SettingsModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsModule.swift; sourceTree = "<group>"; };
+		F61E0CD91E40A0FA00ECA678 /* SettingsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
+		F61E0CDA1E40A0FA00ECA678 /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		F61E0CDB1E40A0FA00ECA678 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		F61E0CDC1E40A0FA00ECA678 /* SettingsViewEventHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewEventHandler.swift; sourceTree = "<group>"; };
 		F63404241C65F78300464F3E /* ICEmptyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICEmptyViewController.h; sourceTree = "<group>"; };
 		F63404251C65F78300464F3E /* ICEmptyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ICEmptyViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		F63404261C65F78300464F3E /* ICEmptyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ICEmptyViewController.xib; sourceTree = "<group>"; };
@@ -768,7 +780,8 @@
 		F61E0C931E40987000ECA678 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				F61E0CC61E40A04C00ECA678 /* Signup Module */,
+				F61E0CD61E40A0D400ECA678 /* Settings */,
+				F61E0CC61E40A04C00ECA678 /* Signup */,
 			);
 			name = Modules;
 			sourceTree = "<group>";
@@ -809,7 +822,7 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
-		F61E0CC61E40A04C00ECA678 /* Signup Module */ = {
+		F61E0CC61E40A04C00ECA678 /* Signup */ = {
 			isa = PBXGroup;
 			children = (
 				F61E0CC81E40A05F00ECA678 /* SignupModule.swift */,
@@ -820,7 +833,20 @@
 				F61E0CCC1E40A05F00ECA678 /* SignupViewController.xib */,
 				F61E0CCD1E40A05F00ECA678 /* SignupViewEventHandler.swift */,
 			);
-			name = "Signup Module";
+			name = Signup;
+			sourceTree = "<group>";
+		};
+		F61E0CD61E40A0D400ECA678 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				F61E0CD81E40A0FA00ECA678 /* SettingsModule.swift */,
+				F61E0CD71E40A0FA00ECA678 /* SettingsDataSource.swift */,
+				F61E0CD91E40A0FA00ECA678 /* SettingsPresenter.swift */,
+				F61E0CDA1E40A0FA00ECA678 /* SettingsView.swift */,
+				F61E0CDB1E40A0FA00ECA678 /* SettingsViewController.swift */,
+				F61E0CDC1E40A0FA00ECA678 /* SettingsViewEventHandler.swift */,
+			);
+			name = Settings;
 			sourceTree = "<group>";
 		};
 		F63A66631D265BCA00FCC82E /* Presenter */ = {
@@ -1765,7 +1791,10 @@
 				F61E0CD41E40A05F00ECA678 /* SignupViewEventHandler.swift in Sources */,
 				F61E0CA51E40990100ECA678 /* FormButtonItemCell.swift in Sources */,
 				F61E0CCE1E40A05F00ECA678 /* SignupInteractor.swift in Sources */,
+				F61E0CDF1E40A0FA00ECA678 /* SettingsPresenter.swift in Sources */,
+				F61E0CDD1E40A0FA00ECA678 /* SettingsDataSource.swift in Sources */,
 				F61E0CAC1E40990100ECA678 /* FormValueItemCell.swift in Sources */,
+				F61E0CE21E40A0FA00ECA678 /* SettingsViewEventHandler.swift in Sources */,
 				F61E0CA81E40990100ECA678 /* FormTextItemCell.swift in Sources */,
 				F61E0CD01E40A05F00ECA678 /* SignupPresenter.swift in Sources */,
 				F61E0C971E4098D900ECA678 /* ContentView.swift in Sources */,
@@ -1775,8 +1804,11 @@
 				F61E0CB81E4099D200ECA678 /* UITableViewCellAction.swift in Sources */,
 				F61E0CC41E409FEC00ECA678 /* FirstResponder.swift in Sources */,
 				F61E0CA61E40990100ECA678 /* FormButtonItemData.swift in Sources */,
+				F61E0CDE1E40A0FA00ECA678 /* SettingsModule.swift in Sources */,
 				F61E0C951E4098CA00ECA678 /* OptionPicker.swift in Sources */,
+				F61E0CE01E40A0FA00ECA678 /* SettingsView.swift in Sources */,
 				F61E0CBA1E409C6500ECA678 /* UICollectionViewCellAction.swift in Sources */,
+				F61E0CE11E40A0FA00ECA678 /* SettingsViewController.swift in Sources */,
 				F61E0CAA1E40990100ECA678 /* FormURLItemCell.swift in Sources */,
 				F61E0CC51E409FEC00ECA678 /* String.swift in Sources */,
 				F61E0CAB1E40990100ECA678 /* FormURLItemData.swift in Sources */,
@@ -2161,6 +2193,7 @@
 				F61E0C8B1E4096E300ECA678 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F61E0C8F1E4096E300ECA678 /* Build configuration list for PBXNativeTarget "IntercambioUITests" */ = {
 			isa = XCConfigurationList;
@@ -2169,6 +2202,7 @@
 				F61E0C8D1E4096E300ECA678 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
