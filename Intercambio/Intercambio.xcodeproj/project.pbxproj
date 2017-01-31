@@ -149,6 +149,11 @@
 		F61E0D7C1E40A5AA00ECA678 /* AccountListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E0D761E40A5AA00ECA678 /* AccountListViewController.swift */; };
 		F61E0D7D1E40A5AA00ECA678 /* AccountListViewEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E0D771E40A5AA00ECA678 /* AccountListViewEventHandler.swift */; };
 		F61E0D801E40A5FD00ECA678 /* AuthenticationModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E0D7F1E40A5FD00ECA678 /* AuthenticationModule.swift */; };
+		F61E0D871E40A65F00ECA678 /* MainAccountNavigationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E0D821E40A65F00ECA678 /* MainAccountNavigationPresenter.swift */; };
+		F61E0D881E40A65F00ECA678 /* MainModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E0D831E40A65F00ECA678 /* MainModule.swift */; };
+		F61E0D891E40A65F00ECA678 /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E0D841E40A65F00ECA678 /* MainPresenter.swift */; };
+		F61E0D8A1E40A65F00ECA678 /* MainPresenterSplitViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E0D851E40A65F00ECA678 /* MainPresenterSplitViewControllerDelegate.swift */; };
+		F61E0D8B1E40A65F00ECA678 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E0D861E40A65F00ECA678 /* MainViewController.swift */; };
 		F63404271C65F78300464F3E /* ICEmptyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F63404251C65F78300464F3E /* ICEmptyViewController.m */; };
 		F63404281C65F78300464F3E /* ICEmptyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F63404261C65F78300464F3E /* ICEmptyViewController.xib */; };
 		F635166E1D33A52A007822F3 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F635166D1D33A52A007822F3 /* AccountView.swift */; };
@@ -469,6 +474,11 @@
 		F61E0D761E40A5AA00ECA678 /* AccountListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountListViewController.swift; sourceTree = "<group>"; };
 		F61E0D771E40A5AA00ECA678 /* AccountListViewEventHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountListViewEventHandler.swift; sourceTree = "<group>"; };
 		F61E0D7F1E40A5FD00ECA678 /* AuthenticationModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationModule.swift; sourceTree = "<group>"; };
+		F61E0D821E40A65F00ECA678 /* MainAccountNavigationPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainAccountNavigationPresenter.swift; sourceTree = "<group>"; };
+		F61E0D831E40A65F00ECA678 /* MainModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainModule.swift; sourceTree = "<group>"; };
+		F61E0D841E40A65F00ECA678 /* MainPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
+		F61E0D851E40A65F00ECA678 /* MainPresenterSplitViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPresenterSplitViewControllerDelegate.swift; sourceTree = "<group>"; };
+		F61E0D861E40A65F00ECA678 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		F63404241C65F78300464F3E /* ICEmptyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICEmptyViewController.h; sourceTree = "<group>"; };
 		F63404251C65F78300464F3E /* ICEmptyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ICEmptyViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		F63404261C65F78300464F3E /* ICEmptyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ICEmptyViewController.xib; sourceTree = "<group>"; };
@@ -923,6 +933,7 @@
 		F61E0C931E40987000ECA678 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				F61E0D811E40A64D00ECA678 /* Main */,
 				F61E0D661E40A56200ECA678 /* Account */,
 				F61E0D711E40A59400ECA678 /* Account List */,
 				F61E0D551E40A47E00ECA678 /* Account Profile */,
@@ -1165,6 +1176,18 @@
 				F61E0D7F1E40A5FD00ECA678 /* AuthenticationModule.swift */,
 			);
 			name = Authentication;
+			sourceTree = "<group>";
+		};
+		F61E0D811E40A64D00ECA678 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				F61E0D821E40A65F00ECA678 /* MainAccountNavigationPresenter.swift */,
+				F61E0D831E40A65F00ECA678 /* MainModule.swift */,
+				F61E0D841E40A65F00ECA678 /* MainPresenter.swift */,
+				F61E0D851E40A65F00ECA678 /* MainPresenterSplitViewControllerDelegate.swift */,
+				F61E0D861E40A65F00ECA678 /* MainViewController.swift */,
+			);
+			name = Main;
 			sourceTree = "<group>";
 		};
 		F63A66631D265BCA00FCC82E /* Presenter */ = {
@@ -2151,11 +2174,13 @@
 				F61E0D311E40A33900ECA678 /* ConversationViewCellBackgroundView.swift in Sources */,
 				F61E0D101E40A24400ECA678 /* CLToken.m in Sources */,
 				F61E0CFF1E40A21D00ECA678 /* ContactPickerView.swift in Sources */,
+				F61E0D891E40A65F00ECA678 /* MainPresenter.swift in Sources */,
 				F61E0D781E40A5AA00ECA678 /* AccountListDataSource.swift in Sources */,
 				F61E0CFE1E40A21D00ECA678 /* ContactPickerPresenter.swift in Sources */,
 				F61E0CD01E40A05F00ECA678 /* SignupPresenter.swift in Sources */,
 				F61E0C971E4098D900ECA678 /* ContentView.swift in Sources */,
 				F61E0CAD1E40990100ECA678 /* FormValueItemData.swift in Sources */,
+				F61E0D881E40A65F00ECA678 /* MainModule.swift in Sources */,
 				F61E0CFD1E40A21D00ECA678 /* ContactPickerModule.swift in Sources */,
 				F61E0D381E40A33900ECA678 /* ConversationViewLayoutChapterFragment.swift in Sources */,
 				F61E0D521E40A45100ECA678 /* NavigationControllerStatusViewModel.swift in Sources */,
@@ -2173,6 +2198,7 @@
 				F61E0D4D1E40A45100ECA678 /* NavigationBar.swift in Sources */,
 				F61E0D701E40A57700ECA678 /* AccountViewEventHandler.swift in Sources */,
 				F61E0CC41E409FEC00ECA678 /* FirstResponder.swift in Sources */,
+				F61E0D8A1E40A65F00ECA678 /* MainPresenterSplitViewControllerDelegate.swift in Sources */,
 				F61E0CA61E40990100ECA678 /* FormButtonItemData.swift in Sources */,
 				F61E0D621E40A49700ECA678 /* AccountProfileView.swift in Sources */,
 				F61E0CDE1E40A0FA00ECA678 /* SettingsModule.swift in Sources */,
@@ -2193,8 +2219,10 @@
 				F61E0D4F1E40A45100ECA678 /* NavigationController.swift in Sources */,
 				F61E0D6C1E40A57700ECA678 /* AccountModule.swift in Sources */,
 				F61E0D6F1E40A57700ECA678 /* AccountViewController.swift in Sources */,
+				F61E0D871E40A65F00ECA678 /* MainAccountNavigationPresenter.swift in Sources */,
 				F61E0D3B1E40A33900ECA678 /* ConversationViewLayoutInvalidationContext.swift in Sources */,
 				F61E0CA71E40990100ECA678 /* FormSectionData.swift in Sources */,
+				F61E0D8B1E40A65F00ECA678 /* MainViewController.swift in Sources */,
 				F61E0D2C1E40A33900ECA678 /* ConversationDataSource.swift in Sources */,
 				F61E0D161E40A24400ECA678 /* CLTokenView.m in Sources */,
 				F61E0CEC1E40A14100ECA678 /* RecentConversationsCell.swift in Sources */,
