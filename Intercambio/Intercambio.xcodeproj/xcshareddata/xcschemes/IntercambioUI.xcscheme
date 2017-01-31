@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0810"
+   LastUpgradeVersion = "0820"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F640F0EB1C63C2B500F65A9B"
-               BuildableName = "IntercambioCore.framework"
-               BlueprintName = "IntercambioCore"
+               BlueprintIdentifier = "F61E0C721E4096E300ECA678"
+               BuildableName = "IntercambioUI.framework"
+               BlueprintName = "IntercambioUI"
                ReferencedContainer = "container:Intercambio.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -28,7 +28,26 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "F61E0C7A1E4096E300ECA678"
+               BuildableName = "IntercambioUITests.xctest"
+               BlueprintName = "IntercambioUITests"
+               ReferencedContainer = "container:Intercambio.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "F61E0C721E4096E300ECA678"
+            BuildableName = "IntercambioUI.framework"
+            BlueprintName = "IntercambioUI"
+            ReferencedContainer = "container:Intercambio.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -45,9 +64,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F640F0EB1C63C2B500F65A9B"
-            BuildableName = "IntercambioCore.framework"
-            BlueprintName = "IntercambioCore"
+            BlueprintIdentifier = "F61E0C721E4096E300ECA678"
+            BuildableName = "IntercambioUI.framework"
+            BlueprintName = "IntercambioUI"
             ReferencedContainer = "container:Intercambio.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -63,9 +82,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F640F0EB1C63C2B500F65A9B"
-            BuildableName = "IntercambioCore.framework"
-            BlueprintName = "IntercambioCore"
+            BlueprintIdentifier = "F61E0C721E4096E300ECA678"
+            BuildableName = "IntercambioUI.framework"
+            BlueprintName = "IntercambioUI"
             ReferencedContainer = "container:Intercambio.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

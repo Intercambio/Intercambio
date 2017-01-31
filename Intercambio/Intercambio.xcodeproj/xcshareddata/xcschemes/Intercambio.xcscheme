@@ -40,36 +40,6 @@
             </BuildableReference>
          </TestableReference>
          <TestableReference
-            skipped = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F619BDE01C4D071700F87F50"
-               BuildableName = "IntercambioUITests.xctest"
-               BlueprintName = "IntercambioUITests"
-               ReferencedContainer = "container:Intercambio.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F640F0F41C63C2B500F65A9B"
-               BuildableName = "IntercambioCoreTests.xctest"
-               BlueprintName = "IntercambioCoreTests"
-               ReferencedContainer = "container:Intercambio.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F6E251CE1CA3E34C0061531E"
-               BuildableName = "IntercambioAPITests.xctest"
-               BlueprintName = "IntercambioAPITests"
-               ReferencedContainer = "container:Intercambio.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"

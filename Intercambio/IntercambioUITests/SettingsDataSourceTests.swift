@@ -37,31 +37,32 @@
 import XCTest
 import IntercambioCore
 import CoreXMPP
-@testable import Intercambio
+import KeyChain
+@testable import IntercambioUI
 
 class SettingsDataSourceTests: XCTestCase {
     
     var keyChain: KeyChain {
-        return KeyChain(named: "SettingsDataSourceTests")
+        return KeyChain(serviceName: "SettingsDataSourceTests")
     }
     
     override func setUp() {
         super.setUp()
-        try! keyChain.clear()
+        try! keyChain.removeAllItems()
         
         let jid = JID("juliet@example.com")!
         let options = [WebsocketStreamURLKey:URL(string: "https://ws.example.com")]
-        let item = KeyChainItem(jid: jid,
+        let item = KeyChainItem(identifier: jid.stringValue,
                                 invisible: false,
                                 options: options)
         try! keyChain.add(item)
     }
     
     override func tearDown() {
-        try! keyChain.clear()
+        try! keyChain.removeAllItems()
         super.tearDown()
     }
-
+    
     // Tests
     
     func testNonExistingAccount() {
@@ -156,7 +157,7 @@ class SettingsDataSourceTests: XCTestCase {
             XCTAssertEqual(dataSource.numberOfItems(inSection: 2), 1)
             
             dataSource.performAction(#selector(removeAccount), forItemAt: IndexPath(item: 0, section: 2))
-            XCTAssertThrowsError(try keyChain.item(jid: jid))
+            XCTAssertThrowsError(try keyChain.item(with: jid.stringValue))
             
         } catch {
             XCTFail(error.localizedDescription)
@@ -173,7 +174,7 @@ class SettingsDataSourceTests: XCTestCase {
             dataSource.setValue(URL(string: "https://ws.example.com/test"), forItemAt: IndexPath(item: 0, section: 1))
             try dataSource.save()
             
-            let item = try keyChain.item(jid: jid)
+            let item = try keyChain.item(with: jid.stringValue)
             XCTAssertNotNil(item)
             XCTAssertEqual(item.options[WebsocketStreamURLKey] as? URL, URL(string: "https://ws.example.com/test"))
             

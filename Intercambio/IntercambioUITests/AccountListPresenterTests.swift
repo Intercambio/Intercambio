@@ -39,7 +39,7 @@ import KeyChain
 import IntercambioCore
 import CoreXMPP
 import Fountain
-@testable import Intercambio
+@testable import IntercambioUI
 
 class AccountListPresenterTests: XCTestCase {
     
@@ -80,7 +80,7 @@ class AccountListPresenterTests: XCTestCase {
         
         let view = View()
         XCTAssertNil(view.dataSource)
-
+        
         presenter.view = view
         XCTAssertNotNil(view.dataSource)
     }
@@ -113,11 +113,11 @@ class AccountListPresenterTests: XCTestCase {
         let keyChain = KeyChain(serviceName: "AccountListPresenterTests")
         let presenter = AccountListPresenter(keyChain: keyChain)
         presenter.router = Router()
-                
+        
         expectation(forNotification: "presentNewAccountUserInterface", object: presenter.router) { (n) -> Bool in true }
         
         presenter.addAccount()
-
+        
         waitForExpectations(timeout: 1.0, handler: nil)
     }
 }

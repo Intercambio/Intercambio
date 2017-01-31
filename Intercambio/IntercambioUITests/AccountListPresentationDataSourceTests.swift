@@ -38,7 +38,7 @@ import XCTest
 import IntercambioCore
 import CoreXMPP
 import KeyChain
-@testable import Intercambio
+@testable import IntercambioUI
 
 class AccountListPresentationDataSourceTests: XCTestCase {
     
