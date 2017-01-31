@@ -48,6 +48,21 @@
 		F61E0C851E4096E300ECA678 /* IntercambioUI.h in Headers */ = {isa = PBXBuildFile; fileRef = F61E0C751E4096E300ECA678 /* IntercambioUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F61E0C881E4096E300ECA678 /* IntercambioUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F61E0C731E4096E300ECA678 /* IntercambioUI.framework */; };
 		F61E0C891E4096E300ECA678 /* IntercambioUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F61E0C731E4096E300ECA678 /* IntercambioUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F61E0C951E4098CA00ECA678 /* OptionPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E0C941E4098CA00ECA678 /* OptionPicker.swift */; };
+		F61E0C971E4098D900ECA678 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E0C961E4098D900ECA678 /* ContentView.swift */; };
+		F61E0C991E4098EB00ECA678 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E0C981E4098EB00ECA678 /* AvatarView.swift */; };
+		F61E0CA41E40990100ECA678 /* Form.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E0C9A1E40990100ECA678 /* Form.swift */; };
+		F61E0CA51E40990100ECA678 /* FormButtonItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E0C9B1E40990100ECA678 /* FormButtonItemCell.swift */; };
+		F61E0CA61E40990100ECA678 /* FormButtonItemData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E0C9C1E40990100ECA678 /* FormButtonItemData.swift */; };
+		F61E0CA71E40990100ECA678 /* FormSectionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E0C9D1E40990100ECA678 /* FormSectionData.swift */; };
+		F61E0CA81E40990100ECA678 /* FormTextItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E0C9E1E40990100ECA678 /* FormTextItemCell.swift */; };
+		F61E0CA91E40990100ECA678 /* FormTextItemData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E0C9F1E40990100ECA678 /* FormTextItemData.swift */; };
+		F61E0CAA1E40990100ECA678 /* FormURLItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E0CA01E40990100ECA678 /* FormURLItemCell.swift */; };
+		F61E0CAB1E40990100ECA678 /* FormURLItemData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E0CA11E40990100ECA678 /* FormURLItemData.swift */; };
+		F61E0CAC1E40990100ECA678 /* FormValueItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E0CA21E40990100ECA678 /* FormValueItemCell.swift */; };
+		F61E0CAD1E40990100ECA678 /* FormValueItemData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E0CA31E40990100ECA678 /* FormValueItemData.swift */; };
+		F61E0CB81E4099D200ECA678 /* UITableViewCellAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E0CB71E4099D200ECA678 /* UITableViewCellAction.swift */; };
+		F61E0CBA1E409C6500ECA678 /* UICollectionViewCellAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E0CB91E409C6500ECA678 /* UICollectionViewCellAction.swift */; };
 		F63404271C65F78300464F3E /* ICEmptyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F63404251C65F78300464F3E /* ICEmptyViewController.m */; };
 		F63404281C65F78300464F3E /* ICEmptyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F63404261C65F78300464F3E /* ICEmptyViewController.xib */; };
 		F635166E1D33A52A007822F3 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F635166D1D33A52A007822F3 /* AccountView.swift */; };
@@ -265,6 +280,21 @@
 		F61E0C7B1E4096E300ECA678 /* IntercambioUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IntercambioUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F61E0C821E4096E300ECA678 /* IntercambioUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntercambioUITests.swift; sourceTree = "<group>"; };
 		F61E0C841E4096E300ECA678 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F61E0C941E4098CA00ECA678 /* OptionPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionPicker.swift; sourceTree = "<group>"; };
+		F61E0C961E4098D900ECA678 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		F61E0C981E4098EB00ECA678 /* AvatarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
+		F61E0C9A1E40990100ECA678 /* Form.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Form.swift; sourceTree = "<group>"; };
+		F61E0C9B1E40990100ECA678 /* FormButtonItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormButtonItemCell.swift; sourceTree = "<group>"; };
+		F61E0C9C1E40990100ECA678 /* FormButtonItemData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormButtonItemData.swift; sourceTree = "<group>"; };
+		F61E0C9D1E40990100ECA678 /* FormSectionData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormSectionData.swift; sourceTree = "<group>"; };
+		F61E0C9E1E40990100ECA678 /* FormTextItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormTextItemCell.swift; sourceTree = "<group>"; };
+		F61E0C9F1E40990100ECA678 /* FormTextItemData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormTextItemData.swift; sourceTree = "<group>"; };
+		F61E0CA01E40990100ECA678 /* FormURLItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormURLItemCell.swift; sourceTree = "<group>"; };
+		F61E0CA11E40990100ECA678 /* FormURLItemData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormURLItemData.swift; sourceTree = "<group>"; };
+		F61E0CA21E40990100ECA678 /* FormValueItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormValueItemCell.swift; sourceTree = "<group>"; };
+		F61E0CA31E40990100ECA678 /* FormValueItemData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormValueItemData.swift; sourceTree = "<group>"; };
+		F61E0CB71E4099D200ECA678 /* UITableViewCellAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewCellAction.swift; sourceTree = "<group>"; };
+		F61E0CB91E409C6500ECA678 /* UICollectionViewCellAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionViewCellAction.swift; sourceTree = "<group>"; };
 		F63404241C65F78300464F3E /* ICEmptyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICEmptyViewController.h; sourceTree = "<group>"; };
 		F63404251C65F78300464F3E /* ICEmptyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ICEmptyViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		F63404261C65F78300464F3E /* ICEmptyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ICEmptyViewController.xib; sourceTree = "<group>"; };
@@ -669,8 +699,10 @@
 		F61E0C741E4096E300ECA678 /* IntercambioUI */ = {
 			isa = PBXGroup;
 			children = (
-				F61E0C751E4096E300ECA678 /* IntercambioUI.h */,
-				F61E0C761E4096E300ECA678 /* Info.plist */,
+				F61E0CBB1E409DDE00ECA678 /* Additions */,
+				F61E0C921E40986600ECA678 /* Common */,
+				F61E0C931E40987000ECA678 /* Modules */,
+				F61E0C901E40984C00ECA678 /* Supporting Files */,
 			);
 			path = IntercambioUI;
 			sourceTree = "<group>";
@@ -678,10 +710,71 @@
 		F61E0C811E4096E300ECA678 /* IntercambioUITests */ = {
 			isa = PBXGroup;
 			children = (
+				F61E0C911E40985300ECA678 /* Supporting Files */,
+			);
+			path = IntercambioUITests;
+			sourceTree = "<group>";
+		};
+		F61E0C901E40984C00ECA678 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F61E0C751E4096E300ECA678 /* IntercambioUI.h */,
+				F61E0C761E4096E300ECA678 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F61E0C911E40985300ECA678 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
 				F61E0C821E4096E300ECA678 /* IntercambioUITests.swift */,
 				F61E0C841E4096E300ECA678 /* Info.plist */,
 			);
-			path = IntercambioUITests;
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F61E0C921E40986600ECA678 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				F61E0C981E4098EB00ECA678 /* AvatarView.swift */,
+				F61E0C961E4098D900ECA678 /* ContentView.swift */,
+				F61E0C941E4098CA00ECA678 /* OptionPicker.swift */,
+				F61E0CAE1E40990600ECA678 /* From */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
+		F61E0C931E40987000ECA678 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Modules;
+			sourceTree = "<group>";
+		};
+		F61E0CAE1E40990600ECA678 /* From */ = {
+			isa = PBXGroup;
+			children = (
+				F61E0C9A1E40990100ECA678 /* Form.swift */,
+				F61E0C9B1E40990100ECA678 /* FormButtonItemCell.swift */,
+				F61E0C9C1E40990100ECA678 /* FormButtonItemData.swift */,
+				F61E0C9D1E40990100ECA678 /* FormSectionData.swift */,
+				F61E0C9E1E40990100ECA678 /* FormTextItemCell.swift */,
+				F61E0C9F1E40990100ECA678 /* FormTextItemData.swift */,
+				F61E0CA01E40990100ECA678 /* FormURLItemCell.swift */,
+				F61E0CA11E40990100ECA678 /* FormURLItemData.swift */,
+				F61E0CA21E40990100ECA678 /* FormValueItemCell.swift */,
+				F61E0CA31E40990100ECA678 /* FormValueItemData.swift */,
+			);
+			name = From;
+			sourceTree = "<group>";
+		};
+		F61E0CBB1E409DDE00ECA678 /* Additions */ = {
+			isa = PBXGroup;
+			children = (
+				F61E0CB71E4099D200ECA678 /* UITableViewCellAction.swift */,
+				F61E0CB91E409C6500ECA678 /* UICollectionViewCellAction.swift */,
+			);
+			name = Additions;
 			sourceTree = "<group>";
 		};
 		F63A66631D265BCA00FCC82E /* Presenter */ = {
@@ -1356,6 +1449,7 @@
 					};
 					F61E0C721E4096E300ECA678 = {
 						CreatedOnToolsVersion = 8.2.1;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
 					F61E0C7A1E4096E300ECA678 = {
@@ -1616,6 +1710,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F61E0CA91E40990100ECA678 /* FormTextItemData.swift in Sources */,
+				F61E0CA51E40990100ECA678 /* FormButtonItemCell.swift in Sources */,
+				F61E0CAC1E40990100ECA678 /* FormValueItemCell.swift in Sources */,
+				F61E0CA81E40990100ECA678 /* FormTextItemCell.swift in Sources */,
+				F61E0C971E4098D900ECA678 /* ContentView.swift in Sources */,
+				F61E0CAD1E40990100ECA678 /* FormValueItemData.swift in Sources */,
+				F61E0CA41E40990100ECA678 /* Form.swift in Sources */,
+				F61E0C991E4098EB00ECA678 /* AvatarView.swift in Sources */,
+				F61E0CB81E4099D200ECA678 /* UITableViewCellAction.swift in Sources */,
+				F61E0CA61E40990100ECA678 /* FormButtonItemData.swift in Sources */,
+				F61E0C951E4098CA00ECA678 /* OptionPicker.swift in Sources */,
+				F61E0CBA1E409C6500ECA678 /* UICollectionViewCellAction.swift in Sources */,
+				F61E0CAA1E40990100ECA678 /* FormURLItemCell.swift in Sources */,
+				F61E0CAB1E40990100ECA678 /* FormURLItemData.swift in Sources */,
+				F61E0CA71E40990100ECA678 /* FormSectionData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1761,6 +1870,7 @@
 		F619BDEB1C4D071700F87F50 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Intercambio/Intercambio.entitlements;
@@ -1779,6 +1889,7 @@
 		F619BDEC1C4D071700F87F50 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Intercambio/Intercambio.entitlements;
@@ -1859,6 +1970,7 @@
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CODE_SIGN_IDENTITY = "";
 				CURRENT_PROJECT_VERSION = 1;
@@ -1887,6 +1999,7 @@
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CODE_SIGN_IDENTITY = "";
 				CURRENT_PROJECT_VERSION = 1;
