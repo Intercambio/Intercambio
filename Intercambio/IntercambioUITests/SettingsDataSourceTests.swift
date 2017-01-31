@@ -51,7 +51,7 @@ class SettingsDataSourceTests: XCTestCase {
         try! keyChain.removeAllItems()
         
         let jid = JID("juliet@example.com")!
-        let options = [WebsocketStreamURLKey:URL(string: "https://ws.example.com")]
+        let options = [WebsocketStreamURLKey:URL(string: "https://ws.example.com")!]
         let item = KeyChainItem(identifier: jid.stringValue,
                                 invisible: false,
                                 options: options)

@@ -347,7 +347,6 @@
 		F61E0D8E1E40A9D400ECA678 /* AccountListPresenterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountListPresenterTests.swift; sourceTree = "<group>"; };
 		F61E0D901E40AAB800ECA678 /* AccountListPresentationDataSourceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountListPresentationDataSourceTests.swift; sourceTree = "<group>"; };
 		F61E0D921E40AAE400ECA678 /* SettingsDataSourceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsDataSourceTests.swift; sourceTree = "<group>"; };
-		F63A66671D2660BD00FCC82E /* Intercambio-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Intercambio-Bridging-Header.h"; sourceTree = "<group>"; };
 		F63A66761D26685200FCC82E /* IntercambioTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IntercambioTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		F6555A581D3413AE009C4324 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F65751381D1011FC0038AB25 /* IntercambioCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IntercambioCore.framework; path = ../Carthage/Build/iOS/IntercambioCore.framework; sourceTree = "<group>"; };
@@ -489,7 +488,6 @@
 			isa = PBXGroup;
 			children = (
 				F60881A41D3777340028FDEB /* Intercambio.entitlements */,
-				F63A66671D2660BD00FCC82E /* Intercambio-Bridging-Header.h */,
 				F619BDD11C4D071700F87F50 /* Info.plist */,
 				F619BDC11C4D071700F87F50 /* main.m */,
 			);
@@ -1450,7 +1448,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = im.intercambio.develop;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Intercambio/Intercambio-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
@@ -1469,7 +1466,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = im.intercambio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Intercambio/Intercambio-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
 			};
