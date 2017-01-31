@@ -148,6 +148,7 @@
 		F61E0D7B1E40A5AA00ECA678 /* AccountListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E0D751E40A5AA00ECA678 /* AccountListView.swift */; };
 		F61E0D7C1E40A5AA00ECA678 /* AccountListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E0D761E40A5AA00ECA678 /* AccountListViewController.swift */; };
 		F61E0D7D1E40A5AA00ECA678 /* AccountListViewEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E0D771E40A5AA00ECA678 /* AccountListViewEventHandler.swift */; };
+		F61E0D801E40A5FD00ECA678 /* AuthenticationModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61E0D7F1E40A5FD00ECA678 /* AuthenticationModule.swift */; };
 		F63404271C65F78300464F3E /* ICEmptyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F63404251C65F78300464F3E /* ICEmptyViewController.m */; };
 		F63404281C65F78300464F3E /* ICEmptyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F63404261C65F78300464F3E /* ICEmptyViewController.xib */; };
 		F635166E1D33A52A007822F3 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F635166D1D33A52A007822F3 /* AccountView.swift */; };
@@ -467,6 +468,7 @@
 		F61E0D751E40A5AA00ECA678 /* AccountListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountListView.swift; sourceTree = "<group>"; };
 		F61E0D761E40A5AA00ECA678 /* AccountListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountListViewController.swift; sourceTree = "<group>"; };
 		F61E0D771E40A5AA00ECA678 /* AccountListViewEventHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountListViewEventHandler.swift; sourceTree = "<group>"; };
+		F61E0D7F1E40A5FD00ECA678 /* AuthenticationModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationModule.swift; sourceTree = "<group>"; };
 		F63404241C65F78300464F3E /* ICEmptyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICEmptyViewController.h; sourceTree = "<group>"; };
 		F63404251C65F78300464F3E /* ICEmptyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ICEmptyViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		F63404261C65F78300464F3E /* ICEmptyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ICEmptyViewController.xib; sourceTree = "<group>"; };
@@ -924,6 +926,7 @@
 				F61E0D661E40A56200ECA678 /* Account */,
 				F61E0D711E40A59400ECA678 /* Account List */,
 				F61E0D551E40A47E00ECA678 /* Account Profile */,
+				F61E0D7E1E40A5EC00ECA678 /* Authentication */,
 				F61E0CF51E40A1F900ECA678 /* Contact Picker */,
 				F61E0D171E40A30E00ECA678 /* Conversation */,
 				F61E0D441E40A42A00ECA678 /* Navigation Controller */,
@@ -1154,6 +1157,14 @@
 				F61E0D771E40A5AA00ECA678 /* AccountListViewEventHandler.swift */,
 			);
 			name = "Account List";
+			sourceTree = "<group>";
+		};
+		F61E0D7E1E40A5EC00ECA678 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				F61E0D7F1E40A5FD00ECA678 /* AuthenticationModule.swift */,
+			);
+			name = Authentication;
 			sourceTree = "<group>";
 		};
 		F63A66631D265BCA00FCC82E /* Presenter */ = {
@@ -2130,6 +2141,7 @@
 				F61E0CDF1E40A0FA00ECA678 /* SettingsPresenter.swift in Sources */,
 				F61E0CDD1E40A0FA00ECA678 /* SettingsDataSource.swift in Sources */,
 				F61E0CAC1E40990100ECA678 /* FormValueItemCell.swift in Sources */,
+				F61E0D801E40A5FD00ECA678 /* AuthenticationModule.swift in Sources */,
 				F61E0D7C1E40A5AA00ECA678 /* AccountListViewController.swift in Sources */,
 				F61E0CE21E40A0FA00ECA678 /* SettingsViewEventHandler.swift in Sources */,
 				F61E0D791E40A5AA00ECA678 /* AccountListModule.swift in Sources */,
