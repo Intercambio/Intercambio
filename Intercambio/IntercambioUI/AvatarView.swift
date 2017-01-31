@@ -42,7 +42,8 @@ class AvatarView: UIImageView {
 
     override func layoutSubviews() {
         if defaultImage == nil {
-            defaultImage = UIImageView(image: UIImage(named: "avatar-normal"))
+            let bundle = Bundle(for: AvatarView.self)
+            defaultImage = UIImageView(image: UIImage(named: "avatar-normal", in: bundle, compatibleWith: nil))
             defaultImage?.translatesAutoresizingMaskIntoConstraints = false
             defaultImage?.backgroundColor = #colorLiteral(red: 0.6666666667, green: 0.6666666667, blue: 0.6666666667, alpha: 1)
             defaultImage?.tintColor = #colorLiteral(red: 0.9344148174, green: 0.9412353635, blue: 0.9412353635, alpha: 1)
