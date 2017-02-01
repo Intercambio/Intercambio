@@ -101,6 +101,28 @@ class AccountContactDataSource: NSObject, FTDataSource {
         }
     }
     
+    // MARK: Conversation URL
+    
+    func conversationURI(forItemAt indexPtah: IndexPath) -> URL? {
+        if let conversation = backingStore.item(at: indexPtah) as? Item {
+            let accountJID = conversation.account
+            let counterpartJID = conversation.counterpart
+            
+            // account
+            var components = URLComponents()
+            components.scheme = "xmpp"
+            components.host = accountJID.host
+            components.user = accountJID.user
+            
+            // counterpart
+            components.path = "/\(counterpartJID.bare().stringValue)"
+            
+            return components.url
+        } else {
+            return nil
+        }
+    }
+    
     // MARK: - FTDataSource
     
     func numberOfSections() -> UInt {

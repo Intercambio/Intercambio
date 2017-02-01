@@ -56,9 +56,20 @@ class AccountPresenter: AccountViewEventHandler {
         loadRoster()
     }
     
+    // MARK: - Actions
+    
     func addAccount() {
         router?.presentNewAccountUserInterface()
     }
+    
+    func didSelect(itemAt indexPath: IndexPath) {
+        guard
+            let conversationURI = dataSource?.conversationURI(forItemAt: indexPath)
+        else { return }
+        router?.presentConversationUserInterface(for: conversationURI)
+    }
+    
+    // MARK: -
     
     private var dataSource: AccountContactDataSource? {
         didSet {
