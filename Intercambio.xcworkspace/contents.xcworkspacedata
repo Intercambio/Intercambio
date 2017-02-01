@@ -8,15 +8,19 @@
       location = "group:LICENSE.md">
    </FileRef>
    <FileRef
-      location = "group:Intercambio/../Cartfile">
-   </FileRef>
-   <FileRef
-      location = "group:Intercambio/../Cartfile.private">
-   </FileRef>
-   <FileRef
-      location = "group:Intercambio/../Cartfile.resolved">
-   </FileRef>
-   <FileRef
       location = "group:Intercambio/Intercambio.xcodeproj">
    </FileRef>
+   <Group
+      location = "container:"
+      name = "Carthage">
+      <FileRef
+         location = "group:Intercambio/../Cartfile">
+      </FileRef>
+      <FileRef
+         location = "group:Intercambio/../Cartfile.private">
+      </FileRef>
+      <FileRef
+         location = "group:Intercambio/../Cartfile.resolved">
+      </FileRef>
+   </Group>
 </Workspace>

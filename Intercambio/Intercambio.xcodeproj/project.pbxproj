@@ -130,8 +130,6 @@
 		F61E0D981E40AE3E00ECA678 /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6D76D891E2D1887007E13BB /* SQLite.framework */; };
 		F61E0D991E40AE3E00ECA678 /* XMPPFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6D76D8A1E2D1887007E13BB /* XMPPFoundation.framework */; };
 		F61E0D9A1E40AE3E00ECA678 /* XMPPMessageHub.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6D76D8B1E2D1887007E13BB /* XMPPMessageHub.framework */; };
-		F61E0D9B1E40AE3E00ECA678 /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6F375421D55EBD100F718BC /* HockeySDK.framework */; };
-		F61E0D9C1E40AE3E00ECA678 /* IntercambioCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F65751381D1011FC0038AB25 /* IntercambioCore.framework */; };
 		F61E0D9D1E40AE3E00ECA678 /* SASLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F65751391D1011FC0038AB25 /* SASLKit.framework */; };
 		F61E0D9E1E40AE3E00ECA678 /* Fountain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6A697021CFC348700E0A0D2 /* Fountain.framework */; };
 		F61E0D9F1E40AE3E00ECA678 /* ISO8601.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F676EF7C1CD26492003047EC /* ISO8601.framework */; };
@@ -140,15 +138,31 @@
 		F61E0DA21E40AE3E00ECA678 /* CoreXMPP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F68414001C4D8901009B37BE /* CoreXMPP.framework */; };
 		F61E0DA31E40AE3E00ECA678 /* PureXML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F68414011C4D8901009B37BE /* PureXML.framework */; };
 		F6555A591D3413AE009C4324 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F6555A581D3413AE009C4324 /* Assets.xcassets */; };
-		F657513A1D1011FC0038AB25 /* IntercambioCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F65751381D1011FC0038AB25 /* IntercambioCore.framework */; };
 		F657513B1D1011FC0038AB25 /* SASLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F65751391D1011FC0038AB25 /* SASLKit.framework */; };
 		F676EF7E1CD264A4003047EC /* ISO8601.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F676EF7C1CD26492003047EC /* ISO8601.framework */; };
 		F6788E561E40D6DE001E666B /* AccountContactDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6788E551E40D6DE001E666B /* AccountContactDataSource.swift */; };
 		F6788E651E41E163001E666B /* IntercambioCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6788E5C1E41E163001E666B /* IntercambioCore.framework */; };
 		F6788E6C1E41E163001E666B /* IntercambioCoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6788E6B1E41E163001E666B /* IntercambioCoreTests.swift */; };
 		F6788E6E1E41E163001E666B /* IntercambioCore.h in Headers */ = {isa = PBXBuildFile; fileRef = F6788E5E1E41E163001E666B /* IntercambioCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F6788E711E41E163001E666B /* IntercambioCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6788E5C1E41E163001E666B /* IntercambioCore.framework */; };
 		F6788E721E41E163001E666B /* IntercambioCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F6788E5C1E41E163001E666B /* IntercambioCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F6788E7A1E41E226001E666B /* CommunicationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6788E791E41E226001E666B /* CommunicationService.swift */; };
+		F6788E7E1E41E2B7001E666B /* AccountCleanupHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6788E7D1E41E2B7001E666B /* AccountCleanupHandler.swift */; };
+		F6788E801E41E2CC001E666B /* AccountManagerUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6788E7F1E41E2CC001E666B /* AccountManagerUpdater.swift */; };
+		F6788E821E41E350001E666B /* IntercambioCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6788E5C1E41E163001E666B /* IntercambioCore.framework */; };
+		F6788E831E41E36D001E666B /* IntercambioCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6788E5C1E41E163001E666B /* IntercambioCore.framework */; };
+		F6788E841E41E3C8001E666B /* XMPPContactHub.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F61126D81E3A670600A8E75F /* XMPPContactHub.framework */; };
+		F6788E851E41E3C8001E666B /* KeyChain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6D76DB31E2E68F7007E13BB /* KeyChain.framework */; };
+		F6788E861E41E3C8001E666B /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6D76D891E2D1887007E13BB /* SQLite.framework */; };
+		F6788E871E41E3C8001E666B /* XMPPFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6D76D8A1E2D1887007E13BB /* XMPPFoundation.framework */; };
+		F6788E881E41E3C8001E666B /* XMPPMessageHub.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6D76D8B1E2D1887007E13BB /* XMPPMessageHub.framework */; };
+		F6788E891E41E3C8001E666B /* SASLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F65751391D1011FC0038AB25 /* SASLKit.framework */; };
+		F6788E8A1E41E3C8001E666B /* ISO8601.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F676EF7C1CD26492003047EC /* ISO8601.framework */; };
+		F6788E8B1E41E3C8001E666B /* SocketRocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F684140B1C4D8A7F009B37BE /* SocketRocket.framework */; };
+		F6788E8C1E41E3C8001E666B /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F68413FF1C4D8901009B37BE /* CocoaLumberjack.framework */; };
+		F6788E8D1E41E3C8001E666B /* CoreXMPP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F68414001C4D8901009B37BE /* CoreXMPP.framework */; };
+		F6788E8E1E41E3C8001E666B /* PureXML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F68414011C4D8901009B37BE /* PureXML.framework */; };
+		F6788E901E41E6B7001E666B /* IntercambioCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6788E5C1E41E163001E666B /* IntercambioCore.framework */; };
+		F6788E911E41E6B7001E666B /* IntercambioUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F61E0C731E4096E300ECA678 /* IntercambioUI.framework */; };
 		F6A697031CFC348700E0A0D2 /* Fountain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6A697021CFC348700E0A0D2 /* Fountain.framework */; };
 		F6D76D8C1E2D1887007E13BB /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6D76D891E2D1887007E13BB /* SQLite.framework */; };
 		F6D76D8D1E2D1887007E13BB /* XMPPFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6D76D8A1E2D1887007E13BB /* XMPPFoundation.framework */; };
@@ -157,7 +171,6 @@
 		F6D76DA71E2E5B10007E13BB /* XMPPFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6D76D8A1E2D1887007E13BB /* XMPPFoundation.framework */; };
 		F6D76DA81E2E5B10007E13BB /* XMPPMessageHub.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6D76D8B1E2D1887007E13BB /* XMPPMessageHub.framework */; };
 		F6D76DA91E2E5B10007E13BB /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6F375421D55EBD100F718BC /* HockeySDK.framework */; };
-		F6D76DAA1E2E5B10007E13BB /* IntercambioCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F65751381D1011FC0038AB25 /* IntercambioCore.framework */; };
 		F6D76DAB1E2E5B10007E13BB /* SASLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F65751391D1011FC0038AB25 /* SASLKit.framework */; };
 		F6D76DAC1E2E5B10007E13BB /* Fountain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6A697021CFC348700E0A0D2 /* Fountain.framework */; };
 		F6D76DAD1E2E5B10007E13BB /* ISO8601.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F676EF7C1CD26492003047EC /* ISO8601.framework */; };
@@ -375,7 +388,6 @@
 		F61E0D921E40AAE400ECA678 /* SettingsDataSourceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsDataSourceTests.swift; sourceTree = "<group>"; };
 		F63A66761D26685200FCC82E /* IntercambioTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IntercambioTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		F6555A581D3413AE009C4324 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		F65751381D1011FC0038AB25 /* IntercambioCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IntercambioCore.framework; path = ../Carthage/Build/iOS/IntercambioCore.framework; sourceTree = "<group>"; };
 		F65751391D1011FC0038AB25 /* SASLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SASLKit.framework; path = ../Carthage/Build/iOS/SASLKit.framework; sourceTree = "<group>"; };
 		F676EF7C1CD26492003047EC /* ISO8601.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ISO8601.framework; path = ../Carthage/Build/iOS/ISO8601.framework; sourceTree = "<group>"; };
 		F6788E551E40D6DE001E666B /* AccountContactDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountContactDataSource.swift; sourceTree = "<group>"; };
@@ -385,6 +397,9 @@
 		F6788E641E41E163001E666B /* IntercambioCoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IntercambioCoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6788E6B1E41E163001E666B /* IntercambioCoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntercambioCoreTests.swift; sourceTree = "<group>"; };
 		F6788E6D1E41E163001E666B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F6788E791E41E226001E666B /* CommunicationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunicationService.swift; sourceTree = "<group>"; };
+		F6788E7D1E41E2B7001E666B /* AccountCleanupHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountCleanupHandler.swift; sourceTree = "<group>"; };
+		F6788E7F1E41E2CC001E666B /* AccountManagerUpdater.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountManagerUpdater.swift; sourceTree = "<group>"; };
 		F68413FF1C4D8901009B37BE /* CocoaLumberjack.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaLumberjack.framework; path = ../Carthage/Build/iOS/CocoaLumberjack.framework; sourceTree = "<group>"; };
 		F68414001C4D8901009B37BE /* CoreXMPP.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreXMPP.framework; path = ../Carthage/Build/iOS/CoreXMPP.framework; sourceTree = "<group>"; };
 		F68414011C4D8901009B37BE /* PureXML.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PureXML.framework; path = ../Carthage/Build/iOS/PureXML.framework; sourceTree = "<group>"; };
@@ -410,21 +425,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F61126D91E3A670600A8E75F /* XMPPContactHub.framework in Frameworks */,
+				F6788E831E41E36D001E666B /* IntercambioCore.framework in Frameworks */,
+				F61E0C881E4096E300ECA678 /* IntercambioUI.framework in Frameworks */,
+				F6A697031CFC348700E0A0D2 /* Fountain.framework in Frameworks */,
+				F6F375431D55EBD100F718BC /* HockeySDK.framework in Frameworks */,
+				F6F56AF41C51416600C34CC8 /* CocoaLumberjack.framework in Frameworks */,
 				F6D76DB41E2E68F7007E13BB /* KeyChain.framework in Frameworks */,
-				F6D76D8C1E2D1887007E13BB /* SQLite.framework in Frameworks */,
+				F6F56AF51C51416600C34CC8 /* CoreXMPP.framework in Frameworks */,
 				F6D76D8D1E2D1887007E13BB /* XMPPFoundation.framework in Frameworks */,
 				F6D76D8E1E2D1887007E13BB /* XMPPMessageHub.framework in Frameworks */,
-				F6F375431D55EBD100F718BC /* HockeySDK.framework in Frameworks */,
-				F657513A1D1011FC0038AB25 /* IntercambioCore.framework in Frameworks */,
+				F61126D91E3A670600A8E75F /* XMPPContactHub.framework in Frameworks */,
+				F6D76D8C1E2D1887007E13BB /* SQLite.framework in Frameworks */,
 				F657513B1D1011FC0038AB25 /* SASLKit.framework in Frameworks */,
-				F6A697031CFC348700E0A0D2 /* Fountain.framework in Frameworks */,
 				F6F56AF31C51416600C34CC8 /* SocketRocket.framework in Frameworks */,
-				F6F56AF41C51416600C34CC8 /* CocoaLumberjack.framework in Frameworks */,
-				F6788E711E41E163001E666B /* IntercambioCore.framework in Frameworks */,
-				F6F56AF51C51416600C34CC8 /* CoreXMPP.framework in Frameworks */,
 				F6F56AF61C51416600C34CC8 /* PureXML.framework in Frameworks */,
-				F61E0C881E4096E300ECA678 /* IntercambioUI.framework in Frameworks */,
 				F676EF7E1CD264A4003047EC /* ISO8601.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -433,11 +447,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6788E901E41E6B7001E666B /* IntercambioCore.framework in Frameworks */,
+				F6788E911E41E6B7001E666B /* IntercambioUI.framework in Frameworks */,
 				F6D76DA61E2E5B10007E13BB /* SQLite.framework in Frameworks */,
 				F6D76DA71E2E5B10007E13BB /* XMPPFoundation.framework in Frameworks */,
 				F6D76DA81E2E5B10007E13BB /* XMPPMessageHub.framework in Frameworks */,
 				F6D76DA91E2E5B10007E13BB /* HockeySDK.framework in Frameworks */,
-				F6D76DAA1E2E5B10007E13BB /* IntercambioCore.framework in Frameworks */,
 				F6D76DAB1E2E5B10007E13BB /* SASLKit.framework in Frameworks */,
 				F6D76DAC1E2E5B10007E13BB /* Fountain.framework in Frameworks */,
 				F6D76DAD1E2E5B10007E13BB /* ISO8601.framework in Frameworks */,
@@ -459,14 +474,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6788E821E41E350001E666B /* IntercambioCore.framework in Frameworks */,
 				F61E0C7C1E4096E300ECA678 /* IntercambioUI.framework in Frameworks */,
 				F61E0D961E40AE3E00ECA678 /* XMPPContactHub.framework in Frameworks */,
 				F61E0D971E40AE3E00ECA678 /* KeyChain.framework in Frameworks */,
 				F61E0D981E40AE3E00ECA678 /* SQLite.framework in Frameworks */,
 				F61E0D991E40AE3E00ECA678 /* XMPPFoundation.framework in Frameworks */,
 				F61E0D9A1E40AE3E00ECA678 /* XMPPMessageHub.framework in Frameworks */,
-				F61E0D9B1E40AE3E00ECA678 /* HockeySDK.framework in Frameworks */,
-				F61E0D9C1E40AE3E00ECA678 /* IntercambioCore.framework in Frameworks */,
 				F61E0D9D1E40AE3E00ECA678 /* SASLKit.framework in Frameworks */,
 				F61E0D9E1E40AE3E00ECA678 /* Fountain.framework in Frameworks */,
 				F61E0D9F1E40AE3E00ECA678 /* ISO8601.framework in Frameworks */,
@@ -489,6 +503,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				F6788E651E41E163001E666B /* IntercambioCore.framework in Frameworks */,
+				F6788E841E41E3C8001E666B /* XMPPContactHub.framework in Frameworks */,
+				F6788E851E41E3C8001E666B /* KeyChain.framework in Frameworks */,
+				F6788E861E41E3C8001E666B /* SQLite.framework in Frameworks */,
+				F6788E871E41E3C8001E666B /* XMPPFoundation.framework in Frameworks */,
+				F6788E881E41E3C8001E666B /* XMPPMessageHub.framework in Frameworks */,
+				F6788E891E41E3C8001E666B /* SASLKit.framework in Frameworks */,
+				F6788E8A1E41E3C8001E666B /* ISO8601.framework in Frameworks */,
+				F6788E8B1E41E3C8001E666B /* SocketRocket.framework in Frameworks */,
+				F6788E8C1E41E3C8001E666B /* CocoaLumberjack.framework in Frameworks */,
+				F6788E8D1E41E3C8001E666B /* CoreXMPP.framework in Frameworks */,
+				F6788E8E1E41E3C8001E666B /* PureXML.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -890,8 +915,10 @@
 		F6788E5D1E41E163001E666B /* IntercambioCore */ = {
 			isa = PBXGroup;
 			children = (
-				F6788E5E1E41E163001E666B /* IntercambioCore.h */,
-				F6788E5F1E41E163001E666B /* Info.plist */,
+				F6788E791E41E226001E666B /* CommunicationService.swift */,
+				F6788E7D1E41E2B7001E666B /* AccountCleanupHandler.swift */,
+				F6788E7F1E41E2CC001E666B /* AccountManagerUpdater.swift */,
+				F6788E7B1E41E22B001E666B /* Supporing Files */,
 			);
 			path = IntercambioCore;
 			sourceTree = "<group>";
@@ -900,9 +927,26 @@
 			isa = PBXGroup;
 			children = (
 				F6788E6B1E41E163001E666B /* IntercambioCoreTests.swift */,
-				F6788E6D1E41E163001E666B /* Info.plist */,
+				F6788E7C1E41E235001E666B /* Supporting Files */,
 			);
 			path = IntercambioCoreTests;
+			sourceTree = "<group>";
+		};
+		F6788E7B1E41E22B001E666B /* Supporing Files */ = {
+			isa = PBXGroup;
+			children = (
+				F6788E5E1E41E163001E666B /* IntercambioCore.h */,
+				F6788E5F1E41E163001E666B /* Info.plist */,
+			);
+			name = "Supporing Files";
+			sourceTree = "<group>";
+		};
+		F6788E7C1E41E235001E666B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F6788E6D1E41E163001E666B /* Info.plist */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		F68414091C4D890B009B37BE /* Frameworks */ = {
@@ -914,7 +958,6 @@
 				F6D76D8A1E2D1887007E13BB /* XMPPFoundation.framework */,
 				F6D76D8B1E2D1887007E13BB /* XMPPMessageHub.framework */,
 				F6F375421D55EBD100F718BC /* HockeySDK.framework */,
-				F65751381D1011FC0038AB25 /* IntercambioCore.framework */,
 				F65751391D1011FC0038AB25 /* SASLKit.framework */,
 				F6A697021CFC348700E0A0D2 /* Fountain.framework */,
 				F676EF7C1CD26492003047EC /* ISO8601.framework */,
@@ -979,7 +1022,7 @@
 				F619BDB91C4D071700F87F50 /* Sources */,
 				F619BDBA1C4D071700F87F50 /* Frameworks */,
 				F619BDBB1C4D071700F87F50 /* Resources */,
-				F684140A1C4D8998009B37BE /* ShellScript */,
+				F684140A1C4D8998009B37BE /* Carthage */,
 				F640F1021C63C2B500F65A9B /* Embed Frameworks */,
 			);
 			buildRules = (
@@ -1075,6 +1118,7 @@
 				F6788E601E41E163001E666B /* Sources */,
 				F6788E611E41E163001E666B /* Frameworks */,
 				F6788E621E41E163001E666B /* Resources */,
+				F6788E8F1E41E3D5001E666B /* Carthage */,
 			);
 			buildRules = (
 			);
@@ -1135,6 +1179,7 @@
 					};
 					F6788E5B1E41E163001E666B = {
 						CreatedOnToolsVersion = 8.2.1;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
 					F6788E631E41E163001E666B = {
@@ -1234,9 +1279,7 @@
 				"$(SRCROOT)/../Carthage/Build/iOS/SocketRocket.framework",
 				"$(SRCROOT)/../Carthage/Build/iOS/Fountain.framework",
 				"$(SRCROOT)/../Carthage/Build/iOS/ISO8601.framework",
-				"$(SRCROOT)/../Carthage/Build/iOS/IntercambioCore.framework",
 				"$(SRCROOT)/../Carthage/Build/iOS/SASLKit.framework",
-				"$(SRCROOT)/../Carthage/Build/iOS/HockeySDK.framework",
 				"$(SRCROOT)/../Carthage/Build/iOS/XMPPFoundation.framework",
 				"$(SRCROOT)/../Carthage/Build/iOS/SQLite.framework",
 				"$(SRCROOT)/../Carthage/Build/iOS/XMPPMessageHub.framework",
@@ -1250,7 +1293,32 @@
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
 		};
-		F684140A1C4D8998009B37BE /* ShellScript */ = {
+		F6788E8F1E41E3D5001E666B /* Carthage */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/../Carthage/Build/iOS/PureXML.framework",
+				"$(SRCROOT)/../Carthage/Build/iOS/CoreXMPP.framework",
+				"$(SRCROOT)/../Carthage/Build/iOS/CocoaLumberjack.framework",
+				"$(SRCROOT)/../Carthage/Build/iOS/SocketRocket.framework",
+				"$(SRCROOT)/../Carthage/Build/iOS/ISO8601.framework",
+				"$(SRCROOT)/../Carthage/Build/iOS/SASLKit.framework",
+				"$(SRCROOT)/../Carthage/Build/iOS/XMPPFoundation.framework",
+				"$(SRCROOT)/../Carthage/Build/iOS/SQLite.framework",
+				"$(SRCROOT)/../Carthage/Build/iOS/XMPPMessageHub.framework",
+				"$(SRCROOT)/../Carthage/Build/iOS/KeyChain.framework",
+				"$(SRCROOT)/../Carthage/Build/iOS/XMPPContactHub.framework",
+			);
+			name = Carthage;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+		F684140A1C4D8998009B37BE /* Carthage */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1262,7 +1330,6 @@
 				"$(SRCROOT)/../Carthage/Build/iOS/SocketRocket.framework",
 				"$(SRCROOT)/../Carthage/Build/iOS/Fountain.framework",
 				"$(SRCROOT)/../Carthage/Build/iOS/ISO8601.framework",
-				"$(SRCROOT)/../Carthage/Build/iOS/IntercambioCore.framework",
 				"$(SRCROOT)/../Carthage/Build/iOS/SASLKit.framework",
 				"$(SRCROOT)/../Carthage/Build/iOS/HockeySDK.framework",
 				"$(SRCROOT)/../Carthage/Build/iOS/XMPPFoundation.framework",
@@ -1271,6 +1338,7 @@
 				"$(SRCROOT)/../Carthage/Build/iOS/KeyChain.framework",
 				"$(SRCROOT)/../Carthage/Build/iOS/XMPPContactHub.framework",
 			);
+			name = Carthage;
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1289,7 +1357,6 @@
 				"$(SRCROOT)/../Carthage/Build/iOS/SocketRocket.framework",
 				"$(SRCROOT)/../Carthage/Build/iOS/Fountain.framework",
 				"$(SRCROOT)/../Carthage/Build/iOS/ISO8601.framework",
-				"$(SRCROOT)/../Carthage/Build/iOS/IntercambioCore.framework",
 				"$(SRCROOT)/../Carthage/Build/iOS/SASLKit.framework",
 				"$(SRCROOT)/../Carthage/Build/iOS/HockeySDK.framework",
 				"$(SRCROOT)/../Carthage/Build/iOS/XMPPFoundation.framework",
@@ -1448,6 +1515,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6788E7A1E41E226001E666B /* CommunicationService.swift in Sources */,
+				F6788E7E1E41E2B7001E666B /* AccountCleanupHandler.swift in Sources */,
+				F6788E801E41E2CC001E666B /* AccountManagerUpdater.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1769,6 +1839,7 @@
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CODE_SIGN_IDENTITY = "";
 				CURRENT_PROJECT_VERSION = 1;
@@ -1797,6 +1868,7 @@
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CODE_SIGN_IDENTITY = "";
 				CURRENT_PROJECT_VERSION = 1;
@@ -1821,6 +1893,7 @@
 		F6788E771E41E163001E666B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				DEVELOPMENT_TEAM = EJW69VRSSH;
@@ -1840,6 +1913,7 @@
 		F6788E781E41E163001E666B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				DEVELOPMENT_TEAM = EJW69VRSSH;
@@ -1909,6 +1983,7 @@
 				F6788E751E41E163001E666B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F6788E761E41E163001E666B /* Build configuration list for PBXNativeTarget "IntercambioCoreTests" */ = {
 			isa = XCConfigurationList;
@@ -1917,6 +1992,7 @@
 				F6788E781E41E163001E666B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
