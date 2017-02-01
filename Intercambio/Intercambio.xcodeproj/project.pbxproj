@@ -229,8 +229,6 @@
 		F619BDD11C4D071700F87F50 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F619BDD61C4D071700F87F50 /* IntercambioTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IntercambioTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F619BDDC1C4D071700F87F50 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F619BDE51C4D071700F87F50 /* IntercambioUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = IntercambioUITests.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		F619BDE71C4D071700F87F50 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F61E0C731E4096E300ECA678 /* IntercambioUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = IntercambioUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F61E0C751E4096E300ECA678 /* IntercambioUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntercambioUI.h; sourceTree = "<group>"; };
 		F61E0C761E4096E300ECA678 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -453,7 +451,6 @@
 			children = (
 				F619BDBF1C4D071700F87F50 /* Intercambio */,
 				F619BDD91C4D071700F87F50 /* IntercambioTests */,
-				F619BDE41C4D071700F87F50 /* IntercambioUITests */,
 				F61E0C741E4096E300ECA678 /* IntercambioUI */,
 				F61E0C811E4096E300ECA678 /* IntercambioUITests */,
 				F619BDBE1C4D071700F87F50 /* Products */,
@@ -503,15 +500,6 @@
 				F61E0D941E40AB6000ECA678 /* Supporting Files */,
 			);
 			path = IntercambioTests;
-			sourceTree = "<group>";
-		};
-		F619BDE41C4D071700F87F50 /* IntercambioUITests */ = {
-			isa = PBXGroup;
-			children = (
-				F619BDE51C4D071700F87F50 /* IntercambioUITests.m */,
-				F619BDE71C4D071700F87F50 /* Info.plist */,
-			);
-			path = IntercambioUITests;
 			sourceTree = "<group>";
 		};
 		F61E0C741E4096E300ECA678 /* IntercambioUI */ = {
