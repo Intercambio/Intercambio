@@ -65,7 +65,7 @@ extension UITableViewCell {
     
     open func performAction(_ action: Selector, sender: Any?) {
         guard
-            let target = target(forAction: action, withSender: sender) as? UITableView
+            let target = target(forAction: #selector(UITableView.performAction(_: for:sender:)), withSender: sender) as? UITableView
         else { return }
         target.performAction(action, for: self, sender: sender)
     }
