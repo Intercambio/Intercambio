@@ -33,20 +33,19 @@
 //  this library, you must extend this exception to your version of the library.
 //
 
-
 import UIKit
 import IntercambioCore
 import XMPPMessageHub
 
-@objc public protocol RecentConversationsRouter : class {
+@objc public protocol RecentConversationsRouter: class {
     func presentConversationUserInterface(for conversationURI: URL)
     func presentNewConversationUserInterface()
 }
 
-public class RecentConversationsModule : NSObject {
+public class RecentConversationsModule: NSObject {
     
     public let service: CommunicationService
-    weak public var router: RecentConversationsRouter?
+    public weak var router: RecentConversationsRouter?
     
     public init(service: CommunicationService) {
         self.service = service

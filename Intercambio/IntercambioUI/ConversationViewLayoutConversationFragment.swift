@@ -33,7 +33,6 @@
 //  this library, you must extend this exception to your version of the library.
 //
 
-
 import UIKit
 
 class ConversationViewLayoutConversationFragment: ConversationViewLayoutAbstractFragment {
@@ -77,7 +76,7 @@ class ConversationViewLayoutConversationFragment: ConversationViewLayoutAbstract
     
     // Layout
     
-    override func contentInsets(_ options: [String:Any]) ->  UIEdgeInsets {
+    override func contentInsets(_ options: [String: Any]) -> UIEdgeInsets {
         if let spacing = options["content_insets"] as? UIEdgeInsets {
             return spacing
         } else {

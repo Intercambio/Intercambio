@@ -33,8 +33,7 @@
 //  this library, you must extend this exception to your version of the library.
 //
 
-
 import Foundation
 
-protocol SignupView : class {
+protocol SignupView: class {
 }

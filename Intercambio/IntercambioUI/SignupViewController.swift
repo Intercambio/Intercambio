@@ -33,7 +33,6 @@
 //  this library, you must extend this exception to your version of the library.
 //
 
-
 import UIKit
 
 public class SignupViewController: UIViewController, SignupView {
@@ -43,17 +42,21 @@ public class SignupViewController: UIViewController, SignupView {
     public override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         title = NSLocalizedString("Signup", comment: "")
-        tabBarItem = UITabBarItem(title: title,
-                                  image: UIImage(named: "779-users"),
-                                  selectedImage: UIImage(named: "779-users-selected"))
+        tabBarItem = UITabBarItem(
+            title: title,
+            image: UIImage(named: "779-users"),
+            selectedImage: UIImage(named: "779-users-selected")
+        )
     }
     
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         title = NSLocalizedString("Signup", comment: "")
-        tabBarItem = UITabBarItem(title: title,
-                                  image: UIImage(named: "779-users"),
-                                  selectedImage: UIImage(named: "779-users-selected"))
+        tabBarItem = UITabBarItem(
+            title: title,
+            image: UIImage(named: "779-users"),
+            selectedImage: UIImage(named: "779-users-selected")
+        )
     }
     
     @IBAction func addAccount() {

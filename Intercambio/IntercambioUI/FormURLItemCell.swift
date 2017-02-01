@@ -33,13 +33,12 @@
 //  this library, you must extend this exception to your version of the library.
 //
 
-
 import UIKit
 
 public class FormURLItemCell: UITableViewCell, UITextFieldDelegate {
     
     public static var predicate: NSPredicate {
-        return NSPredicate(block: { (item, options) -> Bool in
+        return NSPredicate(block: { (item, _) -> Bool in
             return item is FormURLItem
         })
     }
@@ -50,7 +49,7 @@ public class FormURLItemCell: UITableViewCell, UITextFieldDelegate {
         textField = UITextField()
         
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-    
+        
         preservesSuperviewLayoutMargins = true
         contentView.preservesSuperviewLayoutMargins = true
         
@@ -62,14 +61,18 @@ public class FormURLItemCell: UITableViewCell, UITextFieldDelegate {
         textField.autocapitalizationType = .none
         
         addSubview(textField)
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-[textField]-|",
-                                                      options: [],
-                                                      metrics: [:],
-                                                      views: ["textField":textField]))
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-[textField]-|",
-                                                      options: [],
-                                                      metrics: [:],
-                                                      views: ["textField":textField]))
+        addConstraints(NSLayoutConstraint.constraints(
+            withVisualFormat: "H:|-[textField]-|",
+            options: [],
+            metrics: [:],
+            views: ["textField": textField]
+        ))
+        addConstraints(NSLayoutConstraint.constraints(
+            withVisualFormat: "V:|-[textField]-|",
+            options: [],
+            metrics: [:],
+            views: ["textField": textField]
+        ))
     }
     
     public required init?(coder aDecoder: NSCoder) {

@@ -33,7 +33,6 @@
 //  this library, you must extend this exception to your version of the library.
 //
 
-
 import UIKit
 
 public protocol FormItem {
@@ -41,24 +40,24 @@ public protocol FormItem {
     var selectable: Bool { get }
 }
 
-public protocol FormValueItem : FormItem {
+public protocol FormValueItem: FormItem {
     var title: String? { get }
     var value: String? { get }
     var icon: UIImage? { get }
     var hasDetails: Bool { get }
 }
 
-public protocol FormTextItem : FormItem {
+public protocol FormTextItem: FormItem {
     var placeholder: String? { get }
     var text: String? { get }
 }
 
-public protocol FormURLItem : FormItem {
+public protocol FormURLItem: FormItem {
     var placeholder: String? { get }
     var url: URL? { get }
 }
 
-public protocol FormButtonItem : FormItem {
+public protocol FormButtonItem: FormItem {
     var title: String? { get }
     var action: Selector { get }
     var enabled: Bool { get }

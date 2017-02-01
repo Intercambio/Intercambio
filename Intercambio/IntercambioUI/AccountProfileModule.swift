@@ -33,19 +33,18 @@
 //  this library, you must extend this exception to your version of the library.
 //
 
-
 import UIKit
 import IntercambioCore
 import XMPPFoundation
 
-@objc public protocol AccountProfileRouter : class {
+@objc public protocol AccountProfileRouter: class {
     func presentSettingsUserInterface(for accountURI: URL)
 }
 
-public class AccountProfileModule : NSObject {
+public class AccountProfileModule: NSObject {
     
     public let service: CommunicationService
-    weak public var router: AccountProfileRouter?
+    public weak var router: AccountProfileRouter?
     
     public init(service: CommunicationService) {
         self.service = service
@@ -66,8 +65,10 @@ public extension AccountProfileViewController {
         if let host = uri.host {
             let jid = JID(user: uri.user, host: host, resource: nil)
             
-            self.init(nibName: "AccountProfileViewController",
-                       bundle: Bundle(for: AccountProfileViewController.self))
+            self.init(
+                nibName: "AccountProfileViewController",
+                bundle: Bundle(for: AccountProfileViewController.self)
+            )
             
             let presenter = AccountProfilePresenter()
             presenter.view = self
@@ -75,7 +76,6 @@ public extension AccountProfileViewController {
             
             let interactor = AccountProfileInteractor(accountJID: jid, keyChain: service.keyChain, accountManager: service.accountManager)
             presenter.interactor = interactor
-            
             
         } else {
             return nil

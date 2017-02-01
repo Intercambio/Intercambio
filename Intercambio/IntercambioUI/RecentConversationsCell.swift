@@ -33,11 +33,10 @@
 //  this library, you must extend this exception to your version of the library.
 //
 
-
 import UIKit
 
 class RecentConversationsCell: UITableViewCell {
-
+    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var bodyLabel: UILabel!

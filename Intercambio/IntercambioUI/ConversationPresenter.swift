@@ -33,14 +33,13 @@
 //  this library, you must extend this exception to your version of the library.
 //
 
-
 import UIKit
 import XMPPFoundation
 import CoreXMPP
 import XMPPMessageHub
 
 class ConversationPresenter: NSObject, ConversationViewEventHandler {
-
+    
     let messageHub: MessageHub
     let accountManager: AccountManager
     init(messageHub: MessageHub, accountManager: AccountManager) {
@@ -78,7 +77,7 @@ class ConversationPresenter: NSObject, ConversationViewEventHandler {
             updateView()
         }
     }
-
+    
     func shouldShowMenu(for itemAtIndexPtah: IndexPath) -> Bool {
         return dataSource?.shouldShowMenu(for: itemAtIndexPtah) ?? false
     }
@@ -117,9 +116,9 @@ class ConversationPresenter: NSObject, ConversationViewEventHandler {
         guard
             let account = self.account(),
             let counterpart = self.counterpart()
-            else {
-                dataSource = nil
-                return
+        else {
+            dataSource = nil
+            return
         }
         
         if let dataSource = self.dataSource,
@@ -127,13 +126,13 @@ class ConversationPresenter: NSObject, ConversationViewEventHandler {
             dataSource.counterpart == counterpart {
             return
         }
-
-        messageHub.archive(for: account) { (archive, error) in
+        
+        messageHub.archive(for: account) { archive, error in
             guard
                 let newArchive = archive
-                else {
-                    NSLog("Failed to get the archive for '\(account)': \(error)")
-                    return
+            else {
+                NSLog("Failed to get the archive for '\(account)': \(error)")
+                return
             }
             
             DispatchQueue.main.async {

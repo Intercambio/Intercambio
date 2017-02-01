@@ -39,7 +39,7 @@ import XMPPFoundation
 import IntercambioCore
 
 class AccountListDataSource: NSObject, FTDataSource {
-
+    
     class Model: AccountListViewModel {
         
         var name: String {
@@ -53,7 +53,7 @@ class AccountListDataSource: NSObject, FTDataSource {
         }
     }
     
-    private let backingStore :FTMutableSet
+    private let backingStore: FTMutableSet
     private let proxy: FTObserverProxy
     private let keyChain: KeyChain
     
@@ -139,40 +139,48 @@ class AccountListDataSource: NSObject, FTDataSource {
     private func registerNotificationObservers() {
         let center = NotificationCenter.default
         
-        notificationObservers.append(center.addObserver(forName: NSNotification.Name(rawValue: KeyChainDidAddItemNotification),
-                                                        object: keyChain,
-                                                        queue: OperationQueue.main) { [weak self] (notification) in
-                                                            if let dataSource = self?.backingStore,
-                                                                let item = notification.userInfo?[KeyChainItemKey] as? KeyChainItem {
-                                                                dataSource.add(item)
-                                                            }
-            })
+        notificationObservers.append(center.addObserver(
+            forName: NSNotification.Name(rawValue: KeyChainDidAddItemNotification),
+            object: keyChain,
+            queue: OperationQueue.main
+        ) { [weak self] notification in
+            if let dataSource = self?.backingStore,
+                let item = notification.userInfo?[KeyChainItemKey] as? KeyChainItem {
+                dataSource.add(item)
+            }
+        })
         
-        notificationObservers.append(center.addObserver(forName: NSNotification.Name(rawValue: KeyChainDidUpdateItemNotification),
-                                                        object: keyChain,
-                                                        queue: OperationQueue.main) { [weak self] (notification) in
-                                                            if let dataSource = self?.backingStore,
-                                                                let item = notification.userInfo?[KeyChainItemKey] as? KeyChainItem {
-                                                                dataSource.add(item)
-                                                            }
-            })
+        notificationObservers.append(center.addObserver(
+            forName: NSNotification.Name(rawValue: KeyChainDidUpdateItemNotification),
+            object: keyChain,
+            queue: OperationQueue.main
+        ) { [weak self] notification in
+            if let dataSource = self?.backingStore,
+                let item = notification.userInfo?[KeyChainItemKey] as? KeyChainItem {
+                dataSource.add(item)
+            }
+        })
         
-        notificationObservers.append(center.addObserver(forName: NSNotification.Name(rawValue: KeyChainDidRemoveItemNotification),
-                                                        object: keyChain,
-                                                        queue: OperationQueue.main) { [weak self] (notification) in
-                                                            if let dataSource = self?.backingStore,
-                                                                let item = notification.userInfo?[KeyChainItemKey] as? KeyChainItem {
-                                                                dataSource.remove(item)
-                                                            }
-            })
+        notificationObservers.append(center.addObserver(
+            forName: NSNotification.Name(rawValue: KeyChainDidRemoveItemNotification),
+            object: keyChain,
+            queue: OperationQueue.main
+        ) { [weak self] notification in
+            if let dataSource = self?.backingStore,
+                let item = notification.userInfo?[KeyChainItemKey] as? KeyChainItem {
+                dataSource.remove(item)
+            }
+        })
         
-        notificationObservers.append(center.addObserver(forName: NSNotification.Name(rawValue: KeyChainDidRemoveAllItemsNotification),
-                                                        object: keyChain,
-                                                        queue: OperationQueue.main) { [weak self] (notification) in
-                                                            if let dataSource = self?.backingStore {
-                                                                dataSource.removeAllObjects()
-                                                            }
-            })
+        notificationObservers.append(center.addObserver(
+            forName: NSNotification.Name(rawValue: KeyChainDidRemoveAllItemsNotification),
+            object: keyChain,
+            queue: OperationQueue.main
+        ) { [weak self] _ in
+            if let dataSource = self?.backingStore {
+                dataSource.removeAllObjects()
+            }
+        })
     }
     
     private func unregisterNotificationObservers() {

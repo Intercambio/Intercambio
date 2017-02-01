@@ -33,12 +33,11 @@
 //  this library, you must extend this exception to your version of the library.
 //
 
-
 import UIKit
 import Fountain
 
 public class RecentConversationsViewController: UITableViewController, RecentConversationsView {
-
+    
     var presenter: RecentConversationsViewEventHandler?
     var dataSource: FTDataSource? {
         didSet {
@@ -51,9 +50,11 @@ public class RecentConversationsViewController: UITableViewController, RecentCon
     public init() {
         super.init(style: .plain)
         title = NSLocalizedString("Conversations", comment: "")
-        tabBarItem = UITabBarItem(title: NSLocalizedString("Conversations", comment: ""),
-                                  image: #imageLiteral(resourceName: "906-chat-3"),
-                                  selectedImage: #imageLiteral(resourceName: "906-chat-3-selected"))
+        tabBarItem = UITabBarItem(
+            title: NSLocalizedString("Conversations", comment: ""),
+            image: #imageLiteral(resourceName: "906-chat-3"),
+            selectedImage: #imageLiteral(resourceName: "906-chat-3-selected")
+        )
     }
     
     public required init?(coder aDecoder: NSCoder) {
@@ -68,21 +69,27 @@ public class RecentConversationsViewController: UITableViewController, RecentCon
         }
         
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .compose,
-                                                            target: self,
-                                                            action: #selector(newConversation))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            barButtonSystemItem: .compose,
+            target: self,
+            action: #selector(newConversation)
+        )
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 60
         tableViewAdapter = FTTableViewAdapter(tableView: tableView)
         tableViewAdapter?.rowAnimation = .fade
         
-        tableView.register(UINib(nibName: "RecentConversationsCell",
-                                 bundle: Bundle(for: RecentConversationsCell.self)),
-                           forCellReuseIdentifier: "conversation")
+        tableView.register(
+            UINib(
+                nibName: "RecentConversationsCell",
+                bundle: Bundle(for: RecentConversationsCell.self)
+            ),
+            forCellReuseIdentifier: "conversation"
+        )
         tableViewAdapter?.forRowsMatching(nil, useCellWithReuseIdentifier: "conversation") {
-            (view, item, indexPath, dataSource) in
-            if  let cell = view as? RecentConversationsCell,
+            view, item, _, _ in
+            if let cell = view as? RecentConversationsCell,
                 let viewModel = item as? RecentConversationsViewModel {
                 cell.viewModel = viewModel
                 cell.isChevronHidden = isCollapsed() == false
@@ -91,8 +98,8 @@ public class RecentConversationsViewController: UITableViewController, RecentCon
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "undefined")
         tableViewAdapter?.forRowsMatching(nil, useCellWithReuseIdentifier: "undefined") {
-            (view, item, indexPath, dataSource) in
-            if  let cell = view as? UITableViewCell {
+            view, _, _, _ in
+            if let cell = view as? UITableViewCell {
                 cell.backgroundColor = #colorLiteral(red: 0.9607843161, green: 0.7058823705, blue: 0.200000003, alpha: 1)
             }
         }
@@ -101,11 +108,11 @@ public class RecentConversationsViewController: UITableViewController, RecentCon
         tableViewAdapter?.dataSource = dataSource
     }
     
-    public override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    public override func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
         presenter?.view(self, didSelectItemAt: indexPath)
     }
     
-    @objc private func newConversation() -> Void {
+    @objc private func newConversation() {
         presenter?.newConversation()
     }
 }

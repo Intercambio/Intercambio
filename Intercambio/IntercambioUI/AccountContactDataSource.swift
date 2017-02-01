@@ -49,7 +49,7 @@ class AccountContactDataSource: NSObject, FTDataSource {
             guard
                 let lhs = lhs as? Item,
                 let rhs = rhs as? Item
-                else { return .orderedSame }
+            else { return .orderedSame }
             
             let lhsString = (lhs.name ?? lhs.counterpart.stringValue).lowercased()
             let rhsString = (rhs.name ?? rhs.counterpart.stringValue).lowercased()
@@ -95,7 +95,7 @@ class AccountContactDataSource: NSObject, FTDataSource {
         }
     }
     
-    @objc private func rosterDidChange(_ notification: Notification) {
+    @objc private func rosterDidChange(_: Notification) {
         DispatchQueue.main.async {
             self.loadItems()
         }

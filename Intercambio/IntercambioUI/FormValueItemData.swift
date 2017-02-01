@@ -33,10 +33,9 @@
 //  this library, you must extend this exception to your version of the library.
 //
 
-
 import UIKit
 
-public class FormValueItemData : FormValueItem {
+public class FormValueItemData: FormValueItem {
     
     public var selectable: Bool = false
     public var title: String?

@@ -33,12 +33,11 @@
 //  this library, you must extend this exception to your version of the library.
 //
 
-
 import UIKit
 import KeyChain
 import IntercambioCore
 
-protocol MainPresenterFactory : MainAccountNavigationPresenterFactory {
+protocol MainPresenterFactory: MainAccountNavigationPresenterFactory {
     func makeNavigationController(rootViewController: UIViewController) -> NavigationController?
     func makeNavigationController() -> NavigationController?
     func makeRecentConversationsViewController() -> RecentConversationsViewController?
@@ -46,7 +45,7 @@ protocol MainPresenterFactory : MainAccountNavigationPresenterFactory {
 }
 
 class MainPresenter: NSObject {
-
+    
     weak var view: UISplitViewController? {
         didSet {
             setupView()
@@ -66,7 +65,7 @@ class MainPresenter: NSObject {
         return self.factory.makeNavigationController()
     }()
     private lazy var accountNavigationPresenter: MainAccountNavigationPresenter = {
-       return MainAccountNavigationPresenter(keyChain: self.keyChain, factory: self.factory)
+        return MainAccountNavigationPresenter(keyChain: self.keyChain, factory: self.factory)
     }()
     
     private var conversationNavigationController: UINavigationController?
@@ -138,7 +137,7 @@ class MainPresenter: NSObject {
         var animated = true
         
         if let navigationController = accountNavigationController,
-           let tabBarController = self.tabBarController {
+            let tabBarController = self.tabBarController {
             
             if tabBarController.selectedViewController !== navigationController {
                 if let index = tabBarController.viewControllers?.index(of: navigationController) {
@@ -146,7 +145,7 @@ class MainPresenter: NSObject {
                     animated = false
                 }
             }
-    
+            
             accountNavigationPresenter.showAccount(for: uri, animated: animated)
         }
     }
@@ -157,7 +156,7 @@ class MainPresenter: NSObject {
 }
 
 extension MainPresenter {
-    class EmptyViewController : UIViewController {
+    class EmptyViewController: UIViewController {
         override func viewDidLoad() {
             super.viewDidLoad()
             view.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)

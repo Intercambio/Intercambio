@@ -33,7 +33,6 @@
 //  this library, you must extend this exception to your version of the library.
 //
 
-
 import UIKit
 
 class ConversationViewLayoutParagraphFragment: ConversationViewLayoutAbstractFragment {
@@ -55,12 +54,14 @@ class ConversationViewLayoutParagraphFragment: ConversationViewLayoutAbstractFra
         }
     }
     
-    override func layout(offset: CGPoint,
-                         width: CGFloat,
-                         position: ConversationViewLayoutFragmentPosition,
-                         options: [String:Any],
-                         sizeCallback: (IndexPath, CGFloat, UIEdgeInsets) -> CGSize) {
-
+    override func layout(
+        offset: CGPoint,
+        width: CGFloat,
+        position: ConversationViewLayoutFragmentPosition,
+        options: [String: Any],
+        sizeCallback: (IndexPath, CGFloat, UIEdgeInsets) -> CGSize
+    ) {
+        
         let avatarPadding = options["avatar_padding"] as? CGFloat ?? CGFloat(4)
         let avatarSize = options["avatar_size"] as? CGSize ?? CGSize(width: 28, height: 28)
         
@@ -76,20 +77,22 @@ class ConversationViewLayoutParagraphFragment: ConversationViewLayoutAbstractFra
                 
             case .trailing:
                 newWidth = newWidth - (avatarSize.width + avatarPadding)
-            
+                
             case .center:
-                break;
+                break
             }
             
-            super.layout(offset: newOffset,
-                         width: newWidth,
-                         position: position,
-                         options: options,
-                         sizeCallback: sizeCallback)
+            super.layout(
+                offset: newOffset,
+                width: newWidth,
+                position: position,
+                options: options,
+                sizeCallback: sizeCallback
+            )
             
             if let fragment = childFragments.last {
                 
-                var frame: CGRect? = nil
+                var frame: CGRect?
                 
                 switch alignment {
                 case .leading:
@@ -122,17 +125,19 @@ class ConversationViewLayoutParagraphFragment: ConversationViewLayoutAbstractFra
             }
         } else {
             
-            super.layout(offset: offset,
-                         width: width,
-                         position: position,
-                         options: options,
-                         sizeCallback: sizeCallback)
+            super.layout(
+                offset: offset,
+                width: width,
+                position: position,
+                options: options,
+                sizeCallback: sizeCallback
+            )
             
             layoutAttributes = nil
         }
     }
     
-    override func fragmentSpacing(_ options: [String:Any]) -> CGFloat {
+    override func fragmentSpacing(_ options: [String: Any]) -> CGFloat {
         if let spacing = options["message_spacing"] as? CGFloat {
             return spacing
         } else {

@@ -1,4 +1,4 @@
-    //
+//
 //  AccountPresenter.swift
 //  Intercambio
 //
@@ -33,12 +33,11 @@
 //  this library, you must extend this exception to your version of the library.
 //
 
-
 import Foundation
 import XMPPFoundation
 import XMPPContactHub
 
-class AccountPresenter : AccountViewEventHandler {
+class AccountPresenter: AccountViewEventHandler {
     
     weak var view: AccountView? {
         didSet {
@@ -70,15 +69,15 @@ class AccountPresenter : AccountViewEventHandler {
     private func loadRoster() {
         guard
             let account = self.account
-            else { return }
+        else { return }
         
-        self.contactHub.roster(for: account) { (roster, error) in
+        self.contactHub.roster(for: account) { roster, _ in
             DispatchQueue.main.async {
                 guard
                     let roster = roster
-                    else {
-                        self.dataSource = nil
-                        return
+                else {
+                    self.dataSource = nil
+                    return
                 }
                 self.dataSource = AccountContactDataSource(roster: roster)
             }
@@ -91,8 +90,8 @@ class AccountPresenter : AccountViewEventHandler {
             let host = components.host,
             let user = components.user,
             components.scheme == "xmpp"
-            else { return nil }
-
+        else { return nil }
+        
         return JID(user: user, host: host, resource: nil)
     }
 }

@@ -35,7 +35,7 @@
 
 import UIKit
 
-@objc public protocol UITableViewDelegateCellAction : UITableViewDelegate {
+@objc public protocol UITableViewDelegateCellAction: UITableViewDelegate {
     
     @objc optional func tableView(_ tableView: UITableView, setValue value: Any?, forRowAt indexPath: IndexPath) -> Void
     
@@ -47,7 +47,7 @@ extension UITableView {
         guard
             let delegate = self.delegate,
             let indexPath = indexPath(for: cell)
-            else { return }
+        else { return }
         delegate.tableView?(self, performAction: action, forRowAt: indexPath, withSender: sender)
     }
     
@@ -55,7 +55,7 @@ extension UITableView {
         guard
             let delegate = self.delegate as? UITableViewDelegateCellAction,
             let indexPath = indexPath(for: cell)
-            else { return }
+        else { return }
         delegate.tableView?(self, setValue: value, forRowAt: indexPath)
     }
     
@@ -66,14 +66,14 @@ extension UITableViewCell {
     open func performAction(_ action: Selector, sender: Any?) {
         guard
             let target = target(forAction: action, withSender: sender) as? UITableView
-            else { return }
+        else { return }
         target.performAction(action, for: self, sender: sender)
     }
     
     open func setValue(_ value: Any?, sender: Any?) {
         guard
-            let target = target(forAction: #selector(UITableView.setValue(_:for:sender:)), withSender:self) as? UITableView
-            else { return }
+            let target = target(forAction: #selector(UITableView.setValue(_: for:sender:)), withSender: self) as? UITableView
+        else { return }
         target.setValue(value, for: self, sender: sender)
     }
     

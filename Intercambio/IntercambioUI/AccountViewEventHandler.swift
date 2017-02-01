@@ -33,9 +33,8 @@
 //  this library, you must extend this exception to your version of the library.
 //
 
-
 import Foundation
 
-protocol AccountViewEventHandler : class {
+protocol AccountViewEventHandler: class {
     func addAccount()
 }

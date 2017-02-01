@@ -33,10 +33,9 @@
 //  this library, you must extend this exception to your version of the library.
 //
 
-
 import UIKit
 
-protocol ContactPickerView : class {
+protocol ContactPickerView: class {
     var selectedAccount: ContactPickerAddress? { get set }
     var accounts: [ContactPickerAddress]? { get set }
     var addresses: [ContactPickerAddress]? { get set }

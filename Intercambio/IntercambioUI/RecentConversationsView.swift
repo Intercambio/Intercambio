@@ -33,16 +33,15 @@
 //  this library, you must extend this exception to your version of the library.
 //
 
-
 import UIKit
 import Fountain
 
 enum RecentConversationsViewModelType: String {
-    case chat = "chat"
-    case error = "error"
-    case groupchat = "groupchat"
-    case headline = "headline"
-    case normal = "normal"
+    case chat
+    case error
+    case groupchat
+    case headline
+    case normal
 }
 
 protocol RecentConversationsViewModel {
@@ -55,6 +54,6 @@ protocol RecentConversationsViewModel {
     var unread: Bool { get }
 }
 
-protocol RecentConversationsView : class {
+protocol RecentConversationsView: class {
     var dataSource: FTDataSource? { get set }
 }

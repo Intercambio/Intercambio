@@ -33,12 +33,11 @@
 //  this library, you must extend this exception to your version of the library.
 //
 
-
 import UIKit
 import IntercambioCore
 
-public class MainModule : NSObject, MainPresenterFactory {
-
+public class MainModule: NSObject, MainPresenterFactory {
+    
     public let service: CommunicationService
     
     public init(service: CommunicationService) {
@@ -88,7 +87,7 @@ public class MainModule : NSObject, MainPresenterFactory {
     }
     
     // MARK: MainPresenterFactory
-
+    
     func makeNavigationController() -> NavigationController? {
         return navigationControllerModule?.makeNavigationController()
     }

@@ -33,11 +33,10 @@
 //  this library, you must extend this exception to your version of the library.
 //
 
-
 import UIKit
-import  IntercambioCore
+import IntercambioCore
 
-public class Wireframe : NSObject, NavigationControllerRouter, RecentConversationsRouter, AccountListRouter, AccountRouter, AccountProfileRouter, SignupRouter {
+public class Wireframe: NSObject, NavigationControllerRouter, RecentConversationsRouter, AccountListRouter, AccountRouter, AccountProfileRouter, SignupRouter {
     
     public let window: UIWindow
     
@@ -55,7 +54,7 @@ public class Wireframe : NSObject, NavigationControllerRouter, RecentConversatio
     
     public required init(window: UIWindow, service: CommunicationService) {
         self.window = window
-
+        
         mainModule = MainModule(service: service)
         navigationControllerModule = NavigationControllerModule(service: service)
         contactPickerModule = ContactPickerModule(service: service)
@@ -67,7 +66,7 @@ public class Wireframe : NSObject, NavigationControllerRouter, RecentConversatio
         signupModule = SignupModule(service: service)
         authenticationModule = AuthenticationModule()
         accountProfileModule = AccountProfileModule(service: service)
-
+        
         accountModule.accountProfileModule = accountProfileModule
         
         conversationModule.contactPickerModule = contactPickerModule
@@ -136,7 +135,7 @@ public class Wireframe : NSObject, NavigationControllerRouter, RecentConversatio
             let message = error.localizedDescription
             
             let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-            let action = UIAlertAction(title: "OK", style: .cancel, handler: { (action) in
+            let action = UIAlertAction(title: "OK", style: .cancel, handler: { _ in
                 alert.dismiss(animated: true, completion: nil)
             })
             
@@ -150,6 +149,6 @@ public class Wireframe : NSObject, NavigationControllerRouter, RecentConversatio
     public func presentAccountUserInterface(for accountURI: URL) { presentAccount(for: accountURI) }
     public func presentNewAccountUserInterface() { presentNewAccount() }
     public func presentConversationUserInterface(for conversationURI: URL) { presentConversation(for: conversationURI) }
-    public func presentNewConversationUserInterface(){ presentNewConversation() }
+    public func presentNewConversationUserInterface() { presentNewConversation() }
     public func presentSettingsUserInterface(for accountURI: URL) { presentSettings(for: accountURI) }
 }

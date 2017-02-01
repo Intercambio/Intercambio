@@ -33,13 +33,12 @@
 //  this library, you must extend this exception to your version of the library.
 //
 
-
 import Foundation
 import IntercambioCore
 import KeyChain
 import CoreXMPP
 
-class AccountProfileInteractor : AccountProfileProvider {
+class AccountProfileInteractor: AccountProfileProvider {
     
     private let accountJID: JID
     private let keyChain: KeyChain
@@ -57,7 +56,7 @@ class AccountProfileInteractor : AccountProfileProvider {
     }
     
     // AccountProfileProvider
-
+    
     var accountURI: URL? {
         var components = URLComponents()
         components.scheme = "xmpp"
@@ -67,14 +66,12 @@ class AccountProfileInteractor : AccountProfileProvider {
     }
     
     var account: AccountProfileModel? {
-        get {
-            do {
-                let item = try keyChain.item(with: accountJID.stringValue)
-                let info = accountManager.info(for: accountJID)
-                return Model(keyChainItem: item, info: info)
-            } catch {
-                return nil
-            }
+        do {
+            let item = try keyChain.item(with: accountJID.stringValue)
+            let info = accountManager.info(for: accountJID)
+            return Model(keyChainItem: item, info: info)
+        } catch {
+            return nil
         }
     }
     
@@ -89,30 +86,40 @@ class AccountProfileInteractor : AccountProfileProvider {
     private func registerNotificationObservers() {
         let center = NotificationCenter.default
         
-        notificationObservers.append(center.addObserver(forName: NSNotification.Name(rawValue: KeyChainDidAddItemNotification),
-                                                        object: keyChain,
-                                                        queue: OperationQueue.main) { [weak self] (notification) in
-                                                            self?.forwardKeyChainNotification(notification) })
+        notificationObservers.append(center.addObserver(
+            forName: NSNotification.Name(rawValue: KeyChainDidAddItemNotification),
+            object: keyChain,
+            queue: OperationQueue.main
+        ) { [weak self] notification in
+            self?.forwardKeyChainNotification(notification) })
         
-        notificationObservers.append(center.addObserver(forName: NSNotification.Name(rawValue: KeyChainDidUpdateItemNotification),
-                                                        object: keyChain,
-                                                        queue: OperationQueue.main) { [weak self] (notification) in
-                                                            self?.forwardKeyChainNotification(notification) })
+        notificationObservers.append(center.addObserver(
+            forName: NSNotification.Name(rawValue: KeyChainDidUpdateItemNotification),
+            object: keyChain,
+            queue: OperationQueue.main
+        ) { [weak self] notification in
+            self?.forwardKeyChainNotification(notification) })
         
-        notificationObservers.append(center.addObserver(forName: NSNotification.Name(rawValue: KeyChainDidRemoveItemNotification),
-                                                        object: keyChain,
-                                                        queue: OperationQueue.main) { [weak self] (notification) in
-                                                            self?.forwardKeyChainNotification(notification) })
+        notificationObservers.append(center.addObserver(
+            forName: NSNotification.Name(rawValue: KeyChainDidRemoveItemNotification),
+            object: keyChain,
+            queue: OperationQueue.main
+        ) { [weak self] notification in
+            self?.forwardKeyChainNotification(notification) })
         
-        notificationObservers.append(center.addObserver(forName: NSNotification.Name(rawValue: KeyChainDidRemoveAllItemsNotification),
-                                                        object: keyChain,
-                                                        queue: OperationQueue.main) { [weak self] (notification) in
-                                                            self?.forwardKeyChainNotification(notification) })
+        notificationObservers.append(center.addObserver(
+            forName: NSNotification.Name(rawValue: KeyChainDidRemoveAllItemsNotification),
+            object: keyChain,
+            queue: OperationQueue.main
+        ) { [weak self] notification in
+            self?.forwardKeyChainNotification(notification) })
         
-        notificationObservers.append(center.addObserver(forName: NSNotification.Name(rawValue: AccountManagerDidChangeAccount),
-                                                        object: accountManager,
-                                                        queue: OperationQueue.main) { [weak self] (notification) in
-                                                            self?.forwardAccountManagerDidChangeAccountNotification(notification) })
+        notificationObservers.append(center.addObserver(
+            forName: NSNotification.Name(rawValue: AccountManagerDidChangeAccount),
+            object: accountManager,
+            queue: OperationQueue.main
+        ) { [weak self] notification in
+            self?.forwardAccountManagerDidChangeAccountNotification(notification) })
     }
     
     private func unregisterNotificationObservers() {
@@ -163,30 +170,20 @@ extension AccountProfileInteractor {
             self.info = info
         }
         
-        var enabled: Bool {
-            get { return keyChainItem.invisible == false }
-        }
+        var enabled: Bool { return keyChainItem.invisible == false }
         
         var state: AccountProfilePresentationModelConnectionState {
-            get {
-                if let i = info {
-                    return i.connectionState
-                } else {
-                    return .disconnected
-                }
+            if let i = info {
+                return i.connectionState
+            } else {
+                return .disconnected
             }
         }
         
-        var name: String? {
-            get { return keyChainItem.identifier }
-        }
+        var name: String? { return keyChainItem.identifier }
         
-        var error: Error? {
-            get { return info?.recentError }
-        }
+        var error: Error? { return info?.recentError }
         
-        var nextConnectionAttempt: Date? {
-            get { return info?.nextConnectionAttempt }
-        }
+        var nextConnectionAttempt: Date? { return info?.nextConnectionAttempt }
     }
 }

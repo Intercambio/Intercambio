@@ -33,7 +33,6 @@
 //  this library, you must extend this exception to your version of the library.
 //
 
-
 import Foundation
 import KeyChain
 import XMPPFoundation
@@ -49,9 +48,11 @@ class SignupInteractor {
         if jid.host.characters.count > 0 && jid.user != nil && jid.user!.characters.count > 0 {
             
             let options: [AnyHashable: Any] = [:]
-            let item = KeyChainItem(identifier: jid.stringValue,
-                                    invisible: false,
-                                    options: options)
+            let item = KeyChainItem(
+                identifier: jid.stringValue,
+                invisible: false,
+                options: options
+            )
             
             do {
                 try keyChain.add(item)

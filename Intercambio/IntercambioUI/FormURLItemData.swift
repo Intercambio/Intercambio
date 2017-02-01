@@ -33,10 +33,9 @@
 //  this library, you must extend this exception to your version of the library.
 //
 
-
 import Foundation
 
-public class FormURLItemData : FormURLItem {
+public class FormURLItemData: FormURLItem {
     
     public var selectable: Bool = false
     public var placeholder: String?

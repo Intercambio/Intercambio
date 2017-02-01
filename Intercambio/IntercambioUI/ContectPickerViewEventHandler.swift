@@ -33,10 +33,9 @@
 //  this library, you must extend this exception to your version of the library.
 //
 
-
 import Foundation
 
-protocol ContectPickerViewEventHandler : class {
+protocol ContectPickerViewEventHandler: class {
     func didSelectAccount(_ account: ContactPickerAddress?)
     func addressFor(_ text: String) -> ContactPickerAddress?
     func didRemove(_ address: ContactPickerAddress)

@@ -47,22 +47,30 @@ class AccountManagerUpdater {
         self.keyChain = keyChain
         
         let center = NotificationCenter.default
-        center.addObserver(self,
-                           selector: #selector(keyChainDidAddItem(notification:)),
-                           name: Notification.Name(KeyChainDidAddItemNotification),
-                           object: keyChain)
-        center.addObserver(self,
-                           selector: #selector(keyChainDidUpdateItem(notification:)),
-                           name: Notification.Name(KeyChainDidUpdateItemNotification),
-                           object: keyChain)
-        center.addObserver(self,
-                           selector: #selector(keyChainDidRemoveItem(notification:)),
-                           name: Notification.Name(KeyChainDidRemoveItemNotification),
-                           object: keyChain)
-        center.addObserver(self,
-                           selector: #selector(keyChainDidRemoveAllItems(notification:)),
-                           name: Notification.Name(KeyChainDidRemoveAllItemsNotification),
-                           object: keyChain)
+        center.addObserver(
+            self,
+            selector: #selector(keyChainDidAddItem(notification:)),
+            name: Notification.Name(KeyChainDidAddItemNotification),
+            object: keyChain
+        )
+        center.addObserver(
+            self,
+            selector: #selector(keyChainDidUpdateItem(notification:)),
+            name: Notification.Name(KeyChainDidUpdateItemNotification),
+            object: keyChain
+        )
+        center.addObserver(
+            self,
+            selector: #selector(keyChainDidRemoveItem(notification:)),
+            name: Notification.Name(KeyChainDidRemoveItemNotification),
+            object: keyChain
+        )
+        center.addObserver(
+            self,
+            selector: #selector(keyChainDidRemoveAllItems(notification:)),
+            name: Notification.Name(KeyChainDidRemoveAllItemsNotification),
+            object: keyChain
+        )
     }
     
     deinit {
@@ -74,7 +82,7 @@ class AccountManagerUpdater {
         do {
             for item in try keyChain.items() {
                 if let account = JID(item.identifier) {
-                    try accountManager.addAccount(account, options: item.options as? [String : Any] ?? [:])
+                    try accountManager.addAccount(account, options: item.options as? [String: Any] ?? [:])
                 }
             }
         } catch {
@@ -86,12 +94,12 @@ class AccountManagerUpdater {
         guard
             let item = notification.userInfo?[KeyChainItemKey] as? KeyChainItem,
             let account = JID(item.identifier)
-            else {
-                return
+        else {
+            return
         }
         
         do {
-            try accountManager.addAccount(account, options: item.options as? [String : Any] ?? [:])
+            try accountManager.addAccount(account, options: item.options as? [String: Any] ?? [:])
             accountManager.connect(account)
         } catch {
             NSLog("Failed to add account '\(account)': \(error)")
@@ -102,23 +110,23 @@ class AccountManagerUpdater {
         guard
             let item = notification.userInfo?[KeyChainItemKey] as? KeyChainItem,
             let account = JID(item.identifier)
-            else {
-                return
+        else {
+            return
         }
-        accountManager.updateAccount(account, withOptions: item.options as? [String : Any] ?? [:])
+        accountManager.updateAccount(account, withOptions: item.options as? [String: Any] ?? [:])
     }
     
     @objc private func keyChainDidRemoveItem(notification: Notification) {
         guard
             let item = notification.userInfo?[KeyChainItemKey] as? KeyChainItem,
             let account = JID(item.identifier)
-            else {
-                return
+        else {
+            return
         }
         accountManager.removeAccount(account)
     }
     
-    @objc private func keyChainDidRemoveAllItems(notification: Notification) {
+    @objc private func keyChainDidRemoveAllItems(notification _: Notification) {
         for account in accountManager.accounts {
             accountManager.removeAccount(account)
         }

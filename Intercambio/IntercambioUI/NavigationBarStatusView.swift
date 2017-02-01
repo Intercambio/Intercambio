@@ -33,7 +33,6 @@
 //  this library, you must extend this exception to your version of the library.
 //
 
-
 import UIKit
 
 class NavigationBarStatusView: UIControl {
@@ -60,30 +59,38 @@ class NavigationBarStatusView: UIControl {
         
         button.addTarget(self, action: #selector(didTap(sender:)), for: .touchUpInside)
         self.addSubview(button)
-        self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[button]|",
-                                                           metrics: nil,
-                                                           views: ["button": button]))
-        self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[button]|",
-                                                           metrics: nil,
-                                                           views: ["button": button]))
+        self.addConstraints(NSLayoutConstraint.constraints(
+            withVisualFormat: "H:|[button]|",
+            metrics: nil,
+            views: ["button": button]
+        ))
+        self.addConstraints(NSLayoutConstraint.constraints(
+            withVisualFormat: "V:|[button]|",
+            metrics: nil,
+            views: ["button": button]
+        ))
         
         icon.text = ""
         icon.font = UIFont(name: "FontAwesome", size: 14)
         icon.textColor = UIColor.lightGray
         self.addSubview(icon)
-        self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:[icon]-(==6)-[button]",
-                                                           metrics: nil,
-                                                           views: ["icon": icon, "button": button]))
-        self.addConstraint(NSLayoutConstraint(item: icon,
-                                              attribute: .firstBaseline,
-                                              relatedBy: .equal,
-                                              toItem: button,
-                                              attribute: .firstBaseline,
-                                              multiplier: 1,
-                                              constant: 0))
+        self.addConstraints(NSLayoutConstraint.constraints(
+            withVisualFormat: "H:[icon]-(==6)-[button]",
+            metrics: nil,
+            views: ["icon": icon, "button": button]
+        ))
+        self.addConstraint(NSLayoutConstraint(
+            item: icon,
+            attribute: .firstBaseline,
+            relatedBy: .equal,
+            toItem: button,
+            attribute: .firstBaseline,
+            multiplier: 1,
+            constant: 0
+        ))
     }
     
-    func didTap(sender: AnyObject) {
+    func didTap(sender _: AnyObject) {
         sendActions(for: .touchUpInside)
     }
 }

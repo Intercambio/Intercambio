@@ -33,7 +33,6 @@
 //  this library, you must extend this exception to your version of the library.
 //
 
-
 import XCTest
 import IntercambioCore
 import CoreXMPP
@@ -64,9 +63,11 @@ class AccountListPresentationDataSourceTests: XCTestCase {
         XCTAssertEqual(dataSource.numberOfItems(inSection: 0), 0)
         
         let jid = JID("romeo@example.com")!
-        let item = KeyChainItem(identifier: jid.stringValue,
-                                invisible: false,
-                                options: [:])
+        let item = KeyChainItem(
+            identifier: jid.stringValue,
+            invisible: false,
+            options: [:]
+        )
         
         try! keyChain.add(item)
         

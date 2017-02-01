@@ -33,7 +33,6 @@
 //  this library, you must extend this exception to your version of the library.
 //
 
-
 import Foundation
 import Fountain
 import XMPPFoundation
@@ -45,16 +44,16 @@ protocol SettingsPresenterEventHandler {
     func settingsDidRemove(_ settingsPresenter: SettingsPresenter) -> Void
 }
 
-class SettingsPresenter : SettingsViewEventHandler, SettingsDataSourceDelegate {
+class SettingsPresenter: SettingsViewEventHandler, SettingsDataSourceDelegate {
     
     var eventHandler: SettingsPresenterEventHandler?
-
+    
     weak var view: SettingsView? {
         didSet {
             view?.dataSource = dataSource
         }
     }
-
+    
     private let dataSource: SettingsDataSource
     
     var accountJID: JID {
@@ -94,7 +93,7 @@ class SettingsPresenter : SettingsViewEventHandler, SettingsDataSourceDelegate {
     
     // SettingsDataSourceDelegate
     
-    func settingsDataSource(_ dataSource: SettingsDataSource, didRemoveAccount jid: JID) {
+    func settingsDataSource(_: SettingsDataSource, didRemoveAccount _: JID) {
         eventHandler?.settingsDidRemove(self)
     }
 }

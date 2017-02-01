@@ -33,19 +33,18 @@
 //  this library, you must extend this exception to your version of the library.
 //
 
-
 import UIKit
 import XMPPFoundation
 import IntercambioCore
 
-public class SettingsModule : NSObject, SettingsViewControllerDelegate {
-
+public class SettingsModule: NSObject, SettingsViewControllerDelegate {
+    
     public let service: CommunicationService
     
     public init(service: CommunicationService) {
         self.service = service
     }
-
+    
     public func presentSettings(for uri: URL, in window: UIWindow) {
         if let viewController = makeSettingsViewController(uri: uri),
             let rootViewController = window.rootViewController {
@@ -57,7 +56,7 @@ public class SettingsModule : NSObject, SettingsViewControllerDelegate {
             rootViewController.present(navigationController, animated: true, completion: nil)
         }
     }
-
+    
     public func makeSettingsViewController(uri: URL) -> SettingsViewController? {
         let controller = SettingsViewController(service: service, account: uri)
         return controller
@@ -78,7 +77,7 @@ public class SettingsModule : NSObject, SettingsViewControllerDelegate {
     }
 }
 
-@objc public protocol SettingsViewControllerDelegate : class {
+@objc public protocol SettingsViewControllerDelegate: class {
     func settingsDidCancel(_ settingsViewController: SettingsViewController) -> Void
     func settingsDidSave(_ settingsViewController: SettingsViewController) -> Void
     func settingsDidRemoveAccount(_ settingsViewController: SettingsViewController) -> Void
@@ -86,25 +85,25 @@ public class SettingsModule : NSObject, SettingsViewControllerDelegate {
 
 public extension SettingsViewController {
     
-    private class DelegateProxy : SettingsPresenterEventHandler {
+    private class DelegateProxy: SettingsPresenterEventHandler {
         weak var delegate: SettingsViewControllerDelegate?
         weak var viewController: SettingsViewController?
-
-        func settingsDidSave(_ settingsPresenter: SettingsPresenter) {
+        
+        func settingsDidSave(_: SettingsPresenter) {
             if let delegate = self.delegate,
-               let viewController = self.viewController {
-               delegate.settingsDidSave(viewController)
+                let viewController = self.viewController {
+                delegate.settingsDidSave(viewController)
             }
         }
         
-        func settingsDidCancel(_ settingsPresenter: SettingsPresenter) {
+        func settingsDidCancel(_: SettingsPresenter) {
             if let delegate = self.delegate,
                 let viewController = self.viewController {
                 delegate.settingsDidCancel(viewController)
             }
         }
         
-        func settingsDidRemove(_ settingsPresenter: SettingsPresenter) {
+        func settingsDidRemove(_: SettingsPresenter) {
             if let delegate = self.delegate,
                 let viewController = self.viewController {
                 delegate.settingsDidRemoveAccount(viewController)
@@ -149,7 +148,7 @@ public extension SettingsViewController {
     
     private var delegateProxy: DelegateProxy? {
         if let presenter = self.presenter as? SettingsPresenter,
-            let proxy = presenter.eventHandler as? DelegateProxy{
+            let proxy = presenter.eventHandler as? DelegateProxy {
             return proxy
         }
         return nil

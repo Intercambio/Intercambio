@@ -33,7 +33,6 @@
 //  this library, you must extend this exception to your version of the library.
 //
 
-
 import UIKit
 
 let ConversationViewLayoutElementKindAvatar = "ConversationViewLayoutElementKindAvatar"
@@ -45,7 +44,7 @@ enum ConversationViewLayoutDirection {
     case outbound
 }
 
-@objc class ConversationViewLayoutItem : NSObject {
+@objc class ConversationViewLayoutItem: NSObject {
     
     init(direction: ConversationViewLayoutDirection, type: ConversationViewModelType, origin: String, temporary: Bool) {
         self.direction = direction
@@ -61,19 +60,25 @@ enum ConversationViewLayoutDirection {
 }
 
 @objc protocol UICollectionViewDelegateConversationViewLayout: UICollectionViewDelegate {
-    @objc func collectionView(_ collectionView: UICollectionView,
-                              layout collectionViewLayout: UICollectionViewLayout,
-                              sizeForItemAt indexPath: IndexPath,
-                              maxWidth: CGFloat,
-                              layoutMargins: UIEdgeInsets) -> CGSize
+    @objc func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath,
+        maxWidth: CGFloat,
+        layoutMargins: UIEdgeInsets
+    ) -> CGSize
     
-    @objc func collectionView(_ collectionView: UICollectionView,
-                              layout collectionViewLayout: UICollectionViewLayout,
-                              layoutItemOfItemAt indexPath: IndexPath) -> ConversationViewLayoutItem
+    @objc func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        layoutItemOfItemAt indexPath: IndexPath
+    ) -> ConversationViewLayoutItem
     
-    @objc func collectionView(_ collectionView: UICollectionView,
-                              layout collectionViewLayout: UICollectionViewLayout,
-                              timestampOfItemAt indexPath: IndexPath) -> Date?
+    @objc func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        timestampOfItemAt indexPath: IndexPath
+    ) -> Date?
 }
 
 class ConversationViewLayout: UICollectionViewLayout {
@@ -95,7 +100,7 @@ class ConversationViewLayout: UICollectionViewLayout {
     
     private var mainFragment: ConversationViewLayoutFragment?
     private var previourMainFragment: ConversationViewLayoutFragment?
-
+    
     override class var invalidationContextClass: Swift.AnyClass {
         return ConversationViewLayoutInvalidationContext.self
     }
@@ -123,14 +128,14 @@ class ConversationViewLayout: UICollectionViewLayout {
             dataSourceCountsAreValid = true
         }
         
-        if (layoutMetricsAreValid == false || invalidated.count > 0) {
-        
+        if layoutMetricsAreValid == false || invalidated.count > 0 {
+            
             let lineHeight = UIFont.preferredFont(forTextStyle: .body).lineHeight
             let offset = CGPoint(x: 0, y: 0)
             let width = collectionView != nil ? (collectionView?.bounds.width)! : 0
             
             mainFragment?.layout(offset: offset, width: width, position: [.first, .last], options: options()) {
-                (indexPath, width, layoutMargins) in
+                indexPath, width, layoutMargins in
                 if let collectionView = self.collectionView, let delegate = collectionView.delegate as? UICollectionViewDelegateConversationViewLayout {
                     return delegate.collectionView(collectionView, layout: self, sizeForItemAt: indexPath, maxWidth: width, layoutMargins: layoutMargins)
                 } else {
@@ -149,8 +154,8 @@ class ConversationViewLayout: UICollectionViewLayout {
         super.finalizeCollectionViewUpdates()
     }
     
-    private func options() -> [String:Any] {
-        var options: [String:Any] = [:]
+    private func options() -> [String: Any] {
+        var options: [String: Any] = [:]
         options["paragraph_spacing"] = paragraphSpacing
         options["message_spacing"] = messageSpacing
         options["content_insets"] = contentInsets
@@ -186,10 +191,10 @@ class ConversationViewLayout: UICollectionViewLayout {
         
         let conversation = ConversationViewLayoutConversationFragment()
         
-        var previousTimestamp : Date? = nil
-        var previousLayoutItem: ConversationViewLayoutItem? = nil
+        var previousTimestamp: Date?
+        var previousLayoutItem: ConversationViewLayoutItem?
         
-        enumerateItems { (layoutItem, timestamp, indexPath) in
+        enumerateItems { layoutItem, timestamp, indexPath in
             
             let showAvatar = (layoutItem.direction == .inbound)
             
@@ -204,7 +209,7 @@ class ConversationViewLayout: UICollectionViewLayout {
             }
             
             var alignment: ConversationViewLayoutFragmentAlignment
-            switch (layoutItem.direction) {
+            switch layoutItem.direction {
             case .undefined:
                 alignment = .center
             case .inbound:
@@ -254,7 +259,7 @@ class ConversationViewLayout: UICollectionViewLayout {
         }
         super.invalidateLayout(with: ctx)
     }
-
+    
     // Enumerate Items
     
     private func enumerateItems(_ block: (ConversationViewLayoutItem, Date?, IndexPath) -> Void) {
@@ -262,10 +267,10 @@ class ConversationViewLayout: UICollectionViewLayout {
         if let collectionView = self.collectionView {
             
             let numberOfSections = collectionView.numberOfSections
-            for section in 0 ..< numberOfSections {
-            
+            for section in 0..<numberOfSections {
+                
                 let numberOfItems = collectionView.numberOfItems(inSection: section)
-                for item in 0 ..< numberOfItems {
+                for item in 0..<numberOfItems {
                     
                     let indexPath = IndexPath(item: item, section: section)
                     let item = layoutItem(at: indexPath)
@@ -332,7 +337,7 @@ class ConversationViewLayout: UICollectionViewLayout {
     override func indexPathsToInsertForDecorationView(ofKind elementKind: String) -> [IndexPath] {
         return mainFragment?.indexPathsOfDecorationView(ofKind: elementKind) ?? []
     }
-
+    
     override func indexPathsToDeleteForDecorationView(ofKind elementKind: String) -> [IndexPath] {
         return previourMainFragment?.indexPathsOfDecorationView(ofKind: elementKind) ?? []
     }

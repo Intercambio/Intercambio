@@ -33,13 +33,12 @@
 //  this library, you must extend this exception to your version of the library.
 //
 
-
 import UIKit
 
 public class FormButtonItemCell: UITableViewCell {
-
+    
     public static var predicate: NSPredicate {
-        return NSPredicate(block: { (item, options) -> Bool in
+        return NSPredicate(block: { (item, _) -> Bool in
             return item is FormButtonItem
         })
     }
@@ -55,14 +54,18 @@ public class FormButtonItemCell: UITableViewCell {
         button.addTarget(self, action: #selector(handleAction), for: .touchUpInside)
         
         addSubview(button)
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-[button]-|",
-                                                      options: [],
-                                                      metrics: [:],
-                                                      views: ["button":button]))
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-[button]-|",
-                                                      options: [],
-                                                      metrics: [:],
-                                                      views: ["button":button]))
+        addConstraints(NSLayoutConstraint.constraints(
+            withVisualFormat: "H:|-[button]-|",
+            options: [],
+            metrics: [:],
+            views: ["button": button]
+        ))
+        addConstraints(NSLayoutConstraint.constraints(
+            withVisualFormat: "V:|-[button]-|",
+            options: [],
+            metrics: [:],
+            views: ["button": button]
+        ))
     }
     
     public required init?(coder aDecoder: NSCoder) {
@@ -87,8 +90,8 @@ public class FormButtonItemCell: UITableViewCell {
             if item.destructive == false {
                 performAction(item.action, sender: self)
             } else {
-
-                let doAction = UIAlertAction(title: item.title, style: .destructive) { (action) in
+                
+                let doAction = UIAlertAction(title: item.title, style: .destructive) { _ in
                     self.performAction(item.action, sender: self)
                 }
                 

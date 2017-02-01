@@ -33,12 +33,11 @@
 //  this library, you must extend this exception to your version of the library.
 //
 
-
 import UIKit
 import Fountain
 
 public class AccountListViewController: UITableViewController, AccountListView {
-
+    
     var presenter: AccountListViewEventHandler?
     var dataSource: FTDataSource? {
         didSet {
@@ -51,9 +50,11 @@ public class AccountListViewController: UITableViewController, AccountListView {
     public init() {
         super.init(style: .plain)
         title = NSLocalizedString("Accounts", comment: "")
-        tabBarItem = UITabBarItem(title: title,
-                                  image: UIImage(named: "779-users"),
-                                  selectedImage: UIImage(named: "779-users-selected"))
+        tabBarItem = UITabBarItem(
+            title: title,
+            image: UIImage(named: "779-users"),
+            selectedImage: UIImage(named: "779-users-selected")
+        )
     }
     
     public required init?(coder aDecoder: NSCoder) {
@@ -69,8 +70,8 @@ public class AccountListViewController: UITableViewController, AccountListView {
         
         tableView.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: "UITableViewCell")
         tableViewAdapter?.forRowsMatching(nil, useCellWithReuseIdentifier: "UITableViewCell") {
-            (view, item, indexPath, dataSource) in
-            if  let cell = view as? UITableViewCell,
+            view, item, _, _ in
+            if let cell = view as? UITableViewCell,
                 let account = item as? AccountListViewModel {
                 cell.textLabel?.text = account.name
                 cell.accessoryType = .disclosureIndicator
@@ -80,12 +81,12 @@ public class AccountListViewController: UITableViewController, AccountListView {
         tableViewAdapter?.delegate = self
         tableViewAdapter?.dataSource = dataSource
     }
-
-    public override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    
+    public override func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
         presenter?.view(self, didSelectItemAt: indexPath)
     }
     
-    @objc private func addAccount(sender: AnyObject) {
+    @objc private func addAccount(sender _: AnyObject) {
         presenter?.addAccount()
     }
 }

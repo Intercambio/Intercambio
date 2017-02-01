@@ -33,15 +33,14 @@
 //  this library, you must extend this exception to your version of the library.
 //
 
-
 import Foundation
 import CoreXMPP
 
-class ContactPickerAddress : NSObject {
+class ContactPickerAddress: NSObject {
     
     var title: String { return jid.stringValue }
     var identifier: String { return jid.stringValue }
-
+    
     let jid: JID
     init(_ jid: JID) {
         self.jid = jid

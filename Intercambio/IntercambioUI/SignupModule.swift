@@ -33,19 +33,18 @@
 //  this library, you must extend this exception to your version of the library.
 //
 
-
 import UIKit
 import IntercambioCore
 import XMPPFoundation
 
-@objc public protocol SignupRouter : class {
+@objc public protocol SignupRouter: class {
     func presentAccountUserInterface(for accountURI: URL)
     func presentNewAccountUserInterface()
 }
 
-public class SignupModule : NSObject {
+public class SignupModule: NSObject {
     
-    weak public var router: SignupRouter?
+    public weak var router: SignupRouter?
     
     public let service: CommunicationService
     public init(service: CommunicationService) {
@@ -68,7 +67,7 @@ public class SignupModule : NSObject {
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
-        alert.addTextField { (textField) in
+        alert.addTextField { textField in
             textField.placeholder = NSLocalizedString("romeo@example.com", comment: "")
             textField.keyboardType = .emailAddress
             textField.autocapitalizationType = .none
@@ -78,7 +77,7 @@ public class SignupModule : NSObject {
         let interactor = SignupInteractor(keyChain: service.keyChain)
         
         let addAction = UIAlertAction(title: NSLocalizedString("Add", comment: ""), style: .default) {
-            action in
+            _ in
             if let address = alert.textFields?.first?.text {
                 if let jid = JID(address) {
                     interactor.addAccount(jid)
@@ -94,7 +93,7 @@ public class SignupModule : NSObject {
         }
         
         let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel) {
-            action in
+            _ in
         }
         
         alert.addAction(addAction)

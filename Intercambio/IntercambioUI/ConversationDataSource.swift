@@ -33,7 +33,6 @@
 //  this library, you must extend this exception to your version of the library.
 //
 
-
 import Foundation
 import MobileCoreServices
 
@@ -55,13 +54,13 @@ extension ConversationViewModelType {
 }
 
 class ConversationDataSource: NSObject, FTDataSource, FTPagingDataSource {
-
+    
     let archive: Archive
     let counterpart: JID
     
     var pendingMessage: NSAttributedString?
     
-    private let backingStore :FTMutableSet
+    private let backingStore: FTMutableSet
     private let proxy: FTObserverProxy
     
     init(archive: Archive, counterpart: JID) {
@@ -73,7 +72,7 @@ class ConversationDataSource: NSObject, FTDataSource, FTPagingDataSource {
         let sortDescriptors = [
             NSSortDescriptor(key: nil, ascending: true, comparator: { (obj1, obj2) -> ComparisonResult in
                 if let message1 = obj1 as? Message,
-                   let message2 = obj2 as? Message {
+                    let message2 = obj2 as? Message {
                     if let date1 = message1.metadata.transmitted != nil ? message1.metadata.transmitted : message1.metadata.created,
                         let date2 = message2.metadata.transmitted != nil ? message2.metadata.transmitted : message2.metadata.created {
                         return date1.compare(date2)
@@ -101,7 +100,7 @@ class ConversationDataSource: NSObject, FTDataSource, FTPagingDataSource {
     
     func reload() throws {
         let messages = try archive.conversation(with: counterpart)
-        backingStore.performBatchUpdate { 
+        backingStore.performBatchUpdate {
             self.backingStore.removeAllObjects()
             self.backingStore.addObjects(from: messages)
         }
@@ -139,7 +138,7 @@ class ConversationDataSource: NSObject, FTDataSource, FTPagingDataSource {
             do {
                 let now = Date()
                 let metadata = Metadata(created: now)
-                let _ = try archive.insert(doc, metadata: metadata)
+                _ = try archive.insert(doc, metadata: metadata)
                 resetPendingMessageText()
             } catch {
                 NSLog("Failed to insert message into the archive: \(error)")
@@ -158,7 +157,7 @@ class ConversationDataSource: NSObject, FTDataSource, FTPagingDataSource {
     private func messageDocument() -> PXDocument? {
         let stanza = MessageStanza(from: archive.account, to: counterpart)
         stanza.type = .chat
-        let _ = stanza.add(withName: "body", namespace: "jabber:client", content: pendingMessage?.string ?? "")
+        _ = stanza.add(withName: "body", namespace: "jabber:client", content: pendingMessage?.string ?? "")
         return stanza.document
     }
     
@@ -209,13 +208,17 @@ class ConversationDataSource: NSObject, FTDataSource, FTPagingDataSource {
                     do {
                         let document = try archive.document(for: message.messageID)
                         let stanza = document.root as? MessageStanza
-                        return ViewModel(message: message,
-                                         stanza: stanza,
-                                         editable: false)
+                        return ViewModel(
+                            message: message,
+                            stanza: stanza,
+                            editable: false
+                        )
                     } catch {
-                        return ViewModel(message: message,
-                                         stanza: nil,
-                                         editable: false)
+                        return ViewModel(
+                            message: message,
+                            stanza: nil,
+                            editable: false
+                        )
                     }
                 } else {
                     return nil
@@ -243,8 +246,8 @@ class ConversationDataSource: NSObject, FTDataSource, FTPagingDataSource {
     func hasItemsBeforeFirstItem() -> Bool {
         guard
             let incrementalArchive = archive as? IncrementalArchive
-            else {
-                return false
+        else {
+            return false
         }
         
         return incrementalArchive.canLoadMore
@@ -253,12 +256,12 @@ class ConversationDataSource: NSObject, FTDataSource, FTPagingDataSource {
     func loadMoreItems(beforeFirstItemCompletionHandler completionHandler: ((Bool, Error?) -> Swift.Void)!) {
         guard
             let incrementalArchive = archive as? IncrementalArchive
-            else {
-                completionHandler?(true, nil)
-                return
+        else {
+            completionHandler?(true, nil)
+            return
         }
         
-        incrementalArchive.loadMoreMessages { (error) in
+        incrementalArchive.loadMoreMessages { error in
             DispatchQueue.main.async {
                 completionHandler?(error == nil, error)
             }
@@ -272,7 +275,7 @@ class ConversationDataSource: NSObject, FTDataSource, FTPagingDataSource {
     func loadMoreItems(afterLastItemCompletionHandler completionHandler: ((Bool, Error?) -> Swift.Void)!) {
         completionHandler?(true, nil)
     }
-
+    
     // Direction
     
     private func direction(for message: Message) -> ConversationViewModelDirection {
@@ -286,10 +289,12 @@ class ConversationDataSource: NSObject, FTDataSource, FTPagingDataSource {
     
     private func registerNotificationObservers() {
         let center = NotificationCenter.default
-        center.addObserver(self,
-                           selector: #selector(handleArchiveDidChange(notification:)),
-                           name: Notification.Name.ArchiveDidChange,
-                           object: archive)
+        center.addObserver(
+            self,
+            selector: #selector(handleArchiveDidChange(notification:)),
+            name: Notification.Name.ArchiveDidChange,
+            object: archive
+        )
     }
     
     private func unregisterNotificationObservers() {
@@ -307,7 +312,7 @@ class ConversationDataSource: NSObject, FTDataSource, FTPagingDataSource {
             }
         }
     }
-
+    
     private func insertedOrUpdatedMessages(in notification: Notification) -> [Message] {
         var messages: [Message] = []
         if let inserted = notification.userInfo?[InsertedMessagesKey] as? [Message] {
@@ -342,7 +347,7 @@ class ConversationDataSource: NSObject, FTDataSource, FTPagingDataSource {
 }
 
 extension ConversationDataSource {
-    class ViewModel : NSObject, ConversationViewModel {
+    class ViewModel: NSObject, ConversationViewModel {
         
         let message: Message
         let stanza: MessageStanza?
@@ -394,8 +399,10 @@ extension ConversationDataSource {
                 let error = stanza.error
                 return NSAttributedString(string: error?.localizedDescription ?? "")
             } else {
-                let elements = stanza.nodes(forXPath: "x:body",
-                                            usingNamespaces: ["x":"jabber:client"])
+                let elements = stanza.nodes(
+                    forXPath: "x:body",
+                    usingNamespaces: ["x": "jabber:client"]
+                )
                 if let body = elements.first as? PXElement {
                     return NSAttributedString(string: body.stringValue ?? "", attributes: [NSFontAttributeName: UIFont.preferredFont(forTextStyle: .body)])
                 } else {
@@ -406,7 +413,7 @@ extension ConversationDataSource {
         
         var type: ConversationViewModelType {
             if let string = body?.string, message.messageID.type != .error {
-                let isOnlyEmoji = string.unicodeScalars.reduce(true) { result, codePoint in
+                let isOnlyEmoji = string.unicodeScalars.reduce(true) { _, codePoint in
                     codePoint.isEmoji
                 }
                 return isOnlyEmoji ? .emoji : ConversationViewModelType.make(with: message.messageID.type)

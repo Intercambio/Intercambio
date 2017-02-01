@@ -33,7 +33,6 @@
 //  this library, you must extend this exception to your version of the library.
 //
 
-
 import XCTest
 import IntercambioCore
 import CoreXMPP
@@ -51,10 +50,12 @@ class SettingsDataSourceTests: XCTestCase {
         try! keyChain.removeAllItems()
         
         let jid = JID("juliet@example.com")!
-        let options = [WebsocketStreamURLKey:URL(string: "https://ws.example.com")!]
-        let item = KeyChainItem(identifier: jid.stringValue,
-                                invisible: false,
-                                options: options)
+        let options = [WebsocketStreamURLKey: URL(string: "https://ws.example.com")!]
+        let item = KeyChainItem(
+            identifier: jid.stringValue,
+            invisible: false,
+            options: options
+        )
         try! keyChain.add(item)
     }
     

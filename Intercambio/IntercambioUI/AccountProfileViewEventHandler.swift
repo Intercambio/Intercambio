@@ -33,10 +33,9 @@
 //  this library, you must extend this exception to your version of the library.
 //
 
-
 import Foundation
 
-protocol AccountProfileViewEventHandler : class {
+protocol AccountProfileViewEventHandler: class {
     func connectAccount()
     func showAccountSettings()
 }

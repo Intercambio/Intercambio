@@ -33,12 +33,11 @@
 //  this library, you must extend this exception to your version of the library.
 //
 
-
 import UIKit
 
 public class ContactPickerViewController: UIViewController, CLTokenInputViewDelegate, ContactPickerView, ContentView {
-
-    private class View : UIView {
+    
+    private class View: UIView {
         let contentView: UIView
         override init(frame: CGRect) {
             contentView = UIView()
@@ -59,7 +58,7 @@ public class ContactPickerViewController: UIViewController, CLTokenInputViewDele
             }
         }
     }
-        
+    
     var presenter: ContectPickerViewEventHandler?
     
     var selectedAccount: ContactPickerAddress? {
@@ -97,16 +96,22 @@ public class ContactPickerViewController: UIViewController, CLTokenInputViewDele
         view.translatesAutoresizingMaskIntoConstraints = false
         self.view = view
         
-        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[contentView]|",
-                                                           options: [],
-                                                           metrics: [:],
-                                                           views: ["contentView": view.contentView]))
+        view.addConstraints(NSLayoutConstraint.constraints(
+            withVisualFormat: "H:|[contentView]|",
+            options: [],
+            metrics: [:],
+            views: ["contentView": view.contentView]
+        ))
         
-        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[top][contentView]",
-                                                           options: [],
-                                                           metrics: [:],
-                                                           views: ["contentView": view.contentView,
-                                                                   "top": topLayoutGuide]))
+        view.addConstraints(NSLayoutConstraint.constraints(
+            withVisualFormat: "V:[top][contentView]",
+            options: [],
+            metrics: [:],
+            views: [
+                "contentView": view.contentView,
+                "top": topLayoutGuide
+            ]
+        ))
     }
     
     public override func viewDidLoad() {
@@ -123,14 +128,18 @@ public class ContactPickerViewController: UIViewController, CLTokenInputViewDele
             stackView.alignment = .fill
             
             contentView.addSubview(stackView)
-            contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[stackView]|",
-                                                                      options: [],
-                                                                      metrics: [:],
-                                                                      views: ["stackView":stackView]))
-            contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[stackView]|",
-                                                                      options: [],
-                                                                      metrics: [:],
-                                                                      views: ["stackView":stackView]))
+            contentView.addConstraints(NSLayoutConstraint.constraints(
+                withVisualFormat: "H:|[stackView]|",
+                options: [],
+                metrics: [:],
+                views: ["stackView": stackView]
+            ))
+            contentView.addConstraints(NSLayoutConstraint.constraints(
+                withVisualFormat: "V:|[stackView]|",
+                options: [],
+                metrics: [:],
+                views: ["stackView": stackView]
+            ))
         }
         
         setupBackgroundView()
@@ -174,26 +183,32 @@ public class ContactPickerViewController: UIViewController, CLTokenInputViewDele
             backgroundView.translatesAutoresizingMaskIntoConstraints = false
             
             view.insertSubview(backgroundView, belowSubview: contentView)
-            view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[backgroundView]|",
-                                                               options: [],
-                                                               metrics: [:],
-                                                               views: ["backgroundView": backgroundView]))
+            view.addConstraints(NSLayoutConstraint.constraints(
+                withVisualFormat: "H:|[backgroundView]|",
+                options: [],
+                metrics: [:],
+                views: ["backgroundView": backgroundView]
+            ))
             
-            view.addConstraint(NSLayoutConstraint(item: contentView,
-                                                  attribute: .top,
-                                                  relatedBy: .equal,
-                                                  toItem: backgroundView,
-                                                  attribute: .top,
-                                                  multiplier: 1,
-                                                  constant: 0))
+            view.addConstraint(NSLayoutConstraint(
+                item: contentView,
+                attribute: .top,
+                relatedBy: .equal,
+                toItem: backgroundView,
+                attribute: .top,
+                multiplier: 1,
+                constant: 0
+            ))
             
-            view.addConstraint(NSLayoutConstraint(item: contentView,
-                                                  attribute: .bottom,
-                                                  relatedBy: .equal,
-                                                  toItem: backgroundView,
-                                                  attribute: .bottom,
-                                                  multiplier: 1,
-                                                  constant: 0))
+            view.addConstraint(NSLayoutConstraint(
+                item: contentView,
+                attribute: .bottom,
+                relatedBy: .equal,
+                toItem: backgroundView,
+                attribute: .bottom,
+                multiplier: 1,
+                constant: 0
+            ))
             
             self.backgroundView = backgroundView
         }
@@ -205,9 +220,9 @@ public class ContactPickerViewController: UIViewController, CLTokenInputViewDele
         accountPicker?.isHidden = accounts?.count ?? 0 < 2
     }
     
-    @objc private func accountDidChange(_ sender: Any?) {
+    @objc private func accountDidChange(_: Any?) {
         if let index = accountPicker?.indexOfSelectedOption,
-           let options = accountPicker?.options {
+            let options = accountPicker?.options {
             let account = options[index]
             selectedAccount = account
             presenter?.didSelectAccount(account)
@@ -236,17 +251,17 @@ public class ContactPickerViewController: UIViewController, CLTokenInputViewDele
         }
     }
     
-    public func tokenInputView(_ view: CLTokenInputView, didAdd token: CLToken) {
+    public func tokenInputView(_: CLTokenInputView, didAdd token: CLToken) {
         if let address = token.context as? ContactPickerAddress {
             presenter?.didAdd(address)
         }
     }
     
-    public func tokenInputView(_ view: CLTokenInputView, didRemove token: CLToken) {
+    public func tokenInputView(_: CLTokenInputView, didRemove token: CLToken) {
         if let address = token.context as? ContactPickerAddress {
             presenter?.didRemove(address)
         }
     }
 }
 
-extension ContactPickerAddress : OptionPickerItem {}
+extension ContactPickerAddress: OptionPickerItem {}

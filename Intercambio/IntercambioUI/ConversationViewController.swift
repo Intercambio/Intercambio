@@ -33,16 +33,15 @@
 //  this library, you must extend this exception to your version of the library.
 //
 
-
 import UIKit
 import Fountain
 
 public class ConversationViewController: UICollectionViewController, ConversationView, UICollectionViewDelegateConversationViewLayout, UICollectionViewDelegateAction {
-
-    class CollectionView : UICollectionView {
+    
+    class CollectionView: UICollectionView {
         // Override to fix a missbehaviour that appears when the
         // compose cell becomes the first responde and the keyboard appears.
-        override func scrollToItem(at indexPath: IndexPath, at scrollPosition: UICollectionViewScrollPosition, animated: Bool) {
+        override func scrollToItem(at indexPath: IndexPath, at _: UICollectionViewScrollPosition, animated: Bool) {
             super.scrollToItem(at: indexPath, at: .bottom, animated: animated)
         }
     }
@@ -99,9 +98,11 @@ public class ConversationViewController: UICollectionViewController, Conversatio
         dummyTextView = UITextView()
         
         if let collectionView = self.collectionView,
-           let dummyTextView = self.dummyTextView {
-            self.collectionView = CollectionView(frame: collectionView.frame,
-                                                 collectionViewLayout: collectionView.collectionViewLayout)
+            let dummyTextView = self.dummyTextView {
+            self.collectionView = CollectionView(
+                frame: collectionView.frame,
+                collectionViewLayout: collectionView.collectionViewLayout
+            )
             view.insertSubview(dummyTextView, belowSubview: collectionView)
         }
         
@@ -112,23 +113,27 @@ public class ConversationViewController: UICollectionViewController, Conversatio
         
         collectionViewAdapter = FTCollectionViewAdapter(collectionView: collectionView)
         
-        collectionView?.register(ConversationViewAvatarView.classForCoder(),
-                                 forSupplementaryViewOfKind: ConversationViewLayoutElementKindAvatar,
-                                 withReuseIdentifier: ConversationViewLayoutElementKindAvatar)
-        collectionViewAdapter?.forSupplementaryViews(ofKind: ConversationViewLayoutElementKindAvatar,
-                                                     matching: nil,
-                                                     useViewWithReuseIdentifier: ConversationViewLayoutElementKindAvatar) {
-                                                        (view, item, indexPath, dataSource) in
-                                                        if let avatar = view as? ConversationViewAvatarView,
-                                                            let viewModel = item as? ConversationViewModel{
-                                                            avatar.viewModel = viewModel
-                                                        }
+        collectionView?.register(
+            ConversationViewAvatarView.classForCoder(),
+            forSupplementaryViewOfKind: ConversationViewLayoutElementKindAvatar,
+            withReuseIdentifier: ConversationViewLayoutElementKindAvatar
+        )
+        collectionViewAdapter?.forSupplementaryViews(
+            ofKind: ConversationViewLayoutElementKindAvatar,
+            matching: nil,
+            useViewWithReuseIdentifier: ConversationViewLayoutElementKindAvatar
+        ) {
+            view, item, _, _ in
+            if let avatar = view as? ConversationViewAvatarView,
+                let viewModel = item as? ConversationViewModel {
+                avatar.viewModel = viewModel
+            }
         }
-
+        
         collectionView?.register(ConversationViewComposeCell.classForCoder(), forCellWithReuseIdentifier: "compose")
         collectionViewAdapter?.forItemsMatching(NSPredicate(format: "editable == YES"), useCellWithReuseIdentifier: "compose") {
-            (view, item, indexPath, dataSource) in
-            if  let cell = view as? ConversationViewComposeCell,
+            view, item, _, _ in
+            if let cell = view as? ConversationViewComposeCell,
                 let viewModel = item as? ConversationViewModel {
                 cell.viewModel = viewModel
             }
@@ -136,8 +141,8 @@ public class ConversationViewController: UICollectionViewController, Conversatio
         
         collectionView?.register(ConversationViewMessageCell.classForCoder(), forCellWithReuseIdentifier: "message")
         collectionViewAdapter?.forItemsMatching(nil, useCellWithReuseIdentifier: "message") {
-            (view, item, indexPath, dataSource) in
-            if  let cell = view as? ConversationViewMessageCell,
+            view, item, _, _ in
+            if let cell = view as? ConversationViewMessageCell,
                 let viewModel = item as? ConversationViewModel {
                 cell.viewModel = viewModel
             }
@@ -145,8 +150,8 @@ public class ConversationViewController: UICollectionViewController, Conversatio
         
         collectionView?.register(UICollectionViewCell.classForCoder(), forCellWithReuseIdentifier: "undefined")
         collectionViewAdapter?.forItemsMatching(nil, useCellWithReuseIdentifier: "undefined") {
-            (view, item, indexPath, dataSource) in
-            if  let cell = view as? UICollectionViewCell {
+            view, _, _, _ in
+            if let cell = view as? UICollectionViewCell {
                 cell.backgroundColor = #colorLiteral(red: 0.9607843161, green: 0.7058823705, blue: 0.200000003, alpha: 1)
             }
         }
@@ -157,17 +162,23 @@ public class ConversationViewController: UICollectionViewController, Conversatio
         if let viewController = contactPickerViewController {
             addChildViewController(viewController)
             view.addSubview(viewController.view)
-            view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[view]|",
-                                                               options: [],
-                                                               metrics: [:],
-                                                               views: ["view":viewController.view]))
-
-            view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[view]|",
-                                                               options: [],
-                                                               metrics: [:],
-                                                               views: ["view": viewController.view,
-                                                                       "top": topLayoutGuide,
-                                                                       "bottom": bottomLayoutGuide]))
+            view.addConstraints(NSLayoutConstraint.constraints(
+                withVisualFormat: "H:|[view]|",
+                options: [],
+                metrics: [:],
+                views: ["view": viewController.view]
+            ))
+            
+            view.addConstraints(NSLayoutConstraint.constraints(
+                withVisualFormat: "V:|[view]|",
+                options: [],
+                metrics: [:],
+                views: [
+                    "view": viewController.view,
+                    "top": topLayoutGuide,
+                    "bottom": bottomLayoutGuide
+                ]
+            ))
             viewController.view.isHidden = !isContactPickerVisible
         }
         
@@ -214,18 +225,22 @@ public class ConversationViewController: UICollectionViewController, Conversatio
     
     // MARK: UICollectionViewDelegateConversationViewLayout
     
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        sizeForItemAt indexPath: IndexPath,
-                        maxWidth: CGFloat,
-                        layoutMargins: UIEdgeInsets) -> CGSize{
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath,
+        maxWidth: CGFloat,
+        layoutMargins: UIEdgeInsets
+    ) -> CGSize {
         return preferredSize(forItemAt: indexPath, maxWidth: maxWidth, layoutMargins: layoutMargins)
     }
     
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        layoutItemOfItemAt indexPath: IndexPath) -> ConversationViewLayoutItem {
-
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        layoutItemOfItemAt indexPath: IndexPath
+    ) -> ConversationViewLayoutItem {
+        
         var direction = ConversationViewLayoutDirection.undefined
         var origin = NSUUID().uuidString
         var temporary = false
@@ -251,9 +266,11 @@ public class ConversationViewController: UICollectionViewController, Conversatio
         return ConversationViewLayoutItem(direction: direction, type: type, origin: origin, temporary: temporary)
     }
     
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        timestampOfItemAt indexPath: IndexPath) -> Date? {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        timestampOfItemAt indexPath: IndexPath
+    ) -> Date? {
         if let model = dataSource?.item(at: indexPath) as? ConversationViewModel {
             return model.timestamp
         } else {
@@ -263,10 +280,12 @@ public class ConversationViewController: UICollectionViewController, Conversatio
     
     // MARK: UICollectionViewDelegate
     
-    public override func collectionView(_ collectionView: UICollectionView,
-                        willDisplay cell: UICollectionViewCell,
-                        forItemAt indexPath: IndexPath) {
-        if (dummyTextView?.isFirstResponder ?? false) {
+    public override func collectionView(
+        _: UICollectionView,
+        willDisplay cell: UICollectionViewCell,
+        forItemAt indexPath: IndexPath
+    ) {
+        if dummyTextView?.isFirstResponder ?? false {
             if let model = dataSource?.item(at: indexPath) as? ConversationViewModel {
                 if model.editable == true {
                     cell.becomeFirstResponder()
@@ -275,9 +294,11 @@ public class ConversationViewController: UICollectionViewController, Conversatio
         }
     }
     
-    public override func collectionView(_ collectionView: UICollectionView,
-                                 didEndDisplaying cell: UICollectionViewCell,
-                                 forItemAt indexPath: IndexPath) {
+    public override func collectionView(
+        _: UICollectionView,
+        didEndDisplaying cell: UICollectionViewCell,
+        forItemAt _: IndexPath
+    ) {
         cell.resignFirstResponder()
     }
     
@@ -295,7 +316,7 @@ public class ConversationViewController: UICollectionViewController, Conversatio
         }
     }
     
-    public override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
+    public override func collectionView(_: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
         if let responder = sender as? UIResponder {
             if responder.isFirstResponder {
                 dummyTextView?.becomeFirstResponder()
@@ -306,10 +327,10 @@ public class ConversationViewController: UICollectionViewController, Conversatio
     
     // MARK: UICollectionViewDelegateAction
     
-    public func collectionView(_ collectionView: UICollectionView, handle controlEvents: UIControlEvents, forItemAt indexPath: IndexPath, sender: Any?) {
+    public func collectionView(_: UICollectionView, handle controlEvents: UIControlEvents, forItemAt indexPath: IndexPath, sender: Any?) {
         if let textView = sender as? UITextView {
             if controlEvents.contains(.editingChanged) {
-                collectionViewAdapter?.performUserDrivenChange({ 
+                collectionViewAdapter?.performUserDrivenChange({
                     self.presenter?.setValue(textView.attributedText, forItemAt: indexPath)
                     self.invalidateLayout(ofItemAt: indexPath)
                 })
@@ -323,18 +344,20 @@ public class ConversationViewController: UICollectionViewController, Conversatio
         if let attributes = self.collectionView?.layoutAttributesForItem(at: indexPath) as? ConversationViewLayoutAttributes {
             
             let currentSize = attributes.size
-            let size = preferredSize(forItemAt: indexPath,
-                                     maxWidth: attributes.maxWidth ?? CGFloat(0),
-                                     layoutMargins: attributes.layoutMargins ?? UIEdgeInsets())
+            let size = preferredSize(
+                forItemAt: indexPath,
+                maxWidth: attributes.maxWidth ?? CGFloat(0),
+                layoutMargins: attributes.layoutMargins ?? UIEdgeInsets()
+            )
             
             if !size.equalTo(currentSize) {
                 let context = ConversationViewLayoutInvalidationContext()
                 context.invalidateItems(at: [indexPath])
                 
-                let heightAdjustment = size.height - currentSize.height;
-                if (heightAdjustment != 0) {
-                    context.contentSizeAdjustment = CGSize(width: 0, height: heightAdjustment);
-                    context.contentOffsetAdjustment = CGPoint(x: 0, y: heightAdjustment);
+                let heightAdjustment = size.height - currentSize.height
+                if heightAdjustment != 0 {
+                    context.contentSizeAdjustment = CGSize(width: 0, height: heightAdjustment)
+                    context.contentOffsetAdjustment = CGPoint(x: 0, y: heightAdjustment)
                 }
                 
                 collectionViewLayout.invalidateLayout(with: context)
@@ -342,18 +365,24 @@ public class ConversationViewController: UICollectionViewController, Conversatio
         }
     }
     
-    private func preferredSize(forItemAt indexPath: IndexPath,
-                               maxWidth: CGFloat,
-                               layoutMargins: UIEdgeInsets) -> CGSize {
+    private func preferredSize(
+        forItemAt indexPath: IndexPath,
+        maxWidth: CGFloat,
+        layoutMargins: UIEdgeInsets
+    ) -> CGSize {
         if let model = dataSource?.item(at: indexPath) as? ConversationViewModel {
             if model.editable == true {
-                return ConversationViewComposeCell.preferredSize(for: model,
-                                                                 width: maxWidth,
-                                                                 layoutMargins: layoutMargins)
+                return ConversationViewComposeCell.preferredSize(
+                    for: model,
+                    width: maxWidth,
+                    layoutMargins: layoutMargins
+                )
             } else {
-                return ConversationViewMessageCell.preferredSize(for: model,
-                                                                 width: maxWidth,
-                                                                 layoutMargins: layoutMargins)
+                return ConversationViewMessageCell.preferredSize(
+                    for: model,
+                    width: maxWidth,
+                    layoutMargins: layoutMargins
+                )
             }
         } else {
             return CGSize()

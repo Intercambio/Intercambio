@@ -33,10 +33,9 @@
 //  this library, you must extend this exception to your version of the library.
 //
 
-
 import UIKit
 
-public class NavigationBar : UINavigationBar {
+public class NavigationBar: UINavigationBar {
     
     let contentView: UIStackView
     
@@ -49,32 +48,40 @@ public class NavigationBar : UINavigationBar {
         self.addSubview(contentView)
         
         var constraints: [NSLayoutConstraint] = []
-        constraints.append(contentsOf: NSLayoutConstraint.constraints(withVisualFormat: "H:|[contentView]|",
-                                                                      metrics: nil,
-                                                                      views: ["contentView": contentView]))
-        constraints.append(contentsOf: NSLayoutConstraint.constraints(withVisualFormat: "V:|[contentView]",
-                                                                      metrics: nil,
-                                                                      views: ["contentView": contentView]))
+        constraints.append(contentsOf: NSLayoutConstraint.constraints(
+            withVisualFormat: "H:|[contentView]|",
+            metrics: nil,
+            views: ["contentView": contentView]
+        ))
+        constraints.append(contentsOf: NSLayoutConstraint.constraints(
+            withVisualFormat: "V:|[contentView]",
+            metrics: nil,
+            views: ["contentView": contentView]
+        ))
         addConstraints(constraints)
     }
     
-    required public init?(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override public func sizeThatFits(_ size: CGSize) -> CGSize {
+    public override func sizeThatFits(_ size: CGSize) -> CGSize {
         var navigationBarSize = super.sizeThatFits(size)
         let contentViewSize = contentView.sizeThatFits(CGSize(width: size.width, height: 0))
         navigationBarSize.height += contentViewSize.height
         return navigationBarSize
     }
     
-    override public func layoutSubviews() {
+    public override func layoutSubviews() {
         super.layoutSubviews()
         let contentViewSize = contentView.sizeThatFits(CGSize(width: self.bounds.size.width, height: 0))
-        contentView.frame = CGRect(origin: self.bounds.origin,
-                                   size: CGSize(width: self.bounds.size.width,
-                                                height: contentViewSize.height))
+        contentView.frame = CGRect(
+            origin: self.bounds.origin,
+            size: CGSize(
+                width: self.bounds.size.width,
+                height: contentViewSize.height
+            )
+        )
     }
     
     func triggerLayoutUpdate() {

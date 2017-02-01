@@ -33,7 +33,6 @@
 //  this library, you must extend this exception to your version of the library.
 //
 
-
 import UIKit
 import XMPPFoundation
 import KeyChain
@@ -111,7 +110,7 @@ class MainAccountNavigationPresenter: NSObject {
             }
             
             if let accountViewController = view?.topViewController as? AccountViewController {
-                if  let url = accountViewController.account,
+                if let url = accountViewController.account,
                     let components = NSURLComponents(url: url, resolvingAgainstBaseURL: true) {
                     if components.scheme == "xmpp" {
                         if let host = components.host, let user = components.user {
@@ -138,7 +137,7 @@ class MainAccountNavigationPresenter: NSObject {
         }
         return nil
     }
-
+    
     private func accountListViewController() -> AccountListViewController? {
         guard let viewControllers = view?.viewControllers else { return nil }
         for viewController in viewControllers {
@@ -148,7 +147,7 @@ class MainAccountNavigationPresenter: NSObject {
         }
         return nil
     }
-
+    
     private func accountViewController(for uri: URL) -> AccountViewController? {
         guard let viewControllers = view?.viewControllers else { return nil }
         for viewController in viewControllers {
@@ -211,22 +210,28 @@ class MainAccountNavigationPresenter: NSObject {
     private func registerNotificationObservers() {
         let center = NotificationCenter.default
         
-        notificationObservers.append(center.addObserver(forName: NSNotification.Name(rawValue: KeyChainDidAddItemNotification),
-                                                        object: keyChain,
-                                                        queue: OperationQueue.main) { [weak self] (notification) in
-                                                            self?.setupView()
+        notificationObservers.append(center.addObserver(
+            forName: NSNotification.Name(rawValue: KeyChainDidAddItemNotification),
+            object: keyChain,
+            queue: OperationQueue.main
+        ) { [weak self] _ in
+            self?.setupView()
         })
         
-        notificationObservers.append(center.addObserver(forName: NSNotification.Name(rawValue: KeyChainDidRemoveItemNotification),
-                                                        object: keyChain,
-                                                        queue: OperationQueue.main) { [weak self] (notification) in
-                                                            self?.setupView()
+        notificationObservers.append(center.addObserver(
+            forName: NSNotification.Name(rawValue: KeyChainDidRemoveItemNotification),
+            object: keyChain,
+            queue: OperationQueue.main
+        ) { [weak self] _ in
+            self?.setupView()
         })
         
-        notificationObservers.append(center.addObserver(forName: NSNotification.Name(rawValue: KeyChainDidRemoveAllItemsNotification),
-                                                        object: keyChain,
-                                                        queue: OperationQueue.main) { [weak self] (notification) in
-                                                            self?.setupView()
+        notificationObservers.append(center.addObserver(
+            forName: NSNotification.Name(rawValue: KeyChainDidRemoveAllItemsNotification),
+            object: keyChain,
+            queue: OperationQueue.main
+        ) { [weak self] _ in
+            self?.setupView()
         })
     }
     
@@ -237,7 +242,7 @@ class MainAccountNavigationPresenter: NSObject {
         }
         notificationObservers.removeAll()
     }
-
+    
 }
 
 extension MainAccountNavigationPresenter: UINavigationControllerDelegate {

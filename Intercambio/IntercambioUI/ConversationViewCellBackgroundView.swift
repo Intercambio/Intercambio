@@ -33,11 +33,10 @@
 //  this library, you must extend this exception to your version of the library.
 //
 
-
 import UIKit
 
 class ConversationViewCellBackgroundView: UIView {
-
+    
     enum BorderStyle {
         case none
         case solid
@@ -56,13 +55,13 @@ class ConversationViewCellBackgroundView: UIView {
         }
     }
     
-    var borderColor: UIColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)  {
+    var borderColor: UIColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1) {
         didSet {
             setNeedsDisplay()
         }
     }
     
-    var borderStyle: BorderStyle = .dashed  {
+    var borderStyle: BorderStyle = .dashed {
         didSet {
             setNeedsDisplay()
         }
@@ -92,9 +91,11 @@ class ConversationViewCellBackgroundView: UIView {
         super.draw(rect)
         
         let borderRect = bounds.insetBy(dx: 1, dy: 1)
-        let path = UIBezierPath(roundedRect: borderRect,
-                                byRoundingCorners: roundedCorners,
-                                cornerRadii: CGSize(width: cornerRadius, height: cornerRadius))
+        let path = UIBezierPath(
+            roundedRect: borderRect,
+            byRoundingCorners: roundedCorners,
+            cornerRadii: CGSize(width: cornerRadius, height: cornerRadius)
+        )
         path.lineCapStyle = .round
         path.lineWidth = 2
         

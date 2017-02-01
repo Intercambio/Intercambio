@@ -33,15 +33,14 @@
 //  this library, you must extend this exception to your version of the library.
 //
 
-
 import Foundation
 
-protocol AccountProfileView : class {
+protocol AccountProfileView: class {
     var isProfileHidden: Bool { get set }
-    var name: String? { get set}
-    var details: String? { get set}
+    var name: String? { get set }
+    var details: String? { get set }
     var nextAction: String? { get set }
-    var errorMessage : String? { get set }
+    var errorMessage: String? { get set }
     var connectionButtonEnabled: Bool { get set }
     var connectionButtonHidden: Bool { get set }
 }

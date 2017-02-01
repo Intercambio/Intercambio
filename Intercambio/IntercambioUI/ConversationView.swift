@@ -33,7 +33,6 @@
 //  this library, you must extend this exception to your version of the library.
 //
 
-
 import UIKit
 import Fountain
 
@@ -44,12 +43,12 @@ enum ConversationViewModelDirection {
 }
 
 enum ConversationViewModelType: String {
-    case chat = "chat"
-    case error = "error"
-    case groupchat = "groupchat"
-    case headline = "headline"
-    case normal = "normal"
-    case emoji = "emoji"
+    case chat
+    case error
+    case groupchat
+    case headline
+    case normal
+    case emoji
 }
 
 protocol ConversationViewModel {
@@ -62,7 +61,7 @@ protocol ConversationViewModel {
     var body: NSAttributedString? { get }
 }
 
-protocol ConversationView : class {
+protocol ConversationView: class {
     var dataSource: FTDataSource? { get set }
     var title: String? { get set }
     var isContactPickerVisible: Bool { get set }

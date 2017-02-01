@@ -24,21 +24,23 @@ class AccountCleanupHandler {
         self.contactHub = contactHub
         
         let center = NotificationCenter.default
-        center.addObserver(self,
-                           selector: #selector(keyChainDidRemoveItem(notification:)),
-                           name: Notification.Name(KeyChainDidRemoveItemNotification),
-                           object: keyChain)
+        center.addObserver(
+            self,
+            selector: #selector(keyChainDidRemoveItem(notification:)),
+            name: Notification.Name(KeyChainDidRemoveItemNotification),
+            object: keyChain
+        )
     }
     
     @objc private func keyChainDidRemoveItem(notification: Notification) {
         guard
             let item = notification.userInfo?[KeyChainItemKey] as? KeyChainItem,
             let account = JID(item.identifier)
-            else {
-                return
+        else {
+            return
         }
         
-        messageHub.deleteResources(for: account) { (error) in
+        messageHub.deleteResources(for: account) { error in
             if error == nil {
                 NSLog("Did delete persistent resources of the message hub for account '\(account)'.")
             } else {
@@ -46,7 +48,7 @@ class AccountCleanupHandler {
             }
         }
         
-        contactHub.deleteResources(for: account) { (error) in
+        contactHub.deleteResources(for: account) { error in
             if error == nil {
                 NSLog("Did delete persistent resources of the contact hub for account '\(account)'.")
             } else {

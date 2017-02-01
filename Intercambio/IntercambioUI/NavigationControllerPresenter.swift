@@ -33,13 +33,12 @@
 //  this library, you must extend this exception to your version of the library.
 //
 
-
 import Foundation
 import CoreXMPP
 
-class NavigationControllerPresenter : NSObject, NavigationControllerViewEventHandler {
+class NavigationControllerPresenter: NSObject, NavigationControllerViewEventHandler {
     
-    class ViewModel : NavigationControllerStatusViewModel {
+    class ViewModel: NavigationControllerStatusViewModel {
         let accountURI: URL
         let title: String
         init(accountURI: URL) {
@@ -101,23 +100,29 @@ class NavigationControllerPresenter : NSObject, NavigationControllerViewEventHan
     private func registerNotificationObservers() {
         let center = NotificationCenter.default
         
-        notificationObservers.append(center.addObserver(forName: NSNotification.Name(rawValue: AccountManagerDidAddAccount),
-                                                        object: accountManager,
-                                                        queue: OperationQueue.main) { [weak self] (notification) in
-                                                            self?.updateStatus()
-            })
+        notificationObservers.append(center.addObserver(
+            forName: NSNotification.Name(rawValue: AccountManagerDidAddAccount),
+            object: accountManager,
+            queue: OperationQueue.main
+        ) { [weak self] _ in
+            self?.updateStatus()
+        })
         
-        notificationObservers.append(center.addObserver(forName: NSNotification.Name(rawValue: AccountManagerDidChangeAccount),
-                                                        object: accountManager,
-                                                        queue: OperationQueue.main) { [weak self] (notification) in
-                                                            self?.updateStatus()
-            })
+        notificationObservers.append(center.addObserver(
+            forName: NSNotification.Name(rawValue: AccountManagerDidChangeAccount),
+            object: accountManager,
+            queue: OperationQueue.main
+        ) { [weak self] _ in
+            self?.updateStatus()
+        })
         
-        notificationObservers.append(center.addObserver(forName: NSNotification.Name(rawValue: AccountManagerDidRemoveAccount),
-                                                        object: accountManager,
-                                                        queue: OperationQueue.main) { [weak self] (notification) in
-                                                            self?.updateStatus()
-            })
+        notificationObservers.append(center.addObserver(
+            forName: NSNotification.Name(rawValue: AccountManagerDidRemoveAccount),
+            object: accountManager,
+            queue: OperationQueue.main
+        ) { [weak self] _ in
+            self?.updateStatus()
+        })
     }
     
     private func unregisterNotificationObservers() {

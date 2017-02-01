@@ -33,31 +33,30 @@
 //  this library, you must extend this exception to your version of the library.
 //
 
-
 import UIKit
 import IntercambioCore
 
-public class ContactPickerModule : NSObject {
+public class ContactPickerModule: NSObject {
     
     public let service: CommunicationService
     
     public init(service: CommunicationService) {
         self.service = service
     }
-
+    
     public func makeContactPickerViewController() -> ContactPickerViewController {
         let controller = ContactPickerViewController(service: service)
         return controller
     }
 }
 
-public protocol ContactPickerViewControllerDelegate : class {
+public protocol ContactPickerViewControllerDelegate: class {
     func contactPicker(_ picker: ContactPickerViewController, didSelect conversationURI: URL?)
 }
 
 public extension ContactPickerViewController {
     
-    private class DelegateProxy : ContactPickerPresenterEventHandler {
+    private class DelegateProxy: ContactPickerPresenterEventHandler {
         weak var delegate: ContactPickerViewControllerDelegate?
         weak var viewController: ContactPickerViewController?
         
@@ -113,7 +112,7 @@ public extension ContactPickerViewController {
     
     private var delegateProxy: DelegateProxy? {
         if let presenter = self.presenter as? ContactPickerPresenter,
-           let proxy = presenter.eventHandler as? DelegateProxy{
+            let proxy = presenter.eventHandler as? DelegateProxy {
             return proxy
         }
         return nil

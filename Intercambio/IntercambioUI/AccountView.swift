@@ -33,14 +33,13 @@
 //  this library, you must extend this exception to your version of the library.
 //
 
-
 import Foundation
 import Fountain
 
-protocol AccountContactViewModel : class {
+protocol AccountContactViewModel: class {
     var name: String { get }
 }
 
-protocol AccountView : class {
+protocol AccountView: class {
     var contactDataSource: FTDataSource? { get set }
 }

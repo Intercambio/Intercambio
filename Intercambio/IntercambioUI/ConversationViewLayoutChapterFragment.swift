@@ -33,7 +33,6 @@
 //  this library, you must extend this exception to your version of the library.
 //
 
-
 import UIKit
 
 class ConversationViewLayoutChapterFragment: ConversationViewLayoutAbstractFragment {
@@ -44,22 +43,26 @@ class ConversationViewLayoutChapterFragment: ConversationViewLayoutAbstractFragm
         self.timestamp = timestamp
         super.init()
     }
-
+    
     // Generate Layout
     
-    override func layout(offset: CGPoint,
-                         width: CGFloat,
-                         position: ConversationViewLayoutFragmentPosition,
-                         options: [String:Any],
-                         sizeCallback: (IndexPath, CGFloat, UIEdgeInsets) -> CGSize) {
+    override func layout(
+        offset: CGPoint,
+        width: CGFloat,
+        position: ConversationViewLayoutFragmentPosition,
+        options: [String: Any],
+        sizeCallback: (IndexPath, CGFloat, UIEdgeInsets) -> CGSize
+    ) {
         
         let headerHeight = options["header_height"] as? CGFloat ?? 0
         
-        super.layout(offset: CGPoint(x: offset.x, y: offset.y + headerHeight),
-                     width: width,
-                     position: position,
-                     options: options,
-                     sizeCallback: sizeCallback)
+        super.layout(
+            offset: CGPoint(x: offset.x, y: offset.y + headerHeight),
+            width: width,
+            position: position,
+            options: options,
+            sizeCallback: sizeCallback
+        )
         
         rect.origin = offset
         rect.size.height = rect.size.height + headerHeight
@@ -75,7 +78,7 @@ class ConversationViewLayoutChapterFragment: ConversationViewLayoutAbstractFragm
         }
     }
     
-    override func fragmentSpacing(_ options: [String:Any]) -> CGFloat {
+    override func fragmentSpacing(_ options: [String: Any]) -> CGFloat {
         if let spacing = options["paragraph_spacing"] as? CGFloat {
             return spacing
         } else {

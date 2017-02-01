@@ -33,19 +33,18 @@
 //  this library, you must extend this exception to your version of the library.
 //
 
-
 import UIKit
 import IntercambioCore
 
-@objc public protocol AccountListRouter : class {
+@objc public protocol AccountListRouter: class {
     func presentAccountUserInterface(for accountURI: URL)
     func presentNewAccountUserInterface()
 }
 
-public class AccountListModule : NSObject {
+public class AccountListModule: NSObject {
     
     public let service: CommunicationService
-    weak public var router: AccountListRouter?
+    public weak var router: AccountListRouter?
     
     public init(service: CommunicationService) {
         self.service = service
@@ -67,7 +66,7 @@ public extension AccountListViewController {
         self.presenter = presenter
     }
     
-    weak public var router: AccountListRouter? {
+    public weak var router: AccountListRouter? {
         set {
             if let presenter = self.presenter as? AccountListPresenter {
                 presenter.router = newValue

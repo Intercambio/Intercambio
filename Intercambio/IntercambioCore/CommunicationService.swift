@@ -33,7 +33,6 @@
 //  this library, you must extend this exception to your version of the library.
 //
 
-
 import Foundation
 import KeyChain
 import XMPPFoundation
@@ -88,14 +87,14 @@ public class CommunicationService: NSObject, SASLMechanismDelegate, XMPPDispatch
         self.dispatcher.add(self)
     }
     
-    public func loadRecentMessages(completion: ((Error?) -> (Void))?) {
+    public func loadRecentMessages(completion: ((Error?) -> Void)?) {
         do {
             let group = DispatchGroup()
             let items = try keyChain.items()
             for item in items {
                 if let account = JID(item.identifier) {
                     group.enter()
-                    messageHub.archive(for: account)  { (archive, error) in
+                    messageHub.archive(for: account) { archive, error in
                         
                         if error != nil {
                             NSLog("Failed to get archive for '\(account)': \(error)")
@@ -103,12 +102,12 @@ public class CommunicationService: NSObject, SASLMechanismDelegate, XMPPDispatch
                         
                         guard
                             let incrementalArchive = archive as? IncrementalArchive
-                            else {
-                                group.leave()
-                                return
+                        else {
+                            group.leave()
+                            return
                         }
                         
-                        incrementalArchive.loadRecentMessages { (error) in
+                        incrementalArchive.loadRecentMessages { error in
                             if error != nil {
                                 NSLog("Failed to load recent messages for '\(account)': \(error)")
                             }
@@ -131,8 +130,8 @@ public class CommunicationService: NSObject, SASLMechanismDelegate, XMPPDispatch
         guard
             let account = mechanism.context as? JID,
             let plain = mechanism as? SASLMechanismPLAIN
-            else {
-                return
+        else {
+            return
         }
         
         authenticate(plain, for: account)
@@ -142,7 +141,7 @@ public class CommunicationService: NSObject, SASLMechanismDelegate, XMPPDispatch
         do {
             let username = account.stringValue
             let password = try keyChain.passwordForItem(with: username)
-            mechanism.authenticate(withUsername: username, password: password) { (success, error) in
+            mechanism.authenticate(withUsername: username, password: password) { success, error in
                 if success == false {
                     do {
                         try self.keyChain.setPassword(nil, forItemWith: username)
@@ -154,8 +153,8 @@ public class CommunicationService: NSObject, SASLMechanismDelegate, XMPPDispatch
         } catch let error as NSError where error.domain == KeyChainErrorDomain && error.code == KeyChainErrorCode.noPassword.rawValue {
             let username = account.stringValue
             let url = makeURL(for: account)
-            delegate?.communicationService(self, needsPasswordForAccount: url) { (password) in
-                mechanism.authenticate(withUsername: username, password: password) { (success, error) in
+            delegate?.communicationService(self, needsPasswordForAccount: url) { password in
+                mechanism.authenticate(withUsername: username, password: password) { success, error in
                     if success == true {
                         do {
                             try self.keyChain.setPassword(password, forItemWith: username)
@@ -181,33 +180,33 @@ public class CommunicationService: NSObject, SASLMechanismDelegate, XMPPDispatch
     
     // MARK: - XMPPDispatcherDelegate
     
-    public func dispatcher(_ dispatcher: Dispatcher, didReceive document: PXDocument) {
+    public func dispatcher(_: Dispatcher, didReceive document: PXDocument) {
         guard
             let delegate = self.delegate as? CommunicationServiceDebugDelegate
-            else {
-                return
+        else {
+            return
         }
         delegate.communicationService(self, didReceive: document)
     }
     
-    public func dispatcher(_ dispatcher: Dispatcher, willSend document: PXDocument) {
+    public func dispatcher(_: Dispatcher, willSend document: PXDocument) {
         guard
             let delegate = self.delegate as? CommunicationServiceDebugDelegate
-            else {
-                return
+        else {
+            return
         }
         delegate.communicationService(self, willSend: document)
     }
     
     // MARK: - ConnectionHandler
     
-    public func didConnect(_ JID: JID, resumed: Bool, features: [Feature]?) {
+    public func didConnect(_ JID: JID, resumed: Bool, features _: [Feature]?) {
         if resumed == false {
             sendInitialPresence(for: JID)
         }
     }
     
-    public func didDisconnect(_ JID: JID) {
+    public func didDisconnect(_: JID) {
         
     }
     
@@ -217,7 +216,7 @@ public class CommunicationService: NSObject, SASLMechanismDelegate, XMPPDispatch
         stanza.add(withName: "show", namespace: "jabber:client", content: "chat")
         stanza.add(withName: "priority", namespace: "jabber:client", content: "1")
         
-        dispatcher.handlePresence(stanza) { (error) in
+        dispatcher.handlePresence(stanza) { error in
             if error != nil {
                 NSLog("Failed to send initial presence for account '\(account)': \(error)")
             }

@@ -33,10 +33,9 @@
 //  this library, you must extend this exception to your version of the library.
 //
 
-
 import Foundation
 
-class SignupPresenter : SignupViewEventHandler {
+class SignupPresenter: SignupViewEventHandler {
     weak var view: SignupView?
     var router: SignupRouter?
     

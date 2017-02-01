@@ -33,7 +33,6 @@
 //  this library, you must extend this exception to your version of the library.
 //
 
-
 import UIKit
 import IntercambioCore
 import XMPPMessageHub
@@ -42,7 +41,7 @@ public protocol ConversationModuleFactory {
     func makeContactPickerViewController() -> ContactPickerViewController?
 }
 
-public class ConversationModule : NSObject, ConversationModuleFactory {
+public class ConversationModule: NSObject, ConversationModuleFactory {
     
     public let service: CommunicationService
     
@@ -53,7 +52,7 @@ public class ConversationModule : NSObject, ConversationModuleFactory {
     public var contactPickerModule: ContactPickerModule?
     
     public func makeConversationViewController(for uri: URL?) -> ConversationViewController {
-        let controller =  ConversationViewController(service: service, factory: self, conversation: uri)
+        let controller = ConversationViewController(service: service, factory: self, conversation: uri)
         return controller
     }
     
@@ -62,8 +61,8 @@ public class ConversationModule : NSObject, ConversationModuleFactory {
     }
 }
 
-extension ConversationViewController : ContactPickerViewControllerDelegate {
-    public func contactPicker(_ picker: ContactPickerViewController, didSelect conversationURI: URL?) {
+extension ConversationViewController: ContactPickerViewControllerDelegate {
+    public func contactPicker(_: ContactPickerViewController, didSelect conversationURI: URL?) {
         if let presenter = self.presenter as? ConversationPresenter {
             presenter.conversation = conversationURI
         }

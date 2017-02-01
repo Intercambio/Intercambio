@@ -33,13 +33,12 @@
 //  this library, you must extend this exception to your version of the library.
 //
 
-
 import UIKit
 
 class FormValueItemCell: UITableViewCell {
-
+    
     public static var predicate: NSPredicate {
-        return NSPredicate(block: { (item, options) -> Bool in
+        return NSPredicate(block: { (item, _) -> Bool in
             return item is FormValueItem
         })
     }

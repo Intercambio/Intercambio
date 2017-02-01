@@ -33,7 +33,6 @@
 //  this library, you must extend this exception to your version of the library.
 //
 
-
 import UIKit
 
 public class AuthenticationModule {
@@ -45,7 +44,7 @@ public class AuthenticationModule {
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
-        alert.addTextField { (textField) in
+        alert.addTextField { textField in
             textField.isSecureTextEntry = true
             textField.placeholder = NSLocalizedString("Password", comment: "")
             textField.autocapitalizationType = .none
@@ -53,12 +52,12 @@ public class AuthenticationModule {
         }
         
         let addAction = UIAlertAction(title: NSLocalizedString("Login", comment: ""), style: .default) {
-            action in
+            _ in
             completion?(alert.textFields?.first?.text)
         }
         
         let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel) {
-            action in
+            _ in
             completion?(nil)
         }
         

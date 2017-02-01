@@ -33,7 +33,6 @@
 //  this library, you must extend this exception to your version of the library.
 //
 
-
 import Foundation
 import CoreXMPP
 
@@ -49,7 +48,7 @@ protocol AccountProfileModel {
     var nextConnectionAttempt: Date? { get }
 }
 
-protocol AccountProfileProvider : class {
+protocol AccountProfileProvider: class {
     var accountURI: URL? { get }
     var account: AccountProfileModel? { get }
     func connect() throws

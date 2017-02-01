@@ -33,17 +33,16 @@
 //  this library, you must extend this exception to your version of the library.
 //
 
-
 import UIKit
 import IntercambioCore
-import  CoreXMPP
+import CoreXMPP
 
 protocol ContactPickerPresenterEventHandler {
     func didChange(conversation uri: URL?) -> Void
 }
 
-class ContactPickerPresenter : NSObject, ContectPickerViewEventHandler {
-
+class ContactPickerPresenter: NSObject, ContectPickerViewEventHandler {
+    
     let accountManager: AccountManager
     init(accountManager: AccountManager) {
         self.accountManager = accountManager
@@ -189,16 +188,20 @@ class ContactPickerPresenter : NSObject, ContectPickerViewEventHandler {
     private func registerNotificationObservers() {
         let center = NotificationCenter.default
         
-        notificationObservers.append(center.addObserver(forName: NSNotification.Name(rawValue: AccountManagerDidAddAccount),
-                                                        object: accountManager,
-                                                        queue: OperationQueue.main) { [weak self] (notification) in
-                                                            self?.updateAccounts()
+        notificationObservers.append(center.addObserver(
+            forName: NSNotification.Name(rawValue: AccountManagerDidAddAccount),
+            object: accountManager,
+            queue: OperationQueue.main
+        ) { [weak self] _ in
+            self?.updateAccounts()
         })
         
-        notificationObservers.append(center.addObserver(forName: NSNotification.Name(rawValue: AccountManagerDidRemoveAccount),
-                                                        object: accountManager,
-                                                        queue: OperationQueue.main) { [weak self] (notification) in
-                                                            self?.updateAccounts()
+        notificationObservers.append(center.addObserver(
+            forName: NSNotification.Name(rawValue: AccountManagerDidRemoveAccount),
+            object: accountManager,
+            queue: OperationQueue.main
+        ) { [weak self] _ in
+            self?.updateAccounts()
         })
     }
     

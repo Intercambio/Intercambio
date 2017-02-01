@@ -33,9 +33,7 @@
 //  this library, you must extend this exception to your version of the library.
 //
 
-
 import UIKit
-
 
 struct ConversationViewLayoutFragmentPosition: OptionSet {
     let rawValue: Int
@@ -50,7 +48,7 @@ enum ConversationViewLayoutFragmentAlignment {
     case trailing
 }
 
-protocol ConversationViewLayoutFragment : class {
+protocol ConversationViewLayoutFragment: class {
     
     var childFragments: [ConversationViewLayoutFragment] { get }
     func append(_ fragment: ConversationViewLayoutFragment) -> Void
@@ -61,11 +59,13 @@ protocol ConversationViewLayoutFragment : class {
     var rect: CGRect { get }
     
     typealias SizeCallback = (IndexPath, CGFloat, UIEdgeInsets) -> CGSize
-    func layout(offset: CGPoint,
-                width: CGFloat,
-                position: ConversationViewLayoutFragmentPosition,
-                options: [String:Any],
-                sizeCallback: SizeCallback) -> Void
+    func layout(
+        offset: CGPoint,
+        width: CGFloat,
+        position: ConversationViewLayoutFragmentPosition,
+        options: [String: Any],
+        sizeCallback: SizeCallback
+    ) -> Void
     
     func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]
     func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes?
@@ -105,11 +105,13 @@ class ConversationViewLayoutAbstractFragment: ConversationViewLayoutFragment {
     
     var rect: CGRect
     
-    func layout(offset: CGPoint,
-                width: CGFloat,
-                position: ConversationViewLayoutFragmentPosition,
-                options: [String:Any],
-                sizeCallback: (IndexPath, CGFloat, UIEdgeInsets) -> CGSize) {
+    func layout(
+        offset: CGPoint,
+        width: CGFloat,
+        position _: ConversationViewLayoutFragmentPosition,
+        options: [String: Any],
+        sizeCallback: (IndexPath, CGFloat, UIEdgeInsets) -> CGSize
+    ) {
         
         let insets = contentInsets(options)
         let contentWidth = width - (insets.left + insets.right)
@@ -119,15 +121,17 @@ class ConversationViewLayoutAbstractFragment: ConversationViewLayoutFragment {
         currentOffset.x = currentOffset.x + insets.left
         
         for fragment in childFragments {
-            fragment.layout(offset: currentOffset,
-                            width: contentWidth,
-                            position: fragmentPosition(of: fragment),
-                            options: options,
-                            sizeCallback: sizeCallback)
+            fragment.layout(
+                offset: currentOffset,
+                width: contentWidth,
+                position: fragmentPosition(of: fragment),
+                options: options,
+                sizeCallback: sizeCallback
+            )
             
             currentOffset.y = fragment.rect.maxY
             
-            if childFragments.last !== fragment  {
+            if childFragments.last !== fragment {
                 currentOffset.y = currentOffset.y + fragmentSpacing(options)
             }
         }
@@ -137,20 +141,20 @@ class ConversationViewLayoutAbstractFragment: ConversationViewLayoutFragment {
         rect = CGRect(origin: offset, size: CGSize(width: width, height: currentOffset.y - offset.y))
     }
     
-    func fragmentSpacing(_ options: [String:Any]) -> CGFloat {
+    func fragmentSpacing(_ options: [String: Any]) -> CGFloat {
         return 0
     }
     
-    func contentInsets(_ options: [String:Any]) ->  UIEdgeInsets {
+    func contentInsets(_ options: [String: Any]) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
     
     private func fragmentPosition(of fragment: ConversationViewLayoutFragment) -> ConversationViewLayoutFragmentPosition {
         if childFragments.first === fragment && childFragments.last === fragment {
             return [.first, .last]
-        } else if (childFragments.first === fragment) {
+        } else if childFragments.first === fragment {
             return [.first]
-        } else if (childFragments.last === fragment) {
+        } else if childFragments.last === fragment {
             return [.last]
         } else {
             return []
@@ -162,7 +166,7 @@ class ConversationViewLayoutAbstractFragment: ConversationViewLayoutFragment {
     func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes] {
         var result: [UICollectionViewLayoutAttributes] = []
         for fragment in childFragments {
-            if (fragment.rect.intersects(rect)) {
+            if fragment.rect.intersects(rect) {
                 result.append(contentsOf: fragment.layoutAttributesForElements(in: rect))
             }
         }
@@ -203,7 +207,7 @@ class ConversationViewLayoutAbstractFragment: ConversationViewLayoutFragment {
         }
         return result
     }
-
+    
     func indexPathsOfDecorationView(ofKind elementKind: String) -> [IndexPath] {
         var result: [IndexPath] = []
         for fragment in childFragments {

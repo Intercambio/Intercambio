@@ -33,11 +33,10 @@
 //  this library, you must extend this exception to your version of the library.
 //
 
-
 import Foundation
 import KeyChain
 
-class AccountListPresenter : AccountListViewEventHandler {
+class AccountListPresenter: AccountListViewEventHandler {
     
     var router: AccountListRouter?
     
@@ -61,7 +60,7 @@ class AccountListPresenter : AccountListViewEventHandler {
         router?.presentNewAccountUserInterface()
     }
     
-    func view(_ view: AccountListView, didSelectItemAt indexPath: IndexPath) {
+    func view(_: AccountListView, didSelectItemAt indexPath: IndexPath) {
         if let uri = dataSource.accountURI(forItemAt: indexPath) {
             router?.presentAccountUserInterface(for: uri)
         }

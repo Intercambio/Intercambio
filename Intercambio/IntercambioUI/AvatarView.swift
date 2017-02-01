@@ -33,13 +33,12 @@
 //  this library, you must extend this exception to your version of the library.
 //
 
-
 import UIKit
 
 class AvatarView: UIImageView {
-
+    
     private var defaultImage: UIImageView?
-
+    
     override func layoutSubviews() {
         if defaultImage == nil {
             let bundle = Bundle(for: AvatarView.self)
@@ -49,8 +48,8 @@ class AvatarView: UIImageView {
             defaultImage?.tintColor = #colorLiteral(red: 0.9344148174, green: 0.9412353635, blue: 0.9412353635, alpha: 1)
             defaultImage?.contentMode = .scaleAspectFit
             addSubview(defaultImage!)
-            addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[view]|", options: [], metrics: [:], views: ["view":defaultImage!]))
-            addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[view]|", options: [], metrics: [:], views: ["view":defaultImage!]))
+            addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[view]|", options: [], metrics: [:], views: ["view": defaultImage!]))
+            addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[view]|", options: [], metrics: [:], views: ["view": defaultImage!]))
         }
         clipsToBounds = true
         super.layoutSubviews()

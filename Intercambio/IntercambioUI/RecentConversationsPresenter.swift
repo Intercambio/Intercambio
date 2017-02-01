@@ -33,7 +33,6 @@
 //  this library, you must extend this exception to your version of the library.
 //
 
-
 import UIKit
 import KeyChain
 import XMPPMessageHub
@@ -57,7 +56,7 @@ class RecentConversationsPresenter: NSObject, RecentConversationsViewEventHandle
         router?.presentNewConversationUserInterface()
     }
     
-    func view(_ view: RecentConversationsView, didSelectItemAt indexPath: IndexPath) {
+    func view(_: RecentConversationsView, didSelectItemAt indexPath: IndexPath) {
         if let uri = dataSource.conversationURI(forItemAt: indexPath) {
             router?.presentConversationUserInterface(for: uri)
         }

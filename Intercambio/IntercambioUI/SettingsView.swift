@@ -33,10 +33,9 @@
 //  this library, you must extend this exception to your version of the library.
 //
 
-
 import Foundation
 import Fountain
 
-protocol SettingsView : class {
+protocol SettingsView: class {
     var dataSource: FTDataSource? { get set }
 }

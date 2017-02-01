@@ -33,14 +33,15 @@
 //  this library, you must extend this exception to your version of the library.
 //
 
-
 import UIKit
 
 class ConversationViewMessageCell: ConversationViewCell {
     
-    override class func preferredSize(for viewModel: ConversationViewModel,
-                                      width: CGFloat,
-                                      layoutMargins: UIEdgeInsets) -> CGSize {
+    override class func preferredSize(
+        for viewModel: ConversationViewModel,
+        width: CGFloat,
+        layoutMargins: UIEdgeInsets
+    ) -> CGSize {
         
         if let body = viewModel.body {
             

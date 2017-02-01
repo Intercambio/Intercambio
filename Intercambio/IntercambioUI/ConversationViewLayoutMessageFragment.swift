@@ -33,20 +33,19 @@
 //  this library, you must extend this exception to your version of the library.
 //
 
-
 import UIKit
 
 class ConversationViewLayoutMessageFragment: ConversationViewLayoutAbstractFragment {
-
+    
     let indexPath: IndexPath
     let alignment: ConversationViewLayoutFragmentAlignment
-
+    
     init(indexPath: IndexPath, alignment: ConversationViewLayoutFragmentAlignment) {
         self.indexPath = indexPath
         self.alignment = alignment
         super.init()
     }
-
+    
     // Index Paths
     
     override var firstIndexPath: IndexPath? { return indexPath }
@@ -54,11 +53,13 @@ class ConversationViewLayoutMessageFragment: ConversationViewLayoutAbstractFragm
     
     // Generate Layout
     
-    override func layout(offset: CGPoint,
-                width: CGFloat,
-                position: ConversationViewLayoutFragmentPosition,
-                options: [String:Any],
-                sizeCallback: (IndexPath, CGFloat, UIEdgeInsets) -> CGSize) {
+    override func layout(
+        offset: CGPoint,
+        width: CGFloat,
+        position: ConversationViewLayoutFragmentPosition,
+        options: [String: Any],
+        sizeCallback: (IndexPath, CGFloat, UIEdgeInsets) -> CGSize
+    ) {
         
         let minPadding = options["min_readable_padding"] as? CGFloat ?? CGFloat(56.0)
         let maxReadableWidth = options["max_readable_width"] as? CGFloat ?? CGFloat(480)
@@ -85,7 +86,7 @@ class ConversationViewLayoutMessageFragment: ConversationViewLayoutAbstractFragm
         case .center:
             rect.origin = CGPoint(x: offset.x + 0.5 * (width - size.width), y: offset.y)
         }
-    
+        
         // Attributes
         
         let attributes = ConversationViewLayoutAttributes(forCellWith: indexPath)
@@ -115,7 +116,7 @@ class ConversationViewLayoutMessageFragment: ConversationViewLayoutAbstractFragm
     
     override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
         if let attributes = layoutAttributes {
-            if self.indexPath == indexPath  {
+            if self.indexPath == indexPath {
                 return attributes
             } else {
                 return nil

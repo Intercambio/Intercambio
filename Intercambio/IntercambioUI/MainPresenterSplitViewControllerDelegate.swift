@@ -33,13 +33,11 @@
 //  this library, you must extend this exception to your version of the library.
 //
 
-
 import Foundation
-
 
 extension MainPresenter {
     
-    class SplitViewControllerDelegate : UISplitViewControllerDelegate {
+    class SplitViewControllerDelegate: UISplitViewControllerDelegate {
         
         var accountNavigationController: UINavigationController?
         var conversationNavigationController: UINavigationController?
@@ -65,9 +63,11 @@ extension MainPresenter {
             }
         }
         
-        public func splitViewController(_ splitViewController: UISplitViewController,
-                                        collapseSecondary secondaryViewController: UIViewController,
-                                        onto primaryViewController: UIViewController) -> Bool {
+        public func splitViewController(
+            _ splitViewController: UISplitViewController,
+            collapseSecondary secondaryViewController: UIViewController,
+            onto primaryViewController: UIViewController
+        ) -> Bool {
             
             if let navigationController = secondaryViewController as? UINavigationController {
                 if navigationController.viewControllers.first is EmptyViewController {

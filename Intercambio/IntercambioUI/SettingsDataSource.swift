@@ -33,7 +33,6 @@
 //  this library, you must extend this exception to your version of the library.
 //
 
-
 import Foundation
 import Fountain
 import KeyChain
@@ -43,12 +42,12 @@ import CoreXMPP
 let SettingsDataSourceAccountKey: String = "SettingsDataSourceAccountKey"
 let SettingsDataSourceRemoveActionKey: String = "SettingsDataSourceRemoveActionKey"
 
-protocol SettingsDataSourceDelegate : class {
+protocol SettingsDataSourceDelegate: class {
     func settingsDataSource(_ dataSource: SettingsDataSource, didRemoveAccount jid: JID) -> Void
 }
 
 class SettingsDataSource: NSObject, FTDataSource {
-
+    
     let accountJID: JID
     let keyChain: KeyChain
     weak var delegate: SettingsDataSourceDelegate?
@@ -56,7 +55,7 @@ class SettingsDataSource: NSObject, FTDataSource {
     private let proxy: FTObserverProxy
     
     private var item: KeyChainItem?
-    private var options: [AnyHashable : Any] = [:]
+    private var options: [AnyHashable: Any] = [:]
     
     init(accountJID: JID, keyChain: KeyChain) {
         self.accountJID = accountJID
@@ -69,7 +68,7 @@ class SettingsDataSource: NSObject, FTDataSource {
     // KVO
     
     override func value(forKey key: String) -> Any? {
-        if supportedKeys.contains(key)  {
+        if supportedKeys.contains(key) {
             return options[key]
         } else {
             return super.value(forKey: key)
@@ -113,7 +112,7 @@ class SettingsDataSource: NSObject, FTDataSource {
     
     private func option(for indexPath: IndexPath) -> String? {
         switch indexPath.section {
-
+            
         case 0:
             switch indexPath.item {
             case 0: return SettingsDataSourceAccountKey
@@ -153,16 +152,18 @@ class SettingsDataSource: NSObject, FTDataSource {
     
     func save() throws {
         if let item = self.item {
-            var newOptions: [AnyHashable : Any] = [:]
+            var newOptions: [AnyHashable: Any] = [:]
             for (key, value) in options {
                 if let k = key as? String,
                     supportedKeys.contains(k) {
                     newOptions[key] = value
                 }
             }
-            let newItem = KeyChainItem(identifier: item.identifier,
-                                        invisible: item.invisible,
-                                        options: newOptions)
+            let newItem = KeyChainItem(
+                identifier: item.identifier,
+                invisible: item.invisible,
+                options: newOptions
+            )
             try keyChain.update(newItem)
         }
     }
@@ -177,7 +178,7 @@ class SettingsDataSource: NSObject, FTDataSource {
     
     // Action
     
-    func performAction(_ action: Selector, forItemAt indexPath: IndexPath) {
+    func performAction(_ action: Selector, forItemAt _: IndexPath) {
         if action == #selector(removeAccount) {
             do {
                 try removeAccount()

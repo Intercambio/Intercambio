@@ -33,7 +33,6 @@
 //  this library, you must extend this exception to your version of the library.
 //
 
-
 import UIKit
 import IntercambioCore
 
@@ -41,10 +40,10 @@ import IntercambioCore
     func presentAccountUserInterface(for accountURI: URL)
 }
 
-public class NavigationControllerModule : NSObject {
+public class NavigationControllerModule: NSObject {
     
     public let service: CommunicationService
-    weak public var router: NavigationControllerRouter?
+    public weak var router: NavigationControllerRouter?
     
     public init(service: CommunicationService) {
         self.service = service
@@ -73,7 +72,7 @@ public extension NavigationController {
         self.presenter = presenter
     }
     
-    weak public var router: NavigationControllerRouter? {
+    public weak var router: NavigationControllerRouter? {
         set {
             if let presenter = self.presenter as? NavigationControllerPresenter {
                 presenter.router = newValue

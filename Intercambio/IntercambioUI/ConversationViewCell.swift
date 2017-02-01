@@ -33,14 +33,15 @@
 //  this library, you must extend this exception to your version of the library.
 //
 
-
 import UIKit
 
 class ConversationViewCell: UICollectionViewCell {
     
-    class func preferredSize(for viewModel: ConversationViewModel,
-                             width: CGFloat,
-                             layoutMargins: UIEdgeInsets) -> CGSize {
+    class func preferredSize(
+        for viewModel: ConversationViewModel,
+        width: CGFloat,
+        layoutMargins: UIEdgeInsets
+    ) -> CGSize {
         var size = CGSize(width: width, height: UIFont.preferredFont(forTextStyle: .body).lineHeight)
         size.height = layoutMargins.top + size.height + layoutMargins.bottom
         return size
@@ -206,7 +207,7 @@ class ConversationViewCell: UICollectionViewCell {
             corners.insert(.topLeft)
             corners.insert(.topRight)
         }
-
+        
         if isLast() {
             corners.insert(.bottomLeft)
             corners.insert(.bottomRight)
@@ -232,7 +233,7 @@ class ConversationViewCell: UICollectionViewCell {
         return viewModel.temporary == true ? .dashed : .none
     }
     
-    // Layout Attributes 
+    // Layout Attributes
     
     private var position: ConversationViewLayoutFragmentPosition = []
     

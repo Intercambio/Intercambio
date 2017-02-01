@@ -33,7 +33,6 @@
 //  this library, you must extend this exception to your version of the library.
 //
 
-
 import Foundation
 import Fountain
 import IntercambioCore
@@ -47,7 +46,7 @@ class RecentConversationsDataSource: NSObject, FTDataSource {
     
     private let keyChain: KeyChain
     private let messageHub: MessageHub
-    private let backingStore :FTMutableSet
+    private let backingStore: FTMutableSet
     private let proxy: FTObserverProxy
     private var numberOfAccounts: Int {
         return archives.count
@@ -139,7 +138,7 @@ class RecentConversationsDataSource: NSObject, FTDataSource {
     private func recentMessages(for account: JID) throws -> [Message] {
         guard
             let archive = archives[account]
-            else { return [] }
+        else { return [] }
         return try archive.recent()
     }
     
@@ -184,7 +183,7 @@ class RecentConversationsDataSource: NSObject, FTDataSource {
             var viewModel: ViewModel
             do {
                 if let document = try archives[conversation.account]?.document(for: conversation.message.messageID),
-                    let stanza = document.root as? MessageStanza  {
+                    let stanza = document.root as? MessageStanza {
                     viewModel = ViewModel(conversation, stanza: stanza)
                 } else {
                     viewModel = ViewModel(conversation, stanza: nil)
@@ -226,10 +225,10 @@ class RecentConversationsDataSource: NSObject, FTDataSource {
         }
     }
     
-    var archives: [JID:Archive] = [:]
+    var archives: [JID: Archive] = [:]
     
     private func addArchive(for account: JID) {
-        messageHub.archive(for: account) { (archive, error) in
+        messageHub.archive(for: account) { archive, _ in
             DispatchQueue.main.async {
                 self.archives[account] = archive
                 self.updateConversations()
@@ -262,21 +261,21 @@ class RecentConversationsDataSource: NSObject, FTDataSource {
     
     @objc private func handleKeyChainNotification(_ notification: Notification) {
         DispatchQueue.main.async {
-
+            
             switch notification.name.rawValue {
-
+                
             case KeyChainDidAddItemNotification:
                 guard
                     let item = notification.userInfo?[KeyChainItemKey] as? KeyChainItem,
                     let account = JID(item.identifier)
-                    else { return }
+                else { return }
                 self.addArchive(for: account)
                 
             case KeyChainDidRemoveItemNotification:
                 guard
                     let item = notification.userInfo?[KeyChainItemKey] as? KeyChainItem,
                     let account = JID(item.identifier)
-                    else { return }
+                else { return }
                 self.removeArchive(for: account)
                 
             case KeyChainDidRemoveAllItemsNotification:
@@ -292,10 +291,10 @@ class RecentConversationsDataSource: NSObject, FTDataSource {
         DispatchQueue.main.async {
             guard
                 let archive = notification.object as? Archive
-                else {
-                    return
+            else {
+                return
             }
-
+            
             if self.archives[archive.account] === archive {
                 self.updateConversations(for: archive.account)
             }
@@ -304,8 +303,8 @@ class RecentConversationsDataSource: NSObject, FTDataSource {
 }
 
 extension RecentConversationsDataSource {
-    @objc class Conversation : NSObject {
-
+    @objc class Conversation: NSObject {
+        
         let message: Message
         
         init(message: Message) {
@@ -331,7 +330,7 @@ extension RecentConversationsDataSource {
         }
         
         override var hash: Int {
-            return account.hash ^ counterpart.hash ^ (Int)(date.timeIntervalSinceReferenceDate)
+            return account.hash ^ counterpart.hash ^ Int(date.timeIntervalSinceReferenceDate)
         }
         
         override func isEqual(_ object: Any?) -> Bool {
@@ -345,13 +344,13 @@ extension RecentConversationsDataSource {
 }
 
 extension RecentConversationsDataSource {
-    @objc class ViewModel : NSObject, RecentConversationsViewModel {
+    @objc class ViewModel: NSObject, RecentConversationsViewModel {
         
         var showSubtitle: Bool
         
         private let conversation: Conversation
         private let stanza: MessageStanza?
-
+        
         init(_ conversation: Conversation, stanza: MessageStanza?) {
             showSubtitle = true
             self.conversation = conversation
@@ -389,7 +388,7 @@ extension RecentConversationsDataSource {
                 let error = stanza.error
                 return error?.localizedDescription ?? ""
             } else {
-                let elements = stanza.nodes(forXPath: "x:body", usingNamespaces: ["x":"jabber:client"])
+                let elements = stanza.nodes(forXPath: "x:body", usingNamespaces: ["x": "jabber:client"])
                 if let body = elements.first as? PXElement {
                     return body.stringValue
                 } else {

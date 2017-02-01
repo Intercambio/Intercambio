@@ -33,14 +33,13 @@
 //  this library, you must extend this exception to your version of the library.
 //
 
-
 import UIKit
 
-protocol OptionPickerItem : Equatable {
+protocol OptionPickerItem: Equatable {
     var title: String { get }
 }
 
-class OptionPicker<I : OptionPickerItem> : UIControl, UIKeyInput, UIPickerViewDataSource, UIPickerViewDelegate {
+class OptionPicker<I: OptionPickerItem>: UIControl, UIKeyInput, UIPickerViewDataSource, UIPickerViewDelegate {
     
     var name: String? {
         didSet {
@@ -63,7 +62,7 @@ class OptionPicker<I : OptionPickerItem> : UIControl, UIKeyInput, UIPickerViewDa
             updateLabels()
         }
     }
-
+    
     let nameLabel: UILabel
     let valueLabel: UILabel
     
@@ -110,16 +109,16 @@ class OptionPicker<I : OptionPickerItem> : UIControl, UIKeyInput, UIPickerViewDa
         stackView.spacing = 6
         addSubview(stackView)
         
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-[stack]-|", options: [], metrics: [:], views: ["stack":stackView]))
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-[stack]", options: [], metrics: [:], views: ["stack":stackView]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-[stack]-|", options: [], metrics: [:], views: ["stack": stackView]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-[stack]", options: [], metrics: [:], views: ["stack": stackView]))
         
         let bottomConstraint = NSLayoutConstraint(item: stackView, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottomMargin, multiplier: 1, constant: 0)
         bottomConstraint.priority = 999
         addConstraint(bottomConstraint)
         
         addSubview(borderView)
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[border]|", options: [], metrics: [:], views: ["border":borderView]))
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[border(==0.5)]|", options: [], metrics: [:], views: ["border":borderView]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[border]|", options: [], metrics: [:], views: ["border": borderView]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[border(==0.5)]|", options: [], metrics: [:], views: ["border": borderView]))
         
         let recognizer = UITapGestureRecognizer(target: self, action: #selector(onTap(_:)))
         addGestureRecognizer(recognizer)
@@ -136,11 +135,11 @@ class OptionPicker<I : OptionPickerItem> : UIControl, UIKeyInput, UIPickerViewDa
     
     // Handle Gesture
     
-    @objc private func onTap(_ gesture: UITapGestureRecognizer) {
+    @objc private func onTap(_: UITapGestureRecognizer) {
         if isFirstResponder {
-            let _ = resignFirstResponder()
+            _ = resignFirstResponder()
         } else {
-            let _ = becomeFirstResponder()
+            _ = becomeFirstResponder()
         }
     }
     
@@ -184,7 +183,7 @@ class OptionPicker<I : OptionPickerItem> : UIControl, UIKeyInput, UIPickerViewDa
         }
     }
     
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    func pickerView(_: UIPickerView, didSelectRow row: Int, inComponent _: Int) {
         indexOfSelectedOption = row
         sendActions(for: [.valueChanged])
     }
@@ -192,7 +191,7 @@ class OptionPicker<I : OptionPickerItem> : UIControl, UIKeyInput, UIPickerViewDa
     // UIKeyInput
     
     var hasText: Bool { return true }
-    func insertText(_ text: String) {}
+    func insertText(_: String) {}
     func deleteBackward() {}
     
     // UIResponder

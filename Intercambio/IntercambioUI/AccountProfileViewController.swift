@@ -33,7 +33,6 @@
 //  this library, you must extend this exception to your version of the library.
 //
 
-
 import UIKit
 
 public class AccountProfileViewController: UIViewController, AccountProfileView {
@@ -54,7 +53,7 @@ public class AccountProfileViewController: UIViewController, AccountProfileView 
     var name: String? { didSet { updateUserInterface() } }
     var details: String? { didSet { updateUserInterface() } }
     var nextAction: String? { didSet { updateUserInterface() } }
-    var errorMessage : String? { didSet { updateUserInterface() } }
+    var errorMessage: String? { didSet { updateUserInterface() } }
     
     var connectionButtonEnabled: Bool = false { didSet { updateUserInterface() } }
     var connectionButtonHidden: Bool = false { didSet { updateUserInterface() } }
@@ -66,11 +65,11 @@ public class AccountProfileViewController: UIViewController, AccountProfileView 
         updateUserInterface()
     }
     
-    @IBAction func connect(_ sender: UIButton) {
+    @IBAction func connect(_: UIButton) {
         presenter?.connectAccount()
     }
     
-    @IBAction func showSettings(_ sender: UIButton) {
+    @IBAction func showSettings(_: UIButton) {
         presenter?.showAccountSettings()
     }
     

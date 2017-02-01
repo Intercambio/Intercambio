@@ -33,14 +33,15 @@
 //  this library, you must extend this exception to your version of the library.
 //
 
-
 import UIKit
 
 class ConversationViewComposeCell: ConversationViewCell, UITextViewDelegate {
     
-    override class func preferredSize(for viewModel: ConversationViewModel,
-                                      width: CGFloat,
-                                      layoutMargins: UIEdgeInsets) -> CGSize {
+    override class func preferredSize(
+        for viewModel: ConversationViewModel,
+        width: CGFloat,
+        layoutMargins: UIEdgeInsets
+    ) -> CGSize {
         
         if let body = viewModel.body {
             
@@ -67,8 +68,8 @@ class ConversationViewComposeCell: ConversationViewCell, UITextViewDelegate {
         }
     }
     
-    class ContainerView : UIScrollView {
-        override func scrollRectToVisible(_ rect: CGRect, animated: Bool) {
+    class ContainerView: UIScrollView {
+        override func scrollRectToVisible(_: CGRect, animated _: Bool) {
             
         }
     }
@@ -101,7 +102,7 @@ class ConversationViewComposeCell: ConversationViewCell, UITextViewDelegate {
         messageTextView.backgroundColor = UIColor.clear
         messageTextView.font = UIFont.preferredFont(forTextStyle: .body)
         containerView.addSubview(messageTextView)
-
+        
         contentView.addConstraint(NSLayoutConstraint(item: contentView, attribute: .topMargin, relatedBy: .equal, toItem: messageTextView, attribute: .top, multiplier: 1, constant: 0))
         contentView.addConstraint(NSLayoutConstraint(item: contentView, attribute: .bottomMargin, relatedBy: .equal, toItem: messageTextView, attribute: .bottom, multiplier: 1, constant: 0))
         

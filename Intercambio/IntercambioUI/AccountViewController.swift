@@ -37,7 +37,7 @@ import UIKit
 import Fountain
 
 public class AccountViewController: UITableViewController, AccountView {
-
+    
     var accountProfileViewController: UIViewController? {
         willSet {
             if let viewController = accountProfileViewController {
@@ -57,7 +57,7 @@ public class AccountViewController: UITableViewController, AccountView {
     }
     
     var presenter: AccountViewEventHandler?
-
+    
     var contactDataSource: FTDataSource? {
         didSet {
             tableViewAdapter?.dataSource = contactDataSource
@@ -68,9 +68,11 @@ public class AccountViewController: UITableViewController, AccountView {
     
     public init() {
         super.init(style: .grouped)
-        tabBarItem = UITabBarItem(title: NSLocalizedString("Accounts", comment: ""),
-                                  image: UIImage(named: "779-users"),
-                                  selectedImage: UIImage(named: "779-users-selected"))
+        tabBarItem = UITabBarItem(
+            title: NSLocalizedString("Accounts", comment: ""),
+            image: UIImage(named: "779-users"),
+            selectedImage: UIImage(named: "779-users-selected")
+        )
     }
     
     public required init?(coder aDecoder: NSCoder) {
@@ -79,7 +81,7 @@ public class AccountViewController: UITableViewController, AccountView {
     
     public override func viewDidLoad() {
         super.viewDidLoad()
-                
+        
         if let viewController = accountProfileViewController {
             addChildViewController(viewController)
             tableView.tableHeaderView = viewController.view
@@ -91,8 +93,8 @@ public class AccountViewController: UITableViewController, AccountView {
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "UITableViewCell")
         tableViewAdapter?.forRowsMatching(nil, useCellWithReuseIdentifier: "UITableViewCell") {
-            (view, item, indexPath, dataSource) in
-            if  let cell = view as? UITableViewCell,
+            view, item, _, _ in
+            if let cell = view as? UITableViewCell,
                 let account = item as? AccountContactViewModel {
                 cell.textLabel?.text = account.name
             }
@@ -107,7 +109,7 @@ public class AccountViewController: UITableViewController, AccountView {
         
         if navigationController?.viewControllers.index(of: self) == 0 {
             navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addAccount(sender:)))
-
+            
         } else {
             navigationItem.leftBarButtonItem = nil
         }
@@ -118,10 +120,10 @@ public class AccountViewController: UITableViewController, AccountView {
         layoutTableHeaderView()
     }
     
-    @objc private func addAccount(sender: AnyObject) {
+    @objc private func addAccount(sender _: AnyObject) {
         presenter?.addAccount()
     }
-
+    
     private func layoutTableHeaderView() {
         if let headerView = self.tableView.tableHeaderView {
             headerView.setNeedsLayout()
