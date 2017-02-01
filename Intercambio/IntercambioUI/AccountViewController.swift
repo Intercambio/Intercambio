@@ -141,5 +141,6 @@ public class AccountViewController: UITableViewController, AccountView {
     
     public override func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
         presenter?.didSelect(itemAt: indexPath)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }

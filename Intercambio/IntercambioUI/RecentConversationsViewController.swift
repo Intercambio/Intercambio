@@ -110,6 +110,7 @@ public class RecentConversationsViewController: UITableViewController, RecentCon
     
     public override func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
         presenter?.view(self, didSelectItemAt: indexPath)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     @objc private func newConversation() {
