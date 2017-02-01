@@ -33,20 +33,10 @@
 //  this library, you must extend this exception to your version of the library.
 //
 
-
-@import HockeySDK;
 @import IntercambioCore;
 @import IntercambioUI;
 @import KeyChain;
 @import PureXML;
-
-#if __has_include("Secrets.h")
-#import "Secrets.h"
-#endif
-
-#ifndef ICApplicationHockeyIdentifier
-#define ICApplicationHockeyIdentifier @"<add an identifier>"
-#endif
 
 #import "AppDelegate.h"
 #import "ICURLHandler.h"
@@ -54,7 +44,7 @@
 
 static DDLogLevel ddLogLevel = DDLogLevelInfo;
 
-@interface AppDelegate () <CommunicationServiceDelegate, CommunicationServiceDebugDelegate, BITHockeyManagerDelegate> {
+@interface AppDelegate () <CommunicationServiceDelegate, CommunicationServiceDebugDelegate> {
     CommunicationService *_communicationService;
     Wireframe *_wireframe;
     ICURLHandler *_URLHandler;
@@ -67,10 +57,6 @@ static DDLogLevel ddLogLevel = DDLogLevelInfo;
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     DDLogInfo(@"Application did finish launching.");
-
-    [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:ICApplicationHockeyIdentifier delegate:self];
-    [[BITHockeyManager sharedHockeyManager] startManager];
-    [[BITHockeyManager sharedHockeyManager].authenticator authenticateInstallation];
 
     [[UIApplication sharedApplication] setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
     
@@ -86,10 +72,7 @@ static DDLogLevel ddLogLevel = DDLogLevelInfo;
     _URLHandler = [[ICURLHandler alloc] initWithWireframe:_wireframe];
 
     [self setupLogging];
-
-    if ([self didCrashInLastSessionOnStartup] == NO) {
-        [self setupUserInterface];
-    }
+    [self setupUserInterface];
 
     return YES;
 }
@@ -161,37 +144,6 @@ static DDLogLevel ddLogLevel = DDLogLevelInfo;
 #ifdef DEBUG
     NSLog(@"\n>>>>>>>>>> SENT\n%@----------", document);
 #endif
-}
-
-#pragma mark BITCrashManagerDelegate
-
-- (void)crashManagerWillCancelSendingCrashReport:(BITCrashManager *)crashManager
-{
-    if ([self didCrashInLastSessionOnStartup]) {
-        [self setupUserInterface];
-    }
-}
-
-- (void)crashManager:(BITCrashManager *)crashManager didFailWithError:(NSError *)error
-{
-    if ([self didCrashInLastSessionOnStartup]) {
-        [self setupUserInterface];
-    }
-}
-
-- (void)crashManagerDidFinishSendingCrashReport:(BITCrashManager *)crashManager
-{
-    if ([self didCrashInLastSessionOnStartup]) {
-        [self setupUserInterface];
-    }
-}
-
-#pragma mark -
-
-- (BOOL)didCrashInLastSessionOnStartup
-{
-    return ([[BITHockeyManager sharedHockeyManager].crashManager didCrashInLastSession] &&
-            [[BITHockeyManager sharedHockeyManager].crashManager timeIntervalCrashInLastSessionOccurred] < 5);
 }
 
 - (NSURL *)documentDirectoryURL

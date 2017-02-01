@@ -170,7 +170,6 @@
 		F6D76DA61E2E5B10007E13BB /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6D76D891E2D1887007E13BB /* SQLite.framework */; };
 		F6D76DA71E2E5B10007E13BB /* XMPPFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6D76D8A1E2D1887007E13BB /* XMPPFoundation.framework */; };
 		F6D76DA81E2E5B10007E13BB /* XMPPMessageHub.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6D76D8B1E2D1887007E13BB /* XMPPMessageHub.framework */; };
-		F6D76DA91E2E5B10007E13BB /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6F375421D55EBD100F718BC /* HockeySDK.framework */; };
 		F6D76DAB1E2E5B10007E13BB /* SASLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F65751391D1011FC0038AB25 /* SASLKit.framework */; };
 		F6D76DAC1E2E5B10007E13BB /* Fountain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6A697021CFC348700E0A0D2 /* Fountain.framework */; };
 		F6D76DAD1E2E5B10007E13BB /* ISO8601.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F676EF7C1CD26492003047EC /* ISO8601.framework */; };
@@ -184,7 +183,6 @@
 		F6D807E41D1826EB002953AB /* NSURL+Intercambio.m in Sources */ = {isa = PBXBuildFile; fileRef = F6D807E31D1826EB002953AB /* NSURL+Intercambio.m */; };
 		F6D807E61D1827E3002953AB /* NSURLIntercambioTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F6D807E51D1827E3002953AB /* NSURLIntercambioTests.m */; };
 		F6E2521A1CAACDF50061531E /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F6E252191CAACDF50061531E /* Settings.bundle */; };
-		F6F375431D55EBD100F718BC /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6F375421D55EBD100F718BC /* HockeySDK.framework */; };
 		F6F56AF31C51416600C34CC8 /* SocketRocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F684140B1C4D8A7F009B37BE /* SocketRocket.framework */; };
 		F6F56AF41C51416600C34CC8 /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F68413FF1C4D8901009B37BE /* CocoaLumberjack.framework */; };
 		F6F56AF51C51416600C34CC8 /* CoreXMPP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F68414001C4D8901009B37BE /* CoreXMPP.framework */; };
@@ -419,7 +417,6 @@
 		F68414011C4D8901009B37BE /* PureXML.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PureXML.framework; path = ../Carthage/Build/iOS/PureXML.framework; sourceTree = "<group>"; };
 		F684140B1C4D8A7F009B37BE /* SocketRocket.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SocketRocket.framework; path = ../Carthage/Build/iOS/SocketRocket.framework; sourceTree = "<group>"; };
 		F6A697021CFC348700E0A0D2 /* Fountain.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fountain.framework; path = ../Carthage/Build/iOS/Fountain.framework; sourceTree = "<group>"; };
-		F6ACB0FC1D23BFB8002F3A66 /* Secrets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Secrets.h; sourceTree = "<group>"; };
 		F6D76D891E2D1887007E13BB /* SQLite.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SQLite.framework; path = ../Carthage/Build/iOS/SQLite.framework; sourceTree = "<group>"; };
 		F6D76D8A1E2D1887007E13BB /* XMPPFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XMPPFoundation.framework; path = ../Carthage/Build/iOS/XMPPFoundation.framework; sourceTree = "<group>"; };
 		F6D76D8B1E2D1887007E13BB /* XMPPMessageHub.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XMPPMessageHub.framework; path = ../Carthage/Build/iOS/XMPPMessageHub.framework; sourceTree = "<group>"; };
@@ -431,7 +428,6 @@
 		F6D807E31D1826EB002953AB /* NSURL+Intercambio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "NSURL+Intercambio.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		F6D807E51D1827E3002953AB /* NSURLIntercambioTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = NSURLIntercambioTests.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		F6E252191CAACDF50061531E /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
-		F6F375421D55EBD100F718BC /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HockeySDK.framework; path = ../Carthage/Build/iOS/HockeySDK.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -442,7 +438,6 @@
 				F6788E831E41E36D001E666B /* IntercambioCore.framework in Frameworks */,
 				F61E0C881E4096E300ECA678 /* IntercambioUI.framework in Frameworks */,
 				F6A697031CFC348700E0A0D2 /* Fountain.framework in Frameworks */,
-				F6F375431D55EBD100F718BC /* HockeySDK.framework in Frameworks */,
 				F6F56AF41C51416600C34CC8 /* CocoaLumberjack.framework in Frameworks */,
 				F6D76DB41E2E68F7007E13BB /* KeyChain.framework in Frameworks */,
 				F6F56AF51C51416600C34CC8 /* CoreXMPP.framework in Frameworks */,
@@ -466,7 +461,6 @@
 				F6D76DA61E2E5B10007E13BB /* SQLite.framework in Frameworks */,
 				F6D76DA71E2E5B10007E13BB /* XMPPFoundation.framework in Frameworks */,
 				F6D76DA81E2E5B10007E13BB /* XMPPMessageHub.framework in Frameworks */,
-				F6D76DA91E2E5B10007E13BB /* HockeySDK.framework in Frameworks */,
 				F6D76DAB1E2E5B10007E13BB /* SASLKit.framework in Frameworks */,
 				F6D76DAC1E2E5B10007E13BB /* Fountain.framework in Frameworks */,
 				F6D76DAD1E2E5B10007E13BB /* ISO8601.framework in Frameworks */,
@@ -564,7 +558,6 @@
 		F619BDBF1C4D071700F87F50 /* Intercambio */ = {
 			isa = PBXGroup;
 			children = (
-				F6ACB0FC1D23BFB8002F3A66 /* Secrets.h */,
 				F619BDC31C4D071700F87F50 /* AppDelegate.h */,
 				F619BDC41C4D071700F87F50 /* AppDelegate.m */,
 				F65F98511CB26531009A2FE5 /* Additions */,
@@ -971,7 +964,6 @@
 				F6D76D891E2D1887007E13BB /* SQLite.framework */,
 				F6D76D8A1E2D1887007E13BB /* XMPPFoundation.framework */,
 				F6D76D8B1E2D1887007E13BB /* XMPPMessageHub.framework */,
-				F6F375421D55EBD100F718BC /* HockeySDK.framework */,
 				F65751391D1011FC0038AB25 /* SASLKit.framework */,
 				F6A697021CFC348700E0A0D2 /* Fountain.framework */,
 				F676EF7C1CD26492003047EC /* ISO8601.framework */,
@@ -1347,7 +1339,6 @@
 				"$(SRCROOT)/../Carthage/Build/iOS/Fountain.framework",
 				"$(SRCROOT)/../Carthage/Build/iOS/ISO8601.framework",
 				"$(SRCROOT)/../Carthage/Build/iOS/SASLKit.framework",
-				"$(SRCROOT)/../Carthage/Build/iOS/HockeySDK.framework",
 				"$(SRCROOT)/../Carthage/Build/iOS/XMPPFoundation.framework",
 				"$(SRCROOT)/../Carthage/Build/iOS/SQLite.framework",
 				"$(SRCROOT)/../Carthage/Build/iOS/XMPPMessageHub.framework",
@@ -1374,7 +1365,6 @@
 				"$(SRCROOT)/../Carthage/Build/iOS/Fountain.framework",
 				"$(SRCROOT)/../Carthage/Build/iOS/ISO8601.framework",
 				"$(SRCROOT)/../Carthage/Build/iOS/SASLKit.framework",
-				"$(SRCROOT)/../Carthage/Build/iOS/HockeySDK.framework",
 				"$(SRCROOT)/../Carthage/Build/iOS/XMPPFoundation.framework",
 				"$(SRCROOT)/../Carthage/Build/iOS/SQLite.framework",
 				"$(SRCROOT)/../Carthage/Build/iOS/XMPPMessageHub.framework",
