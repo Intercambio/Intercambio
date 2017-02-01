@@ -37,6 +37,7 @@ import UIKit
 import IntercambioCore
 
 @objc public protocol AccountRouter: class {
+    func presentConversationUserInterface(for conversationURI: URL)
     func presentNewAccountUserInterface()
 }
 

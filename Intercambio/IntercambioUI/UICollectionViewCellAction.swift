@@ -65,7 +65,7 @@ extension UICollectionViewCell {
     
     open func performAction(_ action: Selector, sender: Any?) {
         guard
-            let target = target(forAction: action, withSender: sender) as? UICollectionView
+            let target = target(forAction: #selector(UICollectionView.performAction(_: for:sender:)), withSender: sender) as? UICollectionView
         else { return }
         target.performAction(action, for: self, sender: sender)
     }

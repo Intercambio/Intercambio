@@ -87,7 +87,7 @@ public class AccountViewController: UITableViewController, AccountView {
             tableView.tableHeaderView = viewController.view
         }
         
-        tableView.allowsSelection = false
+        tableView.allowsSelection = true
         
         tableViewAdapter = FTTableViewAdapter(tableView: tableView)
         
@@ -137,5 +137,10 @@ public class AccountViewController: UITableViewController, AccountView {
                 tableView.endUpdates()
             }
         }
+    }
+    
+    public override func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presenter?.didSelect(itemAt: indexPath)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }

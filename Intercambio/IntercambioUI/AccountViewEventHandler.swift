@@ -37,4 +37,5 @@ import Foundation
 
 protocol AccountViewEventHandler: class {
     func addAccount()
+    func didSelect(itemAt indexPath: IndexPath)
 }
