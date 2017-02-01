@@ -123,13 +123,23 @@ class MainPresenter: NSObject {
     func showConversation(for uri: URL) {
         if let viewController = factory.makeConversationViewController(for: uri) {
             showDetailViewController(viewController)
+            selectConversationTabIfNeeded()
         }
     }
     
     func showNewConversation() {
         if let viewController = factory.makeConversationViewController(for: nil) {
             showDetailViewController(viewController)
+            selectConversationTabIfNeeded()
         }
+    }
+    
+    private func selectConversationTabIfNeeded() {
+        guard
+            let view = self.view,
+            view.isCollapsed == true
+        else { return }
+        tabBarController?.selectedIndex = 0
     }
     
     func showAccount(for uri: URL) {
