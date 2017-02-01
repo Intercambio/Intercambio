@@ -144,6 +144,11 @@
 		F657513B1D1011FC0038AB25 /* SASLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F65751391D1011FC0038AB25 /* SASLKit.framework */; };
 		F676EF7E1CD264A4003047EC /* ISO8601.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F676EF7C1CD26492003047EC /* ISO8601.framework */; };
 		F6788E561E40D6DE001E666B /* AccountContactDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6788E551E40D6DE001E666B /* AccountContactDataSource.swift */; };
+		F6788E651E41E163001E666B /* IntercambioCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6788E5C1E41E163001E666B /* IntercambioCore.framework */; };
+		F6788E6C1E41E163001E666B /* IntercambioCoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6788E6B1E41E163001E666B /* IntercambioCoreTests.swift */; };
+		F6788E6E1E41E163001E666B /* IntercambioCore.h in Headers */ = {isa = PBXBuildFile; fileRef = F6788E5E1E41E163001E666B /* IntercambioCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F6788E711E41E163001E666B /* IntercambioCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6788E5C1E41E163001E666B /* IntercambioCore.framework */; };
+		F6788E721E41E163001E666B /* IntercambioCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F6788E5C1E41E163001E666B /* IntercambioCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F6A697031CFC348700E0A0D2 /* Fountain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6A697021CFC348700E0A0D2 /* Fountain.framework */; };
 		F6D76D8C1E2D1887007E13BB /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6D76D891E2D1887007E13BB /* SQLite.framework */; };
 		F6D76D8D1E2D1887007E13BB /* XMPPFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6D76D8A1E2D1887007E13BB /* XMPPFoundation.framework */; };
@@ -202,6 +207,27 @@
 			remoteGlobalIDString = F61E0C721E4096E300ECA678;
 			remoteInfo = IntercambioUI;
 		};
+		F6788E661E41E163001E666B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F619BDB51C4D071700F87F50 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F6788E5B1E41E163001E666B;
+			remoteInfo = IntercambioCore;
+		};
+		F6788E681E41E163001E666B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F619BDB51C4D071700F87F50 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F619BDBC1C4D071700F87F50;
+			remoteInfo = Intercambio;
+		};
+		F6788E6F1E41E163001E666B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F619BDB51C4D071700F87F50 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F6788E5B1E41E163001E666B;
+			remoteInfo = IntercambioCore;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -212,6 +238,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				F61E0C891E4096E300ECA678 /* IntercambioUI.framework in Embed Frameworks */,
+				F6788E721E41E163001E666B /* IntercambioCore.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -352,6 +379,12 @@
 		F65751391D1011FC0038AB25 /* SASLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SASLKit.framework; path = ../Carthage/Build/iOS/SASLKit.framework; sourceTree = "<group>"; };
 		F676EF7C1CD26492003047EC /* ISO8601.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ISO8601.framework; path = ../Carthage/Build/iOS/ISO8601.framework; sourceTree = "<group>"; };
 		F6788E551E40D6DE001E666B /* AccountContactDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountContactDataSource.swift; sourceTree = "<group>"; };
+		F6788E5C1E41E163001E666B /* IntercambioCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = IntercambioCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F6788E5E1E41E163001E666B /* IntercambioCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntercambioCore.h; sourceTree = "<group>"; };
+		F6788E5F1E41E163001E666B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F6788E641E41E163001E666B /* IntercambioCoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IntercambioCoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F6788E6B1E41E163001E666B /* IntercambioCoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntercambioCoreTests.swift; sourceTree = "<group>"; };
+		F6788E6D1E41E163001E666B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F68413FF1C4D8901009B37BE /* CocoaLumberjack.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaLumberjack.framework; path = ../Carthage/Build/iOS/CocoaLumberjack.framework; sourceTree = "<group>"; };
 		F68414001C4D8901009B37BE /* CoreXMPP.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreXMPP.framework; path = ../Carthage/Build/iOS/CoreXMPP.framework; sourceTree = "<group>"; };
 		F68414011C4D8901009B37BE /* PureXML.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PureXML.framework; path = ../Carthage/Build/iOS/PureXML.framework; sourceTree = "<group>"; };
@@ -388,6 +421,7 @@
 				F6A697031CFC348700E0A0D2 /* Fountain.framework in Frameworks */,
 				F6F56AF31C51416600C34CC8 /* SocketRocket.framework in Frameworks */,
 				F6F56AF41C51416600C34CC8 /* CocoaLumberjack.framework in Frameworks */,
+				F6788E711E41E163001E666B /* IntercambioCore.framework in Frameworks */,
 				F6F56AF51C51416600C34CC8 /* CoreXMPP.framework in Frameworks */,
 				F6F56AF61C51416600C34CC8 /* PureXML.framework in Frameworks */,
 				F61E0C881E4096E300ECA678 /* IntercambioUI.framework in Frameworks */,
@@ -443,6 +477,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F6788E581E41E163001E666B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F6788E611E41E163001E666B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F6788E651E41E163001E666B /* IntercambioCore.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -453,6 +502,8 @@
 				F619BDD91C4D071700F87F50 /* IntercambioTests */,
 				F61E0C741E4096E300ECA678 /* IntercambioUI */,
 				F61E0C811E4096E300ECA678 /* IntercambioUITests */,
+				F6788E5D1E41E163001E666B /* IntercambioCore */,
+				F6788E6A1E41E163001E666B /* IntercambioCoreTests */,
 				F619BDBE1C4D071700F87F50 /* Products */,
 				F68414091C4D890B009B37BE /* Frameworks */,
 			);
@@ -465,6 +516,8 @@
 				F619BDD61C4D071700F87F50 /* IntercambioTests.xctest */,
 				F61E0C731E4096E300ECA678 /* IntercambioUI.framework */,
 				F61E0C7B1E4096E300ECA678 /* IntercambioUITests.xctest */,
+				F6788E5C1E41E163001E666B /* IntercambioCore.framework */,
+				F6788E641E41E163001E666B /* IntercambioCoreTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -834,6 +887,24 @@
 			name = Additions;
 			sourceTree = "<group>";
 		};
+		F6788E5D1E41E163001E666B /* IntercambioCore */ = {
+			isa = PBXGroup;
+			children = (
+				F6788E5E1E41E163001E666B /* IntercambioCore.h */,
+				F6788E5F1E41E163001E666B /* Info.plist */,
+			);
+			path = IntercambioCore;
+			sourceTree = "<group>";
+		};
+		F6788E6A1E41E163001E666B /* IntercambioCoreTests */ = {
+			isa = PBXGroup;
+			children = (
+				F6788E6B1E41E163001E666B /* IntercambioCoreTests.swift */,
+				F6788E6D1E41E163001E666B /* Info.plist */,
+			);
+			path = IntercambioCoreTests;
+			sourceTree = "<group>";
+		};
 		F68414091C4D890B009B37BE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -890,6 +961,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F6788E591E41E163001E666B /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F6788E6E1E41E163001E666B /* IntercambioCore.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
@@ -907,6 +986,7 @@
 			);
 			dependencies = (
 				F61E0C871E4096E300ECA678 /* PBXTargetDependency */,
+				F6788E701E41E163001E666B /* PBXTargetDependency */,
 			);
 			name = Intercambio;
 			productName = Intercambio;
@@ -970,6 +1050,43 @@
 			productReference = F61E0C7B1E4096E300ECA678 /* IntercambioUITests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		F6788E5B1E41E163001E666B /* IntercambioCore */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F6788E731E41E163001E666B /* Build configuration list for PBXNativeTarget "IntercambioCore" */;
+			buildPhases = (
+				F6788E571E41E163001E666B /* Sources */,
+				F6788E581E41E163001E666B /* Frameworks */,
+				F6788E591E41E163001E666B /* Headers */,
+				F6788E5A1E41E163001E666B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = IntercambioCore;
+			productName = IntercambioCore;
+			productReference = F6788E5C1E41E163001E666B /* IntercambioCore.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		F6788E631E41E163001E666B /* IntercambioCoreTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F6788E761E41E163001E666B /* Build configuration list for PBXNativeTarget "IntercambioCoreTests" */;
+			buildPhases = (
+				F6788E601E41E163001E666B /* Sources */,
+				F6788E611E41E163001E666B /* Frameworks */,
+				F6788E621E41E163001E666B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F6788E671E41E163001E666B /* PBXTargetDependency */,
+				F6788E691E41E163001E666B /* PBXTargetDependency */,
+			);
+			name = IntercambioCoreTests;
+			productName = IntercambioCoreTests;
+			productReference = F6788E641E41E163001E666B /* IntercambioCoreTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -1016,6 +1133,16 @@
 						ProvisioningStyle = Automatic;
 						TestTargetID = F619BDBC1C4D071700F87F50;
 					};
+					F6788E5B1E41E163001E666B = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
+					};
+					F6788E631E41E163001E666B = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = EJW69VRSSH;
+						ProvisioningStyle = Automatic;
+						TestTargetID = F619BDBC1C4D071700F87F50;
+					};
 				};
 			};
 			buildConfigurationList = F619BDB81C4D071700F87F50 /* Build configuration list for PBXProject "Intercambio" */;
@@ -1035,6 +1162,8 @@
 				F619BDD51C4D071700F87F50 /* IntercambioTests */,
 				F61E0C721E4096E300ECA678 /* IntercambioUI */,
 				F61E0C7A1E4096E300ECA678 /* IntercambioUITests */,
+				F6788E5B1E41E163001E666B /* IntercambioCore */,
+				F6788E631E41E163001E666B /* IntercambioCoreTests */,
 			);
 		};
 /* End PBXProject section */
@@ -1070,6 +1199,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F61E0C791E4096E300ECA678 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F6788E5A1E41E163001E666B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F6788E621E41E163001E666B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1301,6 +1444,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F6788E571E41E163001E666B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F6788E601E41E163001E666B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F6788E6C1E41E163001E666B /* IntercambioCoreTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -1323,6 +1481,21 @@
 			isa = PBXTargetDependency;
 			target = F61E0C721E4096E300ECA678 /* IntercambioUI */;
 			targetProxy = F61E0C861E4096E300ECA678 /* PBXContainerItemProxy */;
+		};
+		F6788E671E41E163001E666B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F6788E5B1E41E163001E666B /* IntercambioCore */;
+			targetProxy = F6788E661E41E163001E666B /* PBXContainerItemProxy */;
+		};
+		F6788E691E41E163001E666B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F619BDBC1C4D071700F87F50 /* Intercambio */;
+			targetProxy = F6788E681E41E163001E666B /* PBXContainerItemProxy */;
+		};
+		F6788E701E41E163001E666B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F6788E5B1E41E163001E666B /* IntercambioCore */;
+			targetProxy = F6788E6F1E41E163001E666B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1591,6 +1764,96 @@
 			};
 			name = Release;
 		};
+		F6788E741E41E163001E666B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../Carthage/Build/iOS/";
+				INFOPLIST_FILE = IntercambioCore/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = im.intercambio.IntercambioCore;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		F6788E751E41E163001E666B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../Carthage/Build/iOS/";
+				INFOPLIST_FILE = IntercambioCore/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = im.intercambio.IntercambioCore;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		F6788E771E41E163001E666B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				DEVELOPMENT_TEAM = EJW69VRSSH;
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../Carthage/Build/iOS/";
+				INFOPLIST_FILE = IntercambioCoreTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = im.intercambio.IntercambioCoreTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Intercambio.app/Intercambio";
+			};
+			name = Debug;
+		};
+		F6788E781E41E163001E666B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				DEVELOPMENT_TEAM = EJW69VRSSH;
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../Carthage/Build/iOS/";
+				INFOPLIST_FILE = IntercambioCoreTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = im.intercambio.IntercambioCoreTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Intercambio.app/Intercambio";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1638,6 +1901,22 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		F6788E731E41E163001E666B /* Build configuration list for PBXNativeTarget "IntercambioCore" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F6788E741E41E163001E666B /* Debug */,
+				F6788E751E41E163001E666B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		F6788E761E41E163001E666B /* Build configuration list for PBXNativeTarget "IntercambioCoreTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F6788E771E41E163001E666B /* Debug */,
+				F6788E781E41E163001E666B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
