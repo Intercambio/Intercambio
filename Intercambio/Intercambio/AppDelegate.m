@@ -40,9 +40,6 @@
 
 #import "AppDelegate.h"
 #import "ICURLHandler.h"
-#import <CocoaLumberjack/CocoaLumberjack.h>
-
-static DDLogLevel ddLogLevel = DDLogLevelInfo;
 
 @interface AppDelegate () <CommunicationServiceDelegate, CommunicationServiceDebugDelegate> {
     CommunicationService *_communicationService;
@@ -56,7 +53,7 @@ static DDLogLevel ddLogLevel = DDLogLevelInfo;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    DDLogInfo(@"Application did finish launching.");
+    NSLog(@"Application did finish launching.");
 
     [[UIApplication sharedApplication] setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
     
@@ -98,14 +95,7 @@ static DDLogLevel ddLogLevel = DDLogLevelInfo;
 
 - (void)setupLogging
 {
-    [DDLog addLogger:[DDTTYLogger sharedInstance]];
-    [DDLog addLogger:[DDASLLogger sharedInstance]];
 
-    DDLogFileManagerDefault *documentsFileManager = [[DDLogFileManagerDefault alloc] initWithLogsDirectory:[[self documentDirectoryURL] path]];
-    DDFileLogger *fileLogger = [[DDFileLogger alloc] initWithLogFileManager:documentsFileManager];
-    fileLogger.rollingFrequency = 60 * 60 * 24;
-    fileLogger.logFileManager.maximumNumberOfLogFiles = 7;
-    [DDLog addLogger:fileLogger];
 }
 
 - (void)setupUserInterface
